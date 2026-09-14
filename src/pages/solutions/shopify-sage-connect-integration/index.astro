@@ -1,20 +1,20 @@
 ---
-import Header from '../../components/layout/Header.astro';
-import GoogleTagManager from '../../components/analytics/GoogleTagManager.astro';
-import '../../styles/home.css';
-import '../../styles/header.css';
-import '../../styles/sage-connect.css';
+import Header from '../../../components/layout/Header.astro';
+import GoogleTagManager from '../../../components/analytics/GoogleTagManager.astro';
+import '../../../styles/home.css';
+import '../../../styles/header.css';
+import '../../../styles/sage-connect.css';
 ---
 <!DOCTYPE html>
 <html lang="en">
  <head>
   <GoogleTagManager placement="head" />
-  <!-- Deploy at /shopify-company-store/ and add a server-side 301 redirect from the previous URL. -->
+  <!-- Deploy at /solutions/shopify-company-store/ and add a server-side 301 redirect from the previous URL. -->
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
   <meta content="#ffffff" name="theme-color"/>
   <meta content="Connect approved SAGE product data with a branded Shopify company store. Built for promotional products distributors that need more control and flexibility." name="description"/>
-  <link rel="canonical" href="https://cms.swishtag.com/shopify-sage-connect-integration/">
+  <link rel="canonical" href="https://cms.swishtag.com/solutions/shopify-sage-connect-integration/">
   <title>
    Shopify SAGE Connect Integration for Distributors | Swishtag
   </title>
@@ -28,7 +28,7 @@ import '../../styles/sage-connect.css';
   <meta content="Shopify SAGE Connect Integration for Distributors | Swishtag" property="og:title"/>
   <meta content="Connect approved SAGE product data with a branded Shopify company store. Built for promotional products distributors that need more control and flexibility." property="og:description"/>
   <meta content="website" property="og:type"/>
-  <meta content="https://cms.swishtag.com/shopify-sage-connect-integration/" property="og:url"/>
+  <meta content="https://cms.swishtag.com/solutions/shopify-sage-connect-integration/" property="og:url"/>
   <meta content="Swishtag" property="og:site_name"/>
   <meta content="summary_large_image" name="twitter:card"/>
   <meta content="Shopify SAGE Connect Integration for Distributors | Swishtag" name="twitter:title"/>
@@ -40,16 +40,16 @@ import '../../styles/sage-connect.css';
   <meta content="https://cms.swishtag.com/assets/images/sage-powered-shopify-company-store.webp" name="twitter:image"/>
   <meta content="SAGE Connected Shopify company store for promotional products distributors" name="twitter:image:alt"/>
   <script type="application/ld+json">
-   {"@context": "https://schema.org", "@type": "Service", "name": "SAGE Connected Company Store", "serviceType": "SAGE Connect Shopify integration for promotional products distributors", "provider": {"@type": "Organization", "name": "Swishtag", "url": "https://cms.swishtag.com"}, "areaServed": "United States", "description": "A custom Shopify company store implementation that uses authorized SAGE product data, documented field mapping, and agreed synchronization rules.", "offers": {"@type": "Offer", "price": "5000", "priceCurrency": "USD", "description": "One-time implementation price for one controlled SAGE Connected Shopify company store."}, "url": "https://cms.swishtag.com/shopify-sage-connect-integration/"}
+   {"@context": "https://schema.org", "@type": "Service", "name": "SAGE Connected Company Store", "serviceType": "SAGE Connect Shopify integration for promotional products distributors", "provider": {"@type": "Organization", "name": "Swishtag", "url": "https://cms.swishtag.com"}, "areaServed": "United States", "description": "A custom Shopify company store implementation that uses authorized SAGE product data, documented field mapping, and agreed synchronization rules.", "offers": {"@type": "Offer", "price": "5000", "priceCurrency": "USD", "description": "One-time implementation price for one controlled SAGE Connected Shopify company store."}, "url": "https://cms.swishtag.com/solutions/shopify-sage-connect-integration/"}
   </script>
   <script type="application/ld+json">
-   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cms.swishtag.com/"}, {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://cms.swishtag.com/solutions/"}, {"@type": "ListItem", "position": 3, "name": "SAGE Connected Company Store", "item": "https://cms.swishtag.com/shopify-sage-connect-integration/"}]}
+   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cms.swishtag.com/"}, {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://cms.swishtag.com/solutions/"}, {"@type": "ListItem", "position": 3, "name": "SAGE Connected Company Store", "item": "https://cms.swishtag.com/solutions/shopify-sage-connect-integration/"}]}
   </script>
   <script type="application/ld+json">
    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this the same as a SAGE Store?", "acceptedAnswer": {"@type": "Answer", "text": "No. A SAGE Connected Company Store is a custom Shopify storefront using authorized SAGE data services. A standard SAGE Store is usually the better choice when its native features fully meet the client requirement. Choose this service when the client specifically needs Shopify, stronger customization, or a broader integration roadmap."}}, {"@type": "Question", "name": "Does this replace SAGE Workplace?", "acceptedAnswer": {"@type": "Answer", "text": "No. The distributor can continue using SAGE for product research and existing workflows. Shopify becomes the client-facing commerce layer, while the agreed SAGE data supports the storefront."}}, {"@type": "Question", "name": "What SAGE data can be used?", "acceptedAnswer": {"@type": "Answer", "text": "The exact fields depend on the distributor's SAGE licensing, SAGE Connect access, available modules, supplier data, and the approved scope. Product details, images, categories, pricing, inventory, and supplier references may be used when available."}}, {"@type": "Question", "name": "Can the entire SAGE catalog be added to Shopify?", "acceptedAnswer": {"@type": "Answer", "text": "The service is designed around a controlled catalog. Broad or full-database access depends on licensing, technical limits, search requirements, and Shopify architecture. We generally recommend starting with approved products that support the client program."}}, {"@type": "Question", "name": "Will orders automatically move back into SAGE?", "acceptedAnswer": {"@type": "Answer", "text": "Not unless order submission or order synchronization is included in the written scope. The starting package focuses on the Shopify storefront and catalog data flow. Order, purchase order, accounting, and status integrations can be added separately."}}, {"@type": "Question", "name": "How often will product data update?", "acceptedAnswer": {"@type": "Answer", "text": "The update frequency is defined during discovery and depends on available SAGE services, supplier data, catalog size, Shopify limits, and the operational importance of each field."}}, {"@type": "Question", "name": "Can the store use POD, stocked inventory, or hybrid fulfillment?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The storefront can support print on demand, stocked inventory, or a hybrid model. The SAGE data connection and the fulfillment workflow are scoped separately so each one is clear."}}, {"@type": "Question", "name": "What happens when supplier data is missing or inconsistent?", "acceptedAnswer": {"@type": "Answer", "text": "The integration can only use data available through the approved source. We identify missing fields during mapping and define whether the distributor will supply replacements, use defaults, or exclude the affected products."}}, {"@type": "Question", "name": "Who needs to provide SAGE access?", "acceptedAnswer": {"@type": "Answer", "text": "The distributor must provide authorized access, credentials, documentation, and any required SAGE approvals or subscriptions. Swishtag does not bypass licensing or use data outside the distributor's permitted access."}}, {"@type": "Question", "name": "Does the price include Shopify or SAGE fees?", "acceptedAnswer": {"@type": "Answer", "text": "No. Shopify subscriptions, SAGE subscriptions, SAGE Connect or API charges, paid applications, domains, transaction fees, product costs, and other third-party charges are separate unless explicitly included."}}, {"@type": "Question", "name": "How long does the implementation take?", "acceptedAnswer": {"@type": "Answer", "text": "The timeline is confirmed after the access and data review. A controlled catalog is usually implemented in phases: discovery, mapping, storefront development, testing, and launch. Custom order or ERP integrations extend the schedule."}}]}
   </script>
-  <link as="image" fetchpriority="high" href="../assets/sage-logo.webp" rel="preload" type="image/webp"/>
-  <link as="image" fetchpriority="high" href="../assets/shopify-company-store-mobile.webp" rel="preload" type="image/webp"/>
+  <link as="image" fetchpriority="high" href="/assets/sage-logo.webp" rel="preload" type="image/webp"/>
+  <link as="image" fetchpriority="high" href="/assets/shopify-company-store-mobile.webp" rel="preload" type="image/webp"/>
   <meta content="light" name="color-scheme"/>
   <style is:global>
     .shopify-sage-connect-integration-page .site-header,
@@ -183,7 +183,7 @@ import '../../styles/sage-connect.css';
 
           <div class="mega-menu__content">
             <div class="mega-menu__primary-links">
-              <a class="mega-link" href="/shopify-company-store/">
+              <a class="mega-link" href="/solutions/shopify-company-store/">
                 <span aria-hidden="true" class="mega-link__icon">
                   <svg viewBox="0 0 28 28"><rect x="4" y="6" width="20" height="16" rx="3"></rect><path d="M4 11h20M9 17h4M16 17h3"></path></svg>
                 </span>
@@ -191,7 +191,7 @@ import '../../styles/sage-connect.css';
                 <span aria-hidden="true" class="mega-link__arrow">↗</span>
               </a>
 
-              <a class="mega-link" href="/shopify-sage-connect-integration/">
+              <a class="mega-link" href="/solutions/shopify-sage-connect-integration/">
                 <span aria-hidden="true" class="mega-link__icon mega-link__icon--mint">
                   <svg viewBox="0 0 28 28"><circle cx="7" cy="14" r="3"></circle><circle cx="21" cy="7" r="3"></circle><circle cx="21" cy="21" r="3"></circle><path d="m10 13 8-5M10 15l8 5"></path></svg>
                 </span>
@@ -199,7 +199,7 @@ import '../../styles/sage-connect.css';
                 <span aria-hidden="true" class="mega-link__arrow">↗</span>
               </a>
 
-              <a class="mega-link" href="/enterprise-shopify-automation/">
+              <a class="mega-link" href="/solutions/enterprise-shopify-automation/">
                 <span aria-hidden="true" class="mega-link__icon mega-link__icon--lavender">
                   <svg viewBox="0 0 28 28"><path d="M5 8h7v7H5zM16 5h7v7h-7zM16 17h7v7h-7z"></path><path d="M12 11h4M19.5 12v5"></path></svg>
                 </span>
@@ -246,17 +246,17 @@ import '../../styles/sage-connect.css';
               <h2>Software for the workflows Shopify does not solve alone.</h2>
               <p>Use one focused product or connect Swishtag platforms around your operational workflow.</p>
             </div>
-            <a class="mega-menu__all-link" href="/platform/"><span>Explore Swishtag platforms</span><span aria-hidden="true">↗</span></a>
+            <a class="mega-menu__all-link" href="/platforms/"><span>Explore Swishtag platforms</span><span aria-hidden="true">↗</span></a>
           </div>
 
           <div class="mega-products">
-            <a class="mega-product" href="/punchout-solutions/"><span class="mega-product__number">01</span><strong>PunchOut Solutions</strong><small>Enterprise procurement connections for Shopify.</small></a>
-            <a class="mega-product" href="/promo-plus/"><span class="mega-product__number">02</span><strong>Promo Plus</strong><small>Artwork approvals, revisions and production files.</small></a>
-            <a class="mega-product" href="/xecutor/"><span class="mega-product__number">03</span><strong>Xecutor</strong><small>Decorator production, QC, job status and fulfillment.</small></a>
-            <a class="mega-product" href="/shopify-apps-for-promotional-products/"><span class="mega-product__number">04</span><strong>Rocket Apps</strong><small>Focused Shopify tools for promotional workflows.</small></a>
+            <a class="mega-product" href="/platforms/punchout-solutions/"><span class="mega-product__number">01</span><strong>PunchOut Solutions</strong><small>Enterprise procurement connections for Shopify.</small></a>
+            <a class="mega-product" href="/platforms/promo-plus/"><span class="mega-product__number">02</span><strong>Promo Plus</strong><small>Artwork approvals, revisions and production files.</small></a>
+            <a class="mega-product" href="/platforms/xecutor/"><span class="mega-product__number">03</span><strong>Xecutor</strong><small>Decorator production, QC, job status and fulfillment.</small></a>
+            <a class="mega-product" href="/platforms/shopify-apps-for-promotional-products/"><span class="mega-product__number">04</span><strong>Rocket Apps</strong><small>Focused Shopify tools for promotional workflows.</small></a>
           </div>
 
-          <a class="mega-visual" href="/platform/">
+          <a class="mega-visual" href="/platforms/">
             <div aria-hidden="true" class="mega-visual__art">
               <svg viewBox="0 0 360 220">
                 <rect x="42" y="34" width="126" height="66" rx="20" fill="#99FEED" stroke="#202124" stroke-opacity=".14"/>
@@ -292,9 +292,9 @@ import '../../styles/sage-connect.css';
           </div>
 
           <div class="mega-industries">
-            <a class="mega-industry" href="/promotional-products-distributors/"><span aria-hidden="true" class="mega-industry__shape"></span><span><strong>Promotional Products Distributors</strong><small>Automate company stores, orders, POs and supplier workflows.</small></span></a>
-            <a class="mega-industry" href="/promotional-products-suppliers/"><span aria-hidden="true" class="mega-industry__shape mega-industry__shape--mint"></span><span><strong>Promotional Products Suppliers</strong><small>Connect product data, order intake and distributor experiences.</small></span></a>
-            <a class="mega-industry" href="/promotional-products-decorators/"><span aria-hidden="true" class="mega-industry__shape mega-industry__shape--peach"></span><span><strong>Promotional Products Decorators</strong><small>Coordinate artwork, production, quality control and fulfillment.</small></span></a>
+            <a class="mega-industry" href="/industries/promotional-products-distributors/"><span aria-hidden="true" class="mega-industry__shape"></span><span><strong>Promotional Products Distributors</strong><small>Automate company stores, orders, POs and supplier workflows.</small></span></a>
+            <a class="mega-industry" href="/industries/promotional-products-suppliers/"><span aria-hidden="true" class="mega-industry__shape mega-industry__shape--mint"></span><span><strong>Promotional Products Suppliers</strong><small>Connect product data, order intake and distributor experiences.</small></span></a>
+            <a class="mega-industry" href="/industries/promotional-products-decorators/"><span aria-hidden="true" class="mega-industry__shape mega-industry__shape--peach"></span><span><strong>Promotional Products Decorators</strong><small>Coordinate artwork, production, quality control and fulfillment.</small></span></a>
           </div>
 
           <a class="mega-visual" href="/industries/">
@@ -351,9 +351,9 @@ import '../../styles/sage-connect.css';
           <div class="mobile-nav__group">
             <button aria-expanded="false" class="mobile-nav__toggle" type="button"><span class="mobile-nav__index">02</span><span>Solutions</span><span aria-hidden="true" class="mobile-nav__plus"></span></button>
             <div class="mobile-nav__panel"><div>
-              <a data-mobile-link href="/shopify-company-store/"><strong>Company Store Launch</strong><small>Launch a Shopify print-on-demand company store.</small></a>
-              <a data-mobile-link href="/shopify-sage-connect-integration/"><strong>SAGE Powered Company Store</strong><small>Connect a modern Shopify storefront with SAGE.</small></a>
-              <a data-mobile-link href="/enterprise-shopify-automation/"><strong>Enterprise Company Store Automation</strong><small>Scale multi-store, PunchOut, PO and accounting workflows.</small></a>
+              <a data-mobile-link href="/solutions/shopify-company-store/"><strong>Company Store Launch</strong><small>Launch a Shopify print-on-demand company store.</small></a>
+              <a data-mobile-link href="/solutions/shopify-sage-connect-integration/"><strong>SAGE Powered Company Store</strong><small>Connect a modern Shopify storefront with SAGE.</small></a>
+              <a data-mobile-link href="/solutions/enterprise-shopify-automation/"><strong>Enterprise Company Store Automation</strong><small>Scale multi-store, PunchOut, PO and accounting workflows.</small></a>
               <a data-mobile-link href="/solutions/custom-software-automation/"><strong>Custom Software &amp; Automation</strong><small>Build custom software, integrations, SaaS and business automation.</small></a>
             </div></div>
           </div>
@@ -361,19 +361,19 @@ import '../../styles/sage-connect.css';
           <div class="mobile-nav__group">
             <button aria-expanded="false" class="mobile-nav__toggle" type="button"><span class="mobile-nav__index">03</span><span>Platform</span><span aria-hidden="true" class="mobile-nav__plus"></span></button>
             <div class="mobile-nav__panel"><div>
-              <a data-mobile-link href="/punchout-solutions/"><strong>PunchOut Solutions</strong><small>Enterprise procurement connections for Shopify.</small></a>
-              <a data-mobile-link href="/promo-plus/"><strong>Promo Plus</strong><small>Artwork approvals and production files.</small></a>
-              <a data-mobile-link href="/xecutor/"><strong>Xecutor</strong><small>Decorator and production workflows.</small></a>
-              <a data-mobile-link href="/shopify-apps-for-promotional-products/"><strong>Rocket Apps</strong><small>Focused Shopify tools for promo programs.</small></a>
+              <a data-mobile-link href="/platforms/punchout-solutions/"><strong>PunchOut Solutions</strong><small>Enterprise procurement connections for Shopify.</small></a>
+              <a data-mobile-link href="/platforms/promo-plus/"><strong>Promo Plus</strong><small>Artwork approvals and production files.</small></a>
+              <a data-mobile-link href="/platforms/xecutor/"><strong>Xecutor</strong><small>Decorator and production workflows.</small></a>
+              <a data-mobile-link href="/platforms/shopify-apps-for-promotional-products/"><strong>Rocket Apps</strong><small>Focused Shopify tools for promo programs.</small></a>
             </div></div>
           </div>
 
           <div class="mobile-nav__group">
             <button aria-expanded="false" class="mobile-nav__toggle" type="button"><span class="mobile-nav__index">04</span><span>Industries</span><span aria-hidden="true" class="mobile-nav__plus"></span></button>
             <div class="mobile-nav__panel"><div>
-              <a data-mobile-link href="/promotional-products-distributors/"><strong>Promotional Products Distributors</strong><small>Connected company stores and order workflows.</small></a>
-              <a data-mobile-link href="/promotional-products-suppliers/"><strong>Promotional Products Suppliers</strong><small>Product data and order connectivity.</small></a>
-              <a data-mobile-link href="/promotional-products-decorators/"><strong>Promotional Products Decorators</strong><small>Artwork, production and fulfillment.</small></a>
+              <a data-mobile-link href="/industries/promotional-products-distributors/"><strong>Promotional Products Distributors</strong><small>Connected company stores and order workflows.</small></a>
+              <a data-mobile-link href="/industries/promotional-products-suppliers/"><strong>Promotional Products Suppliers</strong><small>Product data and order connectivity.</small></a>
+              <a data-mobile-link href="/industries/promotional-products-decorators/"><strong>Promotional Products Decorators</strong><small>Artwork, production and fulfillment.</small></a>
             </div></div>
           </div>
 
@@ -400,13 +400,13 @@ import '../../styles/sage-connect.css';
     <div class="page-shell hero-grid">
      <div class="hero-content" data-reveal="">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-       <a data-home-link="" href="../">
+       <a data-home-link="" href="/">
         Home
        </a>
        <span aria-hidden="true">
         /
        </span>
-       <a href="../solutions/">
+       <a href="/solutions/">
         Solutions
        </a>
        <span aria-hidden="true">
@@ -423,7 +423,7 @@ import '../../styles/sage-connect.css';
        Launch a branded Shopify company store faster using approved SAGE data, without replacing the workflow your team already trusts.
       </p>
       <div class="hero-actions">
-       <a class="btn btn--primary conversion-cta" href="../book-demo/?service=sage-connected-company-store&amp;intent=integration-fit">
+       <a class="btn btn--primary conversion-cta" href="/book-demo/?service=sage-connected-company-store&amp;intent=integration-fit">
         Check My SAGE Integration Fit
         <span aria-hidden="true" class="btn__arrow">
          ↗
@@ -514,7 +514,7 @@ import '../../styles/sage-connect.css';
          </circle>
         </svg>
         <div class="desktop-sage-card">
-         <img alt="SAGE logo" class="simple-sync-logo" decoding="async" fetchpriority="high" height="71" loading="eager" src="../assets/sage-logo.webp" width="199"/>
+         <img alt="SAGE logo" class="simple-sync-logo" decoding="async" fetchpriority="high" height="71" loading="eager" src="/assets/sage-logo.webp" width="199"/>
         </div>
         <div class="desktop-sync-system">
          <span class="desktop-line desktop-line--left">
@@ -556,7 +556,7 @@ import '../../styles/sage-connect.css';
           <div class="simple-sync-phone__notch">
           </div>
           <div class="simple-sync-phone__screen">
-           <img alt="Mobile Shopify company store product grid screen" class="simple-sync-phone__image" decoding="async" fetchpriority="high" height="991" loading="eager" src="../assets/shopify-company-store-mobile.webp" width="520"/>
+           <img alt="Mobile Shopify company store product grid screen" class="simple-sync-phone__image" decoding="async" fetchpriority="high" height="991" loading="eager" src="/assets/shopify-company-store-mobile.webp" width="520"/>
           </div>
          </div>
         </div>
@@ -609,7 +609,7 @@ import '../../styles/sage-connect.css';
          </circle>
         </svg>
         <div class="mobile-sage-card">
-         <img alt="SAGE logo" class="simple-sync-logo" decoding="async" fetchpriority="low" height="71" loading="lazy" src="../assets/sage-logo.webp" width="199"/>
+         <img alt="SAGE logo" class="simple-sync-logo" decoding="async" fetchpriority="low" height="71" loading="lazy" src="/assets/sage-logo.webp" width="199"/>
         </div>
         <div class="mobile-sync-system">
          <span class="mobile-line mobile-line--top">
@@ -651,7 +651,7 @@ import '../../styles/sage-connect.css';
           <div class="simple-sync-phone__notch">
           </div>
           <div class="simple-sync-phone__screen">
-           <img alt="Mobile Shopify company store product grid screen" class="simple-sync-phone__image" decoding="async" fetchpriority="low" height="991" loading="lazy" src="../assets/shopify-company-store-mobile.webp" width="520"/>
+           <img alt="Mobile Shopify company store product grid screen" class="simple-sync-phone__image" decoding="async" fetchpriority="low" height="991" loading="lazy" src="/assets/shopify-company-store-mobile.webp" width="520"/>
           </div>
          </div>
         </div>
@@ -1328,7 +1328,7 @@ import '../../styles/sage-connect.css';
        <p class="offer-summary">
         One branded Shopify company store using authorized SAGE product data, an approved storefront framework, up to 500 approved products, documented catalog mapping, one pricing and inventory framework, standard checkout, one fulfillment workflow, team training, and 30 days of launch support.
        </p>
-       <a class="btn btn--primary conversion-cta" href="../book-demo/?service=sage-connected-company-store&amp;intent=integration-fit">
+       <a class="btn btn--primary conversion-cta" href="/book-demo/?service=sage-connected-company-store&amp;intent=integration-fit">
         Check My SAGE Integration Fit
         <span aria-hidden="true" class="btn__arrow">
          ↗
@@ -1653,7 +1653,7 @@ import '../../styles/sage-connect.css';
         </li>
        </ul>
        <div class="route-links">
-        <a class="route-link" href="../shopify-company-store/">
+        <a class="route-link" href="/solutions/shopify-company-store/">
          <span>
           Need a simpler company store?
          </span>
@@ -1661,7 +1661,7 @@ import '../../styles/sage-connect.css';
           ↗
          </span>
         </a>
-        <a class="route-link" href="../enterprise-shopify-automation/">
+        <a class="route-link" href="/solutions/enterprise-shopify-automation/">
          <span>
           Need enterprise automation?
          </span>
@@ -1806,7 +1806,7 @@ import '../../styles/sage-connect.css';
          Clear implementation recommendation
         </span>
        </div>
-       <a class="btn btn--primary conversion-cta" href="../book-demo/?service=sage-connected-company-store&amp;intent=integration-fit">
+       <a class="btn btn--primary conversion-cta" href="/book-demo/?service=sage-connected-company-store&amp;intent=integration-fit">
         Check My SAGE Integration Fit
         <span aria-hidden="true" class="btn__arrow">
          ↗
@@ -1827,25 +1827,25 @@ import '../../styles/sage-connect.css';
 
       <div class="footer-col">
         <h4>Solutions</h4>
-        <a href="/shopify-company-store/">Company Store Launch</a>
-        <a href="/shopify-sage-connect-integration/">SAGE Powered Company Store</a>
-        <a href="/enterprise-shopify-automation/">Enterprise Company Store Automation</a>
+        <a href="/solutions/shopify-company-store/">Company Store Launch</a>
+        <a href="/solutions/shopify-sage-connect-integration/">SAGE Powered Company Store</a>
+        <a href="/solutions/enterprise-shopify-automation/">Enterprise Company Store Automation</a>
         <a href="/solutions/custom-software-automation/">Custom Software & Automation</a>
       </div>
 
       <div class="footer-col">
         <h4>Platform</h4>
-        <a href="/punchout-solutions/">PunchOut Solutions</a>
-        <a href="/promo-plus/">Promo Plus</a>
-        <a href="/xecutor/">Xecutor</a>
-        <a href="/shopify-apps-for-promotional-products/">Rocket Apps</a>
+        <a href="/platforms/punchout-solutions/">PunchOut Solutions</a>
+        <a href="/platforms/promo-plus/">Promo Plus</a>
+        <a href="/platforms/xecutor/">Xecutor</a>
+        <a href="/platforms/shopify-apps-for-promotional-products/">Rocket Apps</a>
       </div>
 
       <div class="footer-col">
         <h4>Industries</h4>
-        <a href="/promotional-products-distributors/">Distributors</a>
-        <a href="/promotional-products-suppliers/">Suppliers</a>
-        <a href="/promotional-products-decorators/">Decorators</a>
+        <a href="/industries/promotional-products-distributors/">Distributors</a>
+        <a href="/industries/promotional-products-suppliers/">Suppliers</a>
+        <a href="/industries/promotional-products-decorators/">Decorators</a>
       </div>
 
       <div class="footer-col">
@@ -1872,14 +1872,14 @@ import '../../styles/sage-connect.css';
   </div>
 </footer>
   <div class="mobile-sticky-cta" id="mobileStickyCta">
-   <a class="btn btn--primary conversion-cta" href="../book-demo/?service=sage-connected-company-store&amp;intent=integration-fit">
+   <a class="btn btn--primary conversion-cta" href="/book-demo/?service=sage-connected-company-store&amp;intent=integration-fit">
     Check My SAGE Integration Fit
     <span aria-hidden="true" class="btn__arrow">
      ↗
     </span>
    </a>
   </div>
-  <script is:inline defer="" src="../assets/scripts.js?v=20260819-sage-nav-offset">
+  <script is:inline defer="" src="/assets/scripts.js?v=20260819-sage-nav-offset">
   </script>
  </body>
 </html>
