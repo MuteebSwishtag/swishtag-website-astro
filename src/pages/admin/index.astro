@@ -1,9 +1,12 @@
 ---
+import GoogleTagManager from '../../components/analytics/GoogleTagManager.astro';
+
 const title = "Admin | Swishtag";
 ---
 <!doctype html>
 <html lang="en">
   <head>
+    <GoogleTagManager placement="head" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
@@ -390,6 +393,7 @@ const title = "Admin | Swishtag";
     </style>
   </head>
   <body>
+    <GoogleTagManager placement="body" />
     <main class="admin-shell">
       <div class="topbar">
         <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>Swishtag Admin</span></div>

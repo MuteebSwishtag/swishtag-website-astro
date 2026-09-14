@@ -1,9 +1,12 @@
 ---
+import GoogleTagManager from '../../components/analytics/GoogleTagManager.astro';
+
 const target = '/shopify-company-store/';
 ---
 <!doctype html>
 <html lang="en">
   <head>
+    <GoogleTagManager placement="head" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <meta name="robots" content="noindex,follow" />
@@ -13,6 +16,7 @@ const target = '/shopify-company-store/';
     <script is:inline>location.replace('/shopify-company-store/' + location.search + location.hash);</script>
   </head>
   <body>
+    <GoogleTagManager placement="body" />
     <p>Redirecting to <a href="/shopify-company-store/">/shopify-company-store/</a></p>
   </body>
 </html>

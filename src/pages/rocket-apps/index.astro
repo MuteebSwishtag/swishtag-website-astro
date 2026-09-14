@@ -1,9 +1,12 @@
 ---
+import GoogleTagManager from '../../components/analytics/GoogleTagManager.astro';
+
 const target = '/shopify-apps-for-promotional-products/';
 ---
 <!doctype html>
 <html lang="en">
   <head>
+    <GoogleTagManager placement="head" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <meta name="robots" content="noindex,follow" />
@@ -13,6 +16,7 @@ const target = '/shopify-apps-for-promotional-products/';
     <script is:inline>location.replace('/shopify-apps-for-promotional-products/' + location.search + location.hash);</script>
   </head>
   <body>
+    <GoogleTagManager placement="body" />
     <p>Redirecting to <a href="/shopify-apps-for-promotional-products/">/shopify-apps-for-promotional-products/</a></p>
   </body>
 </html>

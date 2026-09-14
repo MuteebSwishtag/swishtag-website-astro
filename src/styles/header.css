@@ -505,3 +505,25 @@
     font-size: clamp(1.64rem, 7.4vw, 2.08rem) !important;
   }
 }
+
+/* Header performance guard.
+   The homepage has animated/glass sections behind the fixed header; full-width
+   header blur makes scroll and hover feel delayed on some GPUs. */
+#siteHeader.site-header,
+#siteHeader.site-header.is-scrolled {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  will-change: auto;
+  transform: translateZ(0);
+  transition:
+    background-color .18s ease,
+    box-shadow .18s ease,
+    padding .18s ease !important;
+}
+
+#siteHeader .modern-nav,
+#siteHeader.site-header.is-scrolled .modern-nav {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  transform: translateZ(0);
+}

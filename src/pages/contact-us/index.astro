@@ -1,10 +1,13 @@
 ---
+import GoogleTagManager from '../../components/analytics/GoogleTagManager.astro';
+
 const target = "/book-demo/";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <GoogleTagManager placement="head" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <meta name="robots" content="noindex,follow" />
@@ -16,6 +19,7 @@ const target = "/book-demo/";
     </script>
   </head>
   <body>
+    <GoogleTagManager placement="body" />
     <p>Redirecting to <a href="/book-demo/">/book-demo/</a></p>
   </body>
 </html>

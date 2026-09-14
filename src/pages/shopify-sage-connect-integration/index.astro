@@ -1,5 +1,6 @@
 ---
 import Header from '../../components/layout/Header.astro';
+import GoogleTagManager from '../../components/analytics/GoogleTagManager.astro';
 import '../../styles/home.css';
 import '../../styles/header.css';
 import '../../styles/sage-connect.css';
@@ -7,6 +8,7 @@ import '../../styles/sage-connect.css';
 <!DOCTYPE html>
 <html lang="en">
  <head>
+  <GoogleTagManager placement="head" />
   <!-- Deploy at /shopify-company-store/ and add a server-side 301 redirect from the previous URL. -->
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
@@ -151,6 +153,7 @@ import '../../styles/sage-connect.css';
   </style>
 </head>
  <body class="shopify-sage-connect-integration-page">
+  <GoogleTagManager placement="body" />
   <Header />
   <!-- Legacy copied header disabled; shared Header.astro is used instead.
   <header class="site-header" id="siteHeader">
