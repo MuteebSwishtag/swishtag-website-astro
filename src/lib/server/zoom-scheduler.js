@@ -315,8 +315,8 @@ function createZoomPayload(config, input) {
 
 function splitName(value) {
   const parts = clean(value).split(/\s+/).filter(Boolean);
-  if (!parts.length) return { firstName: "Guest", lastName: "" };
-  if (parts.length === 1) return { firstName: parts[0], lastName: "" };
+  if (!parts.length) return { firstName: "Guest", lastName: "Customer" };
+  if (parts.length === 1) return { firstName: parts[0], lastName: "Customer" };
   return {
     firstName: parts.slice(0, -1).join(" "),
     lastName: parts.at(-1),
