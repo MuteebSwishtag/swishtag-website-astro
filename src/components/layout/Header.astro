@@ -1,4 +1,4 @@
----
+﻿---
 const solutionCtas: Record<string, { label: string; href: string }> = {
   '/solutions/shopify-company-store/': {
     label: 'Launch a Company Store',
@@ -11,6 +11,10 @@ const solutionCtas: Record<string, { label: string; href: string }> = {
   '/solutions/enterprise-shopify-automation/': {
     label: 'Automate My Company',
     href: '/book-demo/?service=enterprise-company-store-automation&intent=automation',
+  },
+  '/solutions/punchout-solutions/': {
+    label: 'Discuss PunchOut',
+    href: '/book-demo/?service=punchout-solutions',
   },
 };
 
@@ -48,7 +52,7 @@ const headerCta = solutionCtas[normalizedPath] ?? {
           </p>
 <a class="mega-menu__all-link" href="/solutions/">
 <span>Explore solutions</span>
-<span aria-hidden="true">↗</span>
+<span aria-hidden="true">&nearr;</span>
 </a>
 </div>
 <div class="mega-menu__content mega-menu__content--three-solutions">
@@ -61,7 +65,7 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <strong>Company Store Launch</strong>
 <small>Launch a Shopify print on demand company store and capture repeat client orders.</small>
 </span>
-<span aria-hidden="true" class="mega-link__arrow">↗</span>
+<span aria-hidden="true" class="mega-link__arrow">&nearr;</span>
 </a>
 <a class="mega-link" href="/solutions/shopify-sage-connect-integration/">
 <span aria-hidden="true" class="mega-link__icon mega-link__icon--mint">
@@ -71,7 +75,7 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <strong>SAGE Powered Company Store</strong>
 <small>Give clients a modern Shopify storefront while keeping the SAGE workflow your team knows.</small>
 </span>
-<span aria-hidden="true" class="mega-link__arrow">↗</span>
+<span aria-hidden="true" class="mega-link__arrow">&nearr;</span>
 </a>
 <a class="mega-link" href="/solutions/enterprise-shopify-automation/">
 <span aria-hidden="true" class="mega-link__icon mega-link__icon--lavender">
@@ -81,7 +85,7 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <strong>Enterprise Company Store Automation</strong>
 <small>Centralize multi store operations, PunchOut, purchase orders, accounting, and approvals.</small>
 </span>
-<span aria-hidden="true" class="mega-link__arrow">↗</span>
+<span aria-hidden="true" class="mega-link__arrow">&nearr;</span>
 </a>
 <a class="mega-link" href="/solutions/custom-software-automation/">
 <span aria-hidden="true" class="mega-link__icon mega-link__icon--peach">
@@ -91,7 +95,17 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <strong>Custom Software &amp; Automation</strong>
 <small>Build custom software, integrations, SaaS and automation around the way your business works.</small>
 </span>
-<span aria-hidden="true" class="mega-link__arrow">↗</span>
+<span aria-hidden="true" class="mega-link__arrow">&nearr;</span>
+</a>
+<a class="mega-link" href="/solutions/punchout-solutions/">
+<span aria-hidden="true" class="mega-link__icon mega-link__icon--lime">
+<svg viewBox="0 0 28 28"><path d="M5 8h8v5H5zM15 15h8v5h-8z"></path><path d="M13 10h4M11 18h4M19 10v5"></path></svg>
+</span>
+<span class="mega-link__copy">
+<strong>PunchOut Solutions</strong>
+<small>Connect Shopify company stores with enterprise procurement and buyer workflows.</small>
+</span>
+<span aria-hidden="true" class="mega-link__arrow">&rsaquo;</span>
 </a>
 </div>
 </div>
@@ -115,7 +129,7 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <div class="mega-visual__caption">
 <span>Find the right starting point</span>
 <strong>Launch. Connect. Scale. Build.</strong>
-<small>Four clear routes, from company stores to custom software and automation.</small>
+<small>Five clear routes, from company stores to PunchOut, custom software, and automation.</small>
 </div>
 </a>
 </section>
@@ -128,34 +142,29 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <section aria-label="Swishtag platforms menu" class="mega-menu mega-menu--platform" id="megaPlatform">
 <div class="mega-menu__intro">
 <span class="mega-menu__eyebrow">Swishtag platforms</span>
-<h2>Platforms built for the promotional products industry.</h2>
+<h2>Three platforms built for the promotional products industry.</h2>
 <p>
-            Connect enterprise procurement, artwork approvals, decorator production,
-            and Shopify operations through purpose built software.
+            Connect artwork approvals, decorator production, and Shopify operations
+            through purpose built software.
           </p>
 <a class="mega-menu__all-link" href="/platforms/">
 <span>See all Swishtag platforms</span>
-<span aria-hidden="true">↗</span>
+<span aria-hidden="true">&nearr;</span>
 </a>
 </div>
 <div class="mega-products">
-<a class="mega-product mega-product--punchout" href="/platforms/punchout-solutions/">
-<span class="mega-product__number">01</span>
-<strong>PunchOut Solutions</strong>
-<small>Shopify PunchOut catalogs and enterprise procurement connections.</small>
-</a>
 <a class="mega-product mega-product--promo" href="/platforms/promo-plus/">
-<span class="mega-product__number">02</span>
+<span class="mega-product__number">01</span>
 <strong>Promo Plus</strong>
 <small>Artwork approvals, revisions, and production ready files.</small>
 </a>
 <a class="mega-product mega-product--xecutor" href="/platforms/xecutor/">
-<span class="mega-product__number">03</span>
+<span class="mega-product__number">02</span>
 <strong>Xecutor</strong>
 <small>Decorator production, job status, quality control, and fulfillment.</small>
 </a>
 <a class="mega-product mega-product--rocket" href="/platforms/shopify-apps-for-promotional-products/">
-<span class="mega-product__number">04</span>
+<span class="mega-product__number">03</span>
 <strong>Rocket Apps</strong>
 <small>Shopify apps designed for promotional products workflows.</small>
 </a>
@@ -163,19 +172,18 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <a class="mega-visual mega-visual--platform" href="/platforms/">
 <div aria-hidden="true" class="mega-visual__art">
 <svg viewBox="0 0 360 220">
-<rect x="42" y="34" width="126" height="66" rx="20" fill="#99FEED" stroke="#202124" stroke-opacity=".14"></rect>
-<rect x="192" y="34" width="126" height="66" rx="20" fill="#D9D6FD" stroke="#202124" stroke-opacity=".14"></rect>
-<rect x="42" y="120" width="126" height="66" rx="20" fill="#FFBD9B" stroke="#202124" stroke-opacity=".14"></rect>
-<rect x="192" y="120" width="126" height="66" rx="20" fill="#C2FF02" stroke="#202124" stroke-opacity=".14"></rect>
-<text x="105" y="62" text-anchor="middle" fill="#202124" font-size="11" font-weight="800">PUNCHOUT</text>
-<text x="105" y="78" text-anchor="middle" fill="#202124" font-size="11" font-weight="800">SOLUTIONS</text>
-<text x="255" y="70" text-anchor="middle" fill="#202124" font-size="12" font-weight="800">PROMO PLUS</text>
-<text x="105" y="158" text-anchor="middle" fill="#202124" font-size="12" font-weight="800">XECUTOR</text>
-<text x="255" y="158" text-anchor="middle" fill="#202124" font-size="12" font-weight="800">ROCKET APPS</text>
+<rect x="36" y="42" width="92" height="118" rx="20" fill="#D9D6FD" stroke="#202124" stroke-opacity=".14"></rect>
+<rect x="134" y="68" width="92" height="118" rx="20" fill="#FFBD9B" stroke="#202124" stroke-opacity=".14"></rect>
+<rect x="232" y="42" width="92" height="118" rx="20" fill="#C2FF02" stroke="#202124" stroke-opacity=".14"></rect>
+<text x="82" y="96" text-anchor="middle" fill="#202124" font-size="12" font-weight="800">PROMO</text>
+<text x="82" y="112" text-anchor="middle" fill="#202124" font-size="12" font-weight="800">PLUS</text>
+<text x="180" y="130" text-anchor="middle" fill="#202124" font-size="12" font-weight="800">XECUTOR</text>
+<text x="278" y="96" text-anchor="middle" fill="#202124" font-size="12" font-weight="800">ROCKET</text>
+<text x="278" y="112" text-anchor="middle" fill="#202124" font-size="12" font-weight="800">APPS</text>
 </svg>
 </div>
 <div class="mega-visual__caption">
-<span>Four independent products</span>
+<span>Three independent products</span>
 <strong>Choose the platform that fits.</strong>
 <small>Each product solves a different operational problem in promotional products.</small>
 </div>
@@ -194,7 +202,7 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <p>Different workflows, one connected commerce foundation for distributors, suppliers, and decorators.</p>
 <a class="mega-menu__all-link" href="/industries/">
 <span>Explore promotional products industries</span>
-<span aria-hidden="true">↗</span>
+<span aria-hidden="true">&nearr;</span>
 </a>
 </div>
 <div class="mega-industries">
@@ -239,7 +247,7 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <a class="desktop-nav__direct" href="/company/">Company</a>
 </div>
 <a class="btn btn--primary modern-nav__cta" href={headerCta.href}>
-<span>{headerCta.label}</span><span aria-hidden="true">↗</span>
+<span>{headerCta.label}</span><span aria-hidden="true">&nearr;</span>
 </a>
 <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menu-toggle modern-menu-toggle" id="menuToggle" type="button">
 <span aria-hidden="true" class="modern-menu-toggle__line"></span><span aria-hidden="true" class="modern-menu-toggle__line"></span><span aria-hidden="true" class="modern-menu-toggle__line"></span>
@@ -260,20 +268,20 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <p>Solutions and connected platforms built for promotional products distributors, suppliers, and decorators.</p>
 </div>
 <nav aria-label="Mobile navigation" class="mobile-nav">
-<a class="mobile-nav__direct" data-mobile-link="" href="/"><span class="mobile-nav__index">01</span><span>Home</span><span aria-hidden="true">↗</span></a>
-<a class="mobile-nav__direct" data-mobile-link="" href="/solutions/"><span class="mobile-nav__index">02</span><span>Solutions</span><span aria-hidden="true">↗</span></a>
-<a class="mobile-nav__direct" data-mobile-link="" href="/platforms/"><span class="mobile-nav__index">03</span><span>Platforms</span><span aria-hidden="true">↗</span></a>
-<a class="mobile-nav__direct" data-mobile-link="" href="/industries/"><span class="mobile-nav__index">04</span><span>Industries</span><span aria-hidden="true">↗</span></a>
-<a class="mobile-nav__direct" data-mobile-link="" href="/insights/"><span class="mobile-nav__index">05</span><span>Insights</span><span aria-hidden="true">↗</span></a>
-<a class="mobile-nav__direct" data-mobile-link="" href="/company/"><span class="mobile-nav__index">06</span><span>Company</span><span aria-hidden="true">↗</span></a>
+<a class="mobile-nav__direct" data-mobile-link="" href="/"><span class="mobile-nav__index">01</span><span>Home</span><span aria-hidden="true">&nearr;</span></a>
+<a class="mobile-nav__direct" data-mobile-link="" href="/solutions/"><span class="mobile-nav__index">02</span><span>Solutions</span><span aria-hidden="true">&nearr;</span></a>
+<a class="mobile-nav__direct" data-mobile-link="" href="/platforms/"><span class="mobile-nav__index">03</span><span>Platforms</span><span aria-hidden="true">&nearr;</span></a>
+<a class="mobile-nav__direct" data-mobile-link="" href="/industries/"><span class="mobile-nav__index">04</span><span>Industries</span><span aria-hidden="true">&nearr;</span></a>
+<a class="mobile-nav__direct" data-mobile-link="" href="/insights/"><span class="mobile-nav__index">05</span><span>Insights</span><span aria-hidden="true">&nearr;</span></a>
+<a class="mobile-nav__direct" data-mobile-link="" href="/company/"><span class="mobile-nav__index">06</span><span>Company</span><span aria-hidden="true">&nearr;</span></a>
 </nav>
 <a class="mobile-menu__feature" data-mobile-link="" href="/platforms/">
-<div aria-hidden="true" class="mobile-menu__feature-art"><span class="mobile-orbit mobile-orbit--one"></span><span class="mobile-orbit mobile-orbit--two"></span><span class="mobile-feature-rocket">↗</span></div>
-<span><small>Swishtag platforms</small><strong>Four platforms built for the promotional products industry.</strong></span>
+<div aria-hidden="true" class="mobile-menu__feature-art"><span class="mobile-orbit mobile-orbit--one"></span><span class="mobile-orbit mobile-orbit--two"></span><span class="mobile-feature-rocket">&nearr;</span></div>
+<span><small>Swishtag platforms</small><strong>Three platforms built for the promotional products industry.</strong></span>
 </a>
 </div>
 <div class="mobile-menu__footer">
-<a class="btn btn--primary" data-mobile-link="" href={headerCta.href}><span>{headerCta.label}</span><span aria-hidden="true">↗</span></a><span>swishtag.com</span>
+<a class="btn btn--primary" data-mobile-link="" href={headerCta.href}><span>{headerCta.label}</span><span aria-hidden="true">&nearr;</span></a><span>swishtag.com</span>
 </div>
 </div>
 </div>

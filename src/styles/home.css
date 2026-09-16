@@ -13147,11 +13147,11 @@ html.save-data .promo-float-card {
   .mega-visual__caption strong { font-size: .80rem; }
   .mega-visual__caption small { font-size: .60rem; line-height: 1.38; }
 
-  /* Platform: four equal product cards, inspired by the custom software menu. */
+  /* Platform: three stacked product cards, inspired by the custom software menu. */
   #megaPlatform .mega-products {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: 8px;
     padding: 8px;
     background: rgba(248,248,245,.82);
@@ -13385,7 +13385,7 @@ html.save-data .promo-float-card {
    ========================================================== */
 @media (min-width: 921px) {
   #megaSolutions .mega-menu__primary-links--three {
-    grid-template-rows: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(5, minmax(0, 1fr));
     gap: 6px;
   }
   #megaSolutions .mega-menu__primary-links--three .mega-link {
