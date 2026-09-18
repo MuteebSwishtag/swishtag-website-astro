@@ -1,0 +1,14 @@
+---
+import bodyHtml from "../legacy/punchout-body.html?raw";
+
+const punchoutHtml = bodyHtml
+  .replace(/<header[\s\S]*?<\/header>\s*/i, "")
+  .replace(/<footer[\s\S]*?<\/footer>\s*/i, "")
+  .replace(/<script>[\s\S]*?<\/script>\s*/gi, "")
+  .replace("<main>", '<main class="punchout-page">')
+  .replace(/<a class="btn btn--secondary" href="#journey">See the order flow<\/a>/, '<a class="btn btn--secondary" href="#capabilities">See the workflow</a>')
+  .replace(/\s*<a href="#journey">Order Flow<\/a>/, "")
+  .replace(/\s*<a href="#visibility">Visibility<\/a>/, "");
+---
+
+<Fragment set:html={punchoutHtml} />

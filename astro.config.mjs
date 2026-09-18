@@ -6,6 +6,63 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone',
   }),
+  vite: {
+    oxc: false,
+    resolve: {
+      tsconfigPaths: false,
+    },
+    build: {
+      rolldownOptions: {
+        tsconfig: false,
+      },
+    },
+    environments: {
+      astro: {
+        oxc: false,
+        build: {
+          rolldownOptions: {
+            tsconfig: false,
+          },
+        },
+        resolve: {
+          tsconfigPaths: false,
+        },
+      },
+      client: {
+        oxc: false,
+        build: {
+          rolldownOptions: {
+            tsconfig: false,
+          },
+        },
+        resolve: {
+          tsconfigPaths: false,
+        },
+      },
+      prerender: {
+        oxc: false,
+        build: {
+          rolldownOptions: {
+            tsconfig: false,
+          },
+        },
+        resolve: {
+          tsconfigPaths: false,
+        },
+      },
+      ssr: {
+        oxc: false,
+        build: {
+          rolldownOptions: {
+            tsconfig: false,
+          },
+        },
+        resolve: {
+          tsconfigPaths: false,
+        },
+      },
+    },
+  },
   redirects: {
     '/services': '/solutions/custom-software-automation/',
     '/shopify-company-store': '/solutions/shopify-company-store/',

@@ -1,12 +1,293 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PunchoutPage from "../../../components/PunchoutPage.astro";
+import headHtml from "../../../legacy/punchout-head.html?raw";
 
-const title = "PunchOut Solutions for Shopify | Swishtag";
-const description = "Enable PunchOut purchasing workflows for Shopify company stores and enterprise buyers.";
-const canonical = "https://cms.swishtag.com/solutions/punchout-solutions/";
-const robots = "index,follow";
+const title = "PunchOut Solutions for B2B Commerce & Procurement | Swishtag";
+const description = "Swishtag builds PunchOut catalog integrations that connect B2B ecommerce stores with enterprise procurement systems, helping buyers shop approved catalogs and return requisitions to their purchasing workflow.";
+const canonical = "https://swishtag.com/solutions/punchout-solutions/";
+const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
+
+const punchoutHeadHtml = headHtml
+  .replace(/<meta\s+charset="utf-8">\s*/i, "")
+  .replace(/<meta\s+name="viewport"[^>]*>\s*/i, "")
+  .replace(/<meta\s+name="theme-color"[^>]*>\s*/i, "")
+  .replace(/<meta\s+name="color-scheme"[^>]*>\s*/i, "")
+  .replace(/<meta\s+name="format-detection"[^>]*>\s*/i, "")
+  .replace(/<title>[\s\S]*?<\/title>\s*/i, "")
+  .replace(/<meta\s+name="description"[^>]*>\s*/i, "")
+  .replace(/<meta\s+name="robots"[^>]*>\s*/i, "")
+  .replace(/<link\s+rel="canonical"[^>]*>\s*/i, "")
+  .replace(/<link\s+rel="preconnect"[^>]*>\s*/gi, "")
+  .replace(/<link\s+href="https:\/\/fonts\.googleapis\.com[^>]*>\s*/i, "")
+  .replace(/\/\* Header \*\/[\s\S]*?\/\* Hero \*\//, "/* Hero */")
+  .replace(/^.*(?:site-header|modern-nav|desktop-nav|mega-|mobile-menu|menu-toggle|footer-grid|footer-brand|footer-col|footer-bottom|site-footer).*$/gmi, "");
 ---
+
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
-  <link slot="head" rel="stylesheet" href="/assets/generic-page.css" />
-  <main><section class="gp-hero"><div class="gp-wrap"><div class="gp-kicker">PunchOut Solutions</div><h1>Make Shopify work with enterprise procurement.</h1><p>PunchOut Solutions is Swishtag's procurement layer for organizations that need buyers to shop a controlled catalog while purchasing through their existing procurement process.</p><div class="gp-actions"><a class="gp-btn primary" href="/book-demo/">Book a demo</a><a class="gp-btn secondary" href="/solutions/">Explore solutions</a></div></div></section><section class="gp-section"><div class="gp-wrap"><div class="gp-section-head"><h2>PunchOut should remove friction, not create another portal.</h2><p>The goal is a clean buying journey for the end user and a controlled procurement path for the enterprise team.</p></div><div class="gp-grid"><article aria-label="Open Shop the approved catalog" class="gp-card st-clickable-card" data-card-href="/book-demo/?service=punchout-solutions" role="link" tabindex="0"><small>BUYER EXPERIENCE</small><h3>Shop the approved catalog</h3><p>Let buyers browse the storefront experience they understand while keeping procurement controls in place.</p><a href="/book-demo/?service=punchout-solutions">Discuss your buyer flow</a></article><article aria-label="Open Return the cart" class="gp-card st-clickable-card" data-card-href="/book-demo/?service=punchout-solutions" role="link" tabindex="0"><small>PROCUREMENT</small><h3>Return the cart</h3><p>Pass selected items back into the buyer's procurement workflow for approval and purchase.</p><a href="/book-demo/?service=punchout-solutions">Map the workflow</a></article><article aria-label="Open Central control" class="gp-card st-clickable-card" data-card-href="/book-demo/?service=punchout-solutions" role="link" tabindex="0"><small>OPERATIONS</small><h3>Central control</h3><p>Use a repeatable integration pattern across company-store programs instead of rebuilding each connection from scratch.</p><a href="/book-demo/?service=punchout-solutions">See the approach</a></article></div></div></section><section class="gp-section alt"><div class="gp-wrap"><div class="gp-split"><div><h2>What this page will cover</h2></div><div class="gp-list"><div>Buyer launches the approved storefront from procurement.</div><div>Buyer selects products, quantities and options.</div><div>Cart data returns to the procurement system.</div><div>The approved order follows the organization's purchasing process.</div></div></div></div></section><section class="gp-section"><div class="gp-wrap"><div class="gp-cta"><div><h2>Have a workflow that does not fit off-the-shelf software?</h2><p>Show us the current process. We can help identify the simplest Shopify, integration, or automation approach before you commit to a larger build.</p></div><a class="gp-btn" href="/book-demo/">Book a demo</a></div><p class="gp-note">This page is connected and launch-ready. Detailed sales copy, proof, screenshots and SEO depth can be expanded in the next content pass.</p></div></section></main>
+  <Fragment slot="head" set:html={punchoutHeadHtml} />
+  <style is:global>
+    .punchout-page .connection-section {
+      overflow: visible;
+    }
+
+    .punchout-page .connection-board {
+      min-height: 0;
+      overflow: visible;
+      contain: none;
+    }
+
+    .punchout-page .connection-lanes {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 76px minmax(0, 1fr);
+      align-items: stretch;
+      gap: 11px;
+    }
+
+    .punchout-page .connection-board .system-stack {
+      position: relative;
+      display: grid;
+      gap: 9px;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .punchout-page .connection-board .system-chip {
+      position: relative !important;
+      inset: auto !important;
+      left: auto !important;
+      right: auto !important;
+      top: auto !important;
+      bottom: auto !important;
+      z-index: auto !important;
+      width: auto !important;
+      min-width: 0 !important;
+      min-height: 68px !important;
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) 26px !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 10px 13px !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 16px !important;
+      background: var(--gray) !important;
+      box-shadow: none !important;
+      text-align: left !important;
+      animation: none !important;
+      transform: none !important;
+    }
+
+    .punchout-page .connection-board .system-stack:last-child .system-chip {
+      grid-template-columns: 26px minmax(0, 1fr) !important;
+    }
+
+    .punchout-page .connection-board .system-chip > span {
+      display: block;
+      min-width: 0;
+    }
+
+    .punchout-page .connection-board .system-chip > b {
+      position: static !important;
+      width: 26px !important;
+      height: 26px !important;
+      display: grid !important;
+      place-items: center !important;
+      border-radius: 50% !important;
+      background: transparent !important;
+      font-size: .72rem !important;
+      font-weight: 600 !important;
+      line-height: 1 !important;
+    }
+
+    .punchout-page .connection-board .system-chip strong {
+      display: block !important;
+      margin: 0 !important;
+      font-size: .7rem !important;
+      line-height: 1.28 !important;
+      font-weight: 650 !important;
+      letter-spacing: 0 !important;
+      color: var(--graphite) !important;
+      overflow-wrap: break-word;
+    }
+
+    .punchout-page .connection-board .system-chip small {
+      display: block !important;
+      margin-top: 4px !important;
+      color: var(--muted) !important;
+      font-size: .51rem !important;
+      line-height: 1.35 !important;
+      font-weight: 400 !important;
+      letter-spacing: 0 !important;
+      overflow-wrap: break-word;
+    }
+
+    .punchout-page .connection-board .gateway-lane {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    .punchout-page .proof-section {
+      padding-top: 98px;
+      padding-bottom: 98px;
+      background: var(--gray);
+      overflow: visible;
+    }
+
+    .punchout-page .proof-grid {
+      display: grid !important;
+      grid-template-columns: 1.18fr .82fr .82fr !important;
+      gap: 16px !important;
+      margin-top: 36px !important;
+    }
+
+    .punchout-page .proof-card {
+      position: relative !important;
+      inset: auto !important;
+      left: auto !important;
+      right: auto !important;
+      top: auto !important;
+      bottom: auto !important;
+      z-index: auto !important;
+      width: auto !important;
+      min-width: 0 !important;
+      min-height: 340px !important;
+      padding: 30px !important;
+      border: 1px solid rgba(32, 33, 36, .07) !important;
+      border-radius: var(--radius-lg) !important;
+      background: #fff !important;
+      box-shadow: none !important;
+      overflow: hidden !important;
+      transform: none !important;
+      animation: none !important;
+    }
+
+    .punchout-page .proof-card:first-child {
+      background: linear-gradient(145deg, #fff, #ecfff9) !important;
+    }
+
+    .punchout-page .proof-card::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      right: -70px;
+      top: -70px;
+      border-radius: 50%;
+      background: var(--lime);
+      opacity: .15;
+      pointer-events: none;
+    }
+
+    .punchout-page .proof-kicker {
+      position: relative;
+      z-index: 1;
+      display: inline-block !important;
+      margin-bottom: 64px !important;
+      color: var(--muted) !important;
+      font-size: .65rem !important;
+      font-weight: 700 !important;
+      letter-spacing: .1em !important;
+      line-height: 1.2 !important;
+      text-transform: uppercase !important;
+    }
+
+    .punchout-page .proof-card h3 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 11px !important;
+      color: var(--graphite) !important;
+      font-size: 1.3rem !important;
+      line-height: 1.2 !important;
+      letter-spacing: -.035em !important;
+      font-weight: 700 !important;
+    }
+
+    .punchout-page .proof-card p {
+      position: relative;
+      z-index: 1;
+      margin: 0 !important;
+      color: var(--muted) !important;
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+      font-weight: 400 !important;
+    }
+
+    @media (max-width: 920px) {
+      .punchout-page .connection-lanes {
+        grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr);
+        gap: 9px;
+      }
+
+      .punchout-page .connection-board .system-chip {
+        min-height: 70px !important;
+        padding: 10px 11px !important;
+        gap: 8px !important;
+      }
+
+      .punchout-page .connection-board .system-chip strong {
+        font-size: .66rem !important;
+      }
+
+      .punchout-page .connection-board .system-chip small {
+        font-size: .48rem !important;
+      }
+
+      .punchout-page .proof-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+
+      .punchout-page .proof-card:first-child {
+        grid-column: 1 / -1 !important;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .punchout-page .connection-board {
+        padding: 13px;
+        border-radius: 28px;
+      }
+
+      .punchout-page .connection-lanes {
+        grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
+        gap: 7px;
+      }
+
+      .punchout-page .connection-board .system-chip {
+        min-height: 62px !important;
+        grid-template-columns: minmax(0, 1fr) 22px !important;
+        padding: 9px 8px !important;
+        gap: 6px !important;
+      }
+
+      .punchout-page .connection-board .system-stack:last-child .system-chip {
+        grid-template-columns: 22px minmax(0, 1fr) !important;
+      }
+
+      .punchout-page .connection-board .system-chip > b {
+        width: 22px !important;
+        height: 22px !important;
+        font-size: .62rem !important;
+      }
+
+      .punchout-page .connection-board .system-chip strong {
+        font-size: .58rem !important;
+      }
+
+      .punchout-page .connection-board .system-chip small {
+        display: none !important;
+      }
+
+      .punchout-page .proof-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .punchout-page .proof-card:first-child {
+        grid-column: auto !important;
+      }
+    }
+  </style>
+  <PunchoutPage />
 </BaseLayout>

@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CompanyReferencePage from '../../components/reference-pages/CompanyReferencePage.astro';
 
-const title = "About Swishtag | Promotional Products Commerce Technology";
-const description = "Learn how Swishtag approaches Shopify, company stores, integrations and workflow automation for promotional products businesses.";
-const canonical = "https://cms.swishtag.com/company/";
-const robots = "index,follow";
+const title = 'Company | Swishtag';
+const description = 'Swishtag designs and builds connected commerce, automation, integrations and software for promotional products businesses.';
+const canonical = 'https://swishtag.com/company/';
+const robots = 'index,follow';
 ---
+
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
-  <link slot="head" rel="stylesheet" href="/assets/generic-page.css" />
-  <main><section class="gp-hero"><div class="gp-wrap"><div class="gp-kicker">Company</div><h1>We build commerce systems around the work your team actually does.</h1><p>Swishtag combines Shopify development with workflow and integration thinking. The goal is simple: remove repeated work, create clearer customer experiences and avoid unnecessary platform replacement.</p><div class="gp-actions"><a class="gp-btn primary" href="../book-demo/">Book a demo ↗</a><a class="gp-btn secondary" href="../solutions/">Explore solutions</a></div></div></section><section class="gp-section"><div class="gp-wrap"><div class="gp-section-head"><h2>More than a storefront build.</h2><p>The most expensive ecommerce problems usually happen after launch, when orders, data, approvals and reporting have to move through real operations.</p></div><div class="gp-grid"><article aria-label="Open Start with the workflow" class="gp-card st-clickable-card" data-card-href="../book-demo/" role="link" tabindex="0"><small>APPROACH</small><h3>Start with the workflow</h3><p>Map the real process, the exceptions and the ownership before deciding what should be automated.</p><a href="../book-demo/">Talk through a workflow →</a></article><article aria-label="Open Use the simplest workable layer" class="gp-card st-clickable-card" data-card-href="../solutions/" role="link" tabindex="0"><small>BUILD</small><h3>Use the simplest workable layer</h3><p>Choose native Shopify, a focused app, middleware or a custom platform based on the requirement, not on what is fashionable.</p><a href="../solutions/">Explore solutions →</a></article><article aria-label="Open Keep it maintainable" class="gp-card st-clickable-card" data-card-href="../contact/" role="link" tabindex="0"><small>LONG TERM</small><h3>Keep it maintainable</h3><p>Build with clear boundaries so the solution can evolve without turning every change into a rewrite.</p><a href="../contact/">Contact Swishtag →</a></article></div></div></section><section class="gp-section alt"><div class="gp-wrap"><div class="gp-split"><div><h2>What this page will cover</h2></div><div class="gp-list"><div>Shopify company stores and migrations.</div><div>SAGE-connected storefront workflows.</div><div>Enterprise multi-store management and automation.</div><div>PunchOut, artwork, production and custom integrations.</div></div></div></div></section><section class="gp-section"><div class="gp-wrap"><div class="gp-cta"><div><h2>Have a workflow that does not fit off-the-shelf software?</h2><p>Show us the current process. We can help identify the simplest Shopify, integration, or automation approach before you commit to a larger build.</p></div><a class="gp-btn" href="../book-demo/">Book a demo ↗</a></div><p class="gp-note">This page is connected and launch-ready. Detailed sales copy, proof, screenshots and SEO depth can be expanded in the next content pass.</p></div></section></main>
+  <CompanyReferencePage />
 </BaseLayout>
