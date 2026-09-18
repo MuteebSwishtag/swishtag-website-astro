@@ -1895,7 +1895,17 @@ Production File Ready
  
       <div class="approval-detail-preview" aria-hidden="true"> 
         <div class="approval-preview-top"><span></span><span></span><span></span><b>Promo Plus</b></div> 
-        <div class="approval-preview-art"><div class="approval-preview-mark">+</div></div> 
+        <div class="approval-preview-art">
+          <img
+            class="approval-preview-image"
+            src="/assets/promo-plus/mockup-creation.png"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            data-approval-preview-image
+          >
+          <div class="approval-preview-mark">+</div>
+        </div> 
         <div class="approval-preview-meta"><span>Artwork status</span><strong class="approval-preview-status">Mockup ready</strong></div> 
       </div> 
     </div> 
@@ -1915,7 +1925,7 @@ Production File Ready
 .promo-plus-page .approval-detail-panel li::before{content:"";width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 5px rgba(194,255,2,.22)}
 .promo-plus-page .approval-detail-preview{min-height:310px;padding:18px;border:1px solid rgba(32,33,36,.10);border-radius:28px;background:#202124;box-shadow:0 22px 45px rgba(32,33,36,.14);transform:rotate(2deg)}
 .promo-plus-page .approval-preview-top{display:flex;align-items:center;gap:6px;height:30px;color:rgba(255,255,255,.85);font-size:.7rem}.promo-plus-page .approval-preview-top span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35)}.promo-plus-page .approval-preview-top b{margin-left:auto;font-size:.73rem}
-.promo-plus-page .approval-preview-art{height:calc(100% - 88px);min-height:190px;display:grid;place-items:center;border-radius:19px;background:linear-gradient(145deg,#e8fffb,#f6ffd8);overflow:hidden}.promo-plus-page .approval-preview-mark{display:grid;place-items:center;width:110px;height:110px;border-radius:32px;background:#202124;color:var(--lime);font-size:4rem;font-weight:300;box-shadow:0 20px 35px rgba(32,33,36,.2)}
+.promo-plus-page .approval-preview-art{position:relative;height:calc(100% - 88px);min-height:190px;display:grid;place-items:center;border-radius:19px;background:linear-gradient(145deg,#e8fffb,#f6ffd8);overflow:hidden}.promo-plus-page .approval-preview-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.015);transition:opacity .35s ease,transform .45s ease}.promo-plus-page .approval-preview-image.is-loaded{opacity:1;transform:scale(1)}.promo-plus-page .approval-preview-image.is-loaded + .approval-preview-mark{opacity:0;transform:scale(.86)}.promo-plus-page .approval-preview-mark{position:relative;z-index:1;display:grid;place-items:center;width:110px;height:110px;border-radius:32px;background:#202124;color:var(--lime);font-size:4rem;font-weight:300;box-shadow:0 20px 35px rgba(32,33,36,.2);transition:opacity .25s ease,transform .25s ease}
 .promo-plus-page .approval-preview-meta{display:flex;align-items:center;justify-content:space-between;padding:14px 3px 0;color:rgba(255,255,255,.58);font-size:.72rem}.promo-plus-page .approval-preview-meta strong{padding:7px 10px;border-radius:999px;background:var(--lime);color:#202124;font-size:.7rem}
 .promo-plus-page .approval-overview .feature{cursor:pointer}.promo-plus-page .approval-overview .feature:focus-visible{outline:3px solid var(--lime);outline-offset:4px}.promo-plus-page .approval-overview .feature.is-active{box-shadow:inset 0 0 0 2px var(--lime)}
 @keyframes approvalDetailIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
@@ -3611,7 +3621,26 @@ if(workflowSection && promoPlusBenefits){
 const approvalCards=[...document.querySelectorAll('.approval-overview [data-approval-detail]')];
 const approvalPanels=[...document.querySelectorAll('[data-detail-panel]')];
 const approvalStatus=document.querySelector('.approval-preview-status');
+const approvalImage=document.querySelector('[data-approval-preview-image]');
 const statuses={mockup:'Mockup ready',send:'Awaiting approval',proof:'Approved'};
+const approvalImages={
+  mockup:{src:'/assets/promo-plus/mockup-creation.png',alt:'Promo Plus mockup creation workspace'},
+  send:{src:'/assets/promo-plus/send-for-approval.png',alt:'Promo Plus approval review workspace'},
+  proof:{src:'/assets/promo-plus/production-file.png',alt:'Promo Plus production file workspace'}
+};
+function updateApprovalImage(detail){
+  if(!approvalImage) return;
+  const image=approvalImages[detail] || approvalImages.mockup;
+  approvalImage.classList.remove('is-loaded');
+  approvalImage.alt=image.alt;
+  approvalImage.onload=()=>approvalImage.classList.add('is-loaded');
+  approvalImage.onerror=()=>approvalImage.classList.remove('is-loaded');
+  if(approvalImage.getAttribute('src')!==image.src){
+    approvalImage.src=image.src;
+  }else if(approvalImage.complete && approvalImage.naturalWidth>0){
+    approvalImage.classList.add('is-loaded');
+  }
+}
 function showApprovalDetail(detail){
   approvalCards.forEach(card=>{
     const selected=card.dataset.approvalDetail===detail;
@@ -3624,6 +3653,7 @@ function showApprovalDetail(detail){
     panel.classList.toggle('is-active',selected);
   });
   if(approvalStatus) approvalStatus.textContent=statuses[detail] || 'Mockup ready';
+  updateApprovalImage(detail);
 }
 approvalCards.forEach(card=>{
   const show=()=>showApprovalDetail(card.dataset.approvalDetail);
