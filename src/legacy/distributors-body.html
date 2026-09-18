@@ -1,0 +1,4707 @@
+<style>
+
+/* ==========================================================================
+   SWISHTAG — PROMOTIONAL PRODUCTS DISTRIBUTORS
+   Dedicated industry page, using the Swishtag brand system.
+   ========================================================================== */
+
+.distributors-page{
+  --ink:#17181a;
+  --ink-2:#242529;
+  --muted:#6e7074;
+  --muted-2:#8d8f93;
+  --white:#fff;
+  --off:#fafaf7;
+  --soft:#f5f5f1;
+  --soft-2:#eeeeea;
+  --line:rgba(23,24,26,.11);
+
+  --lime:#c2ff02;
+  --mint:#99feed;
+  --lav:#d9d6fd;
+  --peach:#ffbd9b;
+
+  --shadow-sm:0 14px 38px rgba(18,19,21,.07);
+  --shadow-md:0 26px 70px rgba(18,19,21,.10);
+  --shadow-lg:0 40px 110px rgba(18,19,21,.14);
+
+  --radius-xl:42px;
+  --radius-lg:32px;
+  --radius-md:24px;
+  --radius-sm:17px;
+
+  --page:min(1360px,calc(100vw - 52px));
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+
+.distributors-page *{box-sizing:border-box}
+html .distributors-page{scroll-behavior:smooth;background:#fff}
+.distributors-page{
+  margin:0;
+  min-width:320px;
+  overflow-x:hidden;
+  color:var(--ink);
+  background:#fff;
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-feature-settings:"ss01" 1,"cv05" 1;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.distributors-page{}
+
+.distributors-page img,.distributors-page svg{display:block;max-width:100%}
+.distributors-page a{color:inherit;text-decoration:none}
+.distributors-page button,.distributors-page input,.distributors-page textarea,.distributors-page select{font:inherit}
+.distributors-page button{color:inherit}
+.distributors-page button:not(:disabled),.distributors-page a{cursor:pointer}
+.distributors-page ::selection{background:var(--lime);color:var(--ink)}
+.distributors-page :focus-visible{outline:3px solid rgba(194,255,2,.9);outline-offset:4px}
+
+.distributors-page .shell{width:var(--page);margin-inline:auto}
+.distributors-page .section{position:relative;padding:136px 0}
+.distributors-page .section--compact{padding:98px 0}
+.distributors-page .section--soft{background:var(--off)}
+.distributors-page .section--white{background:#fff}
+
+.distributors-page .kicker{
+  margin:0 0 18px;
+  color:var(--muted);
+  font-size:.73rem;
+  font-weight:800;
+  letter-spacing:.145em;
+  text-transform:uppercase;
+}
+.distributors-page .display{
+  margin:0;
+  max-width:1060px;
+  font-size:clamp(3.15rem,6vw,6.45rem);
+  font-weight:800;
+  line-height:.96;
+  letter-spacing:-.067em;
+}
+.distributors-page .display--medium{
+  font-size:clamp(2.75rem,5vw,5.35rem);
+}
+.distributors-page .lead{
+  margin:26px 0 0;
+  max-width:760px;
+  color:var(--muted);
+  font-size:clamp(1.03rem,1.28vw,1.18rem);
+  line-height:1.7;
+}
+.distributors-page .small-copy{
+  color:var(--muted);
+  font-size:.88rem;
+  line-height:1.65;
+}
+.distributors-page .accent-lime{background:linear-gradient(transparent 66%,rgba(194,255,2,.72) 66%)}
+
+.distributors-page .button{
+  min-height:57px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:0 24px;
+  border:1px solid transparent;
+  border-radius:999px;
+  font-size:.91rem;
+  font-weight:750;
+  letter-spacing:-.01em;
+  transition:transform .28s var(--ease),box-shadow .28s ease,background .28s ease,border-color .28s ease;
+}
+.distributors-page .button:hover{transform:translateY(-3px)}
+.distributors-page .button--lime{
+  background:var(--lime);
+  color:var(--ink);
+  box-shadow:0 12px 26px rgba(194,255,2,.23);
+}
+.distributors-page .button--lime:hover{box-shadow:0 20px 36px rgba(194,255,2,.34)}
+.distributors-page .button--white{
+  background:rgba(255,255,255,.86);
+  border-color:rgba(23,24,26,.12);
+  backdrop-filter:blur(10px);
+}
+.distributors-page .button--dark{
+  background:var(--ink);
+  color:#fff;
+}
+.distributors-page .button__arrow{
+  font-size:1.08rem;
+  transition:transform .25s var(--ease);
+}
+.distributors-page .button:hover .button__arrow{transform:translate(3px,-1px)}
+
+.distributors-page .inline-link{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  margin-top:24px;
+  font-size:.86rem;
+  font-weight:750;
+}
+.distributors-page .inline-link__icon{
+  width:35px;height:35px;
+  display:grid;place-items:center;
+  flex:0 0 auto;
+  border-radius:50%;
+  background:var(--lime);
+  transition:transform .25s var(--ease);
+}
+.distributors-page .inline-link:hover .inline-link__icon{transform:translateX(4px)}
+
+.distributors-page .chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 12px;
+  border:1px solid rgba(23,24,26,.1);
+  border-radius:999px;
+  background:rgba(255,255,255,.74);
+  backdrop-filter:blur(10px);
+  color:#606267;
+  font-size:.67rem;
+  font-weight:750;
+}
+.distributors-page .chip::before{
+  content:"";
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--lime);
+  box-shadow:0 0 0 4px rgba(194,255,2,.14);
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.distributors-page .nav{
+  width:var(--page);
+  margin:auto;
+  min-height:64px;
+  display:grid;
+  grid-template-columns:auto 1fr auto auto;
+  align-items:center;
+  gap:20px;
+  padding:0 8px 0 22px;
+  border-radius:999px;
+  background:rgba(255,255,255,.83);
+  border:1px solid rgba(255,255,255,.98);
+  box-shadow:0 15px 44px rgba(23,24,26,.075),inset 0 0 0 1px rgba(23,24,26,.03);
+  backdrop-filter:blur(18px);
+}
+.distributors-page .brand{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:.99rem;
+  font-weight:800;
+  letter-spacing:.045em;
+}
+.distributors-page .brand-mark{
+  position:relative;
+  width:25px;height:25px;
+  border-radius:8px;
+  background:
+    linear-gradient(135deg,
+      var(--lime) 0 26%,
+      var(--mint) 26% 51%,
+      var(--lav) 51% 76%,
+      var(--peach) 76% 100%);
+  box-shadow:inset 0 0 0 1px rgba(23,24,26,.08);
+  transform:rotate(6deg);
+}
+.distributors-page .brand-mark::after{
+  content:"";
+  position:absolute;
+  width:7px;height:7px;
+  top:4px;right:4px;
+  border-radius:50%;
+  background:#fff;
+}
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.distributors-page .hero{
+  position:relative;
+  min-height:100svh;
+  display:grid;
+  align-items:center;
+  overflow:hidden;
+  padding:166px 0 108px;
+  background:
+    radial-gradient(circle at 82% 3%,rgba(217,214,253,.62),transparent 24%),
+    radial-gradient(circle at 77% 63%,rgba(153,254,237,.32),transparent 28%),
+    radial-gradient(circle at 4% 92%,rgba(255,189,155,.16),transparent 23%),
+    linear-gradient(180deg,#fff 0%,#fbfbf8 100%);
+}
+.distributors-page .hero::after{
+  content:"";
+  position:absolute;
+  inset:auto -12% -38% 50%;
+  height:620px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(194,255,2,.12),transparent 62%);
+  pointer-events:none;
+}
+.distributors-page .hero-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(500px,1.08fr);
+  gap:62px;
+  align-items:center;
+}
+.distributors-page .breadcrumb{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px;
+  margin-bottom:24px;
+  color:var(--muted);
+  font-size:.68rem;
+  font-weight:700;
+}
+.distributors-page .breadcrumb span{opacity:.48}
+.distributors-page .hero h1{
+  max-width:790px;
+  margin:0;
+  font-size:clamp(4.1rem,7.55vw,7.95rem);
+  font-weight:800;
+  line-height:.895;
+  letter-spacing:-.079em;
+}
+.distributors-page .hero-copy{
+  max-width:670px;
+  margin:25px 0 0;
+  color:var(--muted);
+  font-size:clamp(1.04rem,1.32vw,1.19rem);
+  line-height:1.68;
+}
+.distributors-page .hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:33px;
+}
+.distributors-page .hero-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:28px;
+}
+
+/* Distributor visual */
+.distributors-page .distributor-stage{
+  position:relative;
+  min-height:664px;
+  isolation:isolate;
+}
+.distributors-page .stage-glow{
+  position:absolute;
+  inset:6% 0 6%;
+  z-index:-3;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(153,254,237,.32),rgba(217,214,253,.20) 38%,transparent 70%);
+  filter:blur(8px);
+}
+.distributors-page .stage-orbit{
+  position:absolute;
+  border:1px solid rgba(23,24,26,.09);
+  border-radius:50%;
+  z-index:-2;
+}
+.distributors-page .stage-orbit--one{
+  width:560px;height:560px;
+  right:5px;top:52px;
+  animation:slow-spin 28s linear infinite;
+}
+.distributors-page .stage-orbit--two{
+  width:430px;height:430px;
+  right:69px;top:117px;
+  animation:slow-spin 38s linear infinite reverse;
+}
+@keyframes slow-spin{to{transform:rotate(360deg)}}
+
+.distributors-page .control-center{
+  position:absolute;
+  left:50%;top:50%;
+  width:min(476px,78%);
+  padding:19px;
+  border-radius:31px;
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(23,24,26,.075);
+  box-shadow:0 38px 95px rgba(23,24,26,.145);
+  backdrop-filter:blur(18px);
+  transform:translate(-50%,-50%);
+}
+.distributors-page .control-window{
+  overflow:hidden;
+  border:1px solid rgba(23,24,26,.08);
+  border-radius:22px;
+  background:#fff;
+}
+.distributors-page .control-window__bar{
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15px;
+  border-bottom:1px solid var(--line);
+  background:#fafaf8;
+}
+.distributors-page .window-dots{display:flex;gap:5px}
+.distributors-page .window-dots i{width:6px;height:6px;border-radius:50%;background:#d6d6d0}
+.distributors-page .control-window__brand{display:flex;align-items:center;gap:7px;font-size:.63rem;font-weight:800}
+.distributors-page .control-window__brand .brand-mark{width:18px;height:18px;border-radius:6px}
+.distributors-page .window-live{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 8px;
+  border-radius:999px;
+  background:rgba(194,255,2,.22);
+  font-size:.55rem;
+  font-weight:800;
+}
+.distributors-page .window-live::before{content:"";width:5px;height:5px;border-radius:50%;background:#78a000}
+.distributors-page .control-body{display:grid;grid-template-columns:112px 1fr;min-height:362px}
+.distributors-page .control-sidebar{
+  padding:16px 10px;
+  border-right:1px solid var(--line);
+  background:#fbfbf8;
+}
+.distributors-page .side-logo{
+  display:flex;align-items:center;gap:7px;
+  margin-bottom:18px;
+  padding:0 7px;
+  font-size:.58rem;
+  font-weight:800;
+}
+.distributors-page .side-nav{display:grid;gap:5px}
+.distributors-page .side-nav span{
+  min-height:31px;
+  display:flex;align-items:center;
+  padding:0 9px;
+  border-radius:9px;
+  color:#76787c;
+  font-size:.54rem;
+  font-weight:700;
+}
+.distributors-page .side-nav span.active{background:var(--ink);color:#fff}
+.distributors-page .control-main{padding:18px;background:#fff}
+.distributors-page .control-main__head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+}
+.distributors-page .control-main__head small{
+  display:block;
+  margin-bottom:5px;
+  color:var(--muted);
+  font-size:.54rem;
+  font-weight:700;
+}
+.distributors-page .control-main__head strong{
+  display:block;
+  font-size:.82rem;
+  letter-spacing:-.02em;
+}
+.distributors-page .control-main__action{
+  padding:8px 10px;
+  border-radius:10px;
+  background:var(--lime);
+  font-size:.52rem;
+  font-weight:800;
+}
+.distributors-page .metric-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:15px;
+}
+.distributors-page .metric{
+  padding:11px;
+  border-radius:13px;
+  background:var(--soft);
+}
+.distributors-page .metric small{
+  display:block;
+  color:var(--muted);
+  font-size:.48rem;
+  font-weight:700;
+}
+.distributors-page .metric strong{
+  display:block;
+  margin-top:5px;
+  font-size:.88rem;
+}
+.distributors-page .metric:nth-child(2){background:rgba(153,254,237,.24)}
+.distributors-page .metric:nth-child(3){background:rgba(217,214,253,.27)}
+.distributors-page .store-table{
+  overflow:hidden;
+  margin-top:12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+}
+.distributors-page .store-table__head,.distributors-page .store-line{
+  display:grid;
+  grid-template-columns:1.3fr .7fr .58fr;
+  align-items:center;
+  gap:7px;
+}
+.distributors-page .store-table__head{
+  min-height:30px;
+  padding:0 11px;
+  color:var(--muted);
+  background:#fafaf8;
+  font-size:.47rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.distributors-page .store-line{
+  min-height:47px;
+  padding:0 11px;
+  border-top:1px solid var(--line);
+}
+.distributors-page .store-line__name{
+  display:flex;align-items:center;gap:8px;
+  font-size:.53rem;
+  font-weight:800;
+}
+.distributors-page .store-thumb{
+  width:25px;height:25px;border-radius:8px;background:var(--mint)
+}
+.distributors-page .store-line:nth-child(3) .store-thumb{background:var(--lav)}
+.distributors-page .store-line:nth-child(4) .store-thumb{background:var(--peach)}
+.distributors-page .store-line:nth-child(5) .store-thumb{background:var(--lime)}
+.distributors-page .store-line__light{
+  color:var(--muted);
+  font-size:.49rem;
+}
+.distributors-page .store-status{
+  justify-self:start;
+  padding:5px 7px;
+  border-radius:999px;
+  background:rgba(194,255,2,.18);
+  font-size:.46rem;
+  font-weight:800;
+}
+.distributors-page .floating-node{
+  position:absolute;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  border:1px solid rgba(23,24,26,.08);
+  border-radius:16px;
+  background:rgba(255,255,255,.95);
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(14px);
+  font-size:.66rem;
+  font-weight:800;
+  animation:float-node 5.4s ease-in-out infinite;
+}
+.distributors-page .floating-node__icon{
+  width:27px;height:27px;
+  display:grid;place-items:center;
+  border-radius:9px;
+  background:var(--lime);
+  font-size:.55rem;
+}
+.distributors-page .floating-node:nth-of-type(5) .floating-node__icon{background:var(--mint)}
+.distributors-page .floating-node:nth-of-type(6) .floating-node__icon{background:var(--lav)}
+.distributors-page .floating-node:nth-of-type(7) .floating-node__icon{background:var(--peach)}
+.distributors-page .floating-node--catalog{left:0;top:98px}
+.distributors-page .floating-node--orders{right:0;top:178px;animation-delay:-1.2s}
+.distributors-page .floating-node--supplier{left:16px;bottom:118px;animation-delay:-2.1s}
+.distributors-page .floating-node--scale{right:13px;bottom:78px;animation-delay:-.6s}
+@keyframes float-node{50%{transform:translateY(-9px)}}
+
+.distributors-page .stage-path{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+}
+.distributors-page .stage-path path{
+  fill:none;
+  stroke:rgba(23,24,26,.12);
+  stroke-width:1.1;
+  stroke-dasharray:6 8;
+}
+.distributors-page .stage-path circle{fill:var(--lime)}
+
+/* --------------------------------------------------------------------------
+   Intro bridge
+   -------------------------------------------------------------------------- */
+
+.distributors-page .intro-bridge{
+  position:relative;
+  z-index:6;
+  margin-top:-58px;
+}
+.distributors-page .bridge-panel{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:44px;
+  align-items:center;
+  padding:36px 39px;
+  border:1px solid rgba(23,24,26,.075);
+  border-radius:34px;
+  background:rgba(255,255,255,.94);
+  box-shadow:var(--shadow-md);
+  backdrop-filter:blur(18px);
+}
+.distributors-page .bridge-panel h2{
+  margin:0;
+  font-size:clamp(1.95rem,3vw,3.2rem);
+  line-height:1.02;
+  letter-spacing:-.055em;
+}
+.distributors-page .bridge-panel p{
+  margin:0;
+  color:var(--muted);
+  font-size:.93rem;
+  line-height:1.68;
+}
+
+/* --------------------------------------------------------------------------
+   Story navigation
+   -------------------------------------------------------------------------- */
+
+.distributors-page .story-nav{
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+.distributors-page .story-nav__inner{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.distributors-page .story-nav__inner::-webkit-scrollbar{display:none}
+.distributors-page .story-nav__label{
+  flex:0 0 auto;
+  margin-right:11px;
+  color:var(--muted);
+  font-size:.66rem;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.distributors-page .story-nav a{
+  flex:0 0 auto;
+  padding:10px 13px;
+  border-radius:999px;
+  color:#696b70;
+  font-size:.72rem;
+  font-weight:700;
+  transition:background .2s ease,color .2s ease;
+}
+.distributors-page .story-nav a:hover{background:var(--soft);color:var(--ink)}
+
+/* --------------------------------------------------------------------------
+   Distributor pressure points
+   -------------------------------------------------------------------------- */
+
+.distributors-page .pressure{
+  background:#fff;
+}
+.distributors-page .pressure-grid{
+  display:grid;
+  grid-template-columns:.78fr 1.22fr;
+  gap:80px;
+  align-items:start;
+}
+.distributors-page .pressure-copy{
+  position:sticky;
+  top:122px;
+}
+.distributors-page .pressure-copy .lead{max-width:560px}
+.distributors-page .pressure-stream{
+  position:relative;
+  display:grid;
+  gap:14px;
+}
+.distributors-page .pressure-stream::before{
+  content:"";
+  position:absolute;
+  left:31px;
+  top:44px;
+  bottom:44px;
+  width:1px;
+  background:linear-gradient(var(--lime),rgba(23,24,26,.1),var(--mint));
+}
+.distributors-page .pressure-row{
+  position:relative;
+  display:grid;
+  grid-template-columns:64px 1fr auto;
+  gap:17px;
+  align-items:center;
+  min-height:122px;
+  padding:18px 21px;
+  border:1px solid rgba(23,24,26,.075);
+  border-radius:24px;
+  background:#fff;
+  box-shadow:0 12px 32px rgba(23,24,26,.045);
+  transition:transform .3s var(--ease),box-shadow .3s ease;
+}
+.distributors-page .pressure-row:hover{
+  transform:translateX(6px);
+  box-shadow:0 20px 42px rgba(23,24,26,.075);
+}
+.distributors-page .pressure-row__icon{
+  position:relative;
+  z-index:2;
+  width:48px;height:48px;
+  display:grid;place-items:center;
+  border-radius:15px;
+  background:var(--lime);
+  font-size:.73rem;
+  font-weight:800;
+}
+.distributors-page .pressure-row:nth-child(2) .pressure-row__icon{background:var(--mint)}
+.distributors-page .pressure-row:nth-child(3) .pressure-row__icon{background:var(--lav)}
+.distributors-page .pressure-row:nth-child(4) .pressure-row__icon{background:var(--peach)}
+.distributors-page .pressure-row strong{
+  display:block;
+  font-size:1rem;
+  letter-spacing:-.02em;
+}
+.distributors-page .pressure-row p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:.8rem;
+  line-height:1.55;
+}
+.distributors-page .pressure-row__tag{
+  flex:0 0 auto;
+  padding:8px 10px;
+  border-radius:999px;
+  background:var(--soft);
+  color:var(--muted);
+  font-size:.58rem;
+  font-weight:750;
+}
+
+/* --------------------------------------------------------------------------
+   Three solution paths — intentionally varied composition
+   -------------------------------------------------------------------------- */
+
+.distributors-page .paths{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(153,254,237,.22),transparent 24%),
+    radial-gradient(circle at 88% 88%,rgba(217,214,253,.27),transparent 26%),
+    var(--off);
+}
+.distributors-page .paths-head{
+  display:grid;
+  grid-template-columns:1fr .7fr;
+  gap:62px;
+  align-items:end;
+}
+.distributors-page .paths-head .lead{margin:0}
+
+.distributors-page .path-stack{
+  display:grid;
+  gap:25px;
+  margin-top:64px;
+}
+.distributors-page .path{
+  min-height:500px;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  overflow:hidden;
+  border:1px solid rgba(23,24,26,.075);
+  border-radius:38px;
+  background:#fff;
+  box-shadow:0 20px 58px rgba(23,24,26,.065);
+}
+.distributors-page .path:nth-child(even){grid-template-columns:1.08fr .92fr}
+.distributors-page .path:nth-child(even) .path-copy{order:2}
+.distributors-page .path:nth-child(even) .path-visual{order:1}
+.distributors-page .path-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:55px;
+}
+.distributors-page .path-number{
+  width:43px;height:43px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:var(--lime);
+  font-size:.7rem;
+  font-weight:800;
+}
+.distributors-page .path:nth-child(2) .path-number{background:var(--mint)}
+.distributors-page .path:nth-child(3) .path-number{background:var(--lav)}
+.distributors-page .path-copy h3{
+  margin:25px 0 0;
+  font-size:clamp(2.3rem,3.8vw,4.35rem);
+  line-height:.98;
+  letter-spacing:-.06em;
+}
+.distributors-page .path-copy p{
+  max-width:540px;
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.7;
+}
+.distributors-page .path-list{
+  display:grid;
+  gap:10px;
+  margin-top:24px;
+}
+.distributors-page .path-list span{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#5e6064;
+  font-size:.76rem;
+  font-weight:650;
+}
+.distributors-page .path-list i{
+  width:20px;height:20px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:var(--soft);
+  font-style:normal;
+  font-size:.58rem;
+  font-weight:800;
+}
+.distributors-page .path-visual{
+  position:relative;
+  min-height:500px;
+  overflow:hidden;
+}
+.distributors-page .path-visual--store{
+  background:
+    radial-gradient(circle at 75% 18%,rgba(194,255,2,.38),transparent 28%),
+    linear-gradient(145deg,#f4fff4,#fff);
+}
+.distributors-page .path-visual--sage{
+  background:
+    radial-gradient(circle at 18% 20%,rgba(153,254,237,.50),transparent 31%),
+    linear-gradient(145deg,#f8ffff,#fff);
+}
+.distributors-page .path-visual--scale{
+  background:
+    radial-gradient(circle at 82% 20%,rgba(217,214,253,.55),transparent 30%),
+    linear-gradient(145deg,#fbfaff,#fff);
+}
+
+/* Company store visual */
+.distributors-page .store-builder{
+  position:absolute;
+  inset:47px 40px 42px;
+  border-radius:27px;
+  background:#fff;
+  box-shadow:var(--shadow-md);
+  overflow:hidden;
+  border:1px solid rgba(23,24,26,.075);
+  transform:rotate(1.8deg);
+  transition:transform .55s var(--ease-out);
+}
+.distributors-page .path:hover .store-builder{transform:rotate(0deg) translateY(-5px)}
+.distributors-page .builder-top{
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15px;
+  border-bottom:1px solid var(--line);
+  background:#fafaf8;
+}
+.distributors-page .builder-top__brand{display:flex;align-items:center;gap:8px;font-size:.58rem;font-weight:800}
+.distributors-page .builder-top__brand i{width:18px;height:18px;border-radius:6px;background:var(--lime)}
+.distributors-page .builder-top__actions{display:flex;gap:6px}
+.distributors-page .builder-top__actions i{width:28px;height:8px;border-radius:99px;background:#dfdfda}
+.distributors-page .builder-body{display:grid;grid-template-columns:100px 1fr;min-height:360px}
+.distributors-page .builder-side{padding:13px;background:#fbfbf8;border-right:1px solid var(--line)}
+.distributors-page .builder-side span{display:block;height:28px;margin-bottom:6px;border-radius:8px;background:#f0f0eb}
+.distributors-page .builder-side span:first-child{background:var(--ink)}
+.distributors-page .builder-canvas{padding:19px}
+.distributors-page .builder-hero{
+  height:104px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:14px;
+  padding:15px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#eefee1,#fff);
+}
+.distributors-page .builder-hero__copy i{display:block;height:8px;border-radius:99px;background:#d7dfcf;margin-bottom:8px}
+.distributors-page .builder-hero__copy i:nth-child(1){width:30%}
+.distributors-page .builder-hero__copy i:nth-child(2){width:72%;height:13px;background:#202124}
+.distributors-page .builder-hero__copy i:nth-child(3){width:55%;height:13px;background:#202124}
+.distributors-page .builder-hero__copy i:nth-child(4){width:34%;height:10px;background:var(--lime);margin-top:13px}
+.distributors-page .builder-hero__art{border-radius:12px;background:linear-gradient(135deg,var(--mint),var(--lav))}
+.distributors-page .product-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.distributors-page .product-mini{
+  min-height:95px;
+  padding:8px;
+  border-radius:12px;
+  background:var(--soft);
+}
+.distributors-page .product-mini i{display:block;height:55px;border-radius:9px;background:#fff}
+.distributors-page .product-mini:nth-child(2) i{background:rgba(153,254,237,.55)}
+.distributors-page .product-mini:nth-child(3) i{background:rgba(255,189,155,.5)}
+
+/* Sage visual */
+.distributors-page .sage-flow{
+  position:absolute;
+  inset:52px 42px;
+  display:grid;
+  grid-template-columns:1fr 90px 1fr;
+  align-items:center;
+  gap:10px;
+}
+.distributors-page .sage-panel{
+  position:relative;
+  z-index:2;
+  min-height:315px;
+  padding:20px;
+  border-radius:25px;
+  border:1px solid rgba(23,24,26,.075);
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.distributors-page .sage-panel__top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:15px;border-bottom:1px solid var(--line)
+}
+.distributors-page .sage-panel__label{display:flex;align-items:center;gap:9px;font-size:.67rem;font-weight:800}
+.distributors-page .sage-panel__logo{
+  width:30px;height:30px;display:grid;place-items:center;
+  border-radius:10px;background:var(--mint);
+  font-size:.55rem;font-weight:800
+}
+.distributors-page .sage-panel--shopify .sage-panel__logo{background:var(--lime)}
+.distributors-page .sage-panel__status{
+  padding:6px 8px;border-radius:999px;background:var(--soft);
+  color:var(--muted);font-size:.48rem;font-weight:800
+}
+.distributors-page .catalog-lines{display:grid;gap:9px;margin-top:17px}
+.distributors-page .catalog-line{
+  display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:9px;
+  padding:8px;border-radius:11px;background:var(--soft)
+}
+.distributors-page .catalog-line__img{width:34px;height:34px;border-radius:9px;background:#fff}
+.distributors-page .catalog-line strong{display:block;font-size:.52rem}
+.distributors-page .catalog-line small{display:block;margin-top:3px;color:var(--muted);font-size:.44rem}
+.distributors-page .catalog-line em{font-style:normal;color:#6f8c10;font-size:.44rem;font-weight:800}
+.distributors-page .flow-bridge{
+  position:relative;
+  display:grid;
+  place-items:center;
+  height:100%;
+}
+.distributors-page .flow-bridge::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:50%;
+  border-top:1px dashed rgba(23,24,26,.24);
+}
+.distributors-page .flow-bridge__hub{
+  position:relative;
+  z-index:2;
+  width:70px;height:70px;
+  display:grid;place-items:center;
+  border-radius:22px;
+  background:var(--ink);
+  color:#fff;
+  font-size:.55rem;
+  font-weight:800;
+  text-align:center;
+  box-shadow:0 15px 30px rgba(23,24,26,.14);
+}
+.distributors-page .flow-pulse{
+  position:absolute;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--lime);
+  animation:data-pulse 3.8s linear infinite;
+}
+@keyframes data-pulse{
+  0%{transform:translateX(-39px);opacity:0}
+  12%{opacity:1}
+  50%{opacity:1}
+  88%{opacity:1}
+  100%{transform:translateX(39px);opacity:0}
+}
+
+/* Scale visual */
+.distributors-page .scale-dashboard{
+  position:absolute;
+  inset:44px 38px;
+  overflow:hidden;
+  border-radius:27px;
+  border:1px solid rgba(23,24,26,.075);
+  background:#fff;
+  box-shadow:var(--shadow-md);
+}
+.distributors-page .scale-top{
+  min-height:53px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 17px;
+  border-bottom:1px solid var(--line);
+}
+.distributors-page .scale-top strong{font-size:.66rem}
+.distributors-page .scale-top span{padding:7px 9px;border-radius:999px;background:rgba(217,214,253,.45);font-size:.5rem;font-weight:800}
+.distributors-page .scale-layout{display:grid;grid-template-columns:108px 1fr;min-height:354px}
+.distributors-page .scale-side{padding:13px 10px;border-right:1px solid var(--line);background:#fafaf8}
+.distributors-page .scale-side i{display:block;height:26px;margin-bottom:6px;border-radius:8px;background:#efefeb}
+.distributors-page .scale-side i:nth-child(2){background:var(--ink)}
+.distributors-page .scale-main{padding:17px}
+.distributors-page .scale-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.distributors-page .scale-metric{padding:11px;border-radius:12px;background:var(--soft)}
+.distributors-page .scale-metric:nth-child(2){background:rgba(153,254,237,.24)}
+.distributors-page .scale-metric:nth-child(3){background:rgba(217,214,253,.28)}
+.distributors-page .scale-metric small{display:block;color:var(--muted);font-size:.44rem;font-weight:700}
+.distributors-page .scale-metric strong{display:block;margin-top:5px;font-size:.83rem}
+.distributors-page .scale-chart{
+  position:relative;
+  height:110px;
+  margin-top:10px;
+  border-radius:13px;
+  background:
+    repeating-linear-gradient(to bottom,transparent 0 26px,rgba(23,24,26,.06) 27px),
+    #fbfbf8;
+  overflow:hidden;
+}
+.distributors-page .scale-chart svg{position:absolute;inset:0;width:100%;height:100%}
+.distributors-page .scale-chart path{fill:none;stroke:var(--ink);stroke-width:2}
+.distributors-page .scale-chart circle{fill:var(--lime);stroke:#fff;stroke-width:2}
+.distributors-page .scale-orders{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:10px;
+}
+.distributors-page .scale-order{padding:10px;border-radius:11px;border:1px solid var(--line)}
+.distributors-page .scale-order strong{display:block;font-size:.48rem}
+.distributors-page .scale-order small{display:block;margin-top:4px;color:var(--muted);font-size:.42rem}
+
+/* --------------------------------------------------------------------------
+   Workflow canvas
+   -------------------------------------------------------------------------- */
+
+.distributors-page .workflow{
+  overflow:hidden;
+  background:#fff;
+}
+.distributors-page .workflow-head{
+  display:grid;
+  grid-template-columns:1fr .73fr;
+  gap:62px;
+  align-items:end;
+}
+.distributors-page .workflow-head .lead{margin:0}
+
+.distributors-page .workflow-canvas{
+  position:relative;
+  min-height:620px;
+  margin-top:64px;
+  padding:34px;
+  overflow:hidden;
+  border-radius:40px;
+  border:1px solid rgba(23,24,26,.075);
+  background:
+    radial-gradient(circle at 14% 14%,rgba(153,254,237,.30),transparent 24%),
+    radial-gradient(circle at 91% 81%,rgba(217,214,253,.36),transparent 27%),
+    linear-gradient(150deg,#fbfbf8,#fff);
+  box-shadow:var(--shadow-sm);
+}
+.distributors-page .workflow-canvas::before{
+  content:"";
+  position:absolute;
+  inset:24px;
+  border-radius:30px;
+  background-image:radial-gradient(rgba(23,24,26,.10) 1px,transparent 1px);
+  background-size:23px 23px;
+  mask-image:linear-gradient(to right,rgba(0,0,0,.35),rgba(0,0,0,.08));
+  pointer-events:none;
+}
+.distributors-page .flow-lane{
+  position:absolute;
+  left:6%;right:6%;top:50%;
+  height:1px;
+  background:linear-gradient(to right,transparent,rgba(23,24,26,.18) 8% 92%,transparent);
+}
+.distributors-page .flow-lane::after{
+  content:"";
+  position:absolute;
+  inset:-4px 0 auto;
+  border-top:1px dashed rgba(23,24,26,.15);
+}
+.distributors-page .flow-card{
+  position:absolute;
+  z-index:3;
+  width:220px;
+  min-height:155px;
+  padding:20px;
+  border:1px solid rgba(23,24,26,.08);
+  border-radius:24px;
+  background:rgba(255,255,255,.94);
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(14px);
+  transition:transform .32s var(--ease),box-shadow .32s ease;
+}
+.distributors-page .flow-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md)}
+.distributors-page .flow-card__icon{
+  width:42px;height:42px;
+  display:grid;place-items:center;
+  border-radius:14px;
+  background:var(--lime);
+  font-size:.64rem;
+  font-weight:800;
+}
+.distributors-page .flow-card:nth-of-type(2) .flow-card__icon{background:var(--mint)}
+.distributors-page .flow-card:nth-of-type(3) .flow-card__icon{background:var(--lav)}
+.distributors-page .flow-card:nth-of-type(4) .flow-card__icon{background:var(--peach)}
+.distributors-page .flow-card:nth-of-type(5) .flow-card__icon{background:var(--lime)}
+.distributors-page .flow-card strong{display:block;margin-top:16px;font-size:.84rem}
+.distributors-page .flow-card p{margin:7px 0 0;color:var(--muted);font-size:.67rem;line-height:1.52}
+.distributors-page .flow-card--client{left:3%;top:13%}
+.distributors-page .flow-card--store{left:22%;top:58%}
+.distributors-page .flow-card--catalog{left:41%;top:10%}
+.distributors-page .flow-card--order{left:60%;top:57%}
+.distributors-page .flow-card--ops{right:3%;top:18%}
+
+.distributors-page .workflow-hub{
+  position:absolute;
+  z-index:4;
+  left:50%;top:50%;
+  width:140px;height:140px;
+  display:grid;place-items:center;
+  padding:18px;
+  border-radius:37px;
+  background:var(--ink);
+  color:#fff;
+  text-align:center;
+  box-shadow:0 28px 70px rgba(23,24,26,.2);
+  transform:translate(-50%,-50%) rotate(3deg);
+}
+.distributors-page .workflow-hub strong{
+  font-size:.78rem;
+  line-height:1.25;
+}
+.distributors-page .workflow-hub small{
+  display:block;
+  margin-top:7px;
+  color:rgba(255,255,255,.58);
+  font-size:.53rem;
+}
+.distributors-page .workflow-hub::before{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  z-index:-1;
+  border:1px solid rgba(23,24,26,.12);
+  border-radius:48px;
+}
+.distributors-page .flow-connector{
+  position:absolute;
+  z-index:1;
+  stroke:rgba(23,24,26,.20);
+  stroke-width:1.5;
+  stroke-dasharray:5 6;
+  fill:none;
+}
+.distributors-page .flow-dot{
+  position:absolute;
+  z-index:5;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--lime);
+  box-shadow:0 0 0 5px rgba(194,255,2,.14);
+  animation:flow-blink 2.8s ease-in-out infinite;
+}
+.distributors-page .flow-dot--1{left:18%;top:47%}
+.distributors-page .flow-dot--2{left:35%;top:42%;animation-delay:-.6s}
+.distributors-page .flow-dot--3{right:34%;top:52%;animation-delay:-1.2s}
+.distributors-page .flow-dot--4{right:18%;top:43%;animation-delay:-1.7s}
+@keyframes flow-blink{50%{transform:scale(1.25);opacity:.55}}
+
+.distributors-page .workflow-caption{
+  position:absolute;
+  left:34px;bottom:28px;
+  z-index:6;
+  max-width:460px;
+  padding:15px 18px;
+  border:1px solid rgba(23,24,26,.07);
+  border-radius:18px;
+  background:rgba(255,255,255,.90);
+  backdrop-filter:blur(10px);
+  color:var(--muted);
+  font-size:.71rem;
+  line-height:1.55;
+}
+.distributors-page .workflow-caption strong{color:var(--ink)}
+
+/* --------------------------------------------------------------------------
+   Existing stack section
+   -------------------------------------------------------------------------- */
+
+.distributors-page .stack-section{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 83% 15%,rgba(255,189,155,.16),transparent 25%),
+    var(--off);
+}
+.distributors-page .stack-layout{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:75px;
+  align-items:center;
+}
+.distributors-page .stack-copy .lead{max-width:570px}
+.distributors-page .stack-principles{
+  display:grid;
+  gap:12px;
+  margin-top:29px;
+}
+.distributors-page .stack-principle{
+  display:grid;
+  grid-template-columns:34px 1fr;
+  gap:12px;
+  align-items:start;
+}
+.distributors-page .stack-principle i{
+  width:30px;height:30px;
+  display:grid;place-items:center;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid var(--line);
+  font-style:normal;
+  font-size:.59rem;
+  font-weight:800;
+}
+.distributors-page .stack-principle strong{display:block;font-size:.82rem}
+.distributors-page .stack-principle p{margin:4px 0 0;color:var(--muted);font-size:.73rem;line-height:1.55}
+
+.distributors-page .stack-visual{
+  position:relative;
+  min-height:600px;
+}
+.distributors-page .stack-shell{
+  position:absolute;
+  inset:33px 19px;
+  border:1px solid rgba(23,24,26,.075);
+  border-radius:36px;
+  background:#fff;
+  box-shadow:var(--shadow-md);
+  overflow:hidden;
+}
+.distributors-page .stack-shell__header{
+  min-height:63px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  border-bottom:1px solid var(--line);
+}
+.distributors-page .stack-shell__header strong{font-size:.76rem}
+.distributors-page .stack-shell__header span{
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(194,255,2,.18);
+  font-size:.54rem;
+  font-weight:800;
+}
+.distributors-page .integration-map{
+  position:relative;
+  min-height:485px;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(153,254,237,.18),transparent 28%),
+    radial-gradient(circle at 50% 50%,rgba(217,214,253,.15),transparent 45%),
+    #fbfbf8;
+}
+.distributors-page .integration-core{
+  position:absolute;
+  left:50%;top:50%;
+  width:140px;height:140px;
+  display:grid;place-items:center;
+  padding:18px;
+  border-radius:35px;
+  background:var(--ink);
+  color:#fff;
+  text-align:center;
+  transform:translate(-50%,-50%);
+  box-shadow:0 24px 60px rgba(23,24,26,.18);
+}
+.distributors-page .integration-core strong{font-size:.74rem;line-height:1.2}
+.distributors-page .integration-core small{display:block;margin-top:6px;color:rgba(255,255,255,.56);font-size:.49rem}
+.distributors-page .integration-ring{
+  position:absolute;
+  left:50%;top:50%;
+  border:1px dashed rgba(23,24,26,.16);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+.distributors-page .integration-ring--one{width:330px;height:330px}
+.distributors-page .integration-ring--two{width:430px;height:430px}
+.distributors-page .integration-node{
+  position:absolute;
+  min-width:128px;
+  padding:13px 14px;
+  border:1px solid rgba(23,24,26,.08);
+  border-radius:17px;
+  background:#fff;
+  box-shadow:0 12px 28px rgba(23,24,26,.07);
+}
+.distributors-page .integration-node__top{
+  display:flex;align-items:center;gap:9px;
+}
+.distributors-page .integration-node__icon{
+  width:31px;height:31px;
+  display:grid;place-items:center;
+  flex:0 0 auto;
+  border-radius:10px;
+  background:var(--lime);
+  font-size:.52rem;
+  font-weight:800;
+}
+.distributors-page .integration-node strong{display:block;font-size:.61rem}
+.distributors-page .integration-node small{display:block;margin-top:3px;color:var(--muted);font-size:.48rem}
+.distributors-page .integration-node--sage{left:9%;top:13%}
+.distributors-page .integration-node--suppliers{right:8%;top:15%}
+.distributors-page .integration-node--procurement{left:3%;bottom:18%}
+.distributors-page .integration-node--reporting{right:4%;bottom:16%}
+.distributors-page .integration-node--stores{left:50%;top:6%;transform:translateX(-50%)}
+.distributors-page .integration-node--orders{left:50%;bottom:6%;transform:translateX(-50%)}
+.distributors-page .integration-node--suppliers .integration-node__icon{background:var(--mint)}
+.distributors-page .integration-node--procurement .integration-node__icon{background:var(--lav)}
+.distributors-page .integration-node--reporting .integration-node__icon{background:var(--peach)}
+.distributors-page .integration-node--stores .integration-node__icon{background:var(--mint)}
+.distributors-page .integration-node--orders .integration-node__icon{background:var(--lime)}
+
+/* --------------------------------------------------------------------------
+   Scale section
+   -------------------------------------------------------------------------- */
+
+.distributors-page .scale-story{
+  background:#fff;
+}
+.distributors-page .scale-head{
+  max-width:970px;
+}
+.distributors-page .scale-stage{
+  display:grid;
+  grid-template-columns:.68fr 1.32fr;
+  gap:28px;
+  margin-top:60px;
+}
+.distributors-page .scale-rail{
+  display:grid;
+  gap:12px;
+  align-content:start;
+}
+.distributors-page .scale-rail__item{
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:23px;
+  background:#fff;
+  transition:background .25s ease,transform .25s ease,border-color .25s ease;
+}
+.distributors-page .scale-rail__item.active,
+.distributors-page .scale-rail__item:hover{
+  transform:translateX(5px);
+  border-color:rgba(23,24,26,.04);
+  background:var(--soft);
+}
+.distributors-page .scale-rail__item span{
+  color:var(--muted);
+  font-size:.61rem;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.distributors-page .scale-rail__item strong{
+  display:block;
+  margin-top:8px;
+  font-size:1rem;
+  letter-spacing:-.025em;
+}
+.distributors-page .scale-rail__item p{
+  margin:7px 0 0;
+  color:var(--muted);
+  font-size:.73rem;
+  line-height:1.55;
+}
+
+.distributors-page .portfolio{
+  overflow:hidden;
+  border-radius:35px;
+  border:1px solid rgba(23,24,26,.075);
+  background:#fff;
+  box-shadow:var(--shadow-md);
+}
+.distributors-page .portfolio__top{
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:0 22px;
+  border-bottom:1px solid var(--line);
+  background:#fafaf8;
+}
+.distributors-page .portfolio__top strong{font-size:.73rem}
+.distributors-page .portfolio__top-actions{display:flex;gap:7px}
+.distributors-page .portfolio__top-actions span{width:54px;height:10px;border-radius:99px;background:#deded9}
+.distributors-page .portfolio__top-actions span:last-child{background:var(--lime)}
+.distributors-page .portfolio-body{
+  display:grid;
+  grid-template-columns:146px 1fr;
+  min-height:500px;
+}
+.distributors-page .portfolio-side{
+  padding:18px 13px;
+  border-right:1px solid var(--line);
+  background:#fbfbf8;
+}
+.distributors-page .portfolio-brand{
+  display:flex;align-items:center;gap:8px;
+  padding:0 8px 17px;
+  font-size:.59rem;
+  font-weight:800;
+}
+.distributors-page .portfolio-nav{display:grid;gap:5px}
+.distributors-page .portfolio-nav span{
+  min-height:33px;
+  display:flex;align-items:center;
+  padding:0 9px;
+  border-radius:9px;
+  color:var(--muted);
+  font-size:.51rem;
+  font-weight:700;
+}
+.distributors-page .portfolio-nav span.active{background:var(--ink);color:#fff}
+.distributors-page .portfolio-main{padding:22px}
+.distributors-page .portfolio-title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.distributors-page .portfolio-title-row small{display:block;color:var(--muted);font-size:.48rem;font-weight:700}
+.distributors-page .portfolio-title-row strong{display:block;margin-top:4px;font-size:.89rem}
+.distributors-page .portfolio-add{
+  padding:8px 10px;border-radius:10px;background:var(--lime);font-size:.49rem;font-weight:800
+}
+.distributors-page .portfolio-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:17px}
+.distributors-page .portfolio-metric{padding:12px;border-radius:13px;background:var(--soft)}
+.distributors-page .portfolio-metric:nth-child(2){background:rgba(153,254,237,.23)}
+.distributors-page .portfolio-metric:nth-child(3){background:rgba(217,214,253,.28)}
+.distributors-page .portfolio-metric:nth-child(4){background:rgba(255,189,155,.22)}
+.distributors-page .portfolio-metric small{display:block;color:var(--muted);font-size:.43rem;font-weight:700}
+.distributors-page .portfolio-metric strong{display:block;margin-top:5px;font-size:.87rem}
+.distributors-page .portfolio-table{
+  overflow:hidden;
+  margin-top:14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+}
+.distributors-page .portfolio-row{
+  min-height:52px;
+  display:grid;
+  grid-template-columns:1.2fr .78fr .62fr .62fr;
+  align-items:center;
+  gap:10px;
+  padding:0 13px;
+  border-top:1px solid var(--line);
+  font-size:.48rem;
+}
+.distributors-page .portfolio-row.header{
+  min-height:32px;
+  border-top:0;
+  background:#fafaf8;
+  color:var(--muted);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.distributors-page .portfolio-name{display:flex;align-items:center;gap:8px;font-weight:800}
+.distributors-page .portfolio-name i{width:28px;height:28px;border-radius:9px;background:var(--mint)}
+.distributors-page .portfolio-row:nth-child(3) .portfolio-name i{background:var(--lav)}
+.distributors-page .portfolio-row:nth-child(4) .portfolio-name i{background:var(--peach)}
+.distributors-page .portfolio-row:nth-child(5) .portfolio-name i{background:var(--lime)}
+.distributors-page .status-pill{
+  justify-self:start;
+  padding:5px 7px;
+  border-radius:999px;
+  background:rgba(194,255,2,.16);
+  font-size:.43rem;
+  font-weight:800;
+}
+.distributors-page .status-pill.pending{background:rgba(217,214,253,.38)}
+
+/* --------------------------------------------------------------------------
+   Covers section
+   -------------------------------------------------------------------------- */
+
+.distributors-page .coverage{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 6% 20%,rgba(255,189,155,.17),transparent 25%),
+    radial-gradient(circle at 92% 76%,rgba(153,254,237,.18),transparent 27%),
+    var(--off);
+}
+.distributors-page .coverage-grid{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:82px;
+  align-items:start;
+}
+.distributors-page .coverage-list{
+  border-top:1px solid var(--line);
+}
+.distributors-page .coverage-row{
+  display:grid;
+  grid-template-columns:40px 1fr auto;
+  gap:17px;
+  align-items:start;
+  padding:28px 0;
+  border-bottom:1px solid var(--line);
+}
+.distributors-page .coverage-check{
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:var(--lime);
+  font-size:.75rem;
+  font-weight:800;
+}
+.distributors-page .coverage-row strong{display:block;font-size:.98rem}
+.distributors-page .coverage-row p{
+  margin:7px 0 0;
+  max-width:620px;
+  color:var(--muted);
+  font-size:.79rem;
+  line-height:1.58;
+}
+.distributors-page .coverage-row__arrow{color:var(--muted);font-size:1rem}
+
+/* --------------------------------------------------------------------------
+   FAQ — approved Swishtag editorial layout
+   -------------------------------------------------------------------------- */
+
+.distributors-page .faq{
+  background:#fff;
+}
+.distributors-page .faq-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:95px;
+  align-items:start;
+}
+.distributors-page .faq-copy{
+  position:sticky;
+  top:118px;
+}
+.distributors-page .faq-copy h2{
+  margin:0;
+  max-width:530px;
+  font-size:clamp(2.7rem,4.6vw,5rem);
+  line-height:.97;
+  letter-spacing:-.06em;
+}
+.distributors-page .faq-copy p{
+  margin:20px 0 0;
+  max-width:520px;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.68;
+}
+.distributors-page .faq-list{border-top:1px solid var(--line)}
+.distributors-page .faq-item{border-bottom:1px solid var(--line)}
+.distributors-page .faq-question{
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 34px;
+  gap:22px;
+  align-items:center;
+  padding:27px 0;
+  border:0;
+  background:transparent;
+  text-align:left;
+  font-size:1rem;
+  font-weight:750;
+}
+.distributors-page .faq-toggle{
+  position:relative;
+  width:32px;height:32px;
+  border:1px solid var(--line);
+  border-radius:50%;
+}
+.distributors-page .faq-toggle::before,.distributors-page .faq-toggle::after{
+  content:"";
+  position:absolute;
+  left:50%;top:50%;
+  width:12px;height:1.5px;
+  background:var(--ink);
+  transform:translate(-50%,-50%);
+}
+.distributors-page .faq-toggle::after{
+  transform:translate(-50%,-50%) rotate(90deg);
+  transition:transform .22s ease;
+}
+.distributors-page .faq-item.open .faq-toggle::after{transform:translate(-50%,-50%) rotate(0deg)}
+.distributors-page .faq-answer{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .32s var(--ease);
+}
+.distributors-page .faq-answer>div{overflow:hidden}
+.distributors-page .faq-answer p{
+  margin:0;
+  padding:0 60px 25px 0;
+  color:var(--muted);
+  font-size:.86rem;
+  line-height:1.68;
+}
+.distributors-page .faq-item.open .faq-answer{grid-template-rows:1fr}
+
+/* --------------------------------------------------------------------------
+   Prefooter CTA
+   -------------------------------------------------------------------------- */
+
+.distributors-page .prefooter{
+  padding:24px 0 112px;
+  background:#fff;
+}
+.distributors-page .cta{
+  position:relative;
+  min-height:450px;
+  display:grid;
+  align-items:center;
+  overflow:hidden;
+  padding:68px;
+  border:1px solid rgba(23,24,26,.075);
+  border-radius:40px;
+  background:
+    radial-gradient(circle at 80% 19%,rgba(217,214,253,.78),transparent 29%),
+    radial-gradient(circle at 73% 77%,rgba(153,254,237,.50),transparent 29%),
+    radial-gradient(circle at 7% 94%,rgba(255,189,155,.33),transparent 27%),
+    linear-gradient(140deg,#f8f8f4,#fff);
+}
+.distributors-page .cta::after{
+  content:"";
+  position:absolute;
+  right:5%;top:14%;
+  width:320px;height:320px;
+  border:1px solid rgba(23,24,26,.08);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 48px rgba(255,255,255,.23),
+    0 0 0 96px rgba(255,255,255,.12);
+}
+.distributors-page .cta__content{
+  position:relative;
+  z-index:2;
+  max-width:790px;
+}
+.distributors-page .cta h2{
+  margin:0;
+  font-size:clamp(3.1rem,5.7vw,6.15rem);
+  line-height:.965;
+  letter-spacing:-.069em;
+}
+.distributors-page .cta p{
+  max-width:650px;
+  margin:20px 0 0;
+  color:var(--muted);
+  font-size:1.02rem;
+  line-height:1.67;
+}
+.distributors-page .cta .button{margin-top:30px}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.distributors-page .footer{
+  padding:76px 0 30px;
+  background:var(--soft);
+}
+.distributors-page .footer-grid{
+  display:grid;
+  grid-template-columns:1.2fr repeat(5,.67fr);
+  gap:36px;
+  padding-bottom:54px;
+}
+.distributors-page .footer-brand h3{
+  margin:0;
+  font-size:1.5rem;
+  letter-spacing:-.045em;
+}
+.distributors-page .footer-brand p{
+  max-width:280px;
+  margin:14px 0 0;
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.62;
+}
+.distributors-page .footer-col h4{
+  margin:0 0 14px;
+  font-size:.63rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.distributors-page .footer-col a{
+  display:block;
+  margin:10px 0;
+  color:var(--muted);
+  font-size:.74rem;
+  transition:color .2s ease;
+}
+.distributors-page .footer-col a:hover{color:var(--ink)}
+.distributors-page .footer-bottom{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:.68rem;
+}
+
+/* --------------------------------------------------------------------------
+   Reveals / motion
+   -------------------------------------------------------------------------- */
+
+.distributors-page [data-reveal]{
+  opacity:0;
+  transform:translateY(24px);
+  transition:
+    opacity .72s var(--ease-out),
+    transform .72s var(--ease-out);
+}
+.distributors-page [data-reveal].visible{opacity:1;transform:none}
+
+.distributors-page [data-stagger] > *{
+  opacity:0;
+  transform:translateY(20px);
+}
+.distributors-page [data-stagger].visible > *{
+  opacity:1;
+  transform:none;
+  transition:opacity .6s var(--ease-out),transform .6s var(--ease-out);
+}
+.distributors-page [data-stagger].visible > *:nth-child(1){transition-delay:.02s}
+.distributors-page [data-stagger].visible > *:nth-child(2){transition-delay:.08s}
+.distributors-page [data-stagger].visible > *:nth-child(3){transition-delay:.14s}
+.distributors-page [data-stagger].visible > *:nth-child(4){transition-delay:.20s}
+.distributors-page [data-stagger].visible > *:nth-child(5){transition-delay:.26s}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width:1160px){
+  .distributors-page .nav{grid-template-columns:auto 1fr auto}
+
+  .distributors-page .hero-grid{grid-template-columns:1fr;gap:34px}
+  .distributors-page .hero-copy{max-width:760px}
+  .distributors-page .distributor-stage{min-height:610px}
+
+  .distributors-page .pressure-grid,
+  .distributors-page .stack-layout,
+  .distributors-page .coverage-grid,
+  .distributors-page .faq-grid{grid-template-columns:1fr;gap:54px}
+  .distributors-page .pressure-copy,.distributors-page .faq-copy{position:relative;top:auto}
+
+  .distributors-page .paths-head,.distributors-page .workflow-head{grid-template-columns:1fr;gap:22px}
+  .distributors-page .paths-head .lead,.distributors-page .workflow-head .lead{margin:0}
+  .distributors-page .path,.distributors-page .path:nth-child(even){grid-template-columns:1fr}
+  .distributors-page .path:nth-child(even) .path-copy{order:1}
+  .distributors-page .path:nth-child(even) .path-visual{order:2}
+  .distributors-page .path-visual{min-height:470px}
+
+  .distributors-page .scale-stage{grid-template-columns:1fr}
+  .distributors-page .scale-rail{grid-template-columns:repeat(3,1fr)}
+  .distributors-page .footer-grid{grid-template-columns:1.2fr repeat(3,1fr)}
+}
+
+@media (max-width:880px){
+  .distributors-page .section{padding:106px 0}
+  .distributors-page .section--compact{padding:78px 0}
+  .distributors-page .bridge-panel{grid-template-columns:1fr;gap:18px}
+
+  .distributors-page .workflow-canvas{min-height:auto;padding:24px}
+  .distributors-page .workflow-canvas::before,.distributors-page .flow-lane,.distributors-page .flow-dot,.distributors-page .flow-connector{display:none}
+  .distributors-page .workflow-hub{
+    position:relative;left:auto;top:auto;
+    width:100%;height:auto;min-height:100px;
+    margin-bottom:14px;
+    border-radius:24px;
+    transform:none;
+  }
+  .distributors-page .workflow-hub::before{display:none}
+  .distributors-page .flow-card{
+    position:relative;
+    left:auto!important;right:auto!important;top:auto!important;
+    width:100%;
+    min-height:auto;
+    margin-top:10px;
+  }
+  .distributors-page .workflow-caption{
+    position:relative;
+    left:auto;bottom:auto;
+    max-width:none;
+    margin-top:12px;
+  }
+
+  .distributors-page .portfolio-body{grid-template-columns:115px 1fr}
+  .distributors-page .portfolio-metrics{grid-template-columns:repeat(2,1fr)}
+  .distributors-page .portfolio-row{grid-template-columns:1.25fr .75fr .65fr}
+  .distributors-page .portfolio-row > *:nth-child(4){display:none}
+
+  .distributors-page .footer-grid{grid-template-columns:1fr 1fr}
+  .distributors-page .footer-brand{grid-column:1/-1}
+}
+
+@media (max-width:720px){
+  .distributors-page{--page:min(100% - 28px,1360px)}
+  .distributors-page .nav{min-height:60px;padding:0 6px 0 16px;gap:10px}
+
+  .distributors-page .hero{min-height:auto;padding:127px 0 88px}
+  .distributors-page .hero h1{font-size:clamp(3.45rem,15.8vw,5.35rem)}
+  .distributors-page .hero-actions{display:grid}
+  .distributors-page .hero-actions .button{width:100%}
+
+  .distributors-page .distributor-stage{min-height:500px}
+  .distributors-page .stage-orbit--one{width:410px;height:410px;right:-22px;top:48px}
+  .distributors-page .stage-orbit--two{width:310px;height:310px;right:28px;top:99px}
+  .distributors-page .control-center{width:90%;padding:13px}
+  .distributors-page .control-body{grid-template-columns:82px 1fr}
+  .distributors-page .control-sidebar{padding:12px 7px}
+  .distributors-page .control-main{padding:13px}
+  .distributors-page .metric-row{grid-template-columns:1fr 1fr}
+  .distributors-page .metric:nth-child(3){display:none}
+  .distributors-page .floating-node--catalog{left:0;top:42px}
+  .distributors-page .floating-node--orders{right:0;top:108px}
+  .distributors-page .floating-node--supplier{left:6px;bottom:43px}
+  .distributors-page .floating-node--scale{display:none}
+
+  .distributors-page .intro-bridge{margin-top:-28px}
+  .distributors-page .bridge-panel{padding:25px}
+
+  .distributors-page .story-nav__inner{min-height:66px}
+
+  .distributors-page .pressure-row{
+    grid-template-columns:52px 1fr;
+  }
+  .distributors-page .pressure-row__tag{display:none}
+  .distributors-page .pressure-stream::before{left:27px}
+
+  .distributors-page .path-copy{padding:34px 25px}
+  .distributors-page .path-visual{min-height:430px}
+  .distributors-page .store-builder{inset:35px 20px}
+  .distributors-page .builder-body{grid-template-columns:76px 1fr}
+  .distributors-page .sage-flow{inset:34px 18px;grid-template-columns:1fr 48px 1fr}
+  .distributors-page .sage-panel{padding:14px;min-height:300px}
+  .distributors-page .flow-bridge__hub{width:48px;height:48px;border-radius:15px;font-size:.45rem}
+  .distributors-page .scale-dashboard{inset:30px 18px}
+  .distributors-page .scale-layout{grid-template-columns:82px 1fr}
+  .distributors-page .scale-main{padding:12px}
+  .distributors-page .scale-metrics{grid-template-columns:1fr 1fr}
+  .distributors-page .scale-metric:nth-child(3){display:none}
+
+  .distributors-page .stack-visual{min-height:530px}
+  .distributors-page .stack-shell{inset:20px 0}
+  .distributors-page .integration-ring--one{width:270px;height:270px}
+  .distributors-page .integration-ring--two{width:370px;height:370px}
+  .distributors-page .integration-node{min-width:108px;padding:10px}
+  .distributors-page .integration-node--sage{left:3%}
+  .distributors-page .integration-node--suppliers{right:3%}
+  .distributors-page .integration-node--procurement{left:1%}
+  .distributors-page .integration-node--reporting{right:1%}
+
+  .distributors-page .scale-rail{grid-template-columns:1fr}
+  .distributors-page .portfolio-body{grid-template-columns:1fr}
+  .distributors-page .portfolio-side{display:none}
+  .distributors-page .portfolio-main{padding:15px}
+  .distributors-page .portfolio-metrics{grid-template-columns:repeat(2,1fr)}
+
+  .distributors-page .coverage-row{grid-template-columns:36px 1fr}
+  .distributors-page .coverage-row__arrow{display:none}
+
+  .distributors-page .faq-grid{gap:42px}
+  .distributors-page .faq-question{font-size:.94rem}
+  .distributors-page .faq-answer p{padding-right:0}
+
+  .distributors-page .prefooter{padding-bottom:86px}
+  .distributors-page .cta{min-height:390px;padding:38px 26px}
+  .distributors-page .cta::after{right:-160px;top:100px}
+
+  .distributors-page .footer-grid{grid-template-columns:1fr}
+  .distributors-page .footer-brand{grid-column:auto}
+  .distributors-page .footer-bottom{flex-direction:column}
+}
+
+@media (max-width:520px){
+  .distributors-page .distributor-stage{min-height:450px}
+  .distributors-page .control-center{width:94%}
+  .distributors-page .control-window__brand span{display:none}
+  .distributors-page .store-table__head,.distributors-page .store-line{grid-template-columns:1.35fr .65fr}
+  .distributors-page .store-table__head>*:nth-child(3),.distributors-page .store-line>*:nth-child(3){display:none}
+  .distributors-page .floating-node{padding:10px;font-size:.58rem}
+  .distributors-page .floating-node__icon{width:24px;height:24px}
+
+  .distributors-page .path-visual{min-height:390px}
+  .distributors-page .builder-side{display:none}
+  .distributors-page .builder-body{grid-template-columns:1fr}
+  .distributors-page .sage-flow{grid-template-columns:1fr;gap:9px;inset:23px 15px}
+  .distributors-page .sage-panel{min-height:auto}
+  .distributors-page .sage-panel:nth-child(3){display:none}
+  .distributors-page .flow-bridge{height:50px}
+  .distributors-page .flow-bridge::before{left:50%;right:auto;top:0;bottom:0;border-top:0;border-left:1px dashed rgba(23,24,26,.24)}
+  .distributors-page .flow-pulse{display:none}
+  .distributors-page .scale-layout{grid-template-columns:1fr}
+  .distributors-page .scale-side{display:none}
+
+  .distributors-page .integration-node{min-width:auto;max-width:110px}
+  .distributors-page .integration-node small{display:none}
+  .distributors-page .integration-ring--two{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html .distributors-page{scroll-behavior:auto}
+  .distributors-page *,.distributors-page *::before,.distributors-page *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  .distributors-page [data-reveal],.distributors-page [data-stagger]>*{opacity:1!important;transform:none!important}
+}
+
+/* ==========================================================================
+   REFINEMENT ROUND 2
+   Focus: reduce oversized hero text, strengthen distributor visuals,
+   make workflow/stack/scale text more readable, and enrich empty UI areas.
+   ========================================================================== */
+
+.distributors-page .hero-grid{grid-template-columns:minmax(0,.88fr) minmax(540px,1.12fr);gap:54px}
+.distributors-page .hero h1{
+  max-width:720px;
+  font-size:clamp(3.55rem,6.15vw,6.4rem);
+  font-weight:800;
+  line-height:.92;
+  letter-spacing:-.074em;
+}
+.distributors-page .hero-copy{
+  max-width:620px;
+  font-size:clamp(1.04rem,1.22vw,1.15rem);
+}
+.distributors-page .distributor-stage{min-height:690px}
+.distributors-page .control-center{
+  width:min(540px,82%);
+  padding:18px;
+  border-radius:34px;
+}
+.distributors-page .control-window__brand{font-size:.7rem}
+.distributors-page .control-body{grid-template-columns:126px 1fr;min-height:398px}
+.distributors-page .side-logo{font-size:.62rem}
+.distributors-page .side-nav span{min-height:34px;font-size:.58rem}
+.distributors-page .control-main{padding:20px}
+.distributors-page .control-main__head small{font-size:.6rem}
+.distributors-page .control-main__head strong{font-size:1rem}
+.distributors-page .control-main__action{padding:9px 11px;font-size:.57rem}
+.distributors-page .metric{padding:12px}
+.distributors-page .metric small{font-size:.54rem}
+.distributors-page .metric strong{font-size:1rem}
+.distributors-page .store-table__head{font-size:.52rem}
+.distributors-page .store-line{min-height:54px}
+.distributors-page .store-line__name{font-size:.58rem}
+.distributors-page .store-line__light{font-size:.52rem}
+.distributors-page .store-status{font-size:.49rem}
+.distributors-page .hero-micro-board{
+  margin-top:13px;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:linear-gradient(145deg,#fafaf8,#fff);
+}
+.distributors-page .hero-micro-board__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.distributors-page .hero-micro-board__head strong{
+  font-size:.6rem;
+  letter-spacing:.04em;
+}
+.distributors-page .hero-micro-board__head span{
+  padding:5px 7px;
+  border-radius:999px;
+  background:rgba(153,254,237,.22);
+  color:#4d6560;
+  font-size:.46rem;
+  font-weight:800;
+}
+.distributors-page .industry-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:11px;
+}
+.distributors-page .industry-badge{
+  padding:6px 8px;
+  border-radius:999px;
+  background:var(--soft);
+  color:#5d6064;
+  font-size:.48rem;
+  font-weight:800;
+}
+.distributors-page .industry-badge.active{background:rgba(194,255,2,.22);color:#566f0f}
+.distributors-page .admin-statline{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:10px;
+}
+.distributors-page .admin-statline span{
+  display:block;
+  padding:8px 9px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid rgba(23,24,26,.06);
+  color:var(--muted);
+  font-size:.46rem;
+  font-weight:700;
+}
+.distributors-page .admin-statline b{
+  display:block;
+  margin-bottom:3px;
+  color:var(--ink);
+  font-size:.76rem;
+}
+.distributors-page .floating-node{
+  gap:11px;
+  padding:13px 15px;
+  font-size:.71rem;
+}
+.distributors-page .floating-node__icon{
+  width:28px;height:28px;
+  font-size:.56rem;
+}
+.distributors-page .floating-panel{
+  position:absolute;
+  left:26px;
+  top:222px;
+  min-width:164px;
+  padding:14px;
+  border:1px solid rgba(23,24,26,.08);
+  border-radius:18px;
+  background:rgba(255,255,255,.95);
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(14px);
+  animation:float-node 6s ease-in-out infinite;
+}
+.distributors-page .floating-panel strong{
+  display:block;
+  font-size:.7rem;
+}
+.distributors-page .floating-panel p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:.56rem;
+  line-height:1.5;
+}
+.distributors-page .floating-panel__tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:10px;
+}
+.distributors-page .floating-panel__tags span{
+  padding:5px 7px;
+  border-radius:999px;
+  background:var(--soft);
+  color:#66696e;
+  font-size:.46rem;
+  font-weight:800;
+}
+.distributors-page .floating-panel--industries{left:26px;top:228px}
+.distributors-page .floating-node--catalog{left:6px;top:88px}
+.distributors-page .floating-node--orders{right:0;top:156px}
+.distributors-page .floating-node--supplier{left:38px;bottom:106px}
+.distributors-page .floating-node--scale{right:10px;bottom:66px}
+
+.distributors-page .path{min-height:520px}
+.distributors-page .path-copy{padding:56px 52px}
+.distributors-page .path-copy h3{
+  font-size:clamp(2rem,3.4vw,3.9rem);
+}
+.distributors-page .path-copy p{
+  max-width:500px;
+  font-size:.99rem;
+}
+.distributors-page .path-list span{font-size:.82rem}
+.distributors-page .path-visual{min-height:520px}
+.distributors-page .builder-top__brand{font-size:.66rem}
+.distributors-page .builder-toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-bottom:12px;
+}
+.distributors-page .builder-pill{
+  padding:7px 10px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid rgba(23,24,26,.07);
+  color:#65686d;
+  font-size:.52rem;
+  font-weight:800;
+}
+.distributors-page .builder-pill.active{background:rgba(194,255,2,.22);color:#647f12}
+.distributors-page .builder-hero{
+  height:120px;
+  grid-template-columns:1fr .95fr;
+}
+.distributors-page .builder-panels{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:10px;
+  margin-top:10px;
+}
+.distributors-page .builder-panel{
+  min-height:115px;
+  padding:10px;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid rgba(23,24,26,.06);
+}
+.distributors-page .builder-panel--stats{
+  background:linear-gradient(145deg,#fff,rgba(153,254,237,.16));
+}
+.distributors-page .builder-panel__lines i{
+  display:block;
+  height:8px;
+  margin-bottom:8px;
+  border-radius:99px;
+  background:#deded8;
+}
+.distributors-page .builder-panel__lines i:nth-child(1){width:40%}
+.distributors-page .builder-panel__lines i:nth-child(2){width:76%;height:10px;background:#1e2024}
+.distributors-page .builder-panel__lines i:nth-child(3){width:52%;height:10px;background:#1e2024}
+.distributors-page .builder-panel__list{
+  display:grid;
+  gap:7px;
+}
+.distributors-page .builder-panel__list span{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:7px 8px;
+  border-radius:9px;
+  background:rgba(255,255,255,.84);
+  font-size:.5rem;
+  font-weight:800;
+}
+.distributors-page .product-mini{
+  min-height:102px;
+  padding:9px;
+}
+.distributors-page .product-mini i{height:50px}
+.distributors-page .product-mini b{
+  display:block;
+  margin-top:7px;
+  font-size:.55rem;
+}
+.distributors-page .product-mini span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:.47rem;
+}
+
+.distributors-page .sage-panel{padding:18px;min-height:330px}
+.distributors-page .sage-panel__label{font-size:.77rem}
+.distributors-page .sage-panel__status{font-size:.54rem}
+.distributors-page .catalog-line{padding:9px}
+.distributors-page .catalog-line strong{font-size:.59rem}
+.distributors-page .catalog-line small,
+.distributors-page .catalog-line em{font-size:.5rem}
+.distributors-page .flow-bridge__hub{
+  width:82px;height:82px;
+  border-radius:24px;
+  font-size:.58rem;
+}
+
+.distributors-page .workflow-head .lead{font-size:1.02rem}
+.distributors-page .workflow-canvas{
+  min-height:700px;
+  padding:46px 40px;
+}
+.distributors-page .flow-card{
+  width:250px;
+  min-height:176px;
+  padding:24px;
+  border-radius:26px;
+}
+.distributors-page .flow-card__icon{
+  width:46px;height:46px;
+  font-size:.67rem;
+}
+.distributors-page .flow-card strong{
+  margin-top:18px;
+  font-size:1rem;
+}
+.distributors-page .flow-card p{
+  font-size:.77rem;
+  line-height:1.58;
+}
+.distributors-page .flow-card--client{left:3%;top:11%}
+.distributors-page .flow-card--store{left:19%;top:59%}
+.distributors-page .flow-card--catalog{left:39%;top:7%}
+.distributors-page .flow-card--order{left:61%;top:58%}
+.distributors-page .flow-card--ops{right:3%;top:15%}
+.distributors-page .workflow-hub{
+  width:162px;height:162px;
+  border-radius:42px;
+}
+.distributors-page .workflow-hub strong{font-size:.93rem}
+.distributors-page .workflow-hub small{font-size:.6rem}
+.distributors-page .workflow-caption{
+  max-width:520px;
+  font-size:.82rem;
+  line-height:1.58;
+}
+
+.distributors-page .stack-layout{align-items:start}
+.distributors-page .stack-copy .lead{font-size:1.03rem}
+.distributors-page .stack-principle i{
+  width:34px;height:34px;
+  font-size:.62rem;
+}
+.distributors-page .stack-principle strong{font-size:.9rem}
+.distributors-page .stack-principle p{font-size:.8rem}
+.distributors-page .stack-shell__header strong{font-size:.82rem}
+.distributors-page .stack-shell__header span{font-size:.58rem}
+.distributors-page .integration-map{min-height:520px}
+.distributors-page .integration-core{
+  width:166px;height:166px;
+  border-radius:40px;
+}
+.distributors-page .integration-core strong{font-size:.88rem}
+.distributors-page .integration-core small{font-size:.58rem}
+.distributors-page .integration-node{
+  min-width:154px;
+  padding:14px 15px;
+}
+.distributors-page .integration-node__icon{
+  width:35px;height:35px;
+  font-size:.56rem;
+}
+.distributors-page .integration-node strong{font-size:.73rem}
+.distributors-page .integration-node small{font-size:.56rem}
+
+.distributors-page .scale-head .lead{
+  max-width:770px;
+  font-size:1.05rem;
+}
+.distributors-page .scale-stage{
+  grid-template-columns:.72fr 1.28fr;
+  gap:30px;
+}
+.distributors-page .scale-rail__item{padding:27px}
+.distributors-page .scale-rail__item span{font-size:.67rem}
+.distributors-page .scale-rail__item strong{font-size:1.12rem}
+.distributors-page .scale-rail__item p{font-size:.82rem}
+.distributors-page .portfolio__top strong{font-size:.82rem}
+.distributors-page .portfolio-brand{font-size:.64rem}
+.distributors-page .portfolio-nav span{min-height:35px;font-size:.56rem}
+.distributors-page .portfolio-title-row small{font-size:.55rem}
+.distributors-page .portfolio-title-row strong{font-size:1rem}
+.distributors-page .portfolio-add{font-size:.54rem;padding:9px 11px}
+.distributors-page .portfolio-metric small{font-size:.49rem}
+.distributors-page .portfolio-metric strong{font-size:1rem}
+.distributors-page .portfolio-row{
+  min-height:56px;
+  font-size:.56rem;
+}
+.distributors-page .status-pill{font-size:.48rem}
+
+@media (max-width:1160px){
+  .distributors-page .hero-grid{grid-template-columns:1fr;gap:34px}
+  .distributors-page .floating-panel--industries{left:12px;top:186px}
+  .distributors-page .scale-stage{grid-template-columns:1fr}
+}
+
+@media (max-width:880px){
+  .distributors-page .path-copy{padding:38px 28px}
+  .distributors-page .workflow-canvas{padding:24px}
+}
+
+@media (max-width:720px){
+  .distributors-page .hero h1{font-size:clamp(3.2rem,14vw,5rem)}
+  .distributors-page .hero-copy{font-size:1rem}
+  .distributors-page .control-center{width:92%}
+  .distributors-page .control-body{grid-template-columns:86px 1fr}
+  .distributors-page .control-main__head strong{font-size:.9rem}
+  .distributors-page .floating-panel{display:none}
+  .distributors-page .builder-toolbar{margin-bottom:10px}
+  .distributors-page .builder-panels{grid-template-columns:1fr}
+  .distributors-page .builder-panel--stats{display:none}
+  .distributors-page .flow-card p,
+  .distributors-page .stack-principle p,
+  .distributors-page .scale-rail__item p{font-size:.78rem}
+  .distributors-page .portfolio-title-row strong{font-size:.92rem}
+}
+
+@media (max-width:520px){
+  .distributors-page .control-center{padding:12px}
+  .distributors-page .control-body{grid-template-columns:1fr}
+  .distributors-page .control-sidebar{display:none}
+  .distributors-page .metric-row{grid-template-columns:1fr 1fr}
+  .distributors-page .metric:nth-child(3){display:block}
+  .distributors-page .admin-statline{grid-template-columns:1fr}
+  .distributors-page .builder-hero{grid-template-columns:1fr}
+  .distributors-page .builder-hero__art{display:none}
+}
+
+
+.distributors-page .builder-panel__list span span{
+  color:var(--muted);
+  font-size:.45rem;
+  font-weight:700;
+}
+.distributors-page .builder-panel__list span b{
+  font-size:.5rem;
+}
+
+
+/* ==========================================================================
+   TYPOGRAPHY ALIGNMENT — SWISHTAG HOME PAGE
+   Plus Jakarta Sans, regular Bold rather than ExtraBold.
+   ========================================================================== */
+
+.distributors-page{
+  --font-body:"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+}
+
+/* Keep one font family across every UI element */
+html .distributors-page,.distributors-page,.distributors-page button,.distributors-page input,.distributors-page textarea,.distributors-page select,.distributors-page a,.distributors-page span,.distributors-page strong,.distributors-page small,.distributors-page p,.distributors-page h1,.distributors-page h2,.distributors-page h3,.distributors-page h4,.distributors-page h5,.distributors-page h6,.distributors-page div,.distributors-page nav,.distributors-page section,.distributors-page article,.distributors-page aside,.distributors-page footer,.distributors-page header{
+  font-family:var(--font-body);
+}
+
+.distributors-page{
+  font-weight:var(--weight-regular);
+  letter-spacing:-.01em;
+}
+
+/* Main editorial hierarchy */
+.distributors-page .hero h1{
+  max-width:700px;
+  font-size:clamp(3.25rem,5.35vw,5.75rem);
+  font-weight:var(--weight-bold);
+  line-height:.965;
+  letter-spacing:-.058em;
+}
+
+.distributors-page .display{
+  max-width:1000px;
+  font-size:clamp(2.85rem,4.65vw,5.15rem);
+  font-weight:var(--weight-bold);
+  line-height:.99;
+  letter-spacing:-.052em;
+}
+
+.distributors-page .display--medium{
+  font-size:clamp(2.5rem,4vw,4.35rem);
+}
+
+.distributors-page .hero-copy,
+.distributors-page .lead{
+  font-weight:var(--weight-regular);
+  letter-spacing:-.018em;
+}
+
+.distributors-page .hero-copy{
+  font-size:clamp(1.02rem,1.16vw,1.12rem);
+  line-height:1.72;
+}
+
+.distributors-page .lead{
+  font-size:clamp(1rem,1.12vw,1.1rem);
+  line-height:1.72;
+}
+
+.distributors-page .kicker{
+  font-size:.72rem;
+  font-weight:var(--weight-bold);
+  letter-spacing:.135em;
+}
+
+/* Section-specific large headings */
+.distributors-page .bridge-panel h2{
+  font-size:clamp(1.8rem,2.65vw,2.8rem);
+  font-weight:var(--weight-bold);
+  line-height:1.08;
+  letter-spacing:-.042em;
+}
+
+.distributors-page .path-copy h3{
+  font-size:clamp(1.95rem,3vw,3.35rem);
+  font-weight:var(--weight-bold);
+  line-height:1.02;
+  letter-spacing:-.048em;
+}
+
+.distributors-page .faq-copy h2{
+  font-size:clamp(2.5rem,4vw,4.25rem);
+  font-weight:var(--weight-bold);
+  line-height:.99;
+  letter-spacing:-.05em;
+}
+
+.distributors-page .cta h2{
+  font-size:clamp(2.8rem,4.9vw,5.25rem);
+  font-weight:var(--weight-bold);
+  line-height:.985;
+  letter-spacing:-.055em;
+}
+
+/* Navigation / buttons */
+.distributors-page .brand{
+  font-weight:var(--weight-bold);
+}
+.distributors-page .button,
+.distributors-page .inline-link{
+  font-weight:var(--weight-bold);
+}
+
+/* Reduce synthetic extra-heavy appearance throughout */
+.distributors-page strong,
+.distributors-page .pressure-row strong,
+.distributors-page .path-copy h3,
+.distributors-page .stack-principle strong,
+.distributors-page .scale-rail__item strong,
+.distributors-page .coverage-row strong,
+.distributors-page .faq-question,
+.distributors-page .footer-brand h3{
+  font-weight:var(--weight-bold);
+}
+
+.distributors-page .story-nav__label,
+.distributors-page .path-number,
+.distributors-page .coverage-check,
+.distributors-page .window-live,
+.distributors-page .side-logo,
+.distributors-page .control-main__action,
+.distributors-page .store-status,
+.distributors-page .industry-badge,
+.distributors-page .hero-micro-board__head span,
+.distributors-page .floating-node,
+.distributors-page .builder-pill,
+.distributors-page .sage-panel__status,
+.distributors-page .integration-node__icon,
+.distributors-page .status-pill{
+  font-weight:var(--weight-bold);
+}
+
+/* Supporting UI typography should feel lighter */
+.distributors-page .pressure-row p,
+.distributors-page .path-copy p,
+.distributors-page .stack-principle p,
+.distributors-page .scale-rail__item p,
+.distributors-page .coverage-row p,
+.distributors-page .faq-answer p,
+.distributors-page .small-copy{
+  font-weight:var(--weight-regular);
+}
+
+.distributors-page .pressure-row__tag,
+.distributors-page .story-nav a{
+  font-weight:var(--weight-medium);
+}
+
+/* Dashboard typography */
+.distributors-page .control-window__brand,
+.distributors-page .control-main__head strong,
+.distributors-page .store-line__name,
+.distributors-page .hero-micro-board__head strong,
+.distributors-page .builder-top__brand,
+.distributors-page .sage-panel__label,
+.distributors-page .stack-shell__header strong,
+.distributors-page .integration-node strong,
+.distributors-page .portfolio__top strong,
+.distributors-page .portfolio-title-row strong,
+.distributors-page .portfolio-name{
+  font-weight:var(--weight-bold);
+}
+
+.distributors-page .control-main__head small,
+.distributors-page .metric small,
+.distributors-page .store-table__head,
+.distributors-page .store-line__light,
+.distributors-page .admin-statline span,
+.distributors-page .catalog-line small,
+.distributors-page .integration-node small,
+.distributors-page .portfolio-title-row small,
+.distributors-page .portfolio-metric small,
+.distributors-page .portfolio-row.header{
+  font-weight:var(--weight-medium);
+}
+
+/* Workflow cards */
+.distributors-page .flow-card strong{
+  font-size:.96rem;
+  font-weight:var(--weight-bold);
+}
+.distributors-page .flow-card p{
+  font-size:.78rem;
+  font-weight:var(--weight-regular);
+  line-height:1.62;
+}
+.distributors-page .workflow-hub strong{
+  font-weight:var(--weight-bold);
+}
+.distributors-page .workflow-hub small{
+  font-weight:var(--weight-medium);
+}
+
+/* Scale area */
+.distributors-page .scale-rail__item span{
+  font-weight:var(--weight-bold);
+}
+.distributors-page .scale-rail__item strong{
+  font-size:1.05rem;
+}
+.distributors-page .portfolio-nav span{
+  font-weight:var(--weight-semibold);
+}
+
+/* Footer */
+.distributors-page .footer-col h4{
+  font-weight:var(--weight-bold);
+}
+.distributors-page .footer-col a,
+.distributors-page .footer-bottom{
+  font-weight:var(--weight-regular);
+}
+
+/* More balanced mobile hierarchy */
+@media (max-width:720px){
+  .distributors-page .hero h1{
+    font-size:clamp(3rem,13vw,4.45rem);
+    line-height:.97;
+  }
+
+  .distributors-page .display{
+    font-size:clamp(2.55rem,11vw,4rem);
+    line-height:1;
+  }
+
+  .distributors-page .display--medium{
+    font-size:clamp(2.35rem,10vw,3.65rem);
+  }
+
+  .distributors-page .path-copy h3{
+    font-size:clamp(2rem,9vw,3rem);
+  }
+
+  .distributors-page .faq-copy h2{
+    font-size:clamp(2.35rem,10vw,3.55rem);
+  }
+
+  .distributors-page .cta h2{
+    font-size:clamp(2.55rem,11vw,4rem);
+  }
+}
+
+
+/* ==========================================================================
+   CARD COLOR UPDATE
+   Apply the stronger Swishtag platform-card palette to the three solution cards.
+   ========================================================================== */
+
+.distributors-page .path-stack .path{
+  overflow:hidden;
+}
+
+.distributors-page .path-stack .path:nth-child(1){
+  background:linear-gradient(180deg,#d9d3fb 0%, #d4cff8 100%);
+}
+.distributors-page .path-stack .path:nth-child(1) .path-copy{
+  background:transparent;
+}
+.distributors-page .path-stack .path:nth-child(1) .path-visual{
+  background:rgba(255,255,255,.14);
+}
+.distributors-page .path-stack .path:nth-child(1) .path-number{
+  background:#ffffff;
+  color:var(--ink);
+}
+.distributors-page .path-stack .path:nth-child(1) .path-list i,
+.distributors-page .path-stack .path:nth-child(1) .inline-link__icon{
+  background:#ffffff;
+}
+.distributors-page .path-stack .path:nth-child(1) .store-builder{
+  background:rgba(255,255,255,.28);
+  border-color:rgba(255,255,255,.42);
+  box-shadow:none;
+}
+.distributors-page .path-stack .path:nth-child(1) .builder-top,
+.distributors-page .path-stack .path:nth-child(1) .builder-panel,
+.distributors-page .path-stack .path:nth-child(1) .product-mini{
+  background:rgba(255,255,255,.58);
+}
+.distributors-page .path-stack .path:nth-child(1) .builder-side{
+  background:rgba(255,255,255,.38);
+}
+.distributors-page .path-stack .path:nth-child(1) .builder-pill{
+  background:rgba(255,255,255,.82);
+}
+.distributors-page .path-stack .path:nth-child(1) .builder-pill.active{
+  background:#ffffff;
+}
+
+.distributors-page .path-stack .path:nth-child(2){
+  background:linear-gradient(180deg,#f7bb97 0%, #f5b28d 100%);
+}
+.distributors-page .path-stack .path:nth-child(2) .path-copy{
+  background:transparent;
+}
+.distributors-page .path-stack .path:nth-child(2) .path-visual{
+  background:rgba(255,255,255,.12);
+}
+.distributors-page .path-stack .path:nth-child(2) .path-number{
+  background:#ffffff;
+  color:var(--ink);
+}
+.distributors-page .path-stack .path:nth-child(2) .path-list i,
+.distributors-page .path-stack .path:nth-child(2) .inline-link__icon{
+  background:#ffffff;
+}
+.distributors-page .path-stack .path:nth-child(2) .sage-panel{
+  background:rgba(255,255,255,.55);
+  border-color:rgba(255,255,255,.45);
+  box-shadow:none;
+}
+.distributors-page .path-stack .path:nth-child(2) .catalog-line{
+  background:rgba(255,255,255,.72);
+}
+.distributors-page .path-stack .path:nth-child(2) .flow-bridge__hub{
+  background:#ffffff;
+  color:var(--ink);
+  box-shadow:none;
+}
+
+.distributors-page .path-stack .path:nth-child(3){
+  background:
+    radial-gradient(circle at 82% 18%,rgba(255,255,255,.38),transparent 26%),
+    linear-gradient(145deg,#b8fd0f 0%, #93f0a9 56%, #85e8dd 100%);
+}
+.distributors-page .path-stack .path:nth-child(3) .path-copy{
+  background:transparent;
+}
+.distributors-page .path-stack .path:nth-child(3) .path-visual{
+  background:rgba(255,255,255,.12);
+}
+.distributors-page .path-stack .path:nth-child(3) .path-number{
+  background:#ffffff;
+  color:var(--ink);
+}
+.distributors-page .path-stack .path:nth-child(3) .path-list i,
+.distributors-page .path-stack .path:nth-child(3) .inline-link__icon{
+  background:#ffffff;
+}
+.distributors-page .path-stack .path:nth-child(3) .scale-dashboard{
+  background:rgba(255,255,255,.52);
+  border-color:rgba(255,255,255,.48);
+  box-shadow:none;
+}
+.distributors-page .path-stack .path:nth-child(3) .scale-top,
+.distributors-page .path-stack .path:nth-child(3) .scale-order,
+.distributors-page .path-stack .path:nth-child(3) .scale-chart{
+  background:rgba(255,255,255,.68);
+}
+.distributors-page .path-stack .path:nth-child(3) .scale-side{
+  background:rgba(255,255,255,.34);
+}
+.distributors-page .path-stack .path:nth-child(3) .scale-metric{
+  background:rgba(255,255,255,.72);
+}
+
+
+/* ==========================================================================
+   LIGHTER SWISHTAG HOME-PAGE PALETTE
+   Keeps layout/content intact while softening fills, borders, contrast,
+   shadows, and accent usage to match the brighter Home page direction.
+   ========================================================================== */
+
+.distributors-page{
+  --ink:#202124;
+  --ink-2:#2b2d30;
+  --muted:#717378;
+  --muted-2:#93959a;
+
+  --white:#ffffff;
+  --off:#fcfcfa;
+  --soft:#f7f7f4;
+  --soft-2:#f0f0ec;
+
+  --line:rgba(32,33,36,.085);
+
+  --lime:#bfff00;
+  --mint:#a9f8ed;
+  --lav:#ddd9ff;
+  --peach:#ffd2ba;
+
+  --shadow-sm:0 12px 34px rgba(23,24,26,.045);
+  --shadow-md:0 24px 58px rgba(23,24,26,.065);
+  --shadow-lg:0 34px 90px rgba(23,24,26,.085);
+}
+
+/* General page atmosphere */
+.distributors-page{
+  background:#fff;
+  color:var(--ink);
+}
+
+.distributors-page .section--soft,
+.distributors-page .paths,
+.distributors-page .stack-section,
+.distributors-page .coverage{
+  background:#fbfbf9;
+}
+
+.distributors-page .hero{
+  background:
+    radial-gradient(circle at 84% 5%,rgba(221,217,255,.38),transparent 23%),
+    radial-gradient(circle at 76% 64%,rgba(169,248,237,.24),transparent 28%),
+    radial-gradient(circle at 4% 92%,rgba(255,210,186,.11),transparent 22%),
+    linear-gradient(180deg,#fff 0%,#fdfdfb 100%);
+}
+.distributors-page .hero::after{
+  background:radial-gradient(circle,rgba(191,255,0,.07),transparent 63%);
+}
+
+/* Header + floating chrome */
+.distributors-page .nav{
+  background:rgba(255,255,255,.91);
+  border-color:rgba(32,33,36,.045);
+  box-shadow:0 12px 35px rgba(23,24,26,.05),inset 0 0 0 1px rgba(32,33,36,.02);
+}
+
+/* Intro bridge */
+.distributors-page .bridge-panel{
+  background:rgba(255,255,255,.97);
+  border-color:rgba(32,33,36,.06);
+  box-shadow:0 22px 52px rgba(23,24,26,.06);
+}
+
+/* Distributor reality section */
+.distributors-page .pressure-row{
+  background:#fff;
+  border-color:rgba(32,33,36,.065);
+  box-shadow:0 10px 28px rgba(23,24,26,.035);
+}
+.distributors-page .pressure-row:hover{
+  box-shadow:0 18px 38px rgba(23,24,26,.055);
+}
+.distributors-page .pressure-row__tag{
+  background:#fafaf7;
+}
+
+/* =========================================================
+   3 PRIMARY SOLUTION CARDS — SOFT HOME PAGE TONES
+   ========================================================= */
+
+/* Card 1 — soft lavender */
+.distributors-page .path-stack .path:nth-child(1){
+  background:
+    radial-gradient(circle at 88% 8%,rgba(255,255,255,.48),transparent 29%),
+    linear-gradient(180deg,#eceaff 0%,#e7e5fb 100%);
+  border-color:rgba(116,107,177,.08);
+  box-shadow:0 20px 52px rgba(95,88,150,.055);
+}
+.distributors-page .path-stack .path:nth-child(1) .path-visual{
+  background:rgba(255,255,255,.32);
+}
+.distributors-page .path-stack .path:nth-child(1) .store-builder{
+  background:rgba(255,255,255,.72);
+  border-color:rgba(255,255,255,.82);
+  box-shadow:0 18px 40px rgba(79,76,119,.055);
+}
+.distributors-page .path-stack .path:nth-child(1) .builder-top,
+.distributors-page .path-stack .path:nth-child(1) .builder-panel,
+.distributors-page .path-stack .path:nth-child(1) .product-mini{
+  background:rgba(255,255,255,.80);
+}
+.distributors-page .path-stack .path:nth-child(1) .builder-side{
+  background:rgba(255,255,255,.58);
+}
+.distributors-page .path-stack .path:nth-child(1) .builder-pill{
+  background:rgba(255,255,255,.92);
+}
+
+/* Card 2 — soft peach */
+.distributors-page .path-stack .path:nth-child(2){
+  background:
+    radial-gradient(circle at 10% 8%,rgba(255,255,255,.44),transparent 30%),
+    linear-gradient(180deg,#ffe4d5 0%,#ffdcc9 100%);
+  border-color:rgba(181,116,78,.07);
+  box-shadow:0 20px 52px rgba(150,92,61,.05);
+}
+.distributors-page .path-stack .path:nth-child(2) .path-visual{
+  background:rgba(255,255,255,.28);
+}
+.distributors-page .path-stack .path:nth-child(2) .sage-panel{
+  background:rgba(255,255,255,.78);
+  border-color:rgba(255,255,255,.84);
+  box-shadow:0 16px 36px rgba(111,73,51,.045);
+}
+.distributors-page .path-stack .path:nth-child(2) .catalog-line{
+  background:rgba(255,255,255,.88);
+}
+.distributors-page .path-stack .path:nth-child(2) .flow-bridge__hub{
+  background:rgba(255,255,255,.94);
+  color:var(--ink);
+  box-shadow:0 12px 26px rgba(98,66,48,.04);
+}
+
+/* Card 3 — soft lime / mint */
+.distributors-page .path-stack .path:nth-child(3){
+  background:
+    radial-gradient(circle at 84% 14%,rgba(255,255,255,.55),transparent 28%),
+    linear-gradient(145deg,#eeffd7 0%,#e5fbdc 46%,#dffbf5 100%);
+  border-color:rgba(87,144,99,.07);
+  box-shadow:0 20px 52px rgba(66,128,84,.045);
+}
+.distributors-page .path-stack .path:nth-child(3) .path-visual{
+  background:rgba(255,255,255,.28);
+}
+.distributors-page .path-stack .path:nth-child(3) .scale-dashboard{
+  background:rgba(255,255,255,.78);
+  border-color:rgba(255,255,255,.86);
+  box-shadow:0 16px 38px rgba(64,110,73,.045);
+}
+.distributors-page .path-stack .path:nth-child(3) .scale-top,
+.distributors-page .path-stack .path:nth-child(3) .scale-order,
+.distributors-page .path-stack .path:nth-child(3) .scale-chart{
+  background:rgba(255,255,255,.88);
+}
+.distributors-page .path-stack .path:nth-child(3) .scale-side{
+  background:rgba(255,255,255,.56);
+}
+.distributors-page .path-stack .path:nth-child(3) .scale-metric{
+  background:rgba(255,255,255,.90);
+}
+
+/* Make white action circles and bullets feel softer */
+.distributors-page .path-stack .path .path-number,
+.distributors-page .path-stack .path .path-list i,
+.distributors-page .path-stack .path .inline-link__icon{
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(32,33,36,.04);
+}
+
+/* Workflow canvas */
+.distributors-page .workflow-canvas{
+  border-color:rgba(32,33,36,.065);
+  background:
+    radial-gradient(circle at 14% 14%,rgba(169,248,237,.18),transparent 24%),
+    radial-gradient(circle at 91% 81%,rgba(221,217,255,.20),transparent 27%),
+    linear-gradient(150deg,#fdfdfb,#fff);
+  box-shadow:0 14px 36px rgba(23,24,26,.035);
+}
+
+.distributors-page .flow-card{
+  background:rgba(255,255,255,.96);
+  border-color:rgba(32,33,36,.065);
+  box-shadow:0 12px 30px rgba(23,24,26,.04);
+}
+.distributors-page .flow-card:hover{
+  box-shadow:0 18px 42px rgba(23,24,26,.06);
+}
+.distributors-page .workflow-caption{
+  background:rgba(255,255,255,.95);
+  border-color:rgba(32,33,36,.055);
+}
+
+/* Existing stack section */
+.distributors-page .stack-section{
+  background:
+    radial-gradient(circle at 84% 16%,rgba(255,210,186,.09),transparent 24%),
+    #fbfbf9;
+}
+
+.distributors-page .stack-shell{
+  background:#fff;
+  border-color:rgba(32,33,36,.06);
+  box-shadow:0 22px 52px rgba(23,24,26,.055);
+}
+
+.distributors-page .integration-map{
+  background:
+    radial-gradient(circle at 50% 50%,rgba(169,248,237,.10),transparent 28%),
+    radial-gradient(circle at 50% 50%,rgba(221,217,255,.10),transparent 45%),
+    #fdfdfb;
+}
+
+.distributors-page .integration-node{
+  background:rgba(255,255,255,.96);
+  border-color:rgba(32,33,36,.055);
+  box-shadow:0 10px 26px rgba(23,24,26,.04);
+}
+
+/* Scale section */
+.distributors-page .portfolio{
+  border-color:rgba(32,33,36,.06);
+  box-shadow:0 22px 52px rgba(23,24,26,.055);
+}
+.distributors-page .portfolio__top,
+.distributors-page .portfolio-side{
+  background:#fcfcfa;
+}
+
+.distributors-page .scale-rail__item{
+  border-color:rgba(32,33,36,.065);
+  background:#fff;
+}
+.distributors-page .scale-rail__item.active,
+.distributors-page .scale-rail__item:hover{
+  background:#f8f8f5;
+}
+
+/* Coverage */
+.distributors-page .coverage{
+  background:
+    radial-gradient(circle at 8% 18%,rgba(255,210,186,.09),transparent 25%),
+    radial-gradient(circle at 92% 76%,rgba(169,248,237,.10),transparent 27%),
+    #fbfbf9;
+}
+
+/* FAQ */
+.distributors-page .faq{
+  background:#fff;
+}
+
+/* CTA */
+.distributors-page .cta{
+  border-color:rgba(32,33,36,.06);
+  background:
+    radial-gradient(circle at 81% 18%,rgba(221,217,255,.48),transparent 30%),
+    radial-gradient(circle at 73% 76%,rgba(169,248,237,.32),transparent 29%),
+    radial-gradient(circle at 7% 94%,rgba(255,210,186,.18),transparent 27%),
+    linear-gradient(140deg,#fbfbf8,#fff);
+}
+
+/* Footer */
+.distributors-page .footer{
+  background:#f8f8f5;
+}
+
+/* Soften all outlines + pills slightly */
+.distributors-page .chip,
+.distributors-page .builder-pill,
+.distributors-page .sage-panel__status,
+.distributors-page .integration-node,
+.distributors-page .portfolio-table,
+.distributors-page .store-table,
+.distributors-page .faq-toggle{
+  border-color:rgba(32,33,36,.065);
+}
+
+/* Keep lime as a small accent, not a heavy field */
+.distributors-page .button--lime{
+  background:#bfff00;
+  box-shadow:0 10px 22px rgba(191,255,0,.17);
+}
+.distributors-page .button--lime:hover{
+  box-shadow:0 15px 30px rgba(191,255,0,.22);
+}
+
+/* Mobile: retain softness without washing out */
+@media (max-width:720px){
+  .distributors-page .path-stack .path:nth-child(1){
+    background:linear-gradient(180deg,#efedff,#e9e7fb);
+  }
+  .distributors-page .path-stack .path:nth-child(2){
+    background:linear-gradient(180deg,#ffe8db,#ffdfcf);
+  }
+  .distributors-page .path-stack .path:nth-child(3){
+    background:linear-gradient(145deg,#f1ffde,#e6fbe3 52%,#e2faf6);
+  }
+}
+
+
+/* ==========================================================================
+   WORKFLOW SECTION REDESIGN
+   Cleaner linear journey, stronger hierarchy, softer Swishtag UI.
+   ========================================================================== */
+
+.distributors-page .workflow-system{
+  margin-top:64px;
+  overflow:hidden;
+  border:1px solid rgba(32,33,36,.065);
+  border-radius:38px;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(169,248,237,.16),transparent 24%),
+    radial-gradient(circle at 94% 100%,rgba(221,217,255,.18),transparent 27%),
+    #fdfdfb;
+  box-shadow:0 16px 42px rgba(23,24,26,.04);
+}
+
+.distributors-page .workflow-system__top{
+  min-height:96px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  padding:24px 30px;
+  border-bottom:1px solid rgba(32,33,36,.06);
+  background:rgba(255,255,255,.58);
+}
+
+.distributors-page .workflow-system__eyebrow{
+  display:block;
+  margin-bottom:6px;
+  color:var(--muted);
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+
+.distributors-page .workflow-system__top strong{
+  display:block;
+  max-width:700px;
+  font-size:1.15rem;
+  font-weight:700;
+  line-height:1.35;
+  letter-spacing:-.02em;
+}
+
+.distributors-page .workflow-system__status{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 11px;
+  border-radius:999px;
+  background:rgba(191,255,0,.15);
+  color:#56680f;
+  font-size:.64rem;
+  font-weight:700;
+}
+
+.distributors-page .workflow-system__status i{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:#9fd500;
+  box-shadow:0 0 0 4px rgba(191,255,0,.14);
+}
+
+.distributors-page .workflow-journey{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:14px;
+  padding:42px 28px 30px;
+}
+
+.distributors-page .workflow-journey__line{
+  position:absolute;
+  left:6.5%;
+  right:6.5%;
+  top:101px;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    rgba(32,33,36,.08),
+    rgba(32,33,36,.18) 12%,
+    rgba(32,33,36,.18) 88%,
+    rgba(32,33,36,.08)
+  );
+}
+
+.distributors-page .workflow-step{
+  position:relative;
+  z-index:2;
+  min-height:290px;
+  display:flex;
+  flex-direction:column;
+  padding:18px;
+  border:1px solid rgba(32,33,36,.065);
+  border-radius:22px;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 8px 24px rgba(23,24,26,.03);
+  transition:transform .28s var(--ease),box-shadow .28s ease,border-color .28s ease;
+}
+
+.distributors-page .workflow-step:hover{
+  transform:translateY(-5px);
+  border-color:rgba(32,33,36,.09);
+  box-shadow:0 16px 34px rgba(23,24,26,.055);
+}
+
+.distributors-page .workflow-step__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.distributors-page .workflow-step__number{
+  color:var(--muted);
+  font-size:.6rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.distributors-page .workflow-step__type{
+  padding:5px 7px;
+  border-radius:999px;
+  background:#f7f7f4;
+  color:var(--muted);
+  font-size:.52rem;
+  font-weight:600;
+}
+
+.distributors-page .workflow-step__icon{
+  width:50px;height:50px;
+  display:grid;
+  place-items:center;
+  margin-top:20px;
+  border-radius:15px;
+  color:var(--ink);
+  font-size:.58rem;
+  font-weight:700;
+  box-shadow:0 0 0 8px rgba(255,255,255,.95);
+}
+
+.distributors-page .workflow-step__icon--lime{background:#dfff83}
+.distributors-page .workflow-step__icon--mint{background:#bdf8ef}
+.distributors-page .workflow-step__icon--lav{background:#e4e1ff}
+.distributors-page .workflow-step__icon--peach{background:#ffdcc7}
+
+.distributors-page .workflow-step h3{
+  margin:22px 0 0;
+  font-size:1rem;
+  font-weight:700;
+  line-height:1.24;
+  letter-spacing:-.025em;
+}
+
+.distributors-page .workflow-step p{
+  margin:9px 0 0;
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:400;
+  line-height:1.62;
+}
+
+.distributors-page .workflow-layer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  margin:0 28px 26px;
+  padding:17px 20px;
+  border:1px solid rgba(32,33,36,.06);
+  border-radius:20px;
+  background:
+    linear-gradient(90deg,rgba(239,255,219,.76),rgba(235,250,247,.72) 52%,rgba(239,237,255,.72));
+}
+
+.distributors-page .workflow-layer__brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.distributors-page .workflow-layer__brand .brand-mark{
+  width:32px;height:32px;
+  border-radius:10px;
+}
+
+.distributors-page .workflow-layer__brand span{
+  display:block;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.distributors-page .workflow-layer__brand small{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:.58rem;
+  font-weight:500;
+}
+
+.distributors-page .workflow-layer__signals{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:7px;
+}
+
+.distributors-page .workflow-layer__signals span{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 9px;
+  border:1px solid rgba(32,33,36,.045);
+  border-radius:999px;
+  background:rgba(255,255,255,.74);
+  color:#63666a;
+  font-size:.56rem;
+  font-weight:600;
+}
+
+.distributors-page .workflow-layer__signals i{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:#bfff00;
+}
+
+.distributors-page .workflow-system__note{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:0 28px 28px;
+  padding:15px 17px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(32,33,36,.055);
+}
+
+.distributors-page .workflow-system__note-icon{
+  width:27px;height:27px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border-radius:9px;
+  background:rgba(191,255,0,.18);
+  color:#5a7011;
+  font-size:.7rem;
+  font-weight:700;
+}
+
+.distributors-page .workflow-system__note p{
+  margin:1px 0 0;
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:400;
+  line-height:1.58;
+}
+
+.distributors-page .workflow-system__note strong{
+  color:var(--ink);
+  font-weight:700;
+}
+
+/* Remove old workflow positioning from influencing anything */
+.distributors-page .workflow .workflow-canvas,
+.distributors-page .workflow .flow-card,
+.distributors-page .workflow .workflow-hub,
+.distributors-page .workflow .flow-dot,
+.distributors-page .workflow .flow-lane,
+.distributors-page .workflow .flow-connector,
+.distributors-page .workflow .workflow-caption{
+  display:none!important;
+}
+
+@media (max-width:1100px){
+  .distributors-page .workflow-journey{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .distributors-page .workflow-journey__line{
+    display:none;
+  }
+
+  .distributors-page .workflow-step:last-child{
+    grid-column:1/-1;
+    min-height:auto;
+  }
+
+  .distributors-page .workflow-layer{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .distributors-page .workflow-layer__signals{
+    justify-content:flex-start;
+  }
+}
+
+@media (max-width:720px){
+  .distributors-page .workflow-system{
+    margin-top:42px;
+    border-radius:28px;
+  }
+
+  .distributors-page .workflow-system__top{
+    min-height:auto;
+    align-items:flex-start;
+    flex-direction:column;
+    padding:22px;
+  }
+
+  .distributors-page .workflow-system__top strong{
+    font-size:1rem;
+  }
+
+  .distributors-page .workflow-journey{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:20px;
+  }
+
+  .distributors-page .workflow-step,
+  .distributors-page .workflow-step:last-child{
+    grid-column:auto;
+    min-height:auto;
+  }
+
+  .distributors-page .workflow-step{
+    padding:18px;
+  }
+
+  .distributors-page .workflow-step__icon{
+    margin-top:16px;
+  }
+
+  .distributors-page .workflow-step h3{
+    margin-top:17px;
+  }
+
+  .distributors-page .workflow-layer,
+  .distributors-page .workflow-system__note{
+    margin-left:20px;
+    margin-right:20px;
+  }
+
+  .distributors-page .workflow-layer{
+    margin-bottom:16px;
+    padding:16px;
+  }
+
+  .distributors-page .workflow-layer__signals{
+    gap:6px;
+  }
+
+  .distributors-page .workflow-system__note{
+    margin-bottom:20px;
+  }
+}
+
+
+/* ==========================================================================
+   EXISTING SYSTEMS — BLUEPRINT REDESIGN
+   Breaks the repeated left-copy/right-card pattern with a full-width layered
+   architecture composition.
+   ========================================================================== */
+
+.distributors-page .stack-section--blueprint{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 10% 5%,rgba(169,248,237,.10),transparent 22%),
+    radial-gradient(circle at 90% 95%,rgba(221,217,255,.11),transparent 25%),
+    #fbfbf9;
+}
+
+.distributors-page .stack-blueprint__head{
+  display:grid;
+  grid-template-columns:1fr .72fr;
+  gap:70px;
+  align-items:end;
+  margin-bottom:58px;
+}
+
+.distributors-page .stack-blueprint__head .lead{
+  margin:0;
+  max-width:610px;
+}
+
+.distributors-page .stack-blueprint{
+  overflow:hidden;
+  border:1px solid rgba(32,33,36,.065);
+  border-radius:34px;
+  background:#fff;
+  box-shadow:0 16px 42px rgba(23,24,26,.035);
+}
+
+.distributors-page .stack-blueprint__rail{
+  display:grid;
+  grid-template-columns:1fr 1.2fr 1fr;
+  min-height:46px;
+  align-items:center;
+  padding:0 26px;
+  border-bottom:1px solid rgba(32,33,36,.055);
+  background:#fcfcfa;
+  color:var(--muted);
+  font-size:.58rem;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.distributors-page .stack-blueprint__rail span:nth-child(2){text-align:center}
+.distributors-page .stack-blueprint__rail span:nth-child(3){text-align:right}
+
+.distributors-page .stack-blueprint__row{
+  display:grid;
+  grid-template-columns:.72fr 1.28fr;
+  gap:38px;
+  align-items:center;
+  min-height:190px;
+  padding:30px 32px;
+}
+
+.distributors-page .stack-blueprint__row--sources{
+  background:
+    linear-gradient(90deg,rgba(245,245,241,.45),rgba(255,255,255,0));
+}
+
+.distributors-page .stack-blueprint__row--outcomes{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,0),rgba(239,252,247,.42));
+}
+
+.distributors-page .stack-blueprint__label{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:14px;
+  align-items:start;
+}
+
+.distributors-page .stack-blueprint__label>span{
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  border-radius:11px;
+  background:#f6f6f2;
+  color:var(--muted);
+  font-size:.58rem;
+  font-weight:700;
+}
+
+.distributors-page .stack-blueprint__label strong{
+  max-width:370px;
+  font-size:1rem;
+  font-weight:700;
+  line-height:1.42;
+  letter-spacing:-.022em;
+}
+
+.distributors-page .stack-blueprint__items{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+
+.distributors-page .stack-token{
+  min-height:86px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:14px;
+  border:1px solid rgba(32,33,36,.06);
+  border-radius:17px;
+  background:#fafaf7;
+}
+
+.distributors-page .stack-token b{
+  font-size:.74rem;
+  font-weight:700;
+}
+
+.distributors-page .stack-token small{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:.58rem;
+  font-weight:500;
+  line-height:1.4;
+}
+
+.distributors-page .stack-token--mint{background:rgba(169,248,237,.22)}
+.distributors-page .stack-token--lime{background:rgba(191,255,0,.13)}
+.distributors-page .stack-token--lav{background:rgba(221,217,255,.28)}
+.distributors-page .stack-token--peach{background:rgba(255,210,186,.27)}
+
+.distributors-page .stack-blueprint__bridge{
+  position:relative;
+  min-height:112px;
+  display:grid;
+  grid-template-columns:1fr .8fr auto;
+  gap:24px;
+  align-items:center;
+  padding:22px 32px;
+  border-top:1px solid rgba(32,33,36,.055);
+  border-bottom:1px solid rgba(32,33,36,.055);
+  background:
+    linear-gradient(90deg,rgba(241,255,222,.74),rgba(230,250,246,.72) 52%,rgba(239,237,255,.72));
+}
+
+.distributors-page .stack-blueprint__bridge-copy{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.distributors-page .stack-blueprint__mark{
+  width:44px;height:44px;
+  display:grid;place-items:center;
+  flex:0 0 auto;
+  border-radius:14px;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(32,33,36,.045);
+}
+
+.distributors-page .stack-blueprint__mark .brand-mark{
+  width:25px;height:25px;
+}
+
+.distributors-page .stack-blueprint__bridge-copy small{
+  display:block;
+  color:var(--muted);
+  font-size:.54rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.distributors-page .stack-blueprint__bridge-copy strong{
+  display:block;
+  margin-top:4px;
+  max-width:440px;
+  font-size:.86rem;
+  font-weight:700;
+  line-height:1.4;
+}
+
+.distributors-page .stack-blueprint__bridge-flow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.distributors-page .stack-blueprint__bridge-flow span{
+  width:58px;
+  height:1px;
+  background:rgba(32,33,36,.18);
+}
+
+.distributors-page .stack-blueprint__bridge-flow i{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#bfff00;
+  box-shadow:0 0 0 4px rgba(191,255,0,.12);
+}
+
+.distributors-page .stack-blueprint__bridge-status{
+  padding:8px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.78);
+  color:#647112;
+  font-size:.56rem;
+  font-weight:700;
+}
+
+.distributors-page .stack-blueprint__principles{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  margin-top:34px;
+  border-top:1px solid rgba(32,33,36,.075);
+  border-bottom:1px solid rgba(32,33,36,.075);
+}
+
+.distributors-page .stack-blueprint__principles article{
+  min-height:210px;
+  padding:30px 28px 28px 0;
+}
+
+.distributors-page .stack-blueprint__principles article+article{
+  padding-left:28px;
+  border-left:1px solid rgba(32,33,36,.075);
+}
+
+.distributors-page .stack-blueprint__principles span{
+  color:var(--muted);
+  font-size:.6rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.distributors-page .stack-blueprint__principles h3{
+  margin:17px 0 0;
+  max-width:370px;
+  font-size:1rem;
+  font-weight:700;
+  line-height:1.45;
+  letter-spacing:-.022em;
+}
+
+.distributors-page .stack-blueprint__principles p{
+  margin:10px 0 0;
+  max-width:390px;
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:400;
+  line-height:1.62;
+}
+
+/* Hide superseded integration-map UI */
+.distributors-page .stack-section--blueprint .stack-layout,
+.distributors-page .stack-section--blueprint .stack-copy,
+.distributors-page .stack-section--blueprint .stack-visual,
+.distributors-page .stack-section--blueprint .stack-shell,
+.distributors-page .stack-section--blueprint .integration-map,
+.distributors-page .stack-section--blueprint .integration-core,
+.distributors-page .stack-section--blueprint .integration-node{
+  display:none!important;
+}
+
+@media (max-width:1000px){
+  .distributors-page .stack-blueprint__head{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .distributors-page .stack-blueprint__row{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .distributors-page .stack-blueprint__items{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .distributors-page .stack-blueprint__bridge{
+    grid-template-columns:1fr auto;
+  }
+
+  .distributors-page .stack-blueprint__bridge-flow{
+    display:none;
+  }
+
+  .distributors-page .stack-blueprint__principles{
+    grid-template-columns:1fr;
+  }
+
+  .distributors-page .stack-blueprint__principles article{
+    min-height:auto;
+    padding:24px 0;
+  }
+
+  .distributors-page .stack-blueprint__principles article+article{
+    padding-left:0;
+    border-left:0;
+    border-top:1px solid rgba(32,33,36,.075);
+  }
+}
+
+@media (max-width:720px){
+  .distributors-page .stack-blueprint__head{
+    margin-bottom:38px;
+  }
+
+  .distributors-page .stack-blueprint{
+    border-radius:26px;
+  }
+
+  .distributors-page .stack-blueprint__rail{
+    display:none;
+  }
+
+  .distributors-page .stack-blueprint__row{
+    min-height:auto;
+    padding:24px 20px;
+  }
+
+  .distributors-page .stack-blueprint__items{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .distributors-page .stack-token{
+    min-height:78px;
+    padding:12px;
+  }
+
+  .distributors-page .stack-blueprint__bridge{
+    grid-template-columns:1fr;
+    padding:20px;
+  }
+
+  .distributors-page .stack-blueprint__bridge-status{
+    justify-self:start;
+  }
+
+  .distributors-page .stack-blueprint__label strong{
+    font-size:.94rem;
+  }
+}
+
+@media (max-width:500px){
+  .distributors-page .stack-blueprint__items{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ==========================================================================
+   CUSTOMER STORY — EDITORIAL CASE-STUDY STRIP
+   Deliberately avoids the repeated split-card / dashboard pattern.
+   ========================================================================== */
+
+.distributors-page .distributor-story{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(169,248,237,.15),transparent 25%),
+    radial-gradient(circle at 92% 88%,rgba(221,217,255,.15),transparent 26%),
+    #fff;
+}
+
+.distributors-page .distributor-story__head{
+  max-width:980px;
+  margin:0 auto 56px;
+  text-align:center;
+}
+
+.distributors-page .distributor-story__head .lead{
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.distributors-page .distributor-story__feature{
+  position:relative;
+  width:min(100%,1120px);
+  margin:0 auto;
+  padding:42px 46px 38px;
+  border-top:1px solid rgba(32,33,36,.08);
+  border-bottom:1px solid rgba(32,33,36,.08);
+}
+
+.distributors-page .distributor-story__feature::before{
+  content:"";
+  position:absolute;
+  left:-8%;
+  top:-40%;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(191,255,0,.12),transparent 70%);
+  pointer-events:none;
+}
+
+.distributors-page .distributor-story__identity{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.distributors-page .distributor-story__logo{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border-radius:14px;
+  background:linear-gradient(135deg,#bfff00,#a9f8ed);
+  color:var(--ink);
+  font-size:1rem;
+  font-weight:700;
+}
+
+.distributors-page .distributor-story__identity strong{
+  display:block;
+  font-size:.87rem;
+  font-weight:700;
+}
+
+.distributors-page .distributor-story__identity span:not(.distributor-story__tag){
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:.62rem;
+  font-weight:500;
+}
+
+.distributors-page .distributor-story__tag{
+  margin-left:auto;
+  padding:8px 10px;
+  border-radius:999px;
+  background:#f7f7f4;
+  color:var(--muted);
+  font-size:.58rem;
+  font-weight:600;
+}
+
+.distributors-page .distributor-story__quote{
+  position:relative;
+  z-index:2;
+  max-width:980px;
+  margin:40px 0 0;
+  font-size:clamp(1.75rem,3vw,3.15rem);
+  font-weight:500;
+  line-height:1.23;
+  letter-spacing:-.04em;
+}
+
+.distributors-page .distributor-story__subquote{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:48px minmax(0,760px);
+  gap:16px;
+  align-items:start;
+  max-width:850px;
+  margin-top:34px;
+}
+
+.distributors-page .distributor-story__subquote-mark{
+  color:#d7d4ff;
+  font-size:4rem;
+  font-weight:700;
+  line-height:.8;
+}
+
+.distributors-page .distributor-story__subquote p{
+  margin:0;
+  color:var(--muted);
+  font-size:1rem;
+  font-weight:400;
+  line-height:1.7;
+}
+
+.distributors-page .distributor-story__metrics{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.15fr;
+  gap:0;
+  width:min(100%,1120px);
+  margin:34px auto 0;
+  overflow:hidden;
+  border:1px solid rgba(32,33,36,.065);
+  border-radius:26px;
+}
+
+.distributors-page .customer-metric{
+  min-height:190px;
+  padding:28px;
+}
+
+.distributors-page .customer-metric + .customer-metric{
+  border-left:1px solid rgba(32,33,36,.06);
+}
+
+.distributors-page .customer-metric--mint{
+  background:rgba(169,248,237,.23);
+}
+
+.distributors-page .customer-metric--lav{
+  background:rgba(221,217,255,.30);
+}
+
+.distributors-page .customer-metric--peach{
+  background:rgba(255,210,186,.30);
+}
+
+.distributors-page .customer-metric__label{
+  display:block;
+  color:var(--muted);
+  font-size:.61rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.distributors-page .customer-metric strong{
+  display:block;
+  margin-top:16px;
+  font-size:clamp(2.5rem,4.3vw,4.8rem);
+  font-weight:700;
+  line-height:.95;
+  letter-spacing:-.055em;
+}
+
+.distributors-page .customer-metric p{
+  max-width:300px;
+  margin:10px 0 0;
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:400;
+  line-height:1.55;
+}
+
+.distributors-page .distributor-story__footer{
+  width:min(100%,1120px);
+  margin:0 auto;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  padding-top:28px;
+}
+
+.distributors-page .distributor-story__footer-label{
+  display:block;
+  color:var(--muted);
+  font-size:.59rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.distributors-page .distributor-story__chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:12px;
+}
+
+.distributors-page .distributor-story__chips span{
+  padding:8px 10px;
+  border:1px solid rgba(32,33,36,.065);
+  border-radius:999px;
+  background:#fff;
+  color:#65676c;
+  font-size:.58rem;
+  font-weight:600;
+}
+
+.distributors-page .distributor-story__cta{
+  flex:0 0 auto;
+  margin-top:0;
+}
+
+@media (max-width:900px){
+  .distributors-page .distributor-story__metrics{
+    grid-template-columns:1fr;
+  }
+
+  .distributors-page .customer-metric + .customer-metric{
+    border-left:0;
+    border-top:1px solid rgba(32,33,36,.06);
+  }
+
+  .distributors-page .distributor-story__footer{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+
+@media (max-width:720px){
+  .distributors-page .distributor-story__head{
+    margin-bottom:38px;
+    text-align:left;
+  }
+
+  .distributors-page .distributor-story__head .lead{
+    margin-left:0;
+    margin-right:0;
+  }
+
+  .distributors-page .distributor-story__feature{
+    width:100%;
+    padding:28px 0;
+  }
+
+  .distributors-page .distributor-story__identity{
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+
+  .distributors-page .distributor-story__tag{
+    width:100%;
+    margin-left:57px;
+    margin-top:-5px;
+    justify-self:start;
+  }
+
+  .distributors-page .distributor-story__quote{
+    margin-top:30px;
+    font-size:clamp(1.55rem,7vw,2.3rem);
+  }
+
+  .distributors-page .distributor-story__subquote{
+    grid-template-columns:34px 1fr;
+  }
+
+  .distributors-page .distributor-story__subquote-mark{
+    font-size:3rem;
+  }
+
+  .distributors-page .distributor-story__subquote p{
+    font-size:.92rem;
+  }
+
+  .distributors-page .customer-metric{
+    min-height:auto;
+    padding:24px;
+  }
+
+  .distributors-page .customer-metric strong{
+    font-size:clamp(2.4rem,12vw,4rem);
+  }
+}
+
+
+</style>
+
+
+<section class="hero" id="top">
+  <div class="shell hero-grid">
+    <div data-reveal>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span>
+        <a href="/industries/">Industries</a><span>/</span>
+        <strong>Promotional Products Distributors</strong>
+      </nav>
+
+      <p class="kicker">For promotional products distributors</p>
+
+      <h1>Make company stores easier to launch and easier to operate.</h1>
+
+      <p class="hero-copy">
+        Swishtag helps promotional products distributors use Shopify as a flexible commerce layer while keeping the systems and supplier relationships that already matter to the business.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button button--lime" href="/book-demo/">
+          <span>Book a demo</span><span class="button__arrow">↗</span>
+        </a>
+        <a class="button button--white" href="#solutions">Explore solutions</a>
+      </div>
+
+      <div class="hero-chips">
+        <span class="chip">Company stores</span>
+        <span class="chip">SAGE + Shopify</span>
+        <span class="chip">Multi-store automation</span>
+      </div>
+    </div>
+
+    <div class="distributor-stage" data-reveal aria-label="Distributor operations visual">
+      <div class="stage-glow"></div>
+      <div class="stage-orbit stage-orbit--one"></div>
+      <div class="stage-orbit stage-orbit--two"></div>
+
+      <svg class="stage-path" viewBox="0 0 700 660" aria-hidden="true">
+        <path d="M130 128 C245 115, 278 205, 355 262"/>
+        <path d="M574 199 C480 205, 440 232, 392 281"/>
+        <path d="M158 527 C255 492, 278 432, 329 393"/>
+        <path d="M563 551 C476 494, 435 438, 393 395"/>
+        <circle cx="130" cy="128" r="4"/>
+        <circle cx="574" cy="199" r="4"/>
+        <circle cx="158" cy="527" r="4"/>
+        <circle cx="563" cy="551" r="4"/>
+      </svg>
+
+      <div class="control-center">
+        <div class="control-window">
+          <div class="control-window__bar">
+            <div class="window-dots"><i></i><i></i><i></i></div>
+            <div class="control-window__brand">
+              <span class="brand-mark"></span>
+              <span>Distributor Control</span>
+            </div>
+            <span class="window-live">Live</span>
+          </div>
+
+          <div class="control-body">
+            <aside class="control-sidebar">
+              <div class="side-logo">SWISHTAG</div>
+              <div class="side-nav">
+                <span class="active">Overview</span>
+                <span>Stores</span>
+                <span>Industries</span>
+                <span>Orders</span>
+                <span>Suppliers</span>
+                <span>Reports</span>
+              </div>
+            </aside>
+
+            <div class="control-main">
+              <div class="control-main__head">
+                <div>
+                  <small>DISTRIBUTOR ADMIN</small>
+                  <strong>Promotional Products Distributor</strong>
+                </div>
+                <span class="control-main__action">View portfolio</span>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric"><small>Active stores</small><strong>24</strong></div>
+                <div class="metric"><small>Orders today</small><strong>138</strong></div>
+                <div class="metric"><small>Catalog sync</small><strong>99.8%</strong></div>
+              </div>
+
+              <div class="store-table">
+                <div class="store-table__head"><span>Store</span><span>Model</span><span>Status</span></div>
+                <div class="store-line">
+                  <span class="store-line__name"><i class="store-thumb"></i>ABC Corp</span>
+                  <span class="store-line__light">POD + stock</span>
+                  <span class="store-status">Live</span>
+                </div>
+                <div class="store-line">
+                  <span class="store-line__name"><i class="store-thumb"></i>Northside</span>
+                  <span class="store-line__light">Inventory</span>
+                  <span class="store-status">Live</span>
+                </div>
+                <div class="store-line">
+                  <span class="store-line__name"><i class="store-thumb"></i>Vertex</span>
+                  <span class="store-line__light">POD</span>
+                  <span class="store-status">Live</span>
+                </div>
+                <div class="store-line">
+                  <span class="store-line__name"><i class="store-thumb"></i>BrightCo</span>
+                  <span class="store-line__light">Program</span>
+                  <span class="store-status">Live</span>
+                </div>
+              </div>
+
+              <div class="hero-micro-board">
+                <div class="hero-micro-board__head">
+                  <strong>Industry programs</strong>
+                  <span>Distributor view</span>
+                </div>
+                <div class="industry-strip">
+                  <span class="industry-badge active">Healthcare</span>
+                  <span class="industry-badge">Education</span>
+                  <span class="industry-badge">Franchise</span>
+                </div>
+                <div class="admin-statline">
+                  <span><b>12</b> live programs</span>
+                  <span><b>4</b> awaiting approval</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="floating-node floating-node--catalog">
+        <span class="floating-node__icon">CAT</span>
+        <span>Catalog data</span>
+      </div>
+
+      <div class="floating-panel floating-panel--industries">
+        <strong>Industries</strong>
+        <p>Build stores around the client program, not one fixed template.</p>
+        <div class="floating-panel__tags">
+          <span>Healthcare</span>
+          <span>Education</span>
+          <span>Corporate</span>
+        </div>
+      </div>
+
+      <div class="floating-node floating-node--orders">
+        <span class="floating-node__icon">ORD</span>
+        <span>Order flow</span>
+      </div>
+      <div class="floating-node floating-node--supplier">
+        <span class="floating-node__icon">SUP</span>
+        <span>Supplier network</span>
+      </div>
+      <div class="floating-node floating-node--scale">
+        <span class="floating-node__icon">24</span>
+        <span>Multi-store</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="intro-bridge">
+  <div class="shell">
+    <div class="bridge-panel" data-reveal>
+      <h2>Do not replace a working stack just to modernize the storefront.</h2>
+      <p>The practical approach is usually to keep the core promo systems and add Shopify, middleware, or automation where they create a better customer and operator experience.</p>
+    </div>
+  </div>
+</div>
+
+<nav class="story-nav" aria-label="On this page">
+  <div class="shell story-nav__inner">
+    <span class="story-nav__label">On this page</span>
+    <a href="#pressure">Distributor reality</a>
+    <a href="#solutions">Solution paths</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#integrations">Existing stack</a>
+    <a href="#scale">Scale</a>
+    <a href="#faq">FAQs</a>
+  </div>
+</nav>
+
+<section class="section pressure" id="pressure">
+  <div class="shell pressure-grid">
+    <div class="pressure-copy" data-reveal>
+      <p class="kicker">Distributor reality</p>
+      <h2 class="display display--medium">The storefront is only one part of the job.</h2>
+      <p class="lead">A distributor is coordinating client programs, suppliers, catalog data, approvals, order handoffs, fulfillment models, and internal systems. The technology has to respect that reality.</p>
+    </div>
+
+    <div class="pressure-stream" data-stagger>
+      <article class="pressure-row">
+        <span class="pressure-row__icon">01</span>
+        <div>
+          <strong>Every client store is slightly different.</strong>
+          <p>POD, stocked inventory, allowances, restricted catalogs, approvals, locations, and program rules change from client to client.</p>
+        </div>
+        <span class="pressure-row__tag">Client programs</span>
+      </article>
+
+      <article class="pressure-row">
+        <span class="pressure-row__icon">02</span>
+        <div>
+          <strong>Product data already lives somewhere.</strong>
+          <p>The goal should be to reuse dependable supplier or SAGE data where possible, not manually recreate the same catalog information.</p>
+        </div>
+        <span class="pressure-row__tag">Catalogs</span>
+      </article>
+
+      <article class="pressure-row">
+        <span class="pressure-row__icon">03</span>
+        <div>
+          <strong>Orders still have to move through the real operation.</strong>
+          <p>A beautiful storefront is not enough if order routing, supplier handoff, approval, and reporting still depend on manual bridging.</p>
+        </div>
+        <span class="pressure-row__tag">Orders</span>
+      </article>
+
+      <article class="pressure-row">
+        <span class="pressure-row__icon">04</span>
+        <div>
+          <strong>What works for five stores breaks at fifty.</strong>
+          <p>As the portfolio grows, teams need centralized visibility, clearer ownership, and automation around repeated administration.</p>
+        </div>
+        <span class="pressure-row__tag">Scale</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section paths" id="solutions">
+  <div class="shell">
+    <div class="paths-head" data-reveal>
+      <div>
+        <p class="kicker">Three practical paths</p>
+        <h2 class="display">Start with the client need. Add the right layer.</h2>
+      </div>
+      <p class="lead">Not every program needs the same architecture. Start with the problem in front of you, then add integration and automation only where it has a clear operational job.</p>
+    </div>
+
+    <div class="path-stack">
+
+      <article class="path" data-reveal>
+        <div class="path-copy">
+          <span class="path-number">01</span>
+          <h3>Launch the company store.</h3>
+          <p>Create branded Shopify company stores for repeat ordering, programs, POD, inventory, or hybrid fulfillment models.</p>
+
+          <div class="path-list">
+            <span><i>✓</i>Branded client storefront</span>
+            <span><i>✓</i>POD, inventory, or hybrid models</span>
+            <span><i>✓</i>Program-specific product experience</span>
+          </div>
+
+          <a class="inline-link" href="/solutions/shopify-company-store/">
+            <span>Explore company stores</span><span class="inline-link__icon">→</span>
+          </a>
+        </div>
+
+        <div class="path-visual path-visual--store" aria-hidden="true">
+          <div class="store-builder">
+            <div class="builder-top">
+              <span class="builder-top__brand"><i></i>Client Company Store</span>
+              <span class="builder-top__actions"><i></i><i></i></span>
+            </div>
+            <div class="builder-body">
+              <div class="builder-side"><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="builder-canvas">
+                <div class="builder-toolbar">
+                  <span class="builder-pill active">Healthcare</span>
+                  <span class="builder-pill">Corporate</span>
+                  <span class="builder-pill">Education</span>
+                </div>
+                <div class="builder-hero">
+                  <div class="builder-hero__copy"><i></i><i></i><i></i><i></i></div>
+                  <div class="builder-hero__art"></div>
+                </div>
+
+                <div class="builder-panels">
+                  <div class="builder-panel">
+                    <div class="builder-panel__lines"><i></i><i></i><i></i></div>
+                    <div class="product-mini-grid">
+                      <div class="product-mini"><i></i><b>Apparel</b><span>POD ready</span></div>
+                      <div class="product-mini"><i></i><b>Drinkware</b><span>In stock</span></div>
+                      <div class="product-mini"><i></i><b>Bags</b><span>Program item</span></div>
+                    </div>
+                  </div>
+
+                  <div class="builder-panel builder-panel--stats">
+                    <div class="builder-panel__list">
+                      <span><span>Program type</span><b>Company store</b></span>
+                      <span><span>Audience</span><b>Employees</b></span>
+                      <span><span>Fulfillment</span><b>Hybrid</b></span>
+                      <span><span>Status</span><b>Launch ready</b></span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="path" data-reveal>
+        <div class="path-copy">
+          <span class="path-number">02</span>
+          <h3>Connect approved SAGE data.</h3>
+          <p>Reduce repeated work by moving dependable product information into the Shopify experience instead of rebuilding the same catalog manually.</p>
+
+          <div class="path-list">
+            <span><i>✓</i>Reuse agreed product data</span>
+            <span><i>✓</i>Cleaner catalog administration</span>
+            <span><i>✓</i>Shopify remains the client-facing layer</span>
+          </div>
+
+          <a class="inline-link" href="/solutions/shopify-sage-connect-integration/">
+            <span>Explore SAGE connection</span><span class="inline-link__icon">→</span>
+          </a>
+        </div>
+
+        <div class="path-visual path-visual--sage" aria-hidden="true">
+          <div class="sage-flow">
+            <div class="sage-panel">
+              <div class="sage-panel__top">
+                <span class="sage-panel__label"><i class="sage-panel__logo">S</i>SAGE data</span>
+                <span class="sage-panel__status">Connected</span>
+              </div>
+              <div class="catalog-lines">
+                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Performance Polo</strong><small>SKU · Colors · Pricing</small></span><em>Ready</em></div>
+                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Vacuum Tumbler</strong><small>SKU · Colors · Pricing</small></span><em>Ready</em></div>
+                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Canvas Tote</strong><small>SKU · Colors · Pricing</small></span><em>Ready</em></div>
+                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Softshell Jacket</strong><small>SKU · Colors · Pricing</small></span><em>Ready</em></div>
+              </div>
+            </div>
+
+            <div class="flow-bridge">
+              <span class="flow-bridge__hub">DATA<br>FLOW</span>
+              <span class="flow-pulse"></span>
+            </div>
+
+            <div class="sage-panel sage-panel--shopify">
+              <div class="sage-panel__top">
+                <span class="sage-panel__label"><i class="sage-panel__logo">S</i>Shopify</span>
+                <span class="sage-panel__status">Published</span>
+              </div>
+              <div class="catalog-lines">
+                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Performance Polo</strong><small>Client catalog</small></span><em>Live</em></div>
+                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Vacuum Tumbler</strong><small>Client catalog</small></span><em>Live</em></div>
+                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Canvas Tote</strong><small>Client catalog</small></span><em>Live</em></div>
+                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Softshell Jacket</strong><small>Client catalog</small></span><em>Live</em></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="path" data-reveal>
+        <div class="path-copy">
+          <span class="path-number">03</span>
+          <h3>Control the store portfolio.</h3>
+          <p>Centralize reporting, routing, and automation when a growing store portfolio becomes too large for manual administration.</p>
+
+          <div class="path-list">
+            <span><i>✓</i>Shared portfolio visibility</span>
+            <span><i>✓</i>Operational routing and reporting</span>
+            <span><i>✓</i>Automation where scale justifies it</span>
+          </div>
+
+          <a class="inline-link" href="/solutions/enterprise-shopify-automation/">
+            <span>Explore enterprise automation</span><span class="inline-link__icon">→</span>
+          </a>
+        </div>
+
+        <div class="path-visual path-visual--scale" aria-hidden="true">
+          <div class="scale-dashboard">
+            <div class="scale-top"><strong>Multi-store control</strong><span>24 active stores</span></div>
+            <div class="scale-layout">
+              <div class="scale-side"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="scale-main">
+                <div class="scale-metrics">
+                  <div class="scale-metric"><small>Orders</small><strong>2,841</strong></div>
+                  <div class="scale-metric"><small>Stores</small><strong>24</strong></div>
+                  <div class="scale-metric"><small>Exceptions</small><strong>12</strong></div>
+                </div>
+
+                <div class="scale-chart">
+                  <svg viewBox="0 0 420 110" preserveAspectRatio="none">
+                    <path d="M0 82 C55 75 88 80 126 54 S205 63 246 41 S328 45 420 19"/>
+                    <circle cx="126" cy="54" r="5"/>
+                    <circle cx="246" cy="41" r="5"/>
+                    <circle cx="420" cy="19" r="5"/>
+                  </svg>
+                </div>
+
+                <div class="scale-orders">
+                  <div class="scale-order"><strong>ABC Corp · #10482</strong><small>Routed to supplier</small></div>
+                  <div class="scale-order"><strong>Vertex · #10481</strong><small>Approval complete</small></div>
+                  <div class="scale-order"><strong>Northside · #10480</strong><small>Awaiting artwork</small></div>
+                  <div class="scale-order"><strong>BrightCo · #10479</strong><small>Ready to fulfill</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section workflow" id="workflow">
+  <div class="shell">
+    <div class="workflow-head" data-reveal>
+      <div>
+        <p class="kicker">Distributor workflow</p>
+        <h2 class="display">Connect the storefront to the way the operation actually works.</h2>
+      </div>
+      <p class="lead">The customer sees a clean Shopify experience. Behind it, the distributor still has to coordinate products, suppliers, orders, approvals, and internal ownership. That is where the connected workflow matters.</p>
+    </div>
+
+    <div class="workflow-system" data-reveal>
+      <div class="workflow-system__top">
+        <div>
+          <span class="workflow-system__eyebrow">Connected distributor workflow</span>
+          <strong>One client journey, connected from program setup to operations.</strong>
+        </div>
+        <span class="workflow-system__status"><i></i>Connected</span>
+      </div>
+
+      <div class="workflow-journey">
+        <div class="workflow-journey__line" aria-hidden="true"></div>
+
+        <article class="workflow-step workflow-step--1">
+          <div class="workflow-step__top">
+            <span class="workflow-step__number">01</span>
+            <span class="workflow-step__type">Program</span>
+          </div>
+          <div class="workflow-step__icon workflow-step__icon--lime" aria-hidden="true">CP</div>
+          <h3>Client program</h3>
+          <p>Repeat ordering, employee store, dealer program, inventory, POD, or hybrid requirements.</p>
+        </article>
+
+        <article class="workflow-step workflow-step--2">
+          <div class="workflow-step__top">
+            <span class="workflow-step__number">02</span>
+            <span class="workflow-step__type">Commerce</span>
+          </div>
+          <div class="workflow-step__icon workflow-step__icon--mint" aria-hidden="true">SH</div>
+          <h3>Shopify company store</h3>
+          <p>The customer-facing buying experience built around the program.</p>
+        </article>
+
+        <article class="workflow-step workflow-step--3">
+          <div class="workflow-step__top">
+            <span class="workflow-step__number">03</span>
+            <span class="workflow-step__type">Data</span>
+          </div>
+          <div class="workflow-step__icon workflow-step__icon--lav" aria-hidden="true">CAT</div>
+          <h3>Catalog + supplier data</h3>
+          <p>Approved SAGE, supplier, or internal product information where appropriate.</p>
+        </article>
+
+        <article class="workflow-step workflow-step--4">
+          <div class="workflow-step__top">
+            <span class="workflow-step__number">04</span>
+            <span class="workflow-step__type">Orders</span>
+          </div>
+          <div class="workflow-step__icon workflow-step__icon--peach" aria-hidden="true">PO</div>
+          <h3>Order workflow</h3>
+          <p>Approvals, routing, supplier handoff, procurement requirements, and exceptions.</p>
+        </article>
+
+        <article class="workflow-step workflow-step--5">
+          <div class="workflow-step__top">
+            <span class="workflow-step__number">05</span>
+            <span class="workflow-step__type">Operations</span>
+          </div>
+          <div class="workflow-step__icon workflow-step__icon--lime" aria-hidden="true">OPS</div>
+          <h3>Distributor operations</h3>
+          <p>Portfolio reporting, visibility, ownership, and automation as complexity grows.</p>
+        </article>
+      </div>
+
+      <div class="workflow-layer">
+        <div class="workflow-layer__brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <span>SWISHTAG CONNECTED LAYER</span>
+            <small>Shopify + integrations + automation</small>
+          </div>
+        </div>
+
+        <div class="workflow-layer__signals">
+          <span><i></i>Storefront</span>
+          <span><i></i>Catalogs</span>
+          <span><i></i>Orders</span>
+          <span><i></i>Reporting</span>
+        </div>
+      </div>
+
+      <div class="workflow-system__note">
+        <span class="workflow-system__note-icon">✓</span>
+        <p><strong>The goal is not more software.</strong> The goal is fewer repeated handoffs, clearer ownership, and a better buying experience for the client.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section distributor-story" id="customer-story">
+  <div class="shell">
+    <div class="distributor-story__head" data-reveal>
+      <p class="kicker">Customer story · Club Colors</p>
+      <h2 class="display display--medium">Built into the operation. Trusted like part of the team.</h2>
+      <p class="lead">A long-term commerce and automation partnership supporting a complex promotional products operation at scale.</p>
+    </div>
+
+    <div class="distributor-story__feature" data-reveal>
+      <div class="distributor-story__identity">
+        <div class="distributor-story__logo" aria-hidden="true">C</div>
+        <div>
+          <strong>Club Colors</strong>
+          <span>Promotional products distributor</span>
+        </div>
+        <span class="distributor-story__tag">Long-term partner</span>
+      </div>
+
+      <blockquote class="distributor-story__quote">
+        “We’ve worked with Swishtag for several years, and they’ve become a key part of our team. They’ve helped us build enterprise-level commerce workflows that support our business, and their work has been consistently reliable and high quality.”
+      </blockquote>
+
+      <div class="distributor-story__subquote">
+        <span class="distributor-story__subquote-mark">“</span>
+        <p>What stands out most is that they don’t just execute. They think critically, offer helpful suggestions, and speak up when something could be improved.</p>
+      </div>
+    </div>
+
+    <div class="distributor-story__metrics" data-stagger>
+      <article class="customer-metric customer-metric--mint">
+        <span class="customer-metric__label">Client stores supported</span>
+        <strong>150+</strong>
+        <p>through a centralized commerce ecosystem</p>
+      </article>
+
+      <article class="customer-metric customer-metric--lav">
+        <span class="customer-metric__label">Orders powered</span>
+        <strong>$40M+</strong>
+        <p>through technology delivered by Swishtag</p>
+      </article>
+
+      <article class="customer-metric customer-metric--peach">
+        <span class="customer-metric__label">Partnership</span>
+        <strong>Several years</strong>
+        <p>of continued development, support, and operational partnership</p>
+      </article>
+    </div>
+
+    <div class="distributor-story__footer" data-reveal>
+      <div>
+        <span class="distributor-story__footer-label">What this partnership demonstrates</span>
+        <div class="distributor-story__chips">
+          <span>Multi-store technology</span>
+          <span>Enterprise workflows</span>
+          <span>Ongoing support</span>
+          <span>Proactive recommendations</span>
+        </div>
+      </div>
+
+      <a class="inline-link distributor-story__cta" href="/book-demo/">
+        <span>Automate my company</span>
+        <span class="inline-link__icon">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="section coverage">
+  <div class="shell coverage-grid">
+    <div data-reveal>
+      <p class="kicker">What this page covers</p>
+      <h2 class="display display--medium">The distributor problems worth solving first.</h2>
+      <p class="lead">The right build depends on the program, the client requirement, and the systems already working behind the scenes.</p>
+    </div>
+
+    <div class="coverage-list" data-stagger>
+      <article class="coverage-row">
+        <span class="coverage-check">✓</span>
+        <div>
+          <strong>Launch new company-store programs faster.</strong>
+          <p>Build the buying experience around repeat ordering, programs, POD, inventory, or a hybrid model.</p>
+        </div>
+        <span class="coverage-row__arrow">↗</span>
+      </article>
+
+      <article class="coverage-row">
+        <span class="coverage-check">✓</span>
+        <div>
+          <strong>Reduce repeated product and order administration.</strong>
+          <p>Connect the data and workflows that create unnecessary copying, checking, and manual handoffs.</p>
+        </div>
+        <span class="coverage-row__arrow">↗</span>
+      </article>
+
+      <article class="coverage-row">
+        <span class="coverage-check">✓</span>
+        <div>
+          <strong>Support PunchOut or custom procurement requirements.</strong>
+          <p>Add enterprise procurement connectivity when a specific client program requires it.</p>
+        </div>
+        <span class="coverage-row__arrow">↗</span>
+      </article>
+
+      <article class="coverage-row">
+        <span class="coverage-check">✓</span>
+        <div>
+          <strong>Centralize multi-store visibility as the portfolio grows.</strong>
+          <p>Move from store-by-store administration to a more controlled operating model when scale demands it.</p>
+        </div>
+        <span class="coverage-row__arrow">↗</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="shell faq-grid">
+    <div class="faq-copy" data-reveal>
+      <p class="kicker">Frequently Asked Questions</p>
+      <h2>Before you change the stack.</h2>
+      <p>Most distributor projects do not need a full platform replacement. Start with the client requirement, the existing workflow, and the repeated work worth removing.</p>
+
+      <a class="inline-link" href="/book-demo/">
+        <span>Ask us something specific</span><span class="inline-link__icon">→</span>
+      </a>
+    </div>
+
+    <div class="faq-list" data-reveal>
+      <div class="faq-item open">
+        <button class="faq-question" aria-expanded="true">
+          <span>Do we need to replace SAGE, commonsku, ESP+, or our current workflow?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer"><div><p>No. The goal is not to replace a system that is already working. Swishtag can use Shopify as the customer-facing commerce layer and connect existing systems only where integration or automation creates a practical improvement.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Can you build a Shopify company store around our current supplier relationships?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer"><div><p>Yes. The store can be designed around the products, supplier relationships, fulfillment model, and client requirements that apply to the program.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Can SAGE product data be used inside Shopify?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer"><div><p>Where approved access and the required data are available, Swishtag can connect the agreed SAGE product information into a Shopify company-store experience instead of manually rebuilding the same catalog data.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What happens when we manage many company stores?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer"><div><p>That is where centralized visibility, reporting, routing, and workflow automation become more valuable. The operating model can grow from individual stores into a controlled multi-store environment.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Can you support PunchOut or other custom enterprise requirements?</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-answer"><div><p>Yes. Enterprise procurement and custom workflow requirements can be added when the client opportunity requires them, without forcing every company-store project into the same architecture.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prefooter">
+  <div class="shell">
+    <div class="cta" data-reveal>
+      <div class="cta__content">
+        <p class="kicker">Built for promotional products distributors</p>
+        <h2>Bring the client opportunity. We’ll build the store around the program.</h2>
+        <p>Promo-industry experience, Shopify company stores, flexible fulfillment, and practical integration support, built around the workflow you actually need.</p>
+
+        <a class="button button--lime" href="/book-demo/">
+          <span>Book a demo</span><span class="button__arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(() => {
+  const root = document.querySelector('.distributors-page');
+  if (!root) return;
+
+  root.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.faq-item');
+      if (!item) return;
+      const wasOpen = item.classList.contains('open');
+
+      root.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('open');
+        faq.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!wasOpen) {
+        item.classList.add('open');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  const revealTargets = root.querySelectorAll('[data-reveal],[data-stagger]');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.11, rootMargin: '0px 0px -30px 0px' });
+    revealTargets.forEach(target => observer.observe(target));
+  } else {
+    revealTargets.forEach(target => target.classList.add('visible'));
+  }
+
+  const scaleItems = root.querySelectorAll('.scale-rail__item');
+  scaleItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      scaleItems.forEach(element => element.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+})();
+</script>

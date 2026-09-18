@@ -1,0 +1,488 @@
+<style>
+
+.xecutor-page{
+  --lime:#C2FF02;--mint:#99FEED;--lav:#D9D6FD;--peach:#FFBD9B;
+  --ink:#202124;--muted:#6B7076;--line:rgba(32,33,36,.11);--soft:#F6F7F7;--white:#fff;
+  --page:min(1320px,calc(100vw - 48px));--ease:cubic-bezier(.22,.8,.24,1);
+  --shadow:0 24px 70px rgba(32,33,36,.09)
+}
+.xecutor-page *{box-sizing:border-box}html .xecutor-page{scroll-behavior:smooth}.xecutor-page{margin:0;font-family:"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff;overflow-x:hidden}.xecutor-page a{color:inherit;text-decoration:none}.xecutor-page button{font:inherit}.xecutor-page .xec-page{width:var(--page);margin:auto}.xecutor-page .xec-section{padding:108px 0;position:relative}.xecutor-page .xec-eyebrow{margin:0 0 16px;font-size:.76rem;line-height:1;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#777d84}.xecutor-page .xec-title{margin:0;max-width:900px;font-size:clamp(3rem,5.45vw,5.35rem);line-height:.96;letter-spacing:-.065em;font-weight:700}.xecutor-page .xec-copy{max-width:760px;margin:22px 0 0;color:var(--muted);font-size:clamp(1rem,1.35vw,1.2rem);line-height:1.72}.xecutor-page .xec-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.xecutor-page .xec-btn{min-height:54px;padding:0 22px;border-radius:999px;border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:.92rem;font-weight:800;transition:.25s var(--ease)}.xecutor-page .xec-btn:hover{transform:translateY(-2px)}.xecutor-page .xec-btn-primary{background:var(--lime);box-shadow:0 10px 24px rgba(194,255,2,.24)}.xecutor-page .xec-btn-outline{background:#fff;border-color:rgba(32,33,36,.20)}
+/* hero */
+.xecutor-page .xec-hero{min-height:100svh;padding:132px 0 72px;display:flex;align-items:center;overflow:hidden;background:radial-gradient(circle at 93% 5%,rgba(217,214,253,.54),transparent 22%),radial-gradient(circle at 81% 18%,rgba(153,254,237,.34),transparent 23%),radial-gradient(circle at 62% 78%,rgba(255,189,155,.14),transparent 18%),linear-gradient(180deg,#fff 0%,#fbffff 100%)}.xecutor-page .xec-hero-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:48px;align-items:center}.xecutor-page .xec-hero h1{margin:0;max-width:700px;font-size:clamp(4rem,6.35vw,6.65rem);line-height:.92;letter-spacing:-.073em;font-weight:700}.xecutor-page .xec-underline{position:relative;display:inline-block;z-index:0}.xecutor-page .xec-underline:after{content:"";position:absolute;z-index:-1;left:-.03em;right:-.03em;bottom:.03em;height:.18em;border-radius:999px;background:var(--lime);transform:rotate(-1deg)}.xecutor-page .xec-hero .xec-copy{max-width:650px}.xecutor-page .xec-hero-note{display:flex;align-items:center;gap:9px;margin-top:18px;color:#7b8086;font-size:.78rem}.xecutor-page .xec-hero-note i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 5px rgba(194,255,2,.16)}
+/* hero system visual */
+.xecutor-page .xec-system-stage{position:relative;min-height:660px;isolation:isolate}.xecutor-page .xec-stage-glow{position:absolute;inset:60px 0 10px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(153,254,237,.28),transparent 36%),radial-gradient(circle at 64% 56%,rgba(217,214,253,.32),transparent 46%);filter:blur(8px);z-index:-2}.xecutor-page .xec-grid-bg{position:absolute;inset:80px 40px 35px;background-image:linear-gradient(rgba(32,33,36,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(32,33,36,.035) 1px,transparent 1px);background-size:38px 38px;mask-image:radial-gradient(circle,#000 20%,transparent 78%);z-index:-1}.xecutor-page .xec-orbit{position:absolute;left:50%;top:51%;transform:translate(-50%,-50%);border:1px solid rgba(32,33,36,.10);border-radius:50%;pointer-events:none}.xecutor-page .xec-orbit.xec-o1{width:500px;height:500px}.xecutor-page .xec-orbit.xec-o2{width:365px;height:365px;border-style:dashed}.xecutor-page .xec-orbit.xec-o3{width:240px;height:240px;border-color:rgba(194,255,2,.34)}.xecutor-page .xec-hub{position:absolute;left:50%;top:51%;transform:translate(-50%,-50%);width:190px;height:190px;border-radius:50%;display:grid;place-items:center;text-align:center;background:var(--ink);color:#fff;box-shadow:0 0 0 28px rgba(153,254,237,.13),0 28px 58px rgba(32,33,36,.18);animation:hubFloat 5s ease-in-out infinite}.xecutor-page .xec-hub small{display:block;color:var(--mint);font-size:.58rem;font-weight:800;letter-spacing:.14em}.xecutor-page .xec-hub strong{display:block;margin-top:8px;font-size:1.65rem;letter-spacing:-.06em}.xecutor-page .xec-hub span{display:block;margin-top:7px;color:rgba(255,255,255,.56);font-size:.58rem}.xecutor-page .xec-hub-light{position:absolute;width:8px;height:8px;border-radius:50%;bottom:24px;left:50%;background:var(--lime);box-shadow:0 0 16px var(--lime);transform:translateX(-50%)}
+.xecutor-page .xec-connector{position:absolute;left:50%;top:51%;width:205px;height:1px;transform-origin:0 50%;background:repeating-linear-gradient(90deg,var(--lime) 0 5px,transparent 5px 13px);opacity:.8;animation:dash 3s linear infinite}.xecutor-page .xec-c1{transform:rotate(-135deg)}.xecutor-page .xec-c2{transform:rotate(-90deg)}.xecutor-page .xec-c3{transform:rotate(-42deg)}.xecutor-page .xec-c4{transform:rotate(0deg)}.xecutor-page .xec-c5{transform:rotate(45deg)}.xecutor-page .xec-c6{transform:rotate(90deg)}.xecutor-page .xec-c7{transform:rotate(135deg)}.xecutor-page .xec-c8{transform:rotate(180deg)}
+.xecutor-page .xec-float-card{position:absolute;min-width:150px;padding:14px 15px;border-radius:17px;background:rgba(255,255,255,.92);border:1px solid rgba(32,33,36,.09);box-shadow:0 18px 42px rgba(32,33,36,.10);backdrop-filter:blur(10px);animation:float 5s ease-in-out infinite}.xecutor-page .xec-float-card small{display:flex;align-items:center;gap:6px;color:#8a9097;font-size:.52rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.xecutor-page .xec-float-card small i{width:7px;height:7px;border-radius:50%;background:var(--lime)}.xecutor-page .xec-float-card strong{display:block;margin-top:8px;font-size:.78rem;letter-spacing:-.025em}.xecutor-page .xec-float-card span{display:block;margin-top:4px;color:#8b9095;font-size:.6rem}.xecutor-page .xec-f1{left:1%;top:12%;animation-delay:-.8s}.xecutor-page .xec-f2{left:37%;top:0;animation-delay:-1.7s}.xecutor-page .xec-f3{right:0;top:13%;animation-delay:-2.5s}.xecutor-page .xec-f4{right:-1%;top:44%;animation-delay:-.3s}.xecutor-page .xec-f5{right:2%;bottom:9%;animation-delay:-1.2s}.xecutor-page .xec-f6{left:39%;bottom:0;animation-delay:-2.1s}.xecutor-page .xec-f7{left:1%;bottom:10%;animation-delay:-3s}.xecutor-page .xec-f8{left:-2%;top:45%;animation-delay:-1.1s}.xecutor-page .xec-f2 small i,.xecutor-page .xec-f6 small i{background:var(--lav)}.xecutor-page .xec-f3 small i,.xecutor-page .xec-f5 small i{background:var(--mint)}.xecutor-page .xec-f4 small i,.xecutor-page .xec-f7 small i{background:var(--peach)}
+/* value strip */
+.xecutor-page .xec-value-strip{position:relative;padding:12px 0 54px;background:radial-gradient(ellipse at 50% 35%,rgba(220,238,255,.72) 0%,rgba(228,244,255,.44) 34%,rgba(237,248,255,.18) 58%,rgba(255,255,255,0) 82%)}.xecutor-page .xec-value-strip:before{content:"";position:absolute;left:0;right:0;top:-110px;height:220px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(224,242,255,.22),rgba(224,242,255,0));pointer-events:none}.xecutor-page .xec-value-panel{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr repeat(4,1fr);gap:12px;padding:24px;border-radius:28px;background:rgba(255,255,255,.88);border:1px solid rgba(32,33,36,.055);box-shadow:0 20px 54px rgba(70,96,120,.09);backdrop-filter:blur(12px)}.xecutor-page .xec-value-copy h3{margin:0;font-size:1.15rem;letter-spacing:-.04em}.xecutor-page .xec-value-copy p{margin:8px 0 0;color:var(--muted);font-size:.86rem;line-height:1.55}.xecutor-page .xec-value{padding:15px;border-radius:16px;background:#F7F5F2}.xecutor-page .xec-value b{display:block;font-size:1rem;letter-spacing:-.04em}.xecutor-page .xec-value span{display:block;margin-top:5px;color:var(--muted);font-size:.65rem;line-height:1.4}
+/* platform cards */
+.xecutor-page .xec-platform{background:radial-gradient(ellipse at 50% 0%,rgba(229,244,255,.34) 0%,rgba(245,250,255,.18) 34%,rgba(255,255,255,0) 68%),#fff}.xecutor-page .xec-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}.xecutor-page .xec-card{min-height:230px;padding:24px;border-radius:28px;border:1px solid rgba(32,33,36,.09);position:relative;overflow:hidden;transition:.3s var(--ease)}.xecutor-page .xec-card:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(32,33,36,.08)}.xecutor-page .xec-card:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-50px;top:-58px;background:rgba(255,255,255,.40)}.xecutor-page .xec-card:nth-child(1),.xecutor-page .xec-card:nth-child(5){background:#F1F9DA}.xecutor-page .xec-card:nth-child(2),.xecutor-page .xec-card:nth-child(6){background:#E5F8F7}.xecutor-page .xec-card:nth-child(3),.xecutor-page .xec-card:nth-child(7){background:#F9ECE5}.xecutor-page .xec-card:nth-child(4),.xecutor-page .xec-card:nth-child(8){background:#F0EEFC}.xecutor-page .xec-card-icon{display:grid;place-items:center;width:50px;height:50px;border-radius:15px;background:rgba(255,255,255,.55);font-size:.95rem;font-weight:800}.xecutor-page .xec-card h3{margin:64px 0 8px;font-size:1.16rem;letter-spacing:-.04em}.xecutor-page .xec-card p{margin:0;max-width:260px;color:#666c72;font-size:.76rem;line-height:1.6}.xecutor-page .xec-card-arrow{position:absolute;right:20px;bottom:20px;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.42);color:#858b91;font-size:.8rem;transition:.25s var(--ease)}.xecutor-page .xec-card:hover .xec-card-arrow{transform:translate(2px,-2px);background:rgba(32,33,36,.9);color:#fff}
+/* flow */
+.xecutor-page .xec-flow-panel{margin-top:44px;padding:34px;border:1px solid var(--line);border-radius:32px;background:#fff;box-shadow:0 14px 38px rgba(32,33,36,.04)}.xecutor-page .xec-flowline{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.xecutor-page .xec-flowline:before{content:"";position:absolute;left:7%;right:7%;top:34px;height:2px;background:linear-gradient(90deg,var(--mint),var(--peach),var(--lav),#d8dadb,var(--ink),#efefef)}.xecutor-page .xec-step{position:relative;z-index:1;text-align:center}.xecutor-page .xec-step i{display:grid;place-items:center;width:70px;height:70px;margin:auto;border-radius:22px;background:#fff;border:1px solid rgba(32,33,36,.08);box-shadow:0 10px 24px rgba(32,33,36,.05);font-style:normal;font-weight:800}.xecutor-page .xec-step:nth-child(1) i{background:var(--mint)}.xecutor-page .xec-step:nth-child(2) i{background:var(--peach)}.xecutor-page .xec-step:nth-child(3) i{background:var(--lav)}.xecutor-page .xec-step:nth-child(4) i{background:#F2F3F3}.xecutor-page .xec-step:nth-child(5) i{background:var(--ink);color:#fff}.xecutor-page .xec-step:nth-child(6) i{background:#fff}.xecutor-page .xec-step b{display:block;margin-top:12px;font-size:.76rem}.xecutor-page .xec-step span{display:block;margin-top:4px;color:#83888d;font-size:.6rem}
+/* dashboard */
+.xecutor-page .xec-dashboard-section{padding-top:24px}
+.xecutor-page .xec-dashboard-shell{padding:52px;border-radius:42px;background:radial-gradient(circle at 84% 14%,rgba(153,254,237,.28),transparent 24%),radial-gradient(circle at 12% 92%,rgba(217,214,253,.26),transparent 22%),linear-gradient(135deg,#FEFEFF 0%,#F7FBFF 54%,#F8F5FF 100%);color:var(--ink);border:1px solid rgba(32,33,36,.08);box-shadow:0 28px 64px rgba(32,33,36,.07)}
+.xecutor-page .xec-dash-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:44px;align-items:center}.xecutor-page .xec-dash-title{margin:0;font-size:clamp(2.9rem,4.6vw,4.8rem);line-height:.95;letter-spacing:-.07em;font-weight:700}.xecutor-page .xec-dash-copy{max-width:500px;margin:22px 0 0;color:var(--muted);line-height:1.72}.xecutor-page .xec-dash-points{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid rgba(32,33,36,.10)}.xecutor-page .xec-dash-points li{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid rgba(32,33,36,.10);font-size:.74rem}.xecutor-page .xec-dash-points b{color:#759c00;font-size:.64rem;text-transform:uppercase;letter-spacing:.06em}.xecutor-page .xec-dash-points span{color:#666d73;line-height:1.5}.xecutor-page .xec-dashboard{padding:18px;border-radius:28px;border:1px solid rgba(32,33,36,.08);background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(250,251,252,.92));box-shadow:0 18px 40px rgba(32,33,36,.06);transition:.3s var(--ease)}.xecutor-page .xec-dashboard:hover{transform:translateY(-4px);border-color:rgba(153,254,237,.55);box-shadow:0 22px 44px rgba(32,33,36,.08)}.xecutor-page .xec-dash-top{display:flex;justify-content:space-between;align-items:center;padding:7px 7px 16px;font-size:.62rem;font-weight:800;letter-spacing:.1em;color:#737981}.xecutor-page .xec-dash-live{color:#6e9300}.xecutor-page .xec-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.xecutor-page .xec-kpi{padding:13px;border:1px solid rgba(32,33,36,.08);border-radius:14px;background:#fff}.xecutor-page .xec-kpi b{display:block;font-size:1.2rem;letter-spacing:-.06em}.xecutor-page .xec-kpi span{display:block;margin-top:3px;color:#798089;font-size:.5rem}.xecutor-page .xec-jobs{margin-top:12px;border:1px solid rgba(32,33,36,.08);border-radius:16px;overflow:hidden;background:#fff}.xecutor-page .xec-jobrow{display:grid;grid-template-columns:1.3fr .7fr .7fr .55fr;gap:8px;padding:12px;border-bottom:1px solid rgba(32,33,36,.07);font-size:.56rem}.xecutor-page .xec-jobrow:last-child{border-bottom:0}.xecutor-page .xec-jobrow.xec-head{color:#798089;font-size:.48rem;text-transform:uppercase;letter-spacing:.08em;background:#FAFBFC}.xecutor-page .xec-jobname strong{display:block}.xecutor-page .xec-jobname small{display:block;margin-top:3px;color:#7d848a}.xecutor-page .xec-pill{display:inline-flex;padding:5px 7px;border-radius:999px;background:rgba(194,255,2,.18);color:#678900;font-size:.45rem;font-weight:800}.xecutor-page .xec-pill.xec-peach{background:rgba(255,189,155,.22);color:#b36b43}.xecutor-page .xec-bar{height:5px;border-radius:999px;background:#eef0f2;overflow:hidden}.xecutor-page .xec-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--lime),#b2ef58)}
+/* scanner */
+.xecutor-page .xec-scan-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:48px;align-items:center}.xecutor-page .xec-scanner{position:relative;min-height:438px;border-radius:34px;background:radial-gradient(circle at 80% 14%,rgba(217,214,253,.38),transparent 20%),radial-gradient(circle at 18% 82%,rgba(153,254,237,.28),transparent 22%),linear-gradient(135deg,#FFFFFF 0%,#F8FBFF 48%,#FBF8FF 100%);overflow:hidden;color:var(--ink);border:1px solid rgba(32,33,36,.08);box-shadow:0 26px 60px rgba(32,33,36,.08)}.xecutor-page .xec-scanner:before{content:"";position:absolute;width:310px;height:310px;border-radius:50%;border:1px dashed rgba(120,126,135,.20);left:50%;top:50%;transform:translate(-50%,-46%)}.xecutor-page .xec-scan-caption{position:absolute;left:26px;top:24px;color:#747a82;font-size:.66rem;font-weight:800;letter-spacing:.12em}.xecutor-page .xec-scan-ticket{position:absolute;left:45%;top:41%;transform:translate(-50%,-46%) rotate(-1.2deg);width:262px;padding:16px;border-radius:24px;background:linear-gradient(135deg,#ffffff,#fcfdff);border:1px solid rgba(32,33,36,.10);box-shadow:0 24px 50px rgba(32,33,36,.10)}.xecutor-page .xec-scan-ticket-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.xecutor-page .xec-scan-ticket-top b{font-size:.62rem;letter-spacing:.1em;color:#6f7780}.xecutor-page .xec-scan-ticket-top span{padding:7px 11px;border-radius:999px;background:#F0FFD8;color:#6b9100;font-size:.58rem;font-weight:800}.xecutor-page .xec-ticket-qr{position:relative;height:154px;border-radius:18px;background:linear-gradient(135deg,#f3f5f7,#fbfbfb);display:grid;place-items:center;overflow:hidden;border:1px solid rgba(32,33,36,.05)}.xecutor-page .xec-ticket-qr svg{width:132px;height:132px;display:block;background:#fff;padding:10px;border-radius:6px;box-shadow:0 0 0 10px rgba(194,255,2,.06)}.xecutor-page .xec-ticket-qr:after{content:"";position:absolute;left:50%;top:50%;width:132px;height:2px;background:var(--lime);transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(194,255,2,.65);animation:scan 2.4s ease-in-out infinite}.xecutor-page .xec-scan-input{display:flex;align-items:center;gap:10px;margin-top:12px}.xecutor-page .xec-scan-field{flex:1;height:38px;border-radius:999px;border:1px solid rgba(32,33,36,.10);background:#fff;padding:0 14px;font-size:.63rem;color:#8a9199;display:flex;align-items:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}.xecutor-page .xec-scan-fetch{height:38px;padding:0 16px;border-radius:999px;border:0;background:linear-gradient(90deg,#2e3767,#151b3a);color:#fff;font-size:.58rem;font-weight:800;letter-spacing:.04em}.xecutor-page .xec-scan-frame{position:absolute;left:45%;top:41%;transform:translate(-50%,-46%);width:296px;height:236px;border-radius:30px;border:2px solid rgba(153,254,237,.52);box-shadow:0 0 0 8px rgba(153,254,237,.08);pointer-events:none}.xecutor-page .xec-scan-frame:before,.xecutor-page .xec-scan-frame:after{content:"";position:absolute;width:26px;height:26px;border:3px solid #7ce0d6}.xecutor-page .xec-scan-frame:before{left:14px;top:14px;border-right:0;border-bottom:0;border-radius:13px 0 0 0}.xecutor-page .xec-scan-frame:after{right:14px;bottom:14px;border-left:0;border-top:0;border-radius:0 0 13px 0}.xecutor-page .xec-match-pill{position:absolute;right:20px;top:34px;z-index:4;padding:10px 12px;border-radius:16px;background:#fff;border:1px solid rgba(32,33,36,.08);box-shadow:0 14px 28px rgba(32,33,36,.08);font-size:.65rem;font-weight:800;color:#5d7b00}.xecutor-page .xec-match-pill:before{content:"";display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;background:#8fbe00;box-shadow:0 0 0 4px rgba(194,255,2,.14)}.xecutor-page .xec-job-pop{position:absolute;right:16px;bottom:28px;width:208px;z-index:5;padding:14px;border-radius:18px;background:#fff;color:var(--ink);border:1px solid rgba(32,33,36,.08);box-shadow:0 18px 36px rgba(32,33,36,.10)}.xecutor-page .xec-job-pop small{font-size:.48rem;color:#7e8388}.xecutor-page .xec-job-pop b{display:block;margin:6px 0;font-size:.68rem}.xecutor-page .xec-job-pop span{font-size:.52rem;color:#7f858a}.xecutor-page .xec-scan-job{margin-top:28px;padding:24px;border-radius:26px;background:linear-gradient(135deg,#fff,#fcfdff);border:1px solid var(--line);box-shadow:var(--shadow)}.xecutor-page .xec-scan-job-top{display:flex;justify-content:space-between;align-items:center}.xecutor-page .xec-scan-job-top b{font-size:.68rem;letter-spacing:.1em;color:#7f858b}.xecutor-page .xec-ready{padding:7px 10px;border-radius:999px;background:#EEFFD2;color:#577400;font-size:.58rem;font-weight:800}.xecutor-page .xec-scan-job h3{margin:24px 0 8px;font-size:1.7rem;letter-spacing:-.05em}.xecutor-page .xec-scan-job p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.6}.xecutor-page .xec-progress-top{display:flex;justify-content:space-between;margin-top:20px;font-size:.58rem;font-weight:800}.xecutor-page .xec-progress{height:8px;margin-top:8px;border-radius:999px;background:#efefef;overflow:hidden}.xecutor-page .xec-progress i{display:block;width:76%;height:100%;background:linear-gradient(90deg,var(--lime),#b9ee63)}
+/* roles */
+.xecutor-page .xec-roles{background:#F6F8FA}.xecutor-page .xec-roles-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:24px;margin-top:38px}.xecutor-page .xec-role-tabs{display:flex;flex-direction:column;gap:12px}.xecutor-page .xec-role-btn{position:relative;padding:22px 20px 22px 22px;border-radius:22px;border:1px solid rgba(32,33,36,.08);background:linear-gradient(135deg,#fff,#fcfcfc);text-align:left;cursor:pointer;transition:.25s var(--ease);box-shadow:0 8px 22px rgba(32,33,36,.03)}.xecutor-page .xec-role-btn:hover{transform:translateX(4px);box-shadow:0 16px 28px rgba(32,33,36,.06)}.xecutor-page .xec-role-btn:before{content:"";position:absolute;left:14px;top:50%;transform:translateY(-50%);width:9px;height:46px;border-radius:999px;background:#eceef0;transition:.25s var(--ease)}.xecutor-page .xec-role-btn.xec-active{color:var(--ink);border-color:rgba(153,254,237,.55);box-shadow:0 18px 34px rgba(32,33,36,.08)}.xecutor-page .xec-role-btn:nth-child(1).xec-active{background:linear-gradient(135deg,rgba(194,255,2,.18),#fff 72%)}.xecutor-page .xec-role-btn:nth-child(2).xec-active{background:linear-gradient(135deg,rgba(153,254,237,.22),#fff 72%)}.xecutor-page .xec-role-btn:nth-child(3).xec-active{background:linear-gradient(135deg,rgba(217,214,253,.26),#fff 72%)}.xecutor-page .xec-role-btn:nth-child(1).xec-active:before{background:linear-gradient(180deg,var(--lime),#d8ff73)}.xecutor-page .xec-role-btn:nth-child(2).xec-active:before{background:linear-gradient(180deg,var(--mint),#b8faf2)}.xecutor-page .xec-role-btn:nth-child(3).xec-active:before{background:linear-gradient(180deg,var(--lav),#e8e3ff)}.xecutor-page .xec-role-btn b{display:block;font-size:.92rem;padding-left:14px}.xecutor-page .xec-role-btn span{display:block;margin-top:5px;padding-left:14px;font-size:.68rem;color:#6b7178}.xecutor-page .xec-role-panel{padding:30px;border-radius:30px;background:#fff;border:1px solid var(--line);box-shadow:0 16px 40px rgba(32,33,36,.05)}.xecutor-page .xec-role-panel h3{margin:12px 0 9px;font-size:2rem;letter-spacing:-.055em}.xecutor-page .xec-role-panel>p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.6}.xecutor-page .xec-role-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}.xecutor-page .xec-role-step{padding:17px;border-radius:17px;background:#F7F7F6;transition:.25s var(--ease)}.xecutor-page .xec-role-step:hover{transform:translateY(-3px)}.xecutor-page .xec-role-step b{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:var(--lime);font-size:.56rem}.xecutor-page .xec-role-step h4{margin:14px 0 5px;font-size:.78rem}.xecutor-page .xec-role-step p{margin:0;color:var(--muted);font-size:.62rem;line-height:1.48}
+/* integrations */
+.xecutor-page .xec-integrations{padding-top:82px}.xecutor-page .xec-integration-panel{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center;padding:36px;border-radius:34px;background:linear-gradient(135deg,#F8FAFB,#F2F5F5);border:1px solid rgba(32,33,36,.07)}.xecutor-page .xec-integration-copy h3{margin:0;font-size:2.1rem;letter-spacing:-.055em}.xecutor-page .xec-integration-copy p{margin:14px 0 0;color:var(--muted);line-height:1.65}.xecutor-page .xec-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.xecutor-page .xec-app{display:flex;align-items:center;gap:9px;padding:13px;border-radius:16px;background:#fff;border:1px solid rgba(32,33,36,.07);font-size:.74rem;font-weight:800;transition:.25s var(--ease)}.xecutor-page .xec-app:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(32,33,36,.06)}.xecutor-page .xec-app i{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--mint);font-style:normal}.xecutor-page .xec-app:nth-child(2) i,.xecutor-page .xec-app:nth-child(5) i{background:var(--peach)}.xecutor-page .xec-app:nth-child(3) i,.xecutor-page .xec-app:nth-child(6) i{background:var(--lav)}.xecutor-page .xec-app:nth-child(4) i{background:var(--lime)}
+/* CTA */
+.xecutor-page .xec-cta{padding:38px 0 110px}.xecutor-page .xec-cta-card{position:relative;overflow:hidden;padding:70px;border-radius:38px;background:var(--ink);color:#fff}.xecutor-page .xec-cta-card:before{content:"";position:absolute;right:-80px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(153,254,237,.18),transparent 62%)}.xecutor-page .xec-cta-card h2{position:relative;z-index:1;margin:0;max-width:850px;font-size:clamp(3rem,5.3vw,5.6rem);line-height:.94;letter-spacing:-.07em;font-weight:700}.xecutor-page .xec-cta-card p{position:relative;z-index:1;max-width:620px;margin:18px 0 0;color:rgba(255,255,255,.68);line-height:1.68}.xecutor-page .xec-cta-card .xec-btns{position:relative;z-index:1}
+/* motion */
+.xecutor-page [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease),transform .75s var(--ease)}.xecutor-page [data-reveal].xec-show{opacity:1;transform:none}@keyframes float{50%{transform:translateY(-7px)}}@keyframes hubFloat{50%{transform:translate(-50%,-53%)}}@keyframes dash{to{background-position:130px 0}}@keyframes scan{0%,100%{top:calc(50% - 78px)}50%{top:calc(50% + 78px)}}
+@media(max-width:1100px){.xecutor-page .xec-hero-grid,.xecutor-page .xec-dash-grid,.xecutor-page .xec-scan-grid,.xecutor-page .xec-integration-panel{grid-template-columns:1fr}.xecutor-page .xec-system-stage{max-width:820px;width:100%;margin:auto}.xecutor-page .xec-cards{grid-template-columns:repeat(2,1fr)}.xecutor-page .xec-value-panel{grid-template-columns:1fr 1fr}.xecutor-page .xec-roles-grid{grid-template-columns:1fr}.xecutor-page .xec-role-tabs{display:grid;grid-template-columns:repeat(3,1fr)}.xecutor-page .xec-role-btn:hover{transform:translateY(-2px)}}
+@media(max-width:820px){.xecutor-page .xec-hero{padding-top:110px}.xecutor-page .xec-hero h1{font-size:clamp(3.5rem,11vw,5.8rem)}.xecutor-page .xec-system-stage{min-height:560px}.xecutor-page .xec-orbit.xec-o1{width:410px;height:410px}.xecutor-page .xec-orbit.xec-o2{width:300px;height:300px}.xecutor-page .xec-orbit.xec-o3{width:200px;height:200px}.xecutor-page .xec-hub{width:160px;height:160px}.xecutor-page .xec-connector{width:170px}.xecutor-page .xec-float-card{min-width:130px;padding:11px}.xecutor-page .xec-flowline{grid-template-columns:repeat(3,1fr);gap:25px}.xecutor-page .xec-flowline:before{display:none}.xecutor-page .xec-apps{grid-template-columns:repeat(2,1fr)}.xecutor-page .xec-kpis{grid-template-columns:repeat(2,1fr)}.xecutor-page .xec-jobrow{grid-template-columns:1.25fr .65fr .65fr}.xecutor-page .xec-jobrow>*:nth-child(4){display:none}}
+@media(max-width:620px){.xecutor-page{--page:calc(100vw - 26px)}.xecutor-page .xec-section{padding:78px 0}.xecutor-page .xec-hero{min-height:auto;padding:98px 0 58px}.xecutor-page .xec-hero h1{font-size:clamp(3.1rem,14vw,4.65rem)}.xecutor-page .xec-btns{display:grid;grid-template-columns:1fr}.xecutor-page .xec-btn{width:100%}.xecutor-page .xec-system-stage{min-height:520px;transform:scale(.92);transform-origin:center top;margin-bottom:-40px}.xecutor-page .xec-orbit.xec-o1{width:330px;height:330px}.xecutor-page .xec-orbit.xec-o2{width:245px;height:245px}.xecutor-page .xec-orbit.xec-o3{width:168px;height:168px}.xecutor-page .xec-hub{width:135px;height:135px}.xecutor-page .xec-hub strong{font-size:1.2rem}.xecutor-page .xec-connector{width:138px}.xecutor-page .xec-float-card{min-width:104px;padding:8px 9px}.xecutor-page .xec-float-card strong{font-size:.58rem}.xecutor-page .xec-float-card span,.xecutor-page .xec-float-card small{font-size:.43rem}.xecutor-page .xec-f2,.xecutor-page .xec-f6{left:35%}.xecutor-page .xec-value-panel,.xecutor-page .xec-cards,.xecutor-page .xec-role-tabs,.xecutor-page .xec-role-steps,.xecutor-page .xec-apps{grid-template-columns:1fr}.xecutor-page .xec-title{font-size:clamp(2.7rem,12vw,4rem)}.xecutor-page .xec-flow-panel{padding:22px}.xecutor-page .xec-flowline{grid-template-columns:repeat(2,1fr)}.xecutor-page .xec-dashboard-shell{padding:30px 18px;border-radius:30px}.xecutor-page .xec-dash-title{font-size:clamp(2.6rem,12vw,4rem)}.xecutor-page .xec-scanner{min-height:360px}.xecutor-page .xec-integration-panel{padding:24px}.xecutor-page .xec-cta-card{padding:48px 24px;border-radius:30px}}
+@media(prefers-reduced-motion:reduce){.xecutor-page *,.xecutor-page *:before,.xecutor-page *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+/* FINAL POLISH PASS */
+.xecutor-page .xec-btn{font-weight:700}
+.xecutor-page .xec-card h3,.xecutor-page .xec-role-btn b,.xecutor-page .xec-app{font-weight:700}
+.xecutor-page .xec-card-icon{font-weight:700}
+.xecutor-page .xec-card-icon svg,.xecutor-page .xec-app i svg,.xecutor-page .xec-method-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+/* Module cards: unique color rhythm + restrained motion */
+.xecutor-page .xec-cards{gap:18px}
+.xecutor-page .xec-card{min-height:236px;isolation:isolate;transform:translateZ(0)}
+.xecutor-page .xec-card:before{width:178px;height:178px;right:-64px;top:-68px;transition:transform .5s var(--ease),opacity .35s ease;z-index:-1}
+.xecutor-page .xec-card:after{content:"";position:absolute;inset:auto auto -70px -70px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.18);transition:transform .5s var(--ease);z-index:-1}
+.xecutor-page .xec-card:hover{transform:translateY(-7px);box-shadow:0 22px 48px rgba(32,33,36,.09)}
+.xecutor-page .xec-card:hover:before{transform:scale(1.28) rotate(8deg)}
+.xecutor-page .xec-card:hover:after{transform:scale(1.18) translate(8px,-6px)}
+.xecutor-page .xec-card:hover .xec-card-icon{transform:translateY(-2px) rotate(-3deg)}
+.xecutor-page .xec-card-icon{transition:transform .35s var(--ease);color:var(--ink)}
+.xecutor-page .xec-card:nth-child(1){background:linear-gradient(145deg,#F3FBD8,#F8FFE9)}
+.xecutor-page .xec-card:nth-child(2){background:linear-gradient(145deg,#E9FBF8,#F3FFFD)}
+.xecutor-page .xec-card:nth-child(3){background:linear-gradient(145deg,#FFF0E7,#FFF8F3)}
+.xecutor-page .xec-card:nth-child(4){background:linear-gradient(145deg,#F1EFFD,#F9F8FF)}
+.xecutor-page .xec-card:nth-child(5){background:linear-gradient(145deg,#FFF8E8,#FFFDF6)}
+.xecutor-page .xec-card:nth-child(6){background:linear-gradient(145deg,#ECF6FF,#F6FBFF)}
+.xecutor-page .xec-card:nth-child(7){background:linear-gradient(145deg,#F5F5F3,#FBFBFA)}
+.xecutor-page .xec-card:nth-child(8){background:linear-gradient(145deg,#EDF9EF,#F8FFF9)}
+.xecutor-page .xec-card:nth-child(1) .xec-card-icon{background:rgba(194,255,2,.58)}
+.xecutor-page .xec-card:nth-child(2) .xec-card-icon{background:rgba(153,254,237,.58)}
+.xecutor-page .xec-card:nth-child(3) .xec-card-icon{background:rgba(255,189,155,.58)}
+.xecutor-page .xec-card:nth-child(4) .xec-card-icon{background:rgba(217,214,253,.72)}
+.xecutor-page .xec-card:nth-child(5) .xec-card-icon{background:rgba(255,220,120,.38)}
+.xecutor-page .xec-card:nth-child(6) .xec-card-icon{background:rgba(180,220,255,.42)}
+.xecutor-page .xec-card:nth-child(7) .xec-card-icon{background:rgba(32,33,36,.08)}
+.xecutor-page .xec-card:nth-child(8) .xec-card-icon{background:rgba(150,225,165,.34)}
+
+/* Flow motion */
+.xecutor-page .xec-flowline{overflow:visible}
+.xecutor-page .xec-flow-runner{position:absolute;z-index:3;top:29px;left:7%;width:11px;height:11px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 5px rgba(194,255,2,.16),0 5px 14px rgba(32,33,36,.16);animation:flowRunner 9s linear infinite}
+.xecutor-page .xec-flow-runner:after{content:"";position:absolute;inset:3px;border-radius:50%;background:#202124}
+@keyframes flowRunner{0%{left:7%}16%{left:22%}33%{left:39%}50%{left:56%}67%{left:72%}84%{left:88%}100%{left:93%}}
+.xecutor-page .xec-step i{transition:transform .28s var(--ease),box-shadow .28s var(--ease)}
+.xecutor-page .xec-step:hover i{transform:translateY(-4px);box-shadow:0 16px 30px rgba(32,33,36,.09)}
+
+/* Production methods, extra platform context without repeating features */
+.xecutor-page .xec-methods-section{padding-top:36px;padding-bottom:92px}
+.xecutor-page .xec-methods-panel{padding:34px;border-radius:32px;background:linear-gradient(135deg,#F8FAFB,#F4F7F6);border:1px solid rgba(32,33,36,.07);display:grid;grid-template-columns:.78fr 1.22fr;gap:34px;align-items:center}
+.xecutor-page .xec-methods-copy h3{margin:0;font-size:clamp(2rem,3.3vw,3.5rem);line-height:1.02;letter-spacing:-.055em;font-weight:700}
+.xecutor-page .xec-methods-copy p{margin:15px 0 0;color:var(--muted);line-height:1.7;max-width:540px}
+.xecutor-page .xec-method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.xecutor-page .xec-method{min-height:106px;padding:16px;border-radius:18px;background:#fff;border:1px solid rgba(32,33,36,.07);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.xecutor-page .xec-method:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(32,33,36,.06)}
+.xecutor-page .xec-method-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--gray);margin-bottom:12px}
+.xecutor-page .xec-method:nth-child(1) .xec-method-icon{background:rgba(194,255,2,.45)}
+.xecutor-page .xec-method:nth-child(2) .xec-method-icon{background:rgba(153,254,237,.48)}
+.xecutor-page .xec-method:nth-child(3) .xec-method-icon{background:rgba(255,189,155,.45)}
+.xecutor-page .xec-method:nth-child(4) .xec-method-icon{background:rgba(217,214,253,.58)}
+.xecutor-page .xec-method:nth-child(5) .xec-method-icon{background:rgba(194,255,2,.28)}
+.xecutor-page .xec-method:nth-child(6) .xec-method-icon{background:rgba(153,254,237,.30)}
+.xecutor-page .xec-method strong{font-size:.78rem;font-weight:700}
+.xecutor-page .xec-method span{display:block;margin-top:4px;color:var(--muted);font-size:.62rem;line-height:1.45}
+
+/* Integration icons */
+.xecutor-page .xec-app i{color:var(--ink)}
+.xecutor-page .xec-app i svg{width:18px;height:18px}
+
+/* FAQ, aligned with Swishtag site system */
+.xecutor-page .xec-faq-section{background:#F5F5F3;padding:118px 0}
+.xecutor-page .xec-faq-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:96px;align-items:start}
+.xecutor-page .xec-faq-intro{padding-top:132px}
+.xecutor-page .xec-faq-intro .xec-eyebrow{margin-bottom:18px}
+.xecutor-page .xec-faq-intro .xec-title{max-width:430px;font-size:clamp(3.25rem,4.8vw,5.25rem);line-height:.94;letter-spacing:-.065em;font-weight:700;margin:0}
+.xecutor-page .xec-faq-intro-copy{max-width:430px;margin:24px 0 0;color:var(--muted);font-size:1.02rem;line-height:1.7}
+.xecutor-page .xec-faq-ask{display:inline-flex;align-items:center;gap:12px;margin-top:28px;font-size:.92rem;font-weight:700}
+.xecutor-page .xec-faq-ask i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--lime);font-style:normal;transition:transform .25s var(--ease)}
+.xecutor-page .xec-faq-ask:hover i{transform:translateX(4px)}
+.xecutor-page .xec-faq-wrap{max-width:none;margin:0;border-top:1px solid var(--line)}
+.xecutor-page .xec-faq-wrap details{padding:0;border-bottom:1px solid var(--line)}
+.xecutor-page .xec-faq-wrap summary{list-style:none;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;min-height:92px;padding:24px 8px 24px 0;font-size:1.11rem;line-height:1.42;font-weight:700;cursor:pointer}
+.xecutor-page .xec-faq-wrap summary::-webkit-details-marker{display:none}
+.xecutor-page .xec-faq-wrap summary:after{content:"+";display:grid;place-items:center;width:34px;height:34px;font-size:1.8rem;line-height:1;font-weight:300;color:var(--ink);transition:transform .22s var(--ease)}
+.xecutor-page .xec-faq-wrap details[open] summary:after{content:"−";transform:rotate(180deg)}
+.xecutor-page .xec-faq-wrap p{max-width:760px;margin:-6px 0 24px;padding-right:58px;color:var(--muted);line-height:1.72;font-size:.9rem}
+@media(max-width:900px){.xecutor-page .xec-faq-section{padding:88px 0}.xecutor-page .xec-faq-layout{grid-template-columns:1fr;gap:46px}.xecutor-page .xec-faq-intro{padding-top:0}.xecutor-page .xec-faq-intro .xec-title{max-width:620px}.xecutor-page .xec-faq-intro-copy{max-width:620px}}
+@media(max-width:620px){.xecutor-page .xec-faq-section{padding:72px 0}.xecutor-page .xec-faq-layout{gap:34px}.xecutor-page .xec-faq-intro .xec-title{font-size:clamp(2.8rem,14vw,4rem)}.xecutor-page .xec-faq-wrap summary{min-height:78px;padding:20px 0;font-size:1rem;gap:18px}.xecutor-page .xec-faq-wrap summary:after{width:30px;height:30px}.xecutor-page .xec-faq-wrap p{padding-right:38px;font-size:.86rem}}
+
+
+/* Energetic final CTA with lift-off illustration */
+.xecutor-page .xec-final-cta{padding:96px 0 92px;background:#fff}
+.xecutor-page .xec-final-cta-card{position:relative;overflow:hidden;display:grid;grid-template-columns:.92fr 1.08fr;gap:36px;align-items:center;padding:58px 56px;border-radius:40px;background:linear-gradient(135deg,#fff 0%,#fcfbff 45%,#f8fcff 100%);border:1px solid rgba(32,33,36,.08);box-shadow:0 28px 72px rgba(32,33,36,.08)}
+
+.xecutor-page .xec-final-cta-card:before{content:"";position:absolute;right:-120px;bottom:-180px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(153,254,237,.22),rgba(217,214,253,.16) 45%,rgba(255,189,155,.10) 62%,transparent 74%);filter:blur(10px);pointer-events:none}
+.xecutor-page .xec-final-cta-copy{position:relative;z-index:2}
+.xecutor-page .xec-final-cta .xec-eyebrow{color:#6a7076}
+.xecutor-page .xec-cta-marker{display:block;width:52px;height:5px;margin:10px 0 28px;border-radius:999px;background:var(--lime)}
+.xecutor-page .xec-final-cta h2{margin:0;font-size:clamp(3rem,5vw,5rem);line-height:.95;letter-spacing:-.066em;font-weight:700;max-width:620px;color:var(--ink)}
+.xecutor-page .xec-final-cta p{margin:22px 0 0;color:var(--muted);font-size:1rem;line-height:1.72;max-width:620px}
+.xecutor-page .xec-final-cta .xec-btn-outline{background:#fff;border-color:rgba(32,33,36,.18);color:var(--ink)}
+.xecutor-page .xec-final-cta .xec-btn-outline:hover{background:#f8f9fa}
+.xecutor-page .xec-cta-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px;padding-top:26px;border-top:1px solid rgba(32,33,36,.08)}
+.xecutor-page .xec-cta-benefit{display:flex;flex-direction:column;gap:10px;min-height:76px}
+.xecutor-page .xec-cta-benefit .xec-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(32,33,36,.08);background:#fff}
+.xecutor-page .xec-cta-benefit .xec-icon svg{width:18px;height:18px;stroke:#222;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.xecutor-page .xec-cta-benefit:nth-child(1) .xec-icon{background:rgba(153,254,237,.42)}
+.xecutor-page .xec-cta-benefit:nth-child(2) .xec-icon{background:rgba(217,214,253,.54)}
+.xecutor-page .xec-cta-benefit:nth-child(3) .xec-icon{background:rgba(255,189,155,.48)}
+.xecutor-page .xec-cta-benefit:nth-child(4) .xec-icon{background:rgba(194,255,2,.38)}
+.xecutor-page .xec-cta-benefit b{font-size:.82rem;line-height:1.35;letter-spacing:-.02em}
+
+.xecutor-page .xec-soar-scene{position:relative;min-height:448px;overflow:hidden;border-radius:32px;background:radial-gradient(circle at 76% 18%,rgba(217,214,253,.24),transparent 22%),radial-gradient(circle at 22% 84%,rgba(153,254,237,.18),transparent 20%),linear-gradient(135deg,rgba(249,250,252,.92),rgba(246,243,255,.96) 58%,rgba(244,250,255,.94) 100%);border:1px solid rgba(32,33,36,.06);padding:20px}
+.xecutor-page .xec-scene-glow{position:absolute;right:-6px;bottom:-10px;width:84%;height:64%;border-radius:50%;background:radial-gradient(circle at 50% 30%,rgba(255,236,214,.58),rgba(255,236,214,.14) 32%,rgba(153,254,237,.12) 50%,transparent 70%)}
+.xecutor-page .xec-planet-horizon{position:absolute;right:-54px;bottom:-114px;width:82%;height:52%;border-radius:50%;background:radial-gradient(circle at 50% 12%,rgba(255,255,255,.9),rgba(255,255,255,.34) 18%,rgba(153,254,237,.35) 42%,rgba(255,255,255,.94) 58%,rgba(153,254,237,.24) 76%,transparent 77%);filter:blur(.1px)}
+.xecutor-page .xec-orbit-curve{position:absolute;border-top:1px solid rgba(122,126,135,.10);border-radius:50%}
+.xecutor-page .xec-orbit-a{right:100px;top:36px;width:320px;height:120px;transform:rotate(8deg)}
+.xecutor-page .xec-orbit-b{right:36px;top:98px;width:420px;height:220px;transform:rotate(-12deg)}
+.xecutor-page .xec-trail{position:absolute;left:52%;top:60%;transform-origin:left center;border-radius:999px;filter:drop-shadow(0 6px 18px rgba(255,255,255,.4));opacity:.9}
+.xecutor-page .xec-trail-a{width:250px;height:20px;background:linear-gradient(90deg,rgba(153,254,237,.72),rgba(153,254,237,0));transform:rotate(230deg);animation:trailPulse 5.6s ease-in-out infinite}
+.xecutor-page .xec-trail-b{width:250px;height:18px;background:linear-gradient(90deg,rgba(217,214,253,.78),rgba(217,214,253,0));transform:rotate(234deg) translateY(18px);animation:trailPulse 5.6s ease-in-out infinite .3s}
+.xecutor-page .xec-trail-c{width:250px;height:17px;background:linear-gradient(90deg,rgba(255,189,155,.68),rgba(255,189,155,0));transform:rotate(238deg) translateY(34px);animation:trailPulse 5.6s ease-in-out infinite .6s}
+.xecutor-page .xec-trail-d{width:240px;height:14px;background:linear-gradient(90deg,rgba(255,255,255,.85),rgba(255,255,255,0));transform:rotate(226deg) translateY(-16px);animation:trailPulse 5.6s ease-in-out infinite .2s}
+.xecutor-page .xec-soar-device{position:absolute;left:58%;top:48%;width:252px;padding:20px 20px 18px;border-radius:30px;background:rgba(255,255,255,.97);border:1.5px solid rgba(32,33,36,.10);box-shadow:0 28px 58px rgba(61,68,84,.14);transform:translate(-50%,-50%) rotate(16deg);animation:soarFloat 6.2s ease-in-out infinite;z-index:3}
+.xecutor-page .xec-soar-device:before{content:"";position:absolute;left:16px;right:16px;bottom:-10px;height:18px;border-radius:50%;background:rgba(137,143,160,.10);filter:blur(10px);z-index:-1}
+.xecutor-page .xec-soar-device:after{content:"";position:absolute;inset:10px;border-radius:22px;border:1px solid rgba(32,33,36,.04);pointer-events:none}
+.xecutor-page .xec-device-cap{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.xecutor-page .xec-device-cap span{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7a7f86}
+.xecutor-page .xec-device-cap i{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:#F0FFD6;color:#608100;font-style:normal;font-size:.68rem;font-weight:800}
+.xecutor-page .xec-device-cap i:before{content:"";width:6px;height:6px;border-radius:50%;background:#8eb800;box-shadow:0 0 0 4px rgba(194,255,2,.16)}
+.xecutor-page .xec-device-core strong{display:block;font-size:1.38rem;letter-spacing:-.04em}
+.xecutor-page .xec-device-core p{margin:8px 0 12px;color:#7b8088;font-size:.8rem;line-height:1.5}
+.xecutor-page .xec-device-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.xecutor-page .xec-device-list li{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:12px;background:#F8F8F8;font-size:.73rem;color:#43484d}
+.xecutor-page .xec-device-list li b{font-size:.74rem}
+.xecutor-page .xec-device-list li span{font-size:.66rem;color:#7b8087}
+.xecutor-page .xec-device-list li:nth-child(1){box-shadow:inset 3px 0 0 rgba(194,255,2,.6)}
+.xecutor-page .xec-device-list li:nth-child(2){box-shadow:inset 3px 0 0 rgba(153,254,237,.7)}
+.xecutor-page .xec-device-list li:nth-child(3){box-shadow:inset 3px 0 0 rgba(217,214,253,.85)}
+.xecutor-page .xec-device-list li:nth-child(4){box-shadow:inset 3px 0 0 rgba(255,189,155,.7)}
+.xecutor-page .xec-star{position:absolute;border-radius:50%;animation:starTwinkle 3.4s ease-in-out infinite}
+.xecutor-page .xec-star.xec-dot{width:8px;height:8px;background:rgba(194,255,2,.8)}
+.xecutor-page .xec-star.xec-dot.xec-mint{background:rgba(153,254,237,.88)}
+.xecutor-page .xec-star.xec-dot.xec-peach{background:rgba(255,189,155,.9)}
+.xecutor-page .xec-star.xec-spark{width:22px;height:22px}
+.xecutor-page .xec-star.xec-spark:before,.xecutor-page .xec-star.xec-spark:after{content:"";position:absolute;left:50%;top:50%;background:currentColor;border-radius:999px;transform:translate(-50%,-50%)}
+.xecutor-page .xec-star.xec-spark:before{width:2px;height:22px}.xecutor-page .xec-star.xec-spark:after{width:22px;height:2px}
+.xecutor-page .xec-star.xec-spark.xec-lav{color:#B7AEFF}.xecutor-page .xec-star.xec-spark.xec-lime{color:#c6ef38}.xecutor-page .xec-star.xec-spark.xec-mint{color:#9cf6ee}
+.xecutor-page .xec-star.xec-s1{left:54px;top:70px}.xecutor-page .xec-star.xec-s2{left:146px;top:112px}.xecutor-page .xec-star.xec-s3{right:108px;top:54px}.xecutor-page .xec-star.xec-s4{right:154px;top:132px}.xecutor-page .xec-star.xec-s5{right:74px;top:78px}.xecutor-page .xec-star.xec-s6{left:96px;bottom:94px}.xecutor-page .xec-star.xec-s7{right:152px;bottom:112px}.xecutor-page .xec-star.xec-s8{left:248px;top:46px}.xecutor-page .xec-star.xec-s9{right:262px;top:94px}
+.xecutor-page .xec-ring-planet{position:absolute;right:44px;top:28px;width:42px;height:42px;border:2px solid #bdb1ff;border-radius:50%;opacity:.72}
+.xecutor-page .xec-ring-planet:before{content:"";position:absolute;left:-10px;top:14px;width:60px;height:12px;border:2px solid #bdb1ff;border-radius:50%;transform:rotate(-18deg)}
+@keyframes soarFloat{0%,100%{transform:translate(-50%,-50%) rotate(16deg)}50%{transform:translate(-50%,-54%) rotate(13deg)}}
+@keyframes trailPulse{0%,100%{opacity:.75;filter:drop-shadow(0 6px 18px rgba(255,255,255,.35))}50%{opacity:1;filter:drop-shadow(0 10px 26px rgba(255,255,255,.56))}}
+@keyframes starTwinkle{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+
+@media(max-width:1100px){.xecutor-page .xec-methods-panel,.xecutor-page .xec-final-cta-card{grid-template-columns:1fr}.xecutor-page .xec-method-grid{grid-template-columns:repeat(3,1fr)}.xecutor-page .xec-cta-benefits{grid-template-columns:repeat(4,1fr)}.xecutor-page .xec-soar-scene{min-height:390px}}
+@media(max-width:720px){.xecutor-page .xec-method-grid{grid-template-columns:repeat(2,1fr)}.xecutor-page .xec-final-cta{padding:76px 0}.xecutor-page .xec-final-cta-card{padding:40px 24px;border-radius:30px}.xecutor-page .xec-cta-benefits{grid-template-columns:repeat(2,1fr);gap:16px}.xecutor-page .xec-soar-scene{min-height:320px}.xecutor-page .xec-soar-device{left:52%;top:46%;width:196px;padding:15px;border-radius:24px}.xecutor-page .xec-orbit-a{width:220px;height:90px;right:54px}.xecutor-page .xec-orbit-b{width:290px;height:160px;right:10px;top:116px}}
+@media(max-width:520px){.xecutor-page .xec-method-grid{grid-template-columns:1fr}.xecutor-page .xec-flow-runner{display:none}}
+@media(prefers-reduced-motion:reduce){.xecutor-page .xec-flow-runner,.xecutor-page .xec-soar-device,.xecutor-page .xec-trail,.xecutor-page .xec-star{animation:none!important}}
+
+
+/* Unified Swishtag typography system.
+   Matches the previously approved 3-page reference set. */
+
+/* Hero heading */
+.xecutor-page main .xec-hero h1,
+.xecutor-page main .xec-hero-title {
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif !important;
+  font-size:clamp(3.2rem,5.84vw,6.08rem) !important;
+  font-weight:800 !important;
+  line-height:.89 !important;
+  letter-spacing:-.075em !important;
+  color:#202124 !important;
+}
+
+/* Primary section-heading tier */
+.xecutor-page main .xec-title,
+.xecutor-page main .xec-section-title {
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif !important;
+  font-size:clamp(3rem,6vw,6.2rem) !important;
+  font-weight:800 !important;
+  line-height:.98 !important;
+  letter-spacing:-.06em !important;
+}
+
+/* Mobile hero size from the previously approved 3-page set */
+@media(max-width:680px){
+  .xecutor-page main .xec-hero h1,
+  .xecutor-page main .xec-hero-title {
+    font-size:clamp(2.92rem,13.6vw,4.32rem) !important;
+  }
+}
+
+/* Preserve the same section-heading mobile hierarchy */
+@media(max-width:680px){
+  .xecutor-page main .xec-title,
+  .xecutor-page main .xec-section-title {
+    font-size:clamp(2.7rem,12vw,4.2rem) !important;
+  }
+}
+
+</style>
+<section class="xec-hero">
+<div class="xec-page xec-hero-grid">
+<div data-reveal="">
+<p class="xec-eyebrow">Manufacturing Execution System</p>
+<h1>Run production without the <span class="xec-underline">guesswork.</span></h1>
+<p class="xec-copy">Xecutor brings orders, artwork, workflows, workstations, inventory, payments and fulfillment into one operational system built for decorator production.</p>
+<div class="xec-btns"><a class="xec-btn xec-btn-primary" href="https://swishtag.com/contact/">Book a Xecutor Demo ↗</a><a class="xec-btn xec-btn-outline" href="#flow">See how Xecutor works ↓</a></div>
+<p class="xec-hero-note"><i></i> Built for decorators, production teams and print-on-demand manufacturers.</p>
+</div>
+<div aria-label="Animated Xecutor connected production system" class="xec-system-stage" data-reveal="">
+<div class="xec-stage-glow"></div><div class="xec-grid-bg"></div>
+<div class="xec-orbit xec-o1"></div><div class="xec-orbit xec-o2"></div><div class="xec-orbit xec-o3"></div>
+<i class="xec-connector xec-c1"></i><i class="xec-connector xec-c2"></i><i class="xec-connector xec-c3"></i><i class="xec-connector xec-c4"></i><i class="xec-connector xec-c5"></i><i class="xec-connector xec-c6"></i><i class="xec-connector xec-c7"></i><i class="xec-connector xec-c8"></i>
+<div class="xec-hub"><div><small>LIVE SYSTEM</small><strong>XECUTOR</strong><span>8 systems connected</span></div><i class="xec-hub-light"></i></div>
+<article class="xec-float-card xec-f1"><small><i></i>ORDER</small><strong>#XC-10482</strong><span>Production ready</span></article>
+<article class="xec-float-card xec-f2"><small><i></i>ARTWORK</small><strong>Mockup approved</strong><span>Files attached</span></article>
+<article class="xec-float-card xec-f3"><small><i></i>WORKFLOW</small><strong>Hoodie / Embroidery</strong><span>6 stages</span></article>
+<article class="xec-float-card xec-f4"><small><i></i>STATION</small><strong>Embroidery 03</strong><span>Active</span></article>
+<article class="xec-float-card xec-f5"><small><i></i>OPERATOR</small><strong>Sarah</strong><span>Working</span></article>
+<article class="xec-float-card xec-f6"><small><i></i>QUALITY</small><strong>QC Hold</strong><span>1 item</span></article>
+<article class="xec-float-card xec-f7"><small><i></i>INVENTORY</small><strong>Thread / Navy</strong><span>In stock</span></article>
+<article class="xec-float-card xec-f8"><small><i></i>SHIPMENT</small><strong>ShipStation</strong><span>Ready</span></article>
+</div>
+</div>
+</section>
+<section class="xec-value-strip">
+<div class="xec-page"><div class="xec-value-panel" data-reveal="">
+<div class="xec-value-copy"><h3>The production layer your commerce stack is missing.</h3><p>Keep the systems that already work. Add a focused execution layer where production needs clear ownership and visibility.</p></div>
+<div class="xec-value"><b>Real-time</b><span>Order + workstation visibility</span></div>
+<div class="xec-value"><b>Automated</b><span>Product-specific workflows</span></div>
+<div class="xec-value"><b>Connected</b><span>Artwork + logistics + payments</span></div>
+<div class="xec-value"><b>Visual</b><span>One system teams can use</span></div>
+</div></div>
+</section>
+<section class="xec-section xec-platform" id="platform">
+<div class="xec-page">
+<div data-reveal=""><p class="xec-eyebrow">The Xecutor platform</p><h2 class="xec-title">Everything your factory needs. <span class="xec-underline">Connected.</span></h2><p class="xec-copy">Eight focused modules form the operating layer around your production floor, from performance and onboarding to production, artwork, warehouse, operations and payments.</p></div>
+<div class="xec-cards">
+<article class="xec-card" data-reveal=""><span class="xec-card-icon"><svg viewbox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V3"></path><path d="M3 19h18"></path></svg></span><h3>Performance</h3><p>See production performance and the areas that need attention.</p><span class="xec-card-arrow">↗</span></article>
+<article class="xec-card" data-reveal=""><span class="xec-card-icon"><svg viewbox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span><h3>Onboarding</h3><p>Manage role access for operators, managers, admins and clients.</p><span class="xec-card-arrow">↗</span></article>
+<article class="xec-card" data-reveal=""><span class="xec-card-icon"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06-2.83 2.83-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21h-4v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06-2.83-2.83.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3v-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06L7.04 4.3l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3h4v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06 2.83 2.83-.06.06A1.65 1.65 0 0 0 19.4 9c.12.35.18.72.18 1.09V10H21v4h-1.42c0 .34-.06.68-.18 1z"></path></svg></span><h3>Production</h3><p>Manage batches, priorities and progress across production tasks.</p><span class="xec-card-arrow">↗</span></article>
+<article class="xec-card" data-reveal=""><span class="xec-card-icon"><svg viewbox="0 0 24 24"><path d="M4 7h16v13H4z"></path><path d="M8 7V4h8v3M8 11h8"></path></svg></span><h3>My Catalog</h3><p>Manage products, pricing and details while clients browse and order.</p><span class="xec-card-arrow">↗</span></article>
+<article class="xec-card" data-reveal=""><span class="xec-card-icon"><svg viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m21 15-5-5L5 20"></path></svg></span><h3>Artwork</h3><p>Keep artwork and production-ready files connected to the right order.</p><span class="xec-card-arrow">↗</span></article>
+<article class="xec-card" data-reveal=""><span class="xec-card-icon"><svg viewbox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"></path><path d="M3 7v10l9 4 9-4V7M12 11v10"></path></svg></span><h3>Warehouse</h3><p>Track inventory, products, pricing and order releases.</p><span class="xec-card-arrow">↗</span></article>
+<article class="xec-card" data-reveal=""><span class="xec-card-icon"><svg viewbox="0 0 24 24"><path d="M4 6h8M4 12h12M4 18h16"></path><circle cx="15" cy="6" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="8" cy="18" r="2"></circle></svg></span><h3>Operations</h3><p>Build and optimize station workflows as production changes.</p><span class="xec-card-arrow">↗</span></article>
+<article class="xec-card" data-reveal=""><span class="xec-card-icon"><svg viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="5"></rect><path d="M2 10h20M6 15h4"></path></svg></span><h3>Payments</h3><p>Track invoice status, billing and payment summaries in one place.</p><span class="xec-card-arrow">↗</span></article>
+</div>
+</div>
+</section><section class="xec-methods-section"><div class="xec-page"><div class="xec-methods-panel" data-reveal=""><div class="xec-methods-copy"><p class="xec-eyebrow">Built for decorator production</p><h3>Different decoration methods. Different routes through the floor.</h3><p>Xecutor lets the workflow follow the product, so embroidery, print, transfer and fulfillment work can move through the stations that actually make sense for that job.</p></div><div class="xec-method-grid">
+<div class="xec-method"><div class="xec-method-icon"><svg viewbox="0 0 24 24"><path d="M4 4h16v16H4z"></path><path d="M8 16c3-7 5-7 8 0M8 8h8"></path></svg></div><strong>Embroidery</strong><span>Digitize, hoop, stitch and QC.</span></div>
+<div class="xec-method"><div class="xec-method-icon"><svg viewbox="0 0 24 24"><path d="M5 6h14v9H5z"></path><path d="M8 18h8M12 15v3"></path></svg></div><strong>Screen Print</strong><span>Prep, print, cure and inspect.</span></div>
+<div class="xec-method"><div class="xec-method-icon"><svg viewbox="0 0 24 24"><path d="M6 3h12v18H6z"></path><path d="M9 7h6M9 11h6M9 15h4"></path></svg></div><strong>DTG / DTF</strong><span>File ready, print, press and finish.</span></div>
+<div class="xec-method"><div class="xec-method-icon"><svg viewbox="0 0 24 24"><path d="M4 8h16v10H4z"></path><path d="M7 8V5h10v3M8 13h8"></path></svg></div><strong>Heat Press</strong><span>Stage transfers and track completion.</span></div>
+<div class="xec-method"><div class="xec-method-icon"><svg viewbox="0 0 24 24"><path d="M4 4h16v16H4z"></path><path d="M4 12h16M12 4v16"></path></svg></div><strong>Sublimation</strong><span>Route by product and press requirements.</span></div>
+<div class="xec-method"><div class="xec-method-icon"><svg viewbox="0 0 24 24"><path d="M3 7h13v10H3z"></path><path d="M16 10h3l2 3v4h-5z"></path><circle cx="7" cy="19" r="2"></circle><circle cx="18" cy="19" r="2"></circle></svg></div><strong>Fulfillment</strong><span>Pick, pack and ship from the same job trail.</span></div>
+</div></div></div></section>
+<section class="xec-section" id="flow">
+<div class="xec-page">
+<div data-reveal=""><p class="xec-eyebrow">One production flow</p><h2 class="xec-title">From order to shipment, every stage stays <span class="xec-underline">connected.</span></h2><p class="xec-copy">Orders become jobs. Jobs follow the right workflow. Operators know what to do. Quality and fulfillment stay visible.</p></div>
+<div class="xec-flow-panel" data-reveal="">
+<div class="xec-flowline"><span aria-hidden="true" class="xec-flow-runner"></span>
+<div class="xec-step"><i>01</i><b>ORDER</b><span>Captured + routed</span></div>
+<div class="xec-step"><i>02</i><b>ARTWORK</b><span>Uploaded + prepared</span></div>
+<div class="xec-step"><i>03</i><b>WORKFLOW</b><span>Product specific</span></div>
+<div class="xec-step"><i>04</i><b>PRODUCTION</b><span>Station by station</span></div>
+<div class="xec-step"><i>05</i><b>QUALITY</b><span>Hold + release</span></div>
+<div class="xec-step"><i>06</i><b>SHIP</b><span>Pick + pack + ship</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="xec-section xec-dashboard-section" id="floor">
+<div class="xec-page"><div class="xec-dashboard-shell">
+<div class="xec-dash-grid">
+<div data-reveal="">
+<p class="xec-eyebrow" style="color:rgba(255,255,255,.48)">See the floor</p>
+<h2 class="xec-dash-title">Know exactly what is happening in production.</h2>
+<p class="xec-dash-copy">Track work in motion, identify bottlenecks and give operators the context they need without hunting through messages or spreadsheets.</p>
+<ul class="xec-dash-points"><li><b>Live status</b><span>Know where orders are and which workstation owns the next step.</span></li><li><b>Performance</b><span>See operator and workstation activity across the floor.</span></li><li><b>Quality</b><span>Flag issues, hold work and keep release decisions visible.</span></li></ul>
+</div>
+<div class="xec-dashboard" data-reveal="">
+<div class="xec-dash-top"><span>XECUTOR / PRODUCTION</span><span class="xec-dash-live">● LIVE · 09:42</span></div>
+<div class="xec-kpis"><div class="xec-kpi"><b>48</b><span>ACTIVE ORDERS</span></div><div class="xec-kpi"><b>12</b><span>WORKSTATIONS</span></div><div class="xec-kpi"><b>07</b><span>ON HOLD</span></div><div class="xec-kpi"><b>96%</b><span>ON TRACK</span></div></div>
+<div class="xec-jobs"><div class="xec-jobrow xec-head"><span>JOB</span><span>STATION</span><span>STATUS</span><span>PROGRESS</span></div><div class="xec-jobrow"><span class="xec-jobname"><strong>POLO-2048</strong><small>24 units · embroidery</small></span><span>EMB-03</span><span><i class="xec-pill">RUNNING</i></span><span><div class="xec-bar"><i style="width:76%"></i></div></span></div><div class="xec-jobrow"><span class="xec-jobname"><strong>CAP-1138</strong><small>60 units · heat press</small></span><span>HP-02</span><span><i class="xec-pill">QUEUED</i></span><span><div class="xec-bar"><i style="width:42%"></i></div></span></div><div class="xec-jobrow"><span class="xec-jobname"><strong>TEE-0881</strong><small>120 units · DTG</small></span><span>DTG-01</span><span><i class="xec-pill xec-peach">HOLD</i></span><span><div class="xec-bar"><i style="width:28%"></i></div></span></div><div class="xec-jobrow"><span class="xec-jobname"><strong>JKT-9014</strong><small>35 units · screen print</small></span><span>SP-04</span><span><i class="xec-pill">RUNNING</i></span><span><div class="xec-bar"><i style="width:64%"></i></div></span></div></div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="xec-section">
+<div class="xec-page xec-scan-grid">
+<div class="xec-scanner" data-reveal=""><span class="xec-scan-caption">OPERATOR / SCAN TO WORK</span><div class="xec-match-pill">Matched to EMB-03</div><div class="xec-scan-ticket"><div class="xec-scan-ticket-top"><b>BATCH QR / XTR-2048</b><span>Live scan</span></div><div class="xec-ticket-qr"><svg viewBox="0 0 132 132" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="132" height="132" fill="#fff"/>
+  <g fill="#111319">
+    <rect x="8" y="8" width="30" height="30"/><rect x="14" y="14" width="18" height="18" fill="#fff"/><rect x="19" y="19" width="8" height="8"/>
+    <rect x="94" y="8" width="30" height="30"/><rect x="100" y="14" width="18" height="18" fill="#fff"/><rect x="105" y="19" width="8" height="8"/>
+    <rect x="8" y="94" width="30" height="30"/><rect x="14" y="100" width="18" height="18" fill="#fff"/><rect x="19" y="105" width="8" height="8"/>
+  </g>
+  <g fill="#111319">
+    <rect x="46" y="10" width="4" height="4"/><rect x="54" y="10" width="4" height="4"/><rect x="58" y="14" width="4" height="4"/><rect x="66" y="10" width="4" height="4"/><rect x="74" y="14" width="4" height="4"/><rect x="82" y="10" width="4" height="4"/>
+    <rect x="42" y="22" width="4" height="4"/><rect x="50" y="22" width="4" height="4"/><rect x="58" y="22" width="4" height="4"/><rect x="66" y="22" width="4" height="4"/><rect x="78" y="22" width="4" height="4"/><rect x="86" y="22" width="4" height="4"/>
+    <rect x="46" y="30" width="4" height="4"/><rect x="54" y="34" width="4" height="4"/><rect x="62" y="30" width="4" height="4"/><rect x="70" y="34" width="4" height="4"/><rect x="82" y="30" width="4" height="4"/>
+    <rect x="42" y="42" width="4" height="4"/><rect x="50" y="42" width="4" height="4"/><rect x="58" y="46" width="4" height="4"/><rect x="66" y="42" width="4" height="4"/><rect x="74" y="46" width="4" height="4"/><rect x="82" y="42" width="4" height="4"/><rect x="90" y="46" width="4" height="4"/>
+    <rect x="10" y="46" width="4" height="4"/><rect x="18" y="46" width="4" height="4"/><rect x="26" y="50" width="4" height="4"/><rect x="34" y="46" width="4" height="4"/>
+    <rect x="98" y="46" width="4" height="4"/><rect x="106" y="50" width="4" height="4"/><rect x="114" y="46" width="4" height="4"/>
+    <rect x="42" y="54" width="4" height="4"/><rect x="50" y="58" width="4" height="4"/><rect x="58" y="54" width="4" height="4"/><rect x="66" y="58" width="4" height="4"/><rect x="74" y="54" width="4" height="4"/><rect x="82" y="58" width="4" height="4"/><rect x="90" y="54" width="4" height="4"/>
+    <rect x="8" y="62" width="4" height="4"/><rect x="16" y="58" width="4" height="4"/><rect x="24" y="62" width="4" height="4"/><rect x="32" y="58" width="4" height="4"/><rect x="42" y="66" width="4" height="4"/><rect x="50" y="66" width="4" height="4"/><rect x="58" y="62" width="4" height="4"/><rect x="66" y="66" width="4" height="4"/><rect x="74" y="62" width="4" height="4"/><rect x="82" y="66" width="4" height="4"/><rect x="94" y="62" width="4" height="4"/><rect x="102" y="58" width="4" height="4"/><rect x="110" y="62" width="4" height="4"/>
+    <rect x="10" y="74" width="4" height="4"/><rect x="18" y="70" width="4" height="4"/><rect x="26" y="74" width="4" height="4"/><rect x="34" y="70" width="4" height="4"/><rect x="46" y="74" width="4" height="4"/><rect x="54" y="70" width="4" height="4"/><rect x="62" y="74" width="4" height="4"/><rect x="70" y="70" width="4" height="4"/><rect x="78" y="74" width="4" height="4"/><rect x="86" y="70" width="4" height="4"/><rect x="94" y="74" width="4" height="4"/><rect x="102" y="70" width="4" height="4"/>
+    <rect x="42" y="82" width="4" height="4"/><rect x="50" y="86" width="4" height="4"/><rect x="58" y="82" width="4" height="4"/><rect x="66" y="86" width="4" height="4"/><rect x="74" y="82" width="4" height="4"/><rect x="82" y="86" width="4" height="4"/><rect x="90" y="82" width="4" height="4"/>
+    <rect x="46" y="94" width="4" height="4"/><rect x="54" y="98" width="4" height="4"/><rect x="62" y="94" width="4" height="4"/><rect x="70" y="98" width="4" height="4"/><rect x="78" y="94" width="4" height="4"/><rect x="86" y="98" width="4" height="4"/><rect x="94" y="94" width="4" height="4"/><rect x="102" y="98" width="4" height="4"/><rect x="110" y="94" width="4" height="4"/>
+    <rect x="46" y="106" width="4" height="4"/><rect x="54" y="110" width="4" height="4"/><rect x="62" y="106" width="4" height="4"/><rect x="70" y="110" width="4" height="4"/><rect x="78" y="106" width="4" height="4"/><rect x="86" y="110" width="4" height="4"/><rect x="94" y="106" width="4" height="4"/>
+    <rect x="42" y="118" width="4" height="4"/><rect x="50" y="118" width="4" height="4"/><rect x="58" y="122" width="4" height="4"/><rect x="66" y="118" width="4" height="4"/><rect x="74" y="122" width="4" height="4"/><rect x="82" y="118" width="4" height="4"/><rect x="90" y="122" width="4" height="4"/><rect x="98" y="118" width="4" height="4"/><rect x="106" y="122" width="4" height="4"/>
+  </g>
+</svg></div><div class="xec-scan-input"><div class="xec-scan-field">RISE354319-I24105-22758</div><button class="xec-scan-fetch">Fetch</button></div></div><div class="xec-scan-frame"></div><div class="xec-job-pop"><small>JOB #XTR-2048</small><b>24 × Polo / Embroidery</b><span>EMB-03 · Artwork approved</span></div></div>
+<div data-reveal=""><p class="xec-eyebrow">Operator experience</p><h2 class="xec-title">Scan the job. See the work. Keep production moving.</h2><p class="xec-copy">Operators select their workstation, scan the batch QR code and instantly see the job details they need. When the task is complete, they mark it done and the workflow moves forward.</p><div class="xec-scan-job"><div class="xec-scan-job-top"><b>JOB #XTR-2048</b><span class="xec-ready">READY TO COMPLETE</span></div><h3>Embroider 24 polos</h3><p>Workstation: EMB-03 · Priority: Normal · Artwork: Approved</p><div class="xec-progress-top"><span>JOB PROGRESS</span><span>76%</span></div><div class="xec-progress"><i></i></div></div></div>
+</div>
+</section>
+<section class="xec-section xec-roles" id="roles">
+<div class="xec-page">
+<div data-reveal=""><p class="xec-eyebrow">Designed around real roles</p><h2 class="xec-title">One system. <span class="xec-underline">Three experiences.</span></h2><p class="xec-copy">Xecutor gives each person the part of the system they actually need, from managing the factory to placing orders and working the floor.</p></div>
+<div class="xec-roles-grid" data-reveal="">
+<div class="xec-role-tabs"><button class="xec-role-btn xec-active" data-role="admin"><b>Super Admin</b><span>Build and manage the factory</span></button><button class="xec-role-btn" data-role="client"><b>Client</b><span>Connect store, catalog and orders</span></button><button class="xec-role-btn" data-role="operator"><b>Operator</b><span>Scan, work and complete jobs</span></button></div>
+<div class="xec-role-panel"><p class="xec-eyebrow" id="roleEyebrow">SUPER ADMIN EXPERIENCE</p><h3 id="roleTitle">Build the factory system.</h3><p id="roleText">Connect services, create workstations and workflows, add products and people, then invite clients.</p><div class="xec-role-steps" id="roleSteps"></div></div>
+</div>
+</div>
+</section>
+<section class="xec-section xec-integrations">
+<div class="xec-page">
+<div class="xec-integration-panel" data-reveal="">
+<div class="xec-integration-copy"><p class="xec-eyebrow">Connected around production</p><h3>Keep the tools your operation already uses.</h3><p>Xecutor connects the production layer around commerce, files, payments, email and shipping without turning the page into another rip-and-replace story.</p></div>
+<div class="xec-apps"><div class="xec-app"><i><svg viewbox="0 0 24 24"><path d="m7 4 5 3-5 3-5-3 5-3zm10 0 5 3-5 3-5-3 5-3zM7 12l5 3-5 3-5-3 5-3zm10 0 5 3-5 3-5-3 5-3z"></path></svg></i>Dropbox</div><div class="xec-app"><i><svg viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="M3 10h18M7 15h4"></path></svg></i>Stripe</div><div class="xec-app"><i><svg viewbox="0 0 24 24"><path d="M3 5h18v14H3z"></path><path d="m3 6 9 7 9-7"></path></svg></i>Mailgun</div><div class="xec-app"><i><svg viewbox="0 0 24 24"><path d="M3 7h13v10H3z"></path><path d="M16 10h3l2 3v4h-5z"></path><circle cx="7" cy="19" r="2"></circle><circle cx="18" cy="19" r="2"></circle></svg></i>ShipStation</div><div class="xec-app"><i><svg viewbox="0 0 24 24"><path d="M6 7h12l1 14H5L6 7z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg></i>Shopify</div><div class="xec-app"><i><svg viewbox="0 0 24 24"><path d="M4 7h16v13H4z"></path><path d="M7 7l2-3h6l2 3M8 12h8"></path></svg></i>WooCommerce</div></div>
+</div>
+</div>
+</section>
+<section class="xec-section xec-faq-section" id="faq"><div class="xec-page" data-reveal=""><div class="xec-faq-layout"><div class="xec-faq-intro"><p class="xec-eyebrow">Frequently asked questions</p><h2 class="xec-title">A clearer way forward.</h2><p class="xec-faq-intro-copy">Simple answers to the questions decorator and production teams usually ask before bringing Xecutor onto the floor.</p><a class="xec-faq-ask" href="https://swishtag.com/contact/">Ask us something specific <i>→</i></a></div><div class="xec-faq-wrap">
+<details><summary>What is Xecutor?</summary><p>Xecutor is Swishtag's manufacturing execution platform for decorator and print-on-demand production. It connects orders, artwork, workflows, workstations, quality and fulfillment in one operational system.</p></details>
+<details><summary>Can different products follow different production workflows?</summary><p>Yes. Workflows can be built around the production path required by the product, including different workstations and stages for methods such as embroidery, screen printing, heat press and other decorator processes.</p></details>
+<details><summary>How do operators use Xecutor on the production floor?</summary><p>Operators select their workstation, scan the batch QR code, see the job details and instructions, then complete the assigned work so the job can move to the next stage.</p></details>
+<details><summary>Can clients connect Shopify or WooCommerce?</summary><p>The current Xecutor setup guide includes Shopify app and WooCommerce plugin connectivity for client store setup and order synchronization.</p></details>
+<details><summary>Which systems can Xecutor connect with?</summary><p>The current setup flow includes Dropbox, Stripe, Mailgun and ShipStation on the administration side, plus Shopify and WooCommerce for connected client stores.</p></details>
+<details><summary>Can Xecutor be adapted to our factory workflow?</summary><p>Yes. The platform is built around configurable workstations, workflows, product settings, team roles and client setup so the production structure can match the operation.</p></details>
+</div></div></div></section><section class="xec-final-cta" id="demo">
+<div class="xec-page">
+<div class="xec-final-cta-card">
+<div class="xec-final-cta-copy" data-reveal="">
+<p class="xec-eyebrow">Ready to go ahead</p>
+<span class="xec-cta-marker"></span>
+<h2>Give your production floor the system it deserves.</h2>
+<p>Xecutor gives your team one connected operating layer for orders, artwork, workflows, production, quality and fulfillment, so the floor moves faster with less chaos.</p>
+<div class="xec-btns">
+<a class="xec-btn xec-btn-primary" href="https://swishtag.com/contact/">Book a Xecutor Demo ↗</a>
+<a class="xec-btn xec-btn-outline" href="https://swishtag.com/platforms/">Explore Swishtag platforms →</a>
+</div>
+<div class="xec-cta-benefits">
+<div class="xec-cta-benefit">
+<span class="xec-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+<b>More visibility</b>
+</div>
+<div class="xec-cta-benefit">
+<span class="xec-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 7v5l3 2"></path><circle cx="12" cy="12" r="8"></circle></svg></span>
+<b>Fewer manual tasks</b>
+</div>
+<div class="xec-cta-benefit">
+<span class="xec-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 15l4-4 3 3 5-6"></path><path d="M18 8h0"></path></svg></span>
+<b>Bigger opportunities</b>
+</div>
+<div class="xec-cta-benefit">
+<span class="xec-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.7-7 10-4-2.3-7-5.5-7-10V6l7-3Z"></path><path d="m9.4 11.8 1.8 1.9 3.6-3.8"></path></svg></span>
+<b>Built to scale</b>
+</div>
+</div>
+</div>
+<div aria-label="Lift-off style Xecutor closing illustration" class="xec-soar-scene" data-reveal="">
+<div class="xec-scene-glow"></div>
+<div class="xec-orbit-curve xec-orbit-a"></div>
+<div class="xec-orbit-curve xec-orbit-b"></div>
+<div class="xec-ring-planet"></div>
+<div class="xec-trail xec-trail-a"></div>
+<div class="xec-trail xec-trail-b"></div>
+<div class="xec-trail xec-trail-c"></div>
+<div class="xec-trail xec-trail-d"></div>
+<div class="xec-planet-horizon"></div>
+<span class="xec-star xec-dot xec-s1"></span>
+<span class="xec-star xec-dot xec-mint xec-s2"></span>
+<span class="xec-star xec-spark xec-lav xec-s3"></span>
+<span class="xec-star xec-dot xec-s4 xec-peach"></span>
+<span class="xec-star xec-spark xec-lime xec-s5"></span>
+<span class="xec-star xec-dot xec-mint xec-s6"></span>
+<span class="xec-star xec-dot xec-s7"></span>
+<span class="xec-star xec-spark xec-mint xec-s8"></span>
+<span class="xec-star xec-dot xec-peach xec-s9"></span>
+<div class="xec-soar-device">
+<div class="xec-device-cap"><span>Xecutor live job</span><i>Active</i></div>
+<div class="xec-device-core">
+<strong>Production ready</strong>
+<p>Artwork, workflow, quality and shipment stay attached to the same job.</p>
+<ul class="xec-device-list">
+<li><b>Artwork</b><span>Approved</span></li>
+<li><b>Workflow</b><span>Assigned</span></li>
+<li><b>Quality</b><span>Clear</span></li>
+<li><b>Shipment</b><span>Ready</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<script>
+(() => {
+  const root = document.querySelector('.xecutor-page');
+  if (!root) return;
+  const reveals = [...root.querySelectorAll('[data-reveal]')];
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('xec-show');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .08, rootMargin: '70px 0px' });
+    reveals.forEach(element => observer.observe(element));
+  } else {
+    reveals.forEach(element => element.classList.add('xec-show'));
+  }
+  const roleData = {
+    admin: { ey: 'SUPER ADMIN EXPERIENCE', title: 'Build the factory system.', text: 'Connect services, create workstations and workflows, add products and people, then invite clients.', steps: [['1','Connect services','Dropbox, Stripe, Mailgun and shipping tools.'],['2','Build workflows','Create workstations and connect production stages.'],['3','Add the team','Invite operators, managers and clients.']] },
+    client: { ey: 'CLIENT EXPERIENCE', title: 'Connect the store and place orders.', text: 'Clients can connect their store, build a catalog, place orders and stay connected to production.', steps: [['1','Connect payments','Set up the payment layer for orders.'],['2','Connect the store','Use Shopify or WooCommerce connectivity.'],['3','Place orders','Use the catalog and send work into production.']] },
+    operator: { ey: 'OPERATOR EXPERIENCE', title: 'Get to work in seconds.', text: 'Operators select a workstation, scan the batch QR code and complete the assigned job.', steps: [['1','Select workstation','Choose the station being used.'],['2','Scan the job','Open the batch and see instructions instantly.'],['3','Complete task','Finish the work and move production forward.']] }
+  };
+  function setText(id, value) { const element = root.querySelector('#' + id); if (element) element.textContent = value; }
+  function renderRole(key) {
+    const role = roleData[key];
+    if (!role) return;
+    setText('roleEyebrow', role.ey);
+    setText('roleTitle', role.title);
+    setText('roleText', role.text);
+    const steps = root.querySelector('#roleSteps');
+    if (steps) {
+      steps.innerHTML = role.steps.map(step => '<article class="xec-role-step"><b>' + step[0] + '</b><h4>' + step[1] + '</h4><p>' + step[2] + '</p></article>').join('');
+    }
+    root.querySelectorAll('.xec-role-btn').forEach(button => {
+      button.classList.toggle('xec-active', button.dataset.role === key);
+    });
+  }
+  root.querySelectorAll('.xec-role-btn').forEach(button => {
+    button.addEventListener('click', () => renderRole(button.dataset.role));
+  });
+  renderRole('admin');
+})();
+</script>
