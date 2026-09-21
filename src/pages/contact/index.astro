@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactPage from '../../components/ContactPage.astro';
 
 const title = "Contact Swishtag | Shopify & Automation";
 const description = "Contact Swishtag about Shopify company stores, SAGE integrations, PunchOut, promotional products workflows or custom automation.";
@@ -7,6 +8,5 @@ const canonical = "https://cms.swishtag.com/contact/";
 const robots = "index,follow";
 ---
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
-  <link slot="head" rel="stylesheet" href="/assets/generic-page.css" />
-  <main><section class="gp-hero"><div class="gp-wrap"><div class="gp-kicker">Contact</div><h1>Tell us what you are trying to build or fix.</h1><p>For project questions, integrations, company stores or automation, send the context first. If a live walkthrough makes more sense, book a demo.</p></div></section><section class="gp-section"><div class="gp-wrap gp-contact"><div class="gp-contact-card"><h2>Start a project conversation</h2><p>Email the current setup, the problem, and what a successful outcome looks like. Include any platforms that must stay in the workflow.</p><p><a href="mailto:hello@swishtag.com">hello@swishtag.com</a></p></div><div class="gp-contact-card"><h2>Prefer a walkthrough?</h2><p>Use the demo flow to choose the solution area and a meeting slot.</p><p><a class="gp-btn primary" href="../book-demo/">Book a demo ↗</a></p></div></div></section></main>
+  <ContactPage />
 </BaseLayout>

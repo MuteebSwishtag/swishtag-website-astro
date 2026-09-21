@@ -29,9 +29,21 @@ const discussIdeaLabels = {
   budget: "Estimated investment",
 };
 
+const contactLabels = {
+  fullName: "Full name",
+  firstName: "First name",
+  lastName: "Last name",
+  workEmail: "Work email",
+  companyName: "Company",
+  role: "Role",
+  topic: "Topic",
+  message: "Message",
+};
+
 export const formTypes = {
   bookDemo: "book-demo",
   discussIdea: "discuss-idea",
+  contact: "contact",
 };
 
 export function cleanString(value, max = 2000) {
@@ -75,7 +87,7 @@ export function createSubmissionDocument(data, request) {
     return { skipped: true };
   }
 
-  if (source !== "book-demo" && source !== "custom-software") {
+  if (source !== "book-demo" && source !== "custom-software" && source !== "contact") {
     return {
       error: {
         status: 400,
@@ -85,9 +97,12 @@ export function createSubmissionDocument(data, request) {
   }
 
   const isBookDemo = source === "book-demo";
+  const isContact = source === "contact";
   const required = isBookDemo
     ? ["fullName", "workEmail", "companyName", "solutionInterest", "selectedDate", "selectedTime"]
-    : ["name", "email", "project_type", "stage", "problem"];
+    : isContact
+      ? ["fullName", "firstName", "lastName", "workEmail", "companyName", "role", "topic", "message"]
+      : ["name", "email", "project_type", "stage", "problem"];
   const missing = missingRequiredFields(data, required);
 
   if (missing.length) {
@@ -99,7 +114,7 @@ export function createSubmissionDocument(data, request) {
     };
   }
 
-  const email = cleanString(isBookDemo ? data.workEmail : data.email, 254);
+  const email = cleanString(isBookDemo || isContact ? data.workEmail : data.email, 254);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return {
       error: {
@@ -109,7 +124,7 @@ export function createSubmissionDocument(data, request) {
     };
   }
 
-  const labels = isBookDemo ? bookDemoLabels : discussIdeaLabels;
+  const labels = isBookDemo ? bookDemoLabels : isContact ? contactLabels : discussIdeaLabels;
   const fields = {};
 
   for (const [key] of Object.entries(labels)) {
@@ -128,7 +143,7 @@ export function createSubmissionDocument(data, request) {
       continue;
     }
 
-    fields[key] = cleanString(data[key] ?? "", key === "problem" || key === "notes" ? 3000 : 300);
+    fields[key] = cleanString(data[key] ?? "", key === "problem" || key === "notes" || key === "message" ? 3000 : 300);
   }
 
   const now = new Date();
@@ -136,10 +151,10 @@ export function createSubmissionDocument(data, request) {
 
   const document = {
     source,
-    formType: isBookDemo ? formTypes.bookDemo : formTypes.discussIdea,
-    title: isBookDemo ? "Book Demo" : "Discuss Idea",
+    formType: isBookDemo ? formTypes.bookDemo : isContact ? formTypes.contact : formTypes.discussIdea,
+    title: isBookDemo ? "Book Demo" : isContact ? "Contact" : "Discuss Idea",
     email,
-    displayName: cleanString(isBookDemo ? data.fullName : data.name, 160),
+    displayName: cleanString(isBookDemo || isContact ? data.fullName : data.name, 160),
     companyName: cleanString(data.companyName ?? "", 160),
     fields,
     page: cleanString(data.page ?? headers.get("referer") ?? "", 500),

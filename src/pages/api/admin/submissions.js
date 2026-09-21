@@ -24,7 +24,7 @@ export async function GET({ request, cookies }) {
   const type = url.searchParams.get("type") || "";
   const query = {};
 
-  if ([formTypes.bookDemo, formTypes.discussIdea].includes(type)) {
+  if ([formTypes.bookDemo, formTypes.discussIdea, formTypes.contact].includes(type)) {
     query.formType = type;
   }
 

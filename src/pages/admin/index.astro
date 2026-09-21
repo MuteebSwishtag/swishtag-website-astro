@@ -203,7 +203,7 @@ const title = "Admin | Swishtag";
 
       .stats {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
         margin-bottom: 16px;
       }
@@ -433,11 +433,13 @@ const title = "Admin | Swishtag";
         <div class="stats">
           <div class="stat"><span>Book Demo Forms</span><strong id="bookDemoCount">0</strong></div>
           <div class="stat"><span>Discuss Idea Forms</span><strong id="discussIdeaCount">0</strong></div>
+          <div class="stat"><span>Contact Forms</span><strong id="contactCount">0</strong></div>
         </div>
 
         <div class="tabs" role="tablist" aria-label="Submission type">
           <button class="tab is-active" id="book-demo-tab" type="button" role="tab" aria-selected="true" data-type="book-demo">Book Demo Forms</button>
           <button class="tab" id="discuss-idea-tab" type="button" role="tab" aria-selected="false" data-type="discuss-idea">Discuss Idea Forms</button>
+          <button class="tab" id="contact-tab" type="button" role="tab" aria-selected="false" data-type="contact">Contact Forms</button>
         </div>
 
         <div class="loading" id="loadingState">Loading submissions...</div>
@@ -460,12 +462,14 @@ const title = "Admin | Swishtag";
         const submissionsList = document.getElementById("submissionsList");
         const bookDemoCount = document.getElementById("bookDemoCount");
         const discussIdeaCount = document.getElementById("discussIdeaCount");
+        const contactCount = document.getElementById("contactCount");
         const dashboardSubtitle = document.getElementById("dashboardSubtitle");
 
         let activeType = "book-demo";
         let cachedCounts = {
           "book-demo": 0,
-          "discuss-idea": 0
+          "discuss-idea": 0,
+          "contact": 0
         };
 
         const tableColumns = {
@@ -497,6 +501,18 @@ const title = "Admin | Swishtag";
             { key: "problem", label: "Problem", type: "field", className: "cell-long" },
             { key: "integrations", label: "Integrations", type: "field" },
             { key: "budget", label: "Estimated investment", type: "field" },
+            { key: "page", label: "Page", type: "root", className: "cell-url", url: true },
+            { key: "ipAddress", label: "IP", type: "root", className: "cell-muted" }
+          ],
+          "contact": [
+            { key: "createdAt", label: "Submitted", type: "date", className: "cell-date" },
+            { key: "emailStatus", label: "Email status", type: "root" },
+            { key: "fullName", label: "Full name", type: "field", className: "cell-primary" },
+            { key: "workEmail", label: "Work email", type: "field" },
+            { key: "companyName", label: "Company", type: "field", className: "cell-primary" },
+            { key: "role", label: "Role", type: "field", className: "cell-long" },
+            { key: "topic", label: "Topic", type: "field", className: "cell-long" },
+            { key: "message", label: "Message", type: "field", className: "cell-long" },
             { key: "page", label: "Page", type: "root", className: "cell-url", url: true },
             { key: "ipAddress", label: "IP", type: "root", className: "cell-muted" }
           ]
@@ -571,6 +587,7 @@ const title = "Admin | Swishtag";
         function renderCounts() {
           bookDemoCount.textContent = cachedCounts["book-demo"];
           discussIdeaCount.textContent = cachedCounts["discuss-idea"];
+          contactCount.textContent = cachedCounts["contact"];
         }
 
         function getColumnValue(submission, column) {
@@ -617,7 +634,8 @@ const title = "Admin | Swishtag";
           cachedCounts[activeType] = Number(submissions.total ?? submissions.items.length);
           renderCounts();
 
-          dashboardSubtitle.textContent = `${cachedCounts[activeType]} ${activeType === "book-demo" ? "book demo" : "discuss idea"} submission${cachedCounts[activeType] === 1 ? "" : "s"}`;
+          const typeLabel = activeType === "book-demo" ? "book demo" : activeType === "contact" ? "contact" : "discuss idea";
+          dashboardSubtitle.textContent = `${cachedCounts[activeType]} ${typeLabel} submission${cachedCounts[activeType] === 1 ? "" : "s"}`;
 
           if (!submissions.items.length) {
             submissionsList.innerHTML = '<div class="empty">No submissions found.</div>';
@@ -651,12 +669,14 @@ const title = "Admin | Swishtag";
 
         async function refreshAllCounts() {
           try {
-            const [bookDemo, discussIdea] = await Promise.all([
+            const [bookDemo, discussIdea, contact] = await Promise.all([
               requestJson("/api/admin/submissions?type=book-demo"),
-              requestJson("/api/admin/submissions?type=discuss-idea")
+              requestJson("/api/admin/submissions?type=discuss-idea"),
+              requestJson("/api/admin/submissions?type=contact")
             ]);
             cachedCounts["book-demo"] = Number(bookDemo.total ?? (bookDemo.submissions || []).length);
             cachedCounts["discuss-idea"] = Number(discussIdea.total ?? (discussIdea.submissions || []).length);
+            cachedCounts["contact"] = Number(contact.total ?? (contact.submissions || []).length);
             renderCounts();
           } catch {
             renderCounts();

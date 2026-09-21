@@ -1,25 +1,12 @@
 ---
-import GoogleTagManager from '../../components/analytics/GoogleTagManager.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactPage from '../../components/ContactPage.astro';
 
-const target = "/book-demo/";
+const title = "Contact Swishtag | Shopify & Automation";
+const description = "Contact Swishtag about company stores, integrations, automation, custom software, and promotional commerce platforms.";
+const canonical = "https://cms.swishtag.com/contact-us/";
+const robots = "index,follow";
 ---
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <GoogleTagManager placement="head" />
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-    <meta name="robots" content="noindex,follow" />
-    <link rel="canonical" href="https://cms.swishtag.com/book-demo/" />
-    <meta http-equiv="refresh" content={`0; url=${target}`} />
-    <title>Redirecting...</title>
-    <script is:inline>
-      location.replace("/book-demo/" + location.search + location.hash);
-    </script>
-  </head>
-  <body>
-    <GoogleTagManager placement="body" />
-    <p>Redirecting to <a href="/book-demo/">/book-demo/</a></p>
-  </body>
-</html>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+  <ContactPage />
+</BaseLayout>

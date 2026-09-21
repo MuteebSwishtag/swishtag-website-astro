@@ -28,6 +28,16 @@ const fieldLabels = {
     integrations: "Integrations",
     budget: "Estimated investment",
   },
+  "contact": {
+    fullName: "Full name",
+    firstName: "First name",
+    lastName: "Last name",
+    workEmail: "Work email",
+    companyName: "Company",
+    role: "Role",
+    topic: "Topic",
+    message: "Message",
+  },
 };
 
 function envValue(key, fallback = "") {
@@ -238,10 +248,18 @@ function renderHtmlEmail(heading, summary, fields) {
 
 function createEmailContent(submission) {
   const isBookDemo = submission.formType === "book-demo";
+  const isContact = submission.formType === "contact";
   const labels = fieldLabels[submission.formType] || {};
   const zoomMeeting = getZoomMeeting(submission);
+  const formName = isBookDemo ? "Book a Demo" : isContact ? "Contact" : "Custom Software & Automation";
+  const heading = isBookDemo ? "New Book Demo Request" : isContact ? "New Contact Inquiry" : "New Custom Software Idea";
+  const summary = isBookDemo
+    ? "A lead submitted the Book Demo form and selected a meeting slot."
+    : isContact
+      ? "A lead submitted the Contact form."
+      : "A lead submitted the Custom Software & Automation form.";
   const fields = [
-    ["Form", isBookDemo ? "Book a Demo" : "Custom Software & Automation"],
+    ["Form", formName],
     ...Object.entries(labels).map(([key, label]) => [label, submission.fields?.[key] || ""]),
     ...(isBookDemo && zoomMeeting.joinUrl ? [
       ["Zoom join link", zoomMeeting.joinUrl],
@@ -257,17 +275,15 @@ function createEmailContent(submission) {
   return {
     subject: isBookDemo
       ? `New book demo request - ${submission.companyName || submission.displayName || "Swishtag website"}`
+      : isContact
+        ? `New contact inquiry - ${submission.companyName || submission.displayName || "Swishtag website"}`
       : `New custom software idea - ${submission.displayName || "Swishtag website"}`,
-    heading: isBookDemo ? "New Book Demo Request" : "New Custom Software Idea",
-    summary: isBookDemo
-      ? "A lead submitted the Book Demo form and selected a meeting slot."
-      : "A lead submitted the Custom Software & Automation form.",
+    heading,
+    summary,
     textBody: renderTextEmail(fields),
     htmlBody: renderHtmlEmail(
-      isBookDemo ? "New Book Demo Request" : "New Custom Software Idea",
-      isBookDemo
-        ? "A lead submitted the Book Demo form and selected a meeting slot."
-        : "A lead submitted the Custom Software & Automation form.",
+      heading,
+      summary,
       fields,
     ),
   };

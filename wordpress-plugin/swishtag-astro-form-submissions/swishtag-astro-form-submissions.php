@@ -198,7 +198,7 @@ final class Swishtag_Astro_Form_Submissions
             return self::json_response(true, 'Thanks. Your request has been received.', 200);
         }
 
-        if (!in_array($source, ['book-demo', 'custom-software'], true)) {
+        if (!in_array($source, ['book-demo', 'custom-software', 'contact'], true)) {
             return self::json_response(false, 'This form could not be verified. Please refresh and try again.', 400);
         }
 
@@ -230,7 +230,9 @@ final class Swishtag_Astro_Form_Submissions
 
         $message = $source === 'book-demo'
             ? 'Thanks. Your demo request has been sent to Swishtag.'
-            : 'Thanks. Your idea has been sent to Swishtag.';
+            : ($source === 'contact'
+                ? 'Thanks. Your inquiry has been sent to Swishtag.'
+                : 'Thanks. Your idea has been sent to Swishtag.');
 
         return new WP_REST_Response([
             'ok' => true,
@@ -243,6 +245,52 @@ final class Swishtag_Astro_Form_Submissions
     public static function manage_columns(array $columns): array
     {
         unset($columns['date']);
+
+        if ($source === 'contact') {
+            return [
+                'form_source' => ['label' => 'Form source', 'required' => true, 'max' => 80],
+                'fullName' => ['label' => 'Full name', 'required' => true, 'max' => 160],
+                'firstName' => ['label' => 'First name', 'required' => true, 'max' => 100],
+                'lastName' => ['label' => 'Last name', 'required' => true, 'max' => 100],
+                'workEmail' => ['label' => 'Work email', 'type' => 'email', 'required' => true, 'max' => 254],
+                'companyName' => ['label' => 'Company', 'required' => true, 'max' => 160],
+                'role' => [
+                    'label' => 'Role',
+                    'required' => true,
+                    'max' => 180,
+                    'choices' => [
+                        'Promotional Products Distributor',
+                        'Promotional Products Supplier',
+                        'Promotional Products Decorator',
+                        'Brand / Enterprise Buyer',
+                        'Technology Partner',
+                        'Other',
+                    ],
+                ],
+                'topic' => [
+                    'label' => 'Topic',
+                    'required' => true,
+                    'max' => 180,
+                    'choices' => [
+                        'Shopify Company Store',
+                        'SAGE + Shopify',
+                        'Enterprise Company Store Automation',
+                        'PunchOut',
+                        'Custom Software & Automation',
+                        'System Integration',
+                        'Promo Plus',
+                        'Xecutor',
+                        'Rocket Apps',
+                        'Partnership Opportunity',
+                        'General Inquiry',
+                        'Something Else',
+                    ],
+                ],
+                'message' => ['label' => 'Message', 'type' => 'textarea', 'required' => true, 'max' => 3000],
+                'page' => ['label' => 'Page', 'type' => 'url', 'max' => 500],
+                'form_loaded_at' => ['label' => 'Form loaded at', 'max' => 40],
+            ];
+        }
 
         return [
             'cb' => $columns['cb'] ?? '',
@@ -627,8 +675,8 @@ final class Swishtag_Astro_Form_Submissions
 
     private static function save_submission(string $source, array $fields)
     {
-        $name = self::field_value($fields, $source === 'book-demo' ? 'fullName' : 'name');
-        $email = self::field_value($fields, $source === 'book-demo' ? 'workEmail' : 'email');
+        $name = self::field_value($fields, $source === 'book-demo' || $source === 'contact' ? 'fullName' : 'name');
+        $email = self::field_value($fields, $source === 'book-demo' || $source === 'contact' ? 'workEmail' : 'email');
         $company = self::field_value($fields, 'companyName');
         $title_parts = array_filter([
             self::source_label($source),
@@ -669,11 +717,13 @@ final class Swishtag_Astro_Form_Submissions
             return false;
         }
 
-        $email = self::field_value($fields, $source === 'book-demo' ? 'workEmail' : 'email');
-        $name = self::field_value($fields, $source === 'book-demo' ? 'fullName' : 'name');
+        $email = self::field_value($fields, $source === 'book-demo' || $source === 'contact' ? 'workEmail' : 'email');
+        $name = self::field_value($fields, $source === 'book-demo' || $source === 'contact' ? 'fullName' : 'name');
         $subject = $source === 'book-demo'
             ? 'New book demo request - ' . (self::field_value($fields, 'companyName') ?: 'Swishtag website')
-            : 'New custom software idea - ' . ($name ?: 'Swishtag website');
+            : ($source === 'contact'
+                ? 'New contact inquiry - ' . (self::field_value($fields, 'companyName') ?: ($name ?: 'Swishtag website'))
+                : 'New custom software idea - ' . ($name ?: 'Swishtag website'));
 
         $lines = [
             'A new Swishtag website form submission was received.',
@@ -717,6 +767,10 @@ final class Swishtag_Astro_Form_Submissions
 
         if ($source === 'custom-software') {
             return 'Custom Software & Automation';
+        }
+
+        if ($source === 'contact') {
+            return 'Contact';
         }
 
         return $source;
