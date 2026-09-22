@@ -2,11 +2,396 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = "Privacy Policy | Swishtag";
-const description = "A plain-language overview of how Swishtag may handle information submitted through this website.";
+const description = "How Swishtag collects, uses, discloses, stores, and protects personal information.";
 const canonical = "https://cms.swishtag.com/privacy-policy/";
 const robots = "index,follow";
+
+const intro = [
+  'Swishtag and Swishtag LLC ("Swishtag," "we," "our," or "us") respect your privacy and are committed to protecting personal information that is entrusted to us.',
+  'This Privacy Policy explains how we collect, use, disclose, store, and protect personal information when you visit swishtag.com, communicate with us, request information, book a meeting, engage Swishtag for professional services, interact with our sales or support teams, or use products and services operated by Swishtag, including Promo Plus.',
+  'Swishtag is a United States-based technology company providing software development, ecommerce solutions, custom integrations, automation, artificial intelligence solutions, promotional-products technology, Shopify development, and related professional and software services.',
+  'By using our website or voluntarily providing information to us, you acknowledge the practices described in this Privacy Policy.',
+];
+
+const sections = [
+  {
+    title: '1. Scope of This Privacy Policy',
+    paragraphs: [
+      "This Privacy Policy applies to personal information processed through Swishtag's website, communications, business development activities, professional services, and Swishtag-operated products that expressly reference this Privacy Policy, including Promo Plus.",
+      'This Privacy Policy also applies when you communicate with Swishtag through forms, email, telephone, video meetings, SMS, social media, professional networking platforms, or other authorized business channels.',
+      'PunchOut Central is a separate business and product and is not covered by this Privacy Policy.',
+      'Swishtag may separately provide custom PunchOut development and integration services. Information processed in connection with those Swishtag services may be covered by this Privacy Policy and any applicable client agreement.',
+      'Third-party websites, services, applications, and platforms are governed by their own privacy policies.',
+    ],
+  },
+  {
+    title: '2. Information We Collect',
+    paragraphs: ['The information Swishtag processes depends on how you interact with us.'],
+    subsections: [
+      {
+        title: 'Information You Provide to Us',
+        paragraphs: [
+          'When you complete a contact form, request a consultation, book a meeting, communicate with our team, or request information about our services, we may collect information such as your name, work email address, work telephone number, company name, company website, company size, area of interest, project requirements, and other information you voluntarily provide.',
+          'We may also collect communications and information you provide during emails, telephone calls, SMS communications, meetings, proposals, project discussions, customer-support interactions, and other business communications.',
+          'You are not required to create an account or provide personal information merely to browse the public portions of swishtag.com.',
+        ],
+      },
+      {
+        title: 'Business and Professional Information',
+        paragraphs: [
+          'As part of our business-to-business sales and relationship-development activities, we may obtain professional contact information from business-oriented and publicly available sources.',
+          'These sources may include LinkedIn, LinkedIn Sales Navigator, Apollo, Clutch, PPAI and ASI communities or directories, professional events, trade shows, business directories, company websites, publicly available sources, referrals, industry communities, and other legitimate business sources.',
+          "This information may include an individual's name, business email address, business telephone number, job title, company, professional profile, company website, and other information connected with their professional role.",
+        ],
+      },
+      {
+        title: 'Technical and Website Information',
+        paragraphs: [
+          'Swishtag uses website hosting, analytics, tag-management, advertising, security, and related technologies.',
+          'These technologies may automatically process limited technical information relating to your interaction with our website, such as browser or device information, website activity, referral information, approximate geographic information, cookie identifiers, advertising identifiers, IP addresses, or similar technical information.',
+          'Swishtag does not use this information for the purpose of identifying private individuals unnecessarily. Technical information may be processed to operate the website, maintain security, understand website performance, measure marketing effectiveness, improve our services, and manage advertising campaigns.',
+        ],
+      },
+      {
+        title: 'Client and Project Information',
+        paragraphs: [
+          'When you engage Swishtag for professional services, we may process information necessary to perform the requested work. This may include contact information, project requirements, technical credentials, business information, platform information, configuration details, files, documentation, and other information necessary to deliver the project.',
+          'Where a project requires access to a Shopify store, print-on-demand platform, ecommerce system, software application, or other client-controlled platform, authorized Swishtag personnel may receive limited access necessary to perform their assigned responsibilities.',
+          'Access is intended to be restricted according to project requirements and removed or discontinued when it is no longer reasonably required.',
+          'Swishtag does not copy client production customer databases for unrelated purposes and does not use client customer information for Swishtag marketing.',
+        ],
+      },
+      {
+        title: 'Promo Plus Information',
+        paragraphs: [
+          'When you use Promo Plus, Swishtag may process information necessary to provide the service.',
+          "Depending on your use of Promo Plus, this may include account or workspace information, company information, uploaded artwork, logos, mockups, proofing materials, production files, approval information, revision information, comments, project-related content, and other information submitted as part of the mockup, approval, and production-file workflow.",
+          "Information processed through Promo Plus is used to operate the service, maintain the user's workspace, provide requested functionality, support users, maintain security, and improve the reliability of the platform.",
+          'Additional notices may be provided within Promo Plus where appropriate.',
+        ],
+      },
+    ],
+  },
+  {
+    title: '3. How We Use Personal Information',
+    paragraphs: [
+      'Swishtag may use personal information to respond to inquiries, communicate with prospective and existing clients, schedule and conduct meetings, prepare proposals, deliver professional services, manage projects, provide customer support, operate Promo Plus and other applicable Swishtag services, process billing through authorized payment providers, improve our website and services, maintain business records, conduct analytics, measure advertising performance, communicate relevant business information, maintain security, prevent fraud or misuse, comply with legal requirements, establish or defend legal claims, and manage legitimate business operations.',
+      'We do not use confidential client data for unrelated advertising campaigns.',
+      'We do not sell client project data.',
+    ],
+  },
+  {
+    title: '4. Marketing and Business Communications',
+    paragraphs: [
+      'Swishtag conducts business-to-business marketing and business-development activities.',
+      'We may contact professionals through email, telephone, LinkedIn, or other appropriate business channels using information provided directly to us or obtained through legitimate business and professional sources.',
+      'Where consent is required by applicable law, we will seek the required consent.',
+      'Where applicable law permits business communications without prior consent, we may rely on another lawful basis while respecting applicable opt-out and do-not-contact requirements.',
+      'Recipients of our marketing emails may unsubscribe from future marketing communications.',
+      'When an individual requests not to receive further marketing or outreach communications, Swishtag may retain limited information on a suppression or do-not-contact list so that the request can be respected in the future.',
+      'Opting out of marketing communications does not prevent us from sending transactional, contractual, security, project-related, appointment-related, or other non-marketing communications where appropriate.',
+    ],
+  },
+  {
+    title: '5. SMS Communications and Consent',
+    paragraphs: [
+      'By providing your mobile phone number to SWISHTAG LLC and consenting to receive text messages, you agree that we may send SMS messages related to your interactions with us.',
+      'These messages may include:',
+    ],
+    list: [
+      'Appointment reminders',
+      'Meeting confirmations or updates',
+      'Follow-up communications',
+      'Requested information',
+      'Project-related notifications',
+      'Customer-service messages',
+      'Service-related updates',
+    ],
+    afterList: [
+      'Message frequency may vary depending on your interactions with Swishtag.',
+      'Message and data rates may apply according to your mobile carrier and service plan.',
+      'Consent to receive SMS messages is not required as a condition of purchasing Swishtag services unless the messaging is reasonably necessary to provide a requested service or communication.',
+      'You may opt out of SMS communications at any time by replying STOP to a message.',
+      'For assistance, you may reply HELP or contact Swishtag through swishtag.com or at hello@swishtag.com.',
+      'After an opt-out request, we may send a final confirmation message acknowledging that the opt-out request has been processed.',
+      'Swishtag does not use SMS for general promotional marketing unless the recipient has provided any consent required by applicable law.',
+    ],
+    subsections: [
+      {
+        title: 'SMS Privacy and Non-Sharing Commitment',
+        paragraphs: [
+          'Swishtag does not sell, rent, or disclose your mobile phone number or SMS consent information to third parties or affiliates for their own marketing or promotional purposes.',
+          'No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.',
+          'Information sharing described elsewhere in this Privacy Policy excludes text-messaging originator opt-in data and consent information.',
+          'SMS opt-in data, SMS consent records, and related mobile messaging consent information will not be shared with third parties for marketing or promotional purposes.',
+          "Swishtag may use service providers that technically enable delivery of SMS messages or related communications. Where such providers process mobile information on Swishtag's behalf, they are used only to support Swishtag's communications and services and are not authorized by Swishtag to use SMS consent information for their own marketing purposes.",
+        ],
+      },
+    ],
+  },
+  {
+    title: '6. Cookies and Tracking Technologies',
+    paragraphs: [
+      'Swishtag uses cookies and similar technologies in connection with swishtag.com.',
+      'These technologies may be used for essential website functionality, analytics, performance measurement, advertising measurement, marketing, and user preferences.',
+      'Our current technologies may include services such as Google Analytics, Google Tag Manager, Meta technologies, and other marketing or analytics technologies.',
+      'Swishtag may also advertise through platforms such as LinkedIn and Meta.',
+      'Where required or appropriate, Swishtag provides visitors with cookie controls that allow them to accept or reject non-essential cookies.',
+      'Rejecting non-essential cookies may limit analytics or advertising-related processing. Certain technologies that are necessary for security or core website functionality may still operate.',
+      'We intend our cookie controls to respect the selections users make. However, browser settings, third-party technologies, or technical changes may affect how particular technologies operate.',
+      'Users may also manage cookies through their browser settings.',
+    ],
+  },
+  {
+    title: '7. Analytics and Targeted Advertising',
+    paragraphs: [
+      'Swishtag may use advertising and analytics providers to understand how people interact with our website, measure advertising performance, understand audiences, and display or measure relevant advertisements.',
+      'Depending on the technology and applicable privacy law, information disclosed to advertising platforms may be considered "sharing," "targeted advertising," "cross-context behavioral advertising," or a similar regulated activity.',
+      'Swishtag does not sell personal information for monetary compensation.',
+      'Where applicable law gives individuals the right to opt out of targeted advertising or certain forms of sharing, Swishtag will provide or honor applicable mechanisms for exercising those rights.',
+    ],
+  },
+  {
+    title: '8. Artificial Intelligence',
+    paragraphs: [
+      'Swishtag develops and uses artificial-intelligence-based technologies and may use AI tools in connection with software development, automation, customer support, service delivery, and internal operations.',
+      'Some customer-support experiences may be assisted or managed by artificial intelligence.',
+      'Swishtag does not sell confidential client information to AI providers.',
+      'We do not use confidential client information to train publicly available AI models without appropriate authorization.',
+      'Where client information must be processed by an AI-powered service to provide an agreed service or feature, Swishtag will handle that processing subject to applicable agreements, authorization, security requirements, and applicable law.',
+    ],
+  },
+  {
+    title: '9. Access to Client Systems',
+    paragraphs: [
+      'Certain Swishtag projects require temporary access to client-controlled systems, including Shopify stores, ecommerce platforms, print-on-demand systems, applications, APIs, administrative interfaces, or other technical environments.',
+      'Access is provided only to personnel whose responsibilities reasonably require it.',
+      'Swishtag seeks to apply role-based or project-specific access restrictions and to limit access to what is necessary to deliver the contracted services.',
+      'Client-system access is not intended to give Swishtag ownership of client data.',
+      'Unless otherwise agreed or legally required, access credentials and permissions should be removed, revoked, or discontinued after they are no longer necessary for the relevant project.',
+    ],
+  },
+  {
+    title: '10. Calls, Meetings, and Recordings',
+    paragraphs: [
+      'Swishtag may record business telephone calls, video conferences, meetings, or related communications for documentation, training, quality assurance, project management, security, and business-record purposes.',
+      'Recordings, transcripts, meeting information, and related materials are treated as non-public business information.',
+      'Where applicable law requires notice, consent, or other authorization before recording a call or meeting, Swishtag intends to provide or obtain the required authorization.',
+      'Recorded information may be processed using communication, transcription, conferencing, or AI-assisted tools where appropriate.',
+    ],
+  },
+  {
+    title: '11. How We Disclose Information',
+    paragraphs: [
+      'Swishtag does not sell personal information for monetary compensation.',
+      'We may disclose information to service providers, contractors, professional advisers, technology providers, analytics providers, advertising platforms, communications providers, hosting providers, payment providers, CRM and sales tools, calendar and scheduling providers, software-development services, cloud infrastructure providers, and other vendors that help us operate our business.',
+      'These providers may process information only according to their role, contractual terms, their own legal obligations, and the instructions or permissions applicable to the relationship.',
+      'Swishtag currently uses or may use services such as Google, Zoom, Zoom Phone, Calendly, Google Calendar, LinkedIn, LinkedIn Sales Navigator, Apollo, Closely, Instantly, payment processors, hosting providers, analytics providers, advertising platforms, SMS or communications providers, and other business technology providers.',
+      'The specific providers we use may change as our business evolves.',
+      'For clarity, SMS opt-in data and consent information are not shared with third parties or affiliates for their own marketing or promotional purposes.',
+    ],
+  },
+  {
+    title: '12. Payment Information',
+    paragraphs: [
+      'Swishtag may receive payments through providers or methods such as Wise, Stripe, PayPal, Shopify Billing, and bank transfer.',
+      'Swishtag does not intentionally store complete payment-card numbers or card-security codes.',
+      'Payment providers independently process payment information according to their own privacy policies, security practices, and legal obligations.',
+      'Swishtag may retain transaction records, invoices, billing contacts, payment status information, and related accounting records as necessary for business, tax, legal, and financial purposes.',
+    ],
+  },
+  {
+    title: '13. Data Retention',
+    paragraphs: [
+      'Swishtag retains business, client, project, and related information for periods reasonably necessary for business continuity, contractual obligations, regulatory requirements, dispute resolution, security, record keeping, and legitimate operational purposes.',
+      'Certain client records, project information, communications, and backups may be retained for up to ten years where appropriate.',
+      'Retention periods may differ depending on the type of information, contractual obligations, applicable law, operational requirements, and the reason the information was collected.',
+      'Information may be deleted, anonymized, archived, or securely retained when it is no longer actively required.',
+      'Suppression-list information may be retained for as long as reasonably necessary to ensure that a marketing opt-out continues to be respected.',
+      'SMS opt-out records may also be retained where reasonably necessary to ensure that messaging preferences continue to be respected.',
+    ],
+  },
+  {
+    title: '14. Data Security',
+    paragraphs: [
+      'Swishtag uses administrative, organizational, contractual, and technical safeguards designed to protect personal information and client information against unauthorized access, loss, misuse, alteration, or disclosure.',
+      'Our practices may include restricted access, project-based permissions, monitoring, access controls, confidentiality obligations, secure development practices, encrypted communications, backups, authentication controls, and other safeguards appropriate to the relevant systems.',
+      'No internet-based service, software platform, storage system, or transmission method can be guaranteed to be completely secure. Therefore, while Swishtag takes reasonable measures to protect information, absolute security cannot be guaranteed.',
+    ],
+  },
+  {
+    title: '15. International Personnel and Data Processing',
+    paragraphs: [
+      'Swishtag is a United States business and works with employees, contractors, service providers, and technical professionals who may be located in different countries.',
+      'As a result, information may be accessed, transferred, stored, supported, or otherwise processed outside the country in which it was originally collected.',
+      'Where required by applicable law, Swishtag will use appropriate contractual, organizational, or other safeguards for international transfers of personal information.',
+      'By engaging Swishtag, information may therefore be processed by authorized personnel or service providers in jurisdictions other than your own, subject to applicable legal and contractual protections.',
+    ],
+  },
+  {
+    title: '16. Your Privacy Rights',
+    paragraphs: [
+      "Depending on where you live and which privacy laws apply to Swishtag's processing of your information, you may have rights relating to your personal information.",
+      'These may include the right to request access to personal information, request correction of inaccurate information, request deletion where legally available, obtain a copy of information, opt out of certain marketing communications, object to certain processing, request restriction of certain processing, or exercise rights relating to targeted advertising or certain disclosures.',
+      'Some rights are subject to legal limitations and exceptions.',
+      'To protect privacy and security, Swishtag may need to verify your identity before fulfilling certain requests.',
+      'Authorized agents may be permitted to submit requests where applicable law allows them to do so and appropriate authorization can be verified.',
+      'Swishtag will not unlawfully discriminate against an individual for exercising applicable privacy rights.',
+      'Privacy requests may be submitted to: hello@swishtag.com',
+    ],
+  },
+  {
+    title: '17. United States Privacy Rights',
+    paragraphs: [
+      'Various U.S. states provide privacy rights to qualifying residents and impose obligations on businesses that meet particular legal thresholds.',
+      'Swishtag will apply applicable privacy rights and obligations where the relevant law applies to our processing activities.',
+      'These rights may include access, correction, deletion, portability, and the ability to opt out of certain targeted advertising, sales, or sharing activities.',
+      'Swishtag does not sell personal information for monetary compensation.',
+      'Because certain advertising technologies may involve disclosures of information to advertising partners, such activities may be legally characterized as "sharing," targeted advertising, or cross-context behavioral advertising under certain state laws.',
+      'Where required, Swishtag will provide appropriate mechanisms for exercising applicable opt-out rights.',
+      "Nothing in this Privacy Policy should be interpreted as claiming that every U.S. state privacy statute applies to Swishtag regardless of that statute's scope, exemptions, or applicability thresholds.",
+    ],
+  },
+  {
+    title: '18. Information Relating to California Residents',
+    paragraphs: [
+      'California residents may have additional privacy rights where the California Consumer Privacy Act, as amended, applies to the relevant processing activity.',
+      'Depending on legal applicability, those rights may include requesting information regarding categories or specific pieces of personal information collected, requesting deletion, requesting correction, obtaining information concerning categories of sources and recipients, and opting out of certain sales or sharing of personal information.',
+      'Swishtag does not sell personal information for monetary compensation.',
+      'Certain advertising and analytics disclosures may nevertheless constitute "sharing" under California law where the applicable statutory requirements are met.',
+      'Applicable California privacy requests may be submitted to hello@swishtag.com.',
+    ],
+  },
+  {
+    title: '19. UK, Canada, and International Users',
+    paragraphs: [
+      'Swishtag primarily serves business customers and users in markets including the United States, United Kingdom, Canada, Central Asia, and other international locations.',
+      'Depending on your location and applicable law, additional rights or requirements may apply to the processing of your personal information.',
+      'Where applicable, Swishtag may process information based on consent, performance of a contract, steps taken at the request of a prospective customer, legitimate business interests, compliance with legal obligations, or other lawful grounds recognized under applicable law.',
+      'Individuals may contact us regarding applicable access, correction, deletion, objection, restriction, or portability rights.',
+    ],
+  },
+  {
+    title: '20. Children',
+    paragraphs: [
+      "Swishtag's website and services are primarily designed for businesses, professionals, organizations, and commercial users.",
+      'Our services are not specifically directed toward children.',
+      'Swishtag does not knowingly seek to collect personal information from children in circumstances prohibited by applicable law.',
+      'If you believe a child has provided personal information to Swishtag inappropriately, please contact us at hello@swishtag.com so that we can review the matter and take appropriate action.',
+    ],
+  },
+  {
+    title: '21. Legal Requirements and Protection of Rights',
+    paragraphs: [
+      'Swishtag may preserve, use, or disclose information where we reasonably believe doing so is necessary to comply with applicable laws, regulations, legal proceedings, court orders, lawful government requests, or law-enforcement requests.',
+      'We may also process or disclose information where reasonably necessary to investigate fraud, cybersecurity incidents, unauthorized activity, violations of agreements, threats to individuals or systems, or to establish, exercise, or defend legal rights.',
+    ],
+  },
+  {
+    title: '22. Business Transfers',
+    paragraphs: [
+      'If Swishtag or part of its business is involved in a merger, acquisition, financing, restructuring, reorganization, bankruptcy, sale of assets, corporate transaction, or similar event, personal information and business records may be transferred, disclosed, reviewed, or otherwise processed as part of that transaction.',
+      'Any successor organization receiving personal information will be expected to process that information subject to applicable law and relevant contractual obligations.',
+    ],
+  },
+  {
+    title: '23. Third-Party Websites and Services',
+    paragraphs: [
+      'Our website and services may contain links to third-party websites, applications, integrations, or services.',
+      'Swishtag does not control the privacy practices of independent third parties.',
+      'This Privacy Policy does not apply to information that a third party independently collects under its own privacy policy.',
+      'We encourage users to review the privacy notices of third-party services before submitting personal information to them.',
+    ],
+  },
+  {
+    title: '24. Changes to This Privacy Policy',
+    paragraphs: [
+      'Swishtag may update this Privacy Policy periodically to reflect changes to our technology, services, business practices, legal requirements, or privacy practices.',
+      'When the policy is updated, we will revise the "Last Updated" date shown at the beginning of the policy.',
+      'Material changes may also be communicated through additional methods where required by applicable law.',
+      'Your continued use of Swishtag services after an updated Privacy Policy becomes effective will be subject to the updated policy and applicable law.',
+    ],
+  },
+  {
+    title: '25. Contact Swishtag',
+    paragraphs: [
+      'If you have questions about this Privacy Policy, want to exercise an applicable privacy right, wish to opt out of marketing communications, or have concerns about how Swishtag handles personal information, please contact us.',
+      'Swishtag / Swishtag LLC',
+      'Email: hello@swishtag.com',
+      'Phone: +1 518 650 1201',
+      'Website: swishtag.com',
+      'We will review privacy requests and respond in accordance with applicable legal requirements.',
+    ],
+  },
+];
 ---
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
   <link slot="head" rel="stylesheet" href="/assets/generic-page.css" />
-  <main><section class="gp-hero"><div class="gp-wrap"><div class="gp-kicker">Legal</div><h1>Privacy Policy</h1><p>A plain-language overview of how Swishtag may handle information submitted through this website.</p></div></section><section class="gp-section"><div class="gp-wrap gp-prose"><h2>Information you provide</h2><p>We may receive information you choose to submit, such as your name, work email, company, project details and meeting preferences.</p><h2>How information may be used</h2><p>Information may be used to respond to inquiries, deliver requested services, improve the website and maintain business records.</p><h2>Service providers</h2><p>Website hosting, analytics, scheduling, email and other service providers may process information on our behalf when those services are enabled.</p><h2>Your choices</h2><p>You can contact Swishtag to ask about personal information you previously submitted through the website.</p><p class="gp-note">Draft website policy content. Review with qualified legal counsel before relying on it for compliance obligations.</p></div></section></main>
+  <style>
+    .privacy-policy-page {
+      background:
+        radial-gradient(circle at 87% 3%, rgba(217, 255, 86, 0.62), transparent 27rem),
+        radial-gradient(circle at 12% 7%, rgba(233, 226, 255, 0.78), transparent 28rem),
+        radial-gradient(circle at 82% 44%, rgba(217, 248, 237, 0.5), transparent 30rem),
+        linear-gradient(180deg, #ffffff 0%, #fbfbfd 34%, #f8fbff 100%);
+    }
+
+    .privacy-policy-page .gp-hero {
+      background: transparent;
+      border-bottom: 0;
+      padding-bottom: 58px;
+    }
+
+    .privacy-policy-page .gp-section {
+      background: transparent;
+      padding-top: 42px;
+    }
+
+    .privacy-policy-page .gp-prose {
+      padding-top: 8px;
+    }
+
+    @media (max-width: 820px) {
+      .privacy-policy-page .gp-hero {
+        padding-bottom: 40px;
+      }
+
+      .privacy-policy-page .gp-section {
+        padding-top: 28px;
+      }
+    }
+  </style>
+  <main class="privacy-policy-page">
+    <section class="gp-hero">
+      <div class="gp-wrap">
+        <div class="gp-kicker">Legal</div>
+        <h1>Privacy Policy</h1>
+        <p>Last Updated: September 18, 2026</p>
+      </div>
+    </section>
+    <section class="gp-section">
+      <div class="gp-wrap gp-prose">
+        {intro.map((paragraph) => <p>{paragraph}</p>)}
+
+        {sections.map((section) => (
+          <>
+            <h2>{section.title}</h2>
+            {section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+            {section.list && (
+              <ul>
+                {section.list.map((item) => <li>{item}</li>)}
+              </ul>
+            )}
+            {section.afterList?.map((paragraph) => <p>{paragraph}</p>)}
+            {section.subsections?.map((subsection) => (
+              <>
+                <h3>{subsection.title}</h3>
+                {subsection.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+              </>
+            ))}
+          </>
+        ))}
+      </div>
+    </section>
+  </main>
 </BaseLayout>
