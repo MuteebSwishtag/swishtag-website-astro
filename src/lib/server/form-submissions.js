@@ -1,4 +1,4 @@
-import { getDb } from "./db.js";
+import { getSubmissionCollection as getDatabaseSubmissionCollection } from "./db.js";
 import { getBookDemoMeetingAt } from "./meeting-time.js";
 
 const COLLECTION_NAME = process.env.FORM_SUBMISSIONS_COLLECTION || "form_submissions";
@@ -72,7 +72,7 @@ export function normalizeWebsiteUrl(value) {
 }
 
 export function getSubmissionCollection() {
-  return getDb().then(db => db.collection(COLLECTION_NAME));
+  return getDatabaseSubmissionCollection(COLLECTION_NAME);
 }
 
 function missingRequiredFields(data, fields) {

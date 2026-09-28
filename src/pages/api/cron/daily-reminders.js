@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { runDailyMeetingReminders } from "../../../lib/server/meeting-reminders.js";
 import { getMailDebugInfo } from "../../../lib/server/mail.js";
-import { getMongoDebugInfo } from "../../../lib/server/db.js";
+import { getDatabaseDebugInfo } from "../../../lib/server/db.js";
 
 function json(payload, status = 200) {
   return new Response(JSON.stringify(payload), {
@@ -60,7 +60,7 @@ async function handleReminderCron(request) {
     url: getSafeUrl(request.url),
     hasCronSecret: Boolean(cronSecret),
     hasProvidedSecret: Boolean(providedSecret),
-    mongo: getMongoDebugInfo(),
+    database: getDatabaseDebugInfo(),
     mail: getMailDebugInfo(),
   });
 
@@ -109,7 +109,7 @@ async function handleReminderCron(request) {
       requestId,
       durationMs: Date.now() - startedAt,
       error: errorDetails(error),
-      mongo: getMongoDebugInfo(),
+      database: getDatabaseDebugInfo(),
       mail: getMailDebugInfo(),
     });
 

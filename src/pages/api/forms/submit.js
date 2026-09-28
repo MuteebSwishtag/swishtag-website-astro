@@ -1,5 +1,5 @@
 import { createSubmissionDocument, getSubmissionCollection } from "../../../lib/server/form-submissions.js";
-import { getMongoDebugInfo } from "../../../lib/server/db.js";
+import { getDatabaseDebugInfo } from "../../../lib/server/db.js";
 import { getMailDebugInfo, sendMeetingScheduledEmail, sendSubmissionEmail } from "../../../lib/server/mail.js";
 import {
   createZoomMeetingForSubmission,
@@ -62,7 +62,7 @@ export async function POST({ request }) {
     method: request.method,
     url: request.url,
     contentType: request.headers.get("content-type") || "",
-    mongo: getMongoDebugInfo(),
+    database: getDatabaseDebugInfo(),
     mail: getMailDebugInfo(),
     zoom: getZoomSchedulerDebugInfo(),
   });
@@ -93,10 +93,12 @@ export async function POST({ request }) {
       return json({ ok: false, message: result.error.message, requestId }, result.error.status);
     }
 
+    const databaseInfo = getDatabaseDebugInfo();
+
     console.info("[Swishtag form] connecting to collection", {
       requestId,
       formType: result.document.formType,
-      collection: getMongoDebugInfo().collection,
+      collection: databaseInfo.collection || databaseInfo.table,
     });
 
     const collection = await getSubmissionCollection();
@@ -331,7 +333,7 @@ export async function POST({ request }) {
       requestId,
       durationMs: Date.now() - startedAt,
       error: errorDetails(error),
-      mongo: getMongoDebugInfo(),
+      database: getDatabaseDebugInfo(),
     });
 
     return json({
