@@ -653,6 +653,22 @@
   margin-top: 18px;
 }
 
+.contact-direct__details {
+  display: grid;
+  gap: 18px;
+  max-width: 500px;
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--contact-line);
+  font-style: normal;
+}
+
+.contact-direct__details div { display: grid; gap: 5px; }
+.contact-direct__details strong { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+.contact-direct__details span,
+.contact-direct__details a { width: fit-content; color: var(--contact-muted); font-size: .88rem; line-height: 1.6; }
+.contact-direct__details a:hover { color: var(--contact-ink); text-decoration: underline; }
+
 .contact-socials a,
 .contact-cards a {
   display: inline-flex;

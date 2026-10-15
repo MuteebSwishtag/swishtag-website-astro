@@ -1,7 +1,13 @@
 ---
 import xecutorHtml from "../legacy/xecutor-body.html?raw";
+import SharedFaq from './layout/SharedFaq.astro';
+import faqs from '../data/faqs.json';
+
+const [beforeFaq, afterFaq] = xecutorHtml.split('<!-- SHARED_FAQ -->');
 ---
 
 <main class="xecutor-page">
-  <Fragment set:html={xecutorHtml} />
+  <Fragment set:html={beforeFaq} />
+  <SharedFaq {...faqs.xecutor} />
+  <Fragment set:html={afterFaq} />
 </main>

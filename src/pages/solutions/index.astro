@@ -1,4 +1,6 @@
 ---
+import SharedFaq from '../../components/layout/SharedFaq.astro';
+import faqs from '../../data/faqs.json';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = "Solutions for Promotional Products Distributors | Swishtag";
@@ -568,23 +570,7 @@ const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-pr
   </div>
   </div>
   </section>
-  <section class="section faq-section" id="faq">
-  <div class="page-shell faq-layout">
-  <div class="faq-heading">
-  <p class="eyebrow">FAQ</p>
-  <h2 class="section-title">A few things people ask before choosing.</h2>
-  <p class="section-copy">The individual solution pages go deeper. These are the questions that matter when deciding where to start.</p>
-  </div>
-  <div class="faq-list">
-  <details class="faq-item" open=""><summary>Which solution should we start with?</summary><p>If the immediate goal is one client-facing store, start with Company Store Launch. If your team already relies on SAGE and manual catalog rebuilding is the problem, start with the SAGE Connected Company Store. If you are managing many stores and operational handoffs are the problem, look at Enterprise Automation. If the workflow does not fit an existing package, start with Custom Software &amp; Automation.</p></details>
-  <details class="faq-item"><summary>Can we start with Company Store Launch and add automation later?</summary><p>Yes. That is often the cleanest path. Launch the client program first, then add catalog connections, order automation, supplier workflows, PunchOut, accounting, or multi-store controls only when the operation has a real reason for them.</p></details>
-  <details class="faq-item"><summary>Does the SAGE Connected Company Store replace SAGE?</summary><p>No. The SAGE solution is designed to keep SAGE in the distributor's product workflow while Shopify becomes the client-facing storefront. The exact data connection depends on authorized access, available SAGE services, and the approved scope.</p></details>
-  <details class="faq-item"><summary>Can Enterprise Automation manage several Shopify company stores?</summary><p>Yes. That is the core use case. It is designed for distributors that need centralized visibility across multiple Shopify company stores and want to add automation around orders, suppliers, reporting, procurement, or other operational workflows.</p></details>
-  <details class="faq-item"><summary>Can Swishtag connect PunchOut, suppliers, or accounting systems?</summary><p>Those integrations belong in the Enterprise Automation scope. The exact connection depends on the systems involved, available APIs, access, and the agreed workflow. SAGE and PromoStandards can also be part of the broader architecture where appropriate.</p></details>
-  <details class="faq-item"><summary>Do we need the enterprise solution just because our company-store business is growing?</summary><p>No. Growth alone is not a reason to add enterprise complexity. Move to the enterprise layer when multiple stores, manual handoffs, reporting, procurement, supplier routing, or custom workflows are creating enough operational drag to justify centralization and automation.</p></details>
-  </div>
-  </div>
-  </section>
+  <SharedFaq {...faqs.solutions} />
   <section class="final-section">
   <div class="page-shell">
   <div class="final-cta">

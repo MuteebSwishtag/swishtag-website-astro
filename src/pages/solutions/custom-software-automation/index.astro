@@ -1,4 +1,6 @@
 ---
+import SharedFaq from '../../../components/layout/SharedFaq.astro';
+import faqs from '../../../data/faqs.json';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const title = "Custom Software & Business Automation Solutions | Swishtag";
@@ -1614,24 +1616,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
     </div>
   </section>
   
-  <section class="section faq-section" id="faq" data-nav-label="FAQs">
-    <div class="page-shell faq-layout">
-      <div class="faq-heading" data-reveal>
-        <p class="eyebrow">Frequently asked questions</p>
-        <h2 class="section-title">Before you bring us the idea.</h2>
-        <p class="section-copy">Start with the business problem. We will help turn it into requirements, phases and a practical development path.</p>
-      </div>
-
-      <div class="faq-list" data-reveal>
-        <details class="faq-item"><summary>Do I need a technical specification first?</summary><p>No. Start with the business problem, workflow or idea. We can help translate it into requirements, phases, architecture and a development plan before the build is approved.</p></details>
-        <details class="faq-item"><summary>Can you work with an existing platform or MVP?</summary><p>Yes. A project can begin from an idea, a manual process, an MVP or a live platform that needs integrations, automation, rebuilding or additional modules.</p></details>
-        <details class="faq-item"><summary>Will you give a fixed timeline and price immediately?</summary><p>Not responsibly for an unclear project. Once requirements, dependencies, risks and phases are understood, we can propose the appropriate commercial model and provide a development plan with timeline and cost.</p></details>
-        <details class="faq-item"><summary>Do you use AI in every project?</summary><p>No. AI should solve a real problem. If a simpler API, rules engine or workflow automation is more reliable and economical, that is often the better answer.</p></details>
-        <details class="faq-item"><summary>How do project updates work?</summary><p>Before kickoff we agree a reporting rhythm. Depending on project size, this can include weekly progress reporting and milestone reviews covering completed work, current work, next steps, decisions and risks.</p></details>
-        <details class="faq-item"><summary>What happens after launch?</summary><p>The agreed delivery can include production deployment, stabilization, documentation, training and handover. Ongoing support or continuous development can then be arranged separately.</p></details>
-      </div>
-    </div>
-  </section>
+  <SharedFaq {...faqs.customSoftware} navLabel="FAQs" />
   
   <section class="section contact-section" id="discuss-idea">
     <div class="page-shell form-layout">

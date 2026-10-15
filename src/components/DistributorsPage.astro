@@ -1,7 +1,13 @@
 ---
 import distributorsHtml from "../legacy/distributors-body.html?raw";
+import SharedFaq from './layout/SharedFaq.astro';
+import faqs from '../data/faqs.json';
+
+const [beforeFaq, afterFaq] = distributorsHtml.split('<!-- SHARED_FAQ -->');
 ---
 
 <main class="distributors-page">
-  <Fragment set:html={distributorsHtml} />
+  <Fragment set:html={beforeFaq} />
+  <SharedFaq {...faqs.distributors} />
+  <Fragment set:html={afterFaq} />
 </main>

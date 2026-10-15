@@ -1,0 +1,48 @@
+---
+import '../../styles/faq.css';
+
+interface FaqItem {
+  question: string;
+  answer: string;
+  open?: boolean;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  link?: { href: string; label: string };
+  items: FaqItem[];
+  navLabel?: string;
+  deferred?: boolean;
+}
+
+const {
+  eyebrow = 'Frequently asked questions',
+  title,
+  description,
+  link,
+  items,
+  navLabel,
+  deferred = false,
+} = Astro.props;
+---
+
+<section class="site-faq" id="faq" data-nav-label={navLabel} data-render-deferred={deferred ? 'true' : undefined}>
+  <div class="site-faq__shell">
+    <div class="site-faq__heading">
+      <p class="site-faq__eyebrow">{eyebrow}</p>
+      <h2 class="site-faq__title">{title}</h2>
+      {description && <p class="site-faq__description">{description}</p>}
+      {link && <a class="site-faq__link" href={link.href}>{link.label}<span aria-hidden="true">→</span></a>}
+    </div>
+    <div class="site-faq__list">
+      {items.map((item) => (
+        <details class="site-faq__item" open={item.open || undefined}>
+          <summary set:html={item.question} />
+          <p set:html={item.answer} />
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

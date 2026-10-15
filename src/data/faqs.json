@@ -1,0 +1,466 @@
+{
+  "home": {
+    "eyebrow": "Frequently asked questions",
+    "title": "A clearer way forward.",
+    "description": "The simple answers to the questions promotional products companies usually ask before working with Swishtag.",
+    "link": {
+      "href": "/contact/",
+      "label": "Ask us something specific"
+    },
+    "items": [
+      {
+        "question": "Is Swishtag a Shopify agency or a software company?",
+        "answer": "Both, with a clear distinction. Company Store, SAGE, Enterprise Automation, and PunchOut are solution paths. Promo Plus, Xecutor, and Rocket Apps are Swishtag owned software platforms.",
+        "open": false
+      },
+      {
+        "question": "What is the difference between Solutions and Enterprise Commerce?",
+        "answer": "Solutions focuses on launching or improving customer facing stores. Enterprise Commerce connects the more complex work behind those stores, including suppliers, procurement, ERP, accounting, multi store management, and automation.",
+        "open": false
+      },
+      {
+        "question": "Do we need to replace commonsku, SAGE, ESP+, or our ERP?",
+        "answer": "No. Swishtag is designed to add a modern commerce and automation layer around the systems your team already trusts. We focus on connecting the gaps rather than forcing a rip and replace project.",
+        "open": false
+      },
+      {
+        "question": "What is PunchOut Solutions?",
+        "answer": "PunchOut Solutions helps promotional products distributors launch and manage PunchOut catalog connections using Shopify. It can support multiple buyer connections on one Shopify store or connections across multiple Shopify stores from one management platform.",
+        "open": false
+      },
+      {
+        "question": "Can you migrate existing company stores to Shopify?",
+        "answer": "Yes. Swishtag can migrate products, customers, content, workflows, and store rules from legacy, custom, WooCommerce, Magento, BigCommerce, and other commerce environments.",
+        "open": false
+      },
+      {
+        "question": "Who are Swishtag solutions built for?",
+        "answer": "Swishtag is focused on promotional product distributors, suppliers, and decorators. The strongest fit is an organization trying to launch more programs, connect existing systems, or scale without adding the same amount of manual work.",
+        "open": false
+      },
+      {
+        "question": "How does a project begin?",
+        "answer": "We begin by understanding your current customer journey, systems, workflows, and operational bottlenecks. From there, we recommend the smallest practical path that can create meaningful progress.",
+        "open": false
+      }
+    ]
+  },
+  "sage": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Clear answers before the integration begins.",
+    "description": "We verify the actual SAGE access, catalog requirements, and client workflow before recommending the build.",
+    "items": [
+      {
+        "question": "Is this the same as a SAGE Store?",
+        "answer": "No. A SAGE Connected Company Store is a custom Shopify storefront using authorized SAGE data services. A standard SAGE Store is usually the better choice when its native features fully meet the client requirement. Choose this service when the client specifically needs Shopify, stronger customization, or a broader integration roadmap.",
+        "open": false
+      },
+      {
+        "question": "Does this replace SAGE Workplace?",
+        "answer": "No. The distributor can continue using SAGE for product research and existing workflows. Shopify becomes the client-facing commerce layer, while the agreed SAGE data supports the storefront.",
+        "open": false
+      },
+      {
+        "question": "What SAGE data can be used?",
+        "answer": "The exact fields depend on the distributor's SAGE licensing, SAGE Connect access, available modules, supplier data, and the approved scope. Product details, images, categories, pricing, inventory, and supplier references may be used when available.",
+        "open": false
+      },
+      {
+        "question": "Can the entire SAGE catalog be added to Shopify?",
+        "answer": "The service is designed around a controlled catalog. Broad or full-database access depends on licensing, technical limits, search requirements, and Shopify architecture. We generally recommend starting with approved products that support the client program.",
+        "open": false
+      },
+      {
+        "question": "Will orders automatically move back into SAGE?",
+        "answer": "Not unless order submission or order synchronization is included in the written scope. The starting package focuses on the Shopify storefront and catalog data flow. Order, purchase order, accounting, and status integrations can be added separately.",
+        "open": false
+      },
+      {
+        "question": "How often will product data update?",
+        "answer": "The update frequency is defined during discovery and depends on available SAGE services, supplier data, catalog size, Shopify limits, and the operational importance of each field.",
+        "open": false
+      },
+      {
+        "question": "Can the store use POD, stocked inventory, or hybrid fulfillment?",
+        "answer": "Yes. The storefront can support print on demand, stocked inventory, or a hybrid model. The SAGE data connection and the fulfillment workflow are scoped separately so each one is clear.",
+        "open": false
+      },
+      {
+        "question": "What happens when supplier data is missing or inconsistent?",
+        "answer": "The integration can only use data available through the approved source. We identify missing fields during mapping and define whether the distributor will supply replacements, use defaults, or exclude the affected products.",
+        "open": false
+      },
+      {
+        "question": "Who needs to provide SAGE access?",
+        "answer": "The distributor must provide authorized access, credentials, documentation, and any required SAGE approvals or subscriptions. Swishtag does not bypass licensing or use data outside the distributor's permitted access.",
+        "open": false
+      },
+      {
+        "question": "Does the price include Shopify or SAGE fees?",
+        "answer": "No. Shopify subscriptions, SAGE subscriptions, SAGE Connect or API charges, paid applications, domains, transaction fees, product costs, and other third-party charges are separate unless explicitly included.",
+        "open": false
+      },
+      {
+        "question": "How long does the implementation take?",
+        "answer": "The timeline is confirmed after the access and data review. A controlled catalog is usually implemented in phases: discovery, mapping, storefront development, testing, and launch. Custom order or ERP integrations extend the schedule.",
+        "open": false
+      }
+    ]
+  },
+  "solutions": {
+    "eyebrow": "FAQ",
+    "title": "A few things people ask before choosing.",
+    "description": "The individual solution pages go deeper. These are the questions that matter when deciding where to start.",
+    "items": [
+      {
+        "question": "Which solution should we start with?",
+        "answer": "If the immediate goal is one client-facing store, start with Company Store Launch. If your team already relies on SAGE and manual catalog rebuilding is the problem, start with the SAGE Connected Company Store. If you are managing many stores and operational handoffs are the problem, look at Enterprise Automation. If the workflow does not fit an existing package, start with Custom Software &amp; Automation.",
+        "open": true
+      },
+      {
+        "question": "Can we start with Company Store Launch and add automation later?",
+        "answer": "Yes. That is often the cleanest path. Launch the client program first, then add catalog connections, order automation, supplier workflows, PunchOut, accounting, or multi-store controls only when the operation has a real reason for them.",
+        "open": false
+      },
+      {
+        "question": "Does the SAGE Connected Company Store replace SAGE?",
+        "answer": "No. The SAGE solution is designed to keep SAGE in the distributor's product workflow while Shopify becomes the client-facing storefront. The exact data connection depends on authorized access, available SAGE services, and the approved scope.",
+        "open": false
+      },
+      {
+        "question": "Can Enterprise Automation manage several Shopify company stores?",
+        "answer": "Yes. That is the core use case. It is designed for distributors that need centralized visibility across multiple Shopify company stores and want to add automation around orders, suppliers, reporting, procurement, or other operational workflows.",
+        "open": false
+      },
+      {
+        "question": "Can Swishtag connect PunchOut, suppliers, or accounting systems?",
+        "answer": "Those integrations belong in the Enterprise Automation scope. The exact connection depends on the systems involved, available APIs, access, and the agreed workflow. SAGE and PromoStandards can also be part of the broader architecture where appropriate.",
+        "open": false
+      },
+      {
+        "question": "Do we need the enterprise solution just because our company-store business is growing?",
+        "answer": "No. Growth alone is not a reason to add enterprise complexity. Move to the enterprise layer when multiple stores, manual handoffs, reporting, procurement, supplier routing, or custom workflows are creating enough operational drag to justify centralization and automation.",
+        "open": false
+      }
+    ]
+  },
+  "companyStore": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Clear answers before you commit.",
+    "description": "Still unsure whether this is the right starting point? We will review the actual client opportunity before recommending a build.",
+    "items": [
+      {
+        "question": "How quickly can a company store be launched?",
+        "answer": "A straightforward store can often be launched within a few weeks after products, branding, content, and fulfillment requirements are confirmed. Custom functionality may extend the timeline.",
+        "open": false
+      },
+      {
+        "question": "Do we need to carry inventory?",
+        "answer": "No. A company store can launch with print on demand and no upfront inventory. It can also use pre produced inventory for faster delivery and better unit economics, or a hybrid model that stocks core products while producing the rest after the order.",
+        "open": false
+      },
+      {
+        "question": "Is Company Store Launch only a print on demand store?",
+        "answer": "No. Print on demand is one fulfillment option, not the identity of the service. We can configure a company store around print on demand, stocked inventory, or a practical hybrid model based on the client program.",
+        "open": false
+      },
+      {
+        "question": "Can the store use the client’s branding?",
+        "answer": "Yes. The storefront can be designed around the client’s approved colors, logo, products, and visual guidelines.",
+        "open": false
+      },
+      {
+        "question": "Who owns the Shopify store?",
+        "answer": "Store ownership and account structure are agreed before development. We recommend keeping the account under the distributor’s or client’s control, depending on the business arrangement.",
+        "open": false
+      },
+      {
+        "question": "Can we add more products later?",
+        "answer": "Yes. Your team can manage products after launch, or Swishtag can provide ongoing support.",
+        "open": false
+      },
+      {
+        "question": "Can this connect with SAGE?",
+        "answer": "SAGE integration is available through the separate SAGE Powered Company Store solution. It requires workflow discovery and a defined integration scope.",
+        "open": false
+      },
+      {
+        "question": "Can the store support multiple clients?",
+        "answer": "This package is designed around one company store. Distributors managing multiple stores may need Enterprise Company Store Automation.",
+        "open": false
+      },
+      {
+        "question": "Does the package include Shopify fees?",
+        "answer": "No. Shopify subscriptions, paid applications, domain costs, transaction fees, product production, inventory, storage, shipping, and other third party costs are separate unless explicitly included in the proposal.",
+        "open": false
+      },
+      {
+        "question": "Why use Shopify for a company store?",
+        "answer": "Shopify is a strong fit when the client needs a more branded buying experience, mobile-friendly ordering, flexible fulfillment, custom functionality, or room to add integrations as the program grows. For a simple temporary store, a standard promotional products store platform may be more practical.",
+        "open": false
+      },
+      {
+        "question": "Do we need to replace SAGE, commonsku, ESP+, or our current workflow?",
+        "answer": "No. Shopify can operate as the client-facing commerce layer while your existing back-office process remains in place. Where appropriate, Swishtag can define a separate integration or automation scope rather than forcing a full system replacement.",
+        "open": false
+      }
+    ]
+  },
+  "enterprise": {
+    "eyebrow": "Frequently asked questions",
+    "title": "What distributors usually want to know first.",
+    "description": "Start with the platform. Add the complexity only when it solves a real operational problem.",
+    "link": {
+      "href": "/book-demo/?service=enterprise-company-store-automation&intent=automation",
+      "label": "Automate My Company"
+    },
+    "items": [
+      {
+        "question": "What is the base company store platform?",
+        "answer": "The base platform gives your team one place to see and manage multiple Shopify company stores, including centralized order visibility, store-level reporting, portfolio reporting, and operational status. You can use it without buying workflow automation.",
+        "open": true
+      },
+      {
+        "question": "Can the platform manage both SAGE-powered and regular Shopify company stores?",
+        "answer": "Yes. The centralized platform can be designed around a portfolio that includes SAGE-powered Shopify company stores and simpler Shopify company stores, based on the data and controls available in each setup.",
+        "open": false
+      },
+      {
+        "question": "Which promotional products data systems do you connect with?",
+        "answer": "Our promotional products data connections are built around SAGE and PromoStandards. We can also assess direct custom connections with individual suppliers when suitable APIs or technical access are available.",
+        "open": false
+      },
+      {
+        "question": "Can you connect directly with our approved suppliers?",
+        "answer": "Yes. If a supplier provides suitable API access, we can build a custom connection for product data, order submission, purchase orders, status updates, or another agreed workflow.",
+        "open": false
+      },
+      {
+        "question": "How does order workflow automation work?",
+        "answer": "A Shopify order can enter the middleware, be checked against your rules, split by approved supplier, converted into supplier POs or API orders, routed to the correct decorator or fulfillment path, and monitored from the central dashboard.",
+        "open": false
+      },
+      {
+        "question": "Can PunchOut be added later?",
+        "answer": "Yes. PunchOut is an optional paid capability. Add it when a corporate client requires a procurement-connected company store. We validate the buyer system, cXML flow, authentication, cart return, purchase-order requirements, and testing process before confirming scope.",
+        "open": false
+      },
+      {
+        "question": "Can you build automation around our own workflow?",
+        "answer": "Yes. If your distributor operation has a workflow that does not fit an off-the-shelf app, we can map the process and build a custom automation layer where the required systems provide suitable technical access.",
+        "open": false
+      },
+      {
+        "question": "Can you integrate QuickBooks, Sage Intacct, or NetSuite?",
+        "answer": "Yes, these can be scoped as paid finance or ERP integration add-ons, subject to API access, account permissions, required data mappings, licensing, and technical review. We can also assess other accounting or ERP platforms when a practical integration path is available.",
+        "open": false
+      },
+      {
+        "question": "Can you build AI features or connect OpenAI?",
+        "answer": "Yes. Custom add-ons can include OpenAI-powered workflows, customer chatbots, AI calling agents, recommendation engines, internal assistants, and other automation ideas. The final scope depends on the business workflow, data access, privacy requirements, and available APIs.",
+        "open": false
+      }
+    ]
+  },
+  "customSoftware": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Before you bring us the idea.",
+    "description": "Start with the business problem. We will help turn it into requirements, phases and a practical development path.",
+    "items": [
+      {
+        "question": "Do I need a technical specification first?",
+        "answer": "No. Start with the business problem, workflow or idea. We can help translate it into requirements, phases, architecture and a development plan before the build is approved.",
+        "open": false
+      },
+      {
+        "question": "Can you work with an existing platform or MVP?",
+        "answer": "Yes. A project can begin from an idea, a manual process, an MVP or a live platform that needs integrations, automation, rebuilding or additional modules.",
+        "open": false
+      },
+      {
+        "question": "Will you give a fixed timeline and price immediately?",
+        "answer": "Not responsibly for an unclear project. Once requirements, dependencies, risks and phases are understood, we can propose the appropriate commercial model and provide a development plan with timeline and cost.",
+        "open": false
+      },
+      {
+        "question": "Do you use AI in every project?",
+        "answer": "No. AI should solve a real problem. If a simpler API, rules engine or workflow automation is more reliable and economical, that is often the better answer.",
+        "open": false
+      },
+      {
+        "question": "How do project updates work?",
+        "answer": "Before kickoff we agree a reporting rhythm. Depending on project size, this can include weekly progress reporting and milestone reviews covering completed work, current work, next steps, decisions and risks.",
+        "open": false
+      },
+      {
+        "question": "What happens after launch?",
+        "answer": "The agreed delivery can include production deployment, stabilization, documentation, training and handover. Ongoing support or continuous development can then be arranged separately.",
+        "open": false
+      }
+    ]
+  },
+  "punchout": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Questions about PunchOut catalogs.",
+    "description": "A practical overview for suppliers evaluating a procurement-to-ecommerce connection.",
+    "link": {
+      "href": "/contact/",
+      "label": "Ask us something specific"
+    },
+    "items": [
+      {
+        "question": "What is a PunchOut catalog?",
+        "answer": "A PunchOut catalog connects a procurement application with a supplier’s online catalog. The buyer enters the catalog from procurement, selects products, and sends the cart back to the purchasing system to continue the organization’s internal process.",
+        "open": true
+      },
+      {
+        "question": "Which procurement systems can Swishtag work with?",
+        "answer": "Swishtag can work with PunchOut requirements involving procurement environments such as Coupa, SAP Ariba, JAGGAER, Oracle Procurement and Workday. The exact connection is reviewed against the buyer’s technical specification.",
+        "open": false
+      },
+      {
+        "question": "Which PunchOut protocols do you support?",
+        "answer": "Swishtag can implement cXML and OCI based PunchOut requirements. The protocol and transaction set used for a project depend on the buyer’s procurement environment and specification.",
+        "open": false
+      },
+      {
+        "question": "Can approved purchase orders create ecommerce orders automatically?",
+        "answer": "Where the buyer sends an electronic purchase order as part of the agreed workflow, Swishtag can map supported PO data into the supplier’s ecommerce or order-processing system.",
+        "open": false
+      },
+      {
+        "question": "Do we have to replace Shopify or our current commerce system?",
+        "answer": "Not necessarily. A PunchOut implementation can be built around an existing ecommerce store. We review the current storefront, catalog and customer setup before defining the integration approach.",
+        "open": false
+      },
+      {
+        "question": "Can you support multiple enterprise buyers and stores?",
+        "answer": "Yes. Multiple buyer connections or storefronts can be supported, but each buyer’s authentication, fields, testing process and transaction requirements should be reviewed individually.",
+        "open": false
+      }
+    ]
+  },
+  "rocketApps": {
+    "eyebrow": "Frequently asked questions",
+    "title": "A clearer way forward.",
+    "description": "The simple answers to the questions promotional products companies usually ask before working with Swishtag.",
+    "link": {
+      "href": "/contact/",
+      "label": "Ask us something specific"
+    },
+    "items": [
+      {
+        "question": "Is Swishtag a Shopify agency or a software company?",
+        "answer": "Both, with a clear distinction. Solutions and Enterprise Commerce are implementation services. PunchOut Solutions, Promo Plus, Xecutor, and Rocket Apps are Swishtag owned software platforms.",
+        "open": false
+      },
+      {
+        "question": "What is the difference between Solutions and Enterprise Commerce?",
+        "answer": "Solutions focuses on launching or improving customer facing stores. Enterprise Commerce connects the more complex work behind those stores, including suppliers, procurement, ERP, accounting, multi store management, and automation.",
+        "open": false
+      },
+      {
+        "question": "Do we need to replace commonsku, SAGE, ESP+, or our ERP?",
+        "answer": "No. Swishtag is designed to add a modern commerce and automation layer around the systems your team already trusts. We focus on connecting the gaps rather than forcing a rip and replace project.",
+        "open": false
+      },
+      {
+        "question": "What is PunchOut Solutions?",
+        "answer": "PunchOut Solutions helps promotional products distributors launch and manage PunchOut catalog connections using Shopify. It can support multiple buyer connections on one Shopify store or connections across multiple Shopify stores from one management platform.",
+        "open": false
+      },
+      {
+        "question": "Can you migrate existing company stores to Shopify?",
+        "answer": "Yes. Swishtag can migrate products, customers, content, workflows, and store rules from legacy, custom, WooCommerce, Magento, BigCommerce, and other commerce environments.",
+        "open": false
+      },
+      {
+        "question": "Who are Swishtag solutions built for?",
+        "answer": "Swishtag is focused on promotional product distributors, suppliers, and decorators. The strongest fit is an organization trying to launch more programs, connect existing systems, or scale without adding the same amount of manual work.",
+        "open": false
+      },
+      {
+        "question": "How does a project begin?",
+        "answer": "We begin by understanding your current customer journey, systems, workflows, and operational bottlenecks. From there, we recommend the smallest practical path that can create meaningful progress.",
+        "open": false
+      }
+    ]
+  },
+  "xecutor": {
+    "eyebrow": "Frequently asked questions",
+    "title": "A clearer way forward.",
+    "description": "Simple answers to the questions decorator and production teams usually ask before bringing Xecutor onto the floor.",
+    "link": {
+      "href": "/contact/",
+      "label": "Ask us something specific"
+    },
+    "items": [
+      {
+        "question": "What is Xecutor?",
+        "answer": "Xecutor is Swishtag's manufacturing execution platform for decorator and print-on-demand production. It connects orders, artwork, workflows, workstations, quality and fulfillment in one operational system.",
+        "open": false
+      },
+      {
+        "question": "Can different products follow different production workflows?",
+        "answer": "Yes. Workflows can be built around the production path required by the product, including different workstations and stages for methods such as embroidery, screen printing, heat press and other decorator processes.",
+        "open": false
+      },
+      {
+        "question": "How do operators use Xecutor on the production floor?",
+        "answer": "Operators select their workstation, scan the batch QR code, see the job details and instructions, then complete the assigned work so the job can move to the next stage.",
+        "open": false
+      },
+      {
+        "question": "Can clients connect Shopify or WooCommerce?",
+        "answer": "The current Xecutor setup guide includes Shopify app and WooCommerce plugin connectivity for client store setup and order synchronization.",
+        "open": false
+      },
+      {
+        "question": "Which systems can Xecutor connect with?",
+        "answer": "The current setup flow includes Dropbox, Stripe, Mailgun and ShipStation on the administration side, plus Shopify and WooCommerce for connected client stores.",
+        "open": false
+      },
+      {
+        "question": "Can Xecutor be adapted to our factory workflow?",
+        "answer": "Yes. The platform is built around configurable workstations, workflows, product settings, team roles and client setup so the production structure can match the operation.",
+        "open": false
+      }
+    ]
+  },
+  "distributors": {
+    "eyebrow": "Frequently Asked Questions",
+    "title": "Before you change the stack.",
+    "description": "Most distributor projects do not need a full platform replacement. Start with the client requirement, the existing workflow, and the repeated work worth removing.",
+    "link": {
+      "href": "/book-demo/",
+      "label": "Ask us something specific"
+    },
+    "items": [
+      {
+        "question": "Do we need to replace SAGE, commonsku, ESP+, or our current workflow?",
+        "answer": "No. The goal is not to replace a system that is already working. Swishtag can use Shopify as the customer-facing commerce layer and connect existing systems only where integration or automation creates a practical improvement.",
+        "open": true
+      },
+      {
+        "question": "Can you build a Shopify company store around our current supplier relationships?",
+        "answer": "Yes. The store can be designed around the products, supplier relationships, fulfillment model, and client requirements that apply to the program.",
+        "open": false
+      },
+      {
+        "question": "Can SAGE product data be used inside Shopify?",
+        "answer": "Where approved access and the required data are available, Swishtag can connect the agreed SAGE product information into a Shopify company-store experience instead of manually rebuilding the same catalog data.",
+        "open": false
+      },
+      {
+        "question": "What happens when we manage many company stores?",
+        "answer": "That is where centralized visibility, reporting, routing, and workflow automation become more valuable. The operating model can grow from individual stores into a controlled multi-store environment.",
+        "open": false
+      },
+      {
+        "question": "Can you support PunchOut or other custom enterprise requirements?",
+        "answer": "Yes. Enterprise procurement and custom workflow requirements can be added when the client opportunity requires them, without forcing every company-store project into the same architecture.",
+        "open": false
+      }
+    ]
+  }
+}

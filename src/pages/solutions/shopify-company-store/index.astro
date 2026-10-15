@@ -1,4 +1,6 @@
 ---
+import SharedFaq from '../../../components/layout/SharedFaq.astro';
+import faqs from '../../../data/faqs.json';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const title = "Shopify Company Stores for Promo Distributors | Swishtag";
@@ -7243,25 +7245,7 @@ const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-pr
   </article>
   </div>
   </div>
-  </section><section class="section faq-section" id="faq">
-  <div class="page-shell faq-layout">
-  <div class="faq-heading" data-reveal="">
-  <p class="eyebrow">Frequently asked questions</p>
-  <h2 class="section-title">Clear answers before you commit.</h2>
-  <p class="section-copy">Still unsure whether this is the right starting point? We will review the actual client opportunity before recommending a build.</p>
-  </div>
-  <div class="faq-list" data-reveal="">
-  <details class="faq-item"><summary>How quickly can a company store be launched?</summary><p>A straightforward store can often be launched within a few weeks after products, branding, content, and fulfillment requirements are confirmed. Custom functionality may extend the timeline.</p></details>
-  <details class="faq-item"><summary>Do we need to carry inventory?</summary><p>No. A company store can launch with print on demand and no upfront inventory. It can also use pre produced inventory for faster delivery and better unit economics, or a hybrid model that stocks core products while producing the rest after the order.</p></details><details class="faq-item"><summary>Is Company Store Launch only a print on demand store?</summary><p>No. Print on demand is one fulfillment option, not the identity of the service. We can configure a company store around print on demand, stocked inventory, or a practical hybrid model based on the client program.</p></details>
-  <details class="faq-item"><summary>Can the store use the client’s branding?</summary><p>Yes. The storefront can be designed around the client’s approved colors, logo, products, and visual guidelines.</p></details>
-  <details class="faq-item"><summary>Who owns the Shopify store?</summary><p>Store ownership and account structure are agreed before development. We recommend keeping the account under the distributor’s or client’s control, depending on the business arrangement.</p></details>
-  <details class="faq-item"><summary>Can we add more products later?</summary><p>Yes. Your team can manage products after launch, or Swishtag can provide ongoing support.</p></details>
-  <details class="faq-item"><summary>Can this connect with SAGE?</summary><p>SAGE integration is available through the separate SAGE Powered Company Store solution. It requires workflow discovery and a defined integration scope.</p></details>
-  <details class="faq-item"><summary>Can the store support multiple clients?</summary><p>This package is designed around one company store. Distributors managing multiple stores may need Enterprise Company Store Automation.</p></details>
-  <details class="faq-item"><summary>Does the package include Shopify fees?</summary><p>No. Shopify subscriptions, paid applications, domain costs, transaction fees, product production, inventory, storage, shipping, and other third party costs are separate unless explicitly included in the proposal.</p></details>
-  <details class="faq-item"><summary>Why use Shopify for a company store?</summary><p>Shopify is a strong fit when the client needs a more branded buying experience, mobile-friendly ordering, flexible fulfillment, custom functionality, or room to add integrations as the program grows. For a simple temporary store, a standard promotional products store platform may be more practical.</p></details><details class="faq-item"><summary>Do we need to replace SAGE, commonsku, ESP+, or our current workflow?</summary><p>No. Shopify can operate as the client-facing commerce layer while your existing back-office process remains in place. Where appropriate, Swishtag can define a separate integration or automation scope rather than forcing a full system replacement.</p></details></div>
-  </div>
-  </section><section aria-label="Promotional products distributor call to action" class="section promo-distributor-cta-section" id="promo-distributors"><div class="page-shell"><div class="promo-distributor-cta promo-distributor-cta--simple" data-reveal=""><div class="promo-distributor-cta__content"><p class="eyebrow">Built for promotional products distributors</p><h2>Bring the client opportunity. We will build the store around the program.</h2><p class="promo-distributor-cta__copy">You know the account, products, and relationship. Swishtag brings Shopify, company store strategy, and practical fulfillment experience so you can launch with print on demand, inventory, or a hybrid model.</p><div class="promo-distributor-points"><span>Promo industry experience</span><span>Shopify company stores</span><span>Flexible fulfillment models</span><span>Practical launch support</span></div><a class="btn btn--primary conversion-cta" href="../book-demo/?service=company-store-launch&amp;intent=launch">Launch a Company Store <span aria-hidden="true" class="btn__arrow">↗</span></a></div></div></div></section>
+  </section><SharedFaq {...faqs.companyStore} /><section aria-label="Promotional products distributor call to action" class="section promo-distributor-cta-section" id="promo-distributors"><div class="page-shell"><div class="promo-distributor-cta promo-distributor-cta--simple" data-reveal=""><div class="promo-distributor-cta__content"><p class="eyebrow">Built for promotional products distributors</p><h2>Bring the client opportunity. We will build the store around the program.</h2><p class="promo-distributor-cta__copy">You know the account, products, and relationship. Swishtag brings Shopify, company store strategy, and practical fulfillment experience so you can launch with print on demand, inventory, or a hybrid model.</p><div class="promo-distributor-points"><span>Promo industry experience</span><span>Shopify company stores</span><span>Flexible fulfillment models</span><span>Practical launch support</span></div><a class="btn btn--primary conversion-cta" href="../book-demo/?service=company-store-launch&amp;intent=launch">Launch a Company Store <span aria-hidden="true" class="btn__arrow">↗</span></a></div></div></div></section>
   </main>
   <script slot="scripts" is:inline>
   (() => {

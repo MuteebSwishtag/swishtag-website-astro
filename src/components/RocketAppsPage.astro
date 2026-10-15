@@ -1,7 +1,13 @@
 ---
 import rocketAppsHtml from "../legacy/rocket-apps-body.html?raw";
+import SharedFaq from './layout/SharedFaq.astro';
+import faqs from '../data/faqs.json';
+
+const [beforeFaq, afterFaq] = rocketAppsHtml.split('<!-- SHARED_FAQ -->');
 ---
 
 <main class="rocket-apps-page">
-  <Fragment set:html={rocketAppsHtml} />
+  <Fragment set:html={beforeFaq} />
+  <SharedFaq {...faqs.rocketApps} />
+  <Fragment set:html={afterFaq} />
 </main>
