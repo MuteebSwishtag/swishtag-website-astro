@@ -1,4 +1,13 @@
 ---
+const socialLinks = [
+  { name: 'X', href: 'https://x.com/helloswishtag', icon: 'x' },
+  { name: 'YouTube', href: 'https://www.youtube.com/@helloswishtag', icon: 'youtube' },
+  { name: 'Pinterest', href: 'https://www.pinterest.com/helloswishtag/', icon: 'pinterest' },
+  { name: 'Facebook', href: 'https://www.facebook.com/helloswishtag', icon: 'facebook' },
+  { name: 'Instagram', href: 'https://www.instagram.com/helloswishtag/', icon: 'instagram' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/helloswishtag', icon: 'linkedin' },
+];
+
 const flagStars = Array.from({ length: 9 }, (_, row) =>
   Array.from({ length: row % 2 === 0 ? 6 : 5 }, (_, column) => ({
     x: (row % 2 === 0 ? 6.33 : 12.67) + column * 12.67,
@@ -8,122 +17,270 @@ const flagStars = Array.from({ length: 9 }, (_, row) =>
 ---
 
 <footer class="site-footer">
-<div class="page-shell">
-<div class="footer-grid">
-<div class="footer-brand">
-<strong>SWISHTAG</strong>
-<p>Rethink promotional commerce without chaos.</p>
-<address class="footer-contact">
-<span>90 State St Ste 700 Office 40<br />Albany, NY 12207, United States</span>
-<a href="tel:+15186501201">+1 518-650-1201</a>
-</address>
-</div>
-<div class="footer-col">
-<h4>Solutions</h4>
-<a href="/solutions/shopify-company-store/">Company Store Launch</a>
-<a href="/solutions/shopify-sage-connect-integration/">SAGE Powered Company Store</a>
-<a href="/solutions/enterprise-shopify-automation/">Enterprise Company Store Automation</a>
-<a href="/solutions/punchout-solutions/">PunchOut Solutions</a>
-</div>
-<div class="footer-col">
-<h4>Platforms</h4>
-<a href="/platforms/promo-plus/">Promo Plus</a>
-<a href="/platforms/xecutor/">Xecutor</a>
-<a href="/platforms/shopify-apps-for-promotional-products/">Rocket Apps</a>
-</div>
-<div class="footer-col">
-<h4>Industries</h4>
-<a href="/industries/promotional-products-distributors/">Distributors</a>
-<a href="/industries/promotional-products-suppliers/">Suppliers</a>
-<a href="/industries/promotional-products-decorators/">Decorators</a>
-</div>
-<div class="footer-col">
-<h4>Company</h4>
-<a href="/company/">About Swishtag</a>
-<a href="/contact/">Contact</a>
-<a href="/book-demo/">Book a Demo</a>
-<a href="/#faq">FAQ</a>
-</div>
-<div class="footer-col">
-<h4>Legal</h4>
-<a href="/privacy-policy/">Privacy Policy</a>
-<a href="/terms/">Terms of Service</a>
-<a href="/cookie-policy/">Cookie Policy</a>
-<a href="/security/">Security</a>
-</div>
-<div class="footer-col">
-<h4>Socials</h4>
-<a href="https://x.com/helloswishtag" target="_blank" rel="noopener noreferrer">X</a>
-<a href="https://www.youtube.com/@helloswishtag/" target="_blank" rel="noopener noreferrer">Youtube</a>
-<a href="https://www.pinterest.com/helloswishtag/" target="_blank" rel="noopener noreferrer">Pinterest</a>
-<a href="https://www.facebook.com/helloswishtag/" target="_blank" rel="noopener noreferrer">Facebook</a>
-<a href="https://www.instagram.com/helloswishtag/" target="_blank" rel="noopener noreferrer">Instagram</a>
-<a href="https://www.linkedin.com/company/helloswishtag" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-</div>
-</div>
-<div class="footer-bottom">
-<span>&copy; 2026 Swishtag LLC</span>
-<span class="footer-us-based">Proudly US Based
-  <svg class="footer-us-flag" viewBox="0 0 190 100" aria-hidden="true" focusable="false">
-    <rect width="190" height="100" fill="#fff" />
-    {Array.from({ length: 7 }, (_, stripe) => (
-      <rect x="0" y={stripe * 200 / 13} width="190" height={100 / 13} fill="#b22234" />
-    ))}
-    <rect width="76" height={700 / 13} fill="#3c3b6e" />
-    {flagStars.map(({ x, y }) => (
-      <path d="M0 -2 L.45 -.62 H1.9 L.73 .24 L1.18 1.62 L0 .77 L-1.18 1.62 L-.73 .24 L-1.9 -.62 H-.45 Z" fill="#fff" transform={`translate(${x} ${y})`} />
-    ))}
-  </svg>
-</span>
-<span>Commerce without chaos. Built by Swishtag.</span>
-</div>
-</div>
+  <div class="page-shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="footer-wordmark" href="/" aria-label="Swishtag home">SWISHTAG<span aria-hidden="true">.</span></a>
+        <p>Commerce, software, and automation built around the way your business works.</p>
+        <a class="footer-demo" href="/book-demo/">Book a demo <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <nav class="footer-col" aria-label="Footer solutions">
+        <h2>Solutions</h2>
+        <a href="/solutions/shopify-company-store/">Company Store Launch</a>
+        <a href="/solutions/shopify-sage-connect-integration/">SAGE Powered Company Store</a>
+        <a href="/solutions/enterprise-shopify-automation/">Enterprise Automation</a>
+        <a href="/solutions/custom-software-automation/">Custom Software &amp; Automation</a>
+        <a href="/solutions/punchout-solutions/">PunchOut Solutions</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Footer platforms">
+        <h2>Platforms</h2>
+        <a href="/platforms/promo-plus/">Promo Plus</a>
+        <a href="/platforms/xecutor/">Xecutor</a>
+        <a href="/platforms/shopify-apps-for-promotional-products/">Rocket Apps</a>
+      </nav>
+
+      <nav class="footer-col footer-company" aria-label="Footer company">
+        <h2>Company</h2>
+        <a href="/company/">About us</a>
+        <a href="/insights/">Insights</a>
+        <a href="/#faq">FAQs</a>
+      </nav>
+
+      <div class="footer-connect">
+        <h2>Get in touch</h2>
+        <a class="footer-contact-link" href="/contact/">Contact us <span aria-hidden="true">↗</span></a>
+        <address class="footer-contact">
+          <a href="mailto:hello@swishtag.com">hello@swishtag.com</a>
+          <a href="tel:+15186501201">+1 518-650-1201</a>
+          <span>90 State St Ste 700 Office 40<br />Albany, NY 12207, United States</span>
+        </address>
+        <nav class="footer-socials" aria-label="Swishtag social media">
+          {socialLinks.map(({ name, href, icon }) => (
+            <a href={href} data-social={icon} aria-label={`Swishtag on ${name}`} title={name} target="_blank" rel="noopener noreferrer">
+              <img src={`/assets/social-${icon}.svg`} width="20" height="20" alt="" loading="lazy" />
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+
+    <nav class="footer-utility" aria-label="Legal links">
+      <a href="/privacy-policy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/cookie-policy/">Cookies</a>
+      <a href="/security/">Security</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} Swishtag LLC. All rights reserved.</span>
+      <span class="footer-us-based">Proudly US based
+        <svg class="footer-us-flag" viewBox="0 0 190 100" aria-hidden="true" focusable="false">
+          <rect width="190" height="100" fill="#fff" />
+          {Array.from({ length: 7 }, (_, stripe) => (
+            <rect x="0" y={stripe * 200 / 13} width="190" height={100 / 13} fill="#b22234" />
+          ))}
+          <rect width="76" height={700 / 13} fill="#3c3b6e" />
+          {flagStars.map(({ x, y }) => (
+            <path d="M0 -2 L.45 -.62 H1.9 L.73 .24 L1.18 1.62 L0 .77 L-1.18 1.62 L-.73 .24 L-1.9 -.62 H-.45 Z" fill="#fff" transform={`translate(${x} ${y})`} />
+          ))}
+        </svg>
+      </span>
+    </div>
+  </div>
 </footer>
 
 <style is:global>
-  .footer-us-based { display: inline-flex; align-items: center; gap: 4px; }
-  .footer-us-flag { display: inline-block; width: 20px; height: auto; flex: none; }
+  body .site-footer {
+    padding: clamp(64px, 7vw, 96px) 0 28px;
+    background: #f5f5f3;
+    border-top: 1px solid var(--line, rgba(32, 33, 36, .12));
+  }
 
-  /* The brand and all six link columns share a row on wide screens. */
   .site-footer .footer-grid {
     display: grid;
-    grid-template-columns: minmax(220px, 1.35fr) repeat(6, minmax(0, 1fr));
-    gap: clamp(18px, 1.8vw, 34px);
+    grid-template-columns: minmax(190px, 1.25fr) minmax(200px, 1.25fr) minmax(125px, .8fr) minmax(110px, .7fr) minmax(220px, 1.2fr);
+    gap: clamp(22px, 2.5vw, 38px);
     align-items: start;
+    padding: 0;
+    border: 0;
   }
 
   .site-footer .footer-grid > * { min-width: 0; }
-  .site-footer .footer-brand { grid-column: auto; }
+  .site-footer .footer-brand { grid-column: auto; max-width: 300px; }
+
+  .site-footer .footer-wordmark {
+    display: inline-block;
+    color: var(--graphite, #202124);
+    font-size: 1.28rem;
+    font-weight: 800;
+    letter-spacing: -.045em;
+    line-height: 1.2;
+  }
+
+  .site-footer .footer-wordmark span { color: #91bd00; }
+
+  .site-footer .footer-brand p {
+    max-width: 280px;
+    margin: 18px 0 24px;
+    color: var(--muted, #696a6d);
+    font-size: .88rem;
+    line-height: 1.7;
+  }
+
+  .site-footer .footer-demo {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    border-radius: 9px;
+    background: var(--graphite, #202124);
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 700;
+    transition: background-color .2s ease, transform .2s ease;
+  }
+
+  .site-footer .footer-demo:hover { background: #484a4d; transform: translateY(-2px); }
+
+  .site-footer .footer-col h2,
+  .site-footer .footer-connect h2 {
+    margin: 2px 0 17px;
+    color: var(--graphite, #202124);
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+    line-height: 1.3;
+    text-transform: none;
+  }
+
+  .site-footer .footer-col a {
+    display: block;
+    width: fit-content;
+    padding: 6px 0;
+    color: var(--muted, #696a6d);
+    font-size: .82rem;
+    line-height: 1.5;
+  }
+
+  .site-footer .footer-col a:hover,
+  .site-footer .footer-contact a:hover,
+  .site-footer .footer-utility a:hover { color: var(--graphite, #202124); }
+
+  .site-footer .footer-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 18px;
+    color: var(--graphite, #202124);
+    font-size: .84rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  .site-footer .footer-contact-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
   .site-footer .footer-contact {
     display: grid;
-    gap: 10px;
-    margin-top: 24px;
+    gap: 11px;
+    margin: 0;
     color: var(--muted, #696a6d);
-    font-size: .8rem;
+    font-size: .82rem;
     font-style: normal;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
-  .site-footer .footer-contact a {
-    width: fit-content;
-    color: inherit;
-    text-decoration: none;
+  .site-footer .footer-contact a { width: fit-content; color: inherit; }
+
+  .site-footer .footer-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
   }
 
-  .site-footer .footer-contact a:hover { color: var(--graphite, #202124); }
-
-  @media (max-width: 1279px) {
-    .site-footer .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .site-footer .footer-brand { grid-column: 1 / -1; }
+  .site-footer .footer-socials a {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 1px solid rgba(32, 33, 36, .08);
+    border-radius: 10px;
+    background: #fff;
+    transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
   }
 
-  @media (max-width: 700px) {
-    .site-footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; }
+  .site-footer .footer-socials a[data-social="x"] { background: #101010; border-color: #101010; }
+  .site-footer .footer-socials a[data-social="youtube"] { background: #fff2f4; }
+  .site-footer .footer-socials a[data-social="pinterest"] { background: #fff1f3; }
+  .site-footer .footer-socials a[data-social="facebook"] { background: #edf4ff; }
+  .site-footer .footer-socials a[data-social="instagram"] { background: #fff2f8; }
+  .site-footer .footer-socials a[data-social="linkedin"] { background: #edf6fc; }
+
+  .site-footer .footer-socials a:hover {
+    transform: translateY(-2px);
+    border-color: rgba(32, 33, 36, .22);
   }
 
-  @media (max-width: 420px) {
+  .site-footer .footer-socials img {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  .site-footer a:focus-visible {
+    outline: 2px solid var(--graphite, #202124);
+    outline-offset: 3px;
+  }
+
+  .site-footer .footer-utility {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-top: 64px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line, rgba(32, 33, 36, .12));
+  }
+
+  .site-footer .footer-utility a { color: var(--muted, #696a6d); font-size: .78rem; }
+
+  .site-footer .footer-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px 24px;
+    margin: 0;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--line, rgba(32, 33, 36, .12));
+    color: var(--muted, #696a6d);
+    font-size: .74rem;
+  }
+
+  .site-footer .footer-us-based { display: inline-flex; align-items: center; gap: 7px; }
+  .site-footer .footer-us-flag { display: block; width: 20px; height: auto; flex: none; }
+
+  @media (max-width: 1050px) {
+    .site-footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px; }
+    .site-footer .footer-brand { max-width: none; }
+    .site-footer .footer-connect { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 600px) {
+    body .site-footer { padding-top: 58px; }
+    .site-footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 24px; }
+    .site-footer .footer-brand,
+    .site-footer .footer-company,
+    .site-footer .footer-connect { grid-column: 1 / -1; }
+    .site-footer .footer-utility { margin-top: 48px; }
+    .site-footer .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 480px) {
     .site-footer .footer-grid { grid-template-columns: 1fr; }
-    .site-footer .footer-brand { grid-column: auto; }
+    .site-footer .footer-brand,
+    .site-footer .footer-company,
+    .site-footer .footer-connect { grid-column: auto; }
   }
 </style>
