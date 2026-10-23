@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Swishtag Astro Form Submissions
  * Description: Connects the Swishtag Astro site to WordPress form submissions and published portfolio content.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: Swishtag
  * Requires at least: 6.0
  * Requires PHP: 7.4
@@ -52,6 +52,16 @@ final class Swishtag_Astro_Form_Submissions
         $args['rest_base'] = 'portfolio';
         $args['rest_namespace'] = 'wp/v2';
         $args['rest_controller_class'] = 'WP_REST_Posts_Controller';
+        // The authenticated website management integration uses the standard
+        // revisions endpoint. Keep Salient's existing editor feature choices.
+        $supports = $args['supports'] ?? ['title', 'editor'];
+        if ($supports === false) {
+            $supports = [];
+        }
+        if (is_array($supports) && !in_array('revisions', $supports, true)) {
+            $supports[] = 'revisions';
+            $args['supports'] = $supports;
+        }
 
         return $args;
     }

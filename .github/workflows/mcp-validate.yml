@@ -1,0 +1,90 @@
+name: MCP Validate
+run-name: MCP Validate ${{ inputs.ref }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Full lowercase 40-character candidate commit SHA
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mcp-validate-${{ inputs.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: MCP build validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      MCP_BUILD_SHA: ${{ inputs.ref }}
+      ASTRO_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Require immutable candidate SHA
+        run: node -e "if (!/^[a-f0-9]{40}$/.test(process.env.MCP_BUILD_SHA || '')) process.exit(1)"
+
+      # These helper scripts come from the trusted dispatch branch, not the candidate.
+      - name: Check out validation helpers
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          path: .mcp-control
+          persist-credentials: false
+
+      - name: Check out candidate
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref }}
+          path: .mcp-candidate
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: .mcp-candidate/package-lock.json
+
+      # No hosting, WordPress, deployment or identity secrets are exposed to candidate code.
+      - name: Install locked website dependencies
+        working-directory: .mcp-candidate
+        run: npm ci
+
+      - name: Build website
+        working-directory: .mcp-candidate
+        run: npm run build
+
+      - name: Write verified release marker
+        working-directory: .mcp-candidate
+        run: node ../.mcp-control/scripts/mcp-release-marker.mjs
+
+      - name: Check standalone SSR routes
+        working-directory: .mcp-candidate
+        run: node ../.mcp-control/scripts/mcp-smoke-test.mjs
+
+      - name: Record validated source and build inventory
+        working-directory: .mcp-candidate
+        run: node ../.mcp-control/scripts/mcp-validation-receipt.mjs
+
+      - name: Upload build for authenticated download
+        uses: actions/upload-artifact@v7
+        with:
+          name: mcp-build-${{ inputs.ref }}
+          path: .mcp-candidate/dist/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v7
+        with:
+          name: mcp-validation-${{ inputs.ref }}
+          path: .mcp-candidate/.mcp-output/validation.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30

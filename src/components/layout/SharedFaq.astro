@@ -39,8 +39,8 @@ const {
     <div class="site-faq__list">
       {items.map((item) => (
         <details class="site-faq__item" open={item.open || undefined}>
-          <summary set:html={item.question} />
-          <p set:html={item.answer} />
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
         </details>
       ))}
     </div>

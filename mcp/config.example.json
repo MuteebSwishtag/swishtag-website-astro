@@ -1,0 +1,57 @@
+{
+  "server": {
+    "publicUrl": "https://mcp.swishtag.com/mcp",
+    "host": "127.0.0.1",
+    "port": 3100,
+    "allowedOrigins": []
+  },
+  "auth": {
+    "issuer": "https://YOUR-IDENTITY-PROVIDER.example.com/",
+    "audience": "https://mcp.swishtag.com/mcp",
+    "jwksUri": "https://YOUR-IDENTITY-PROVIDER.example.com/.well-known/jwks.json",
+    "algorithms": ["RS256", "ES256"],
+    "requiredScopes": ["website:manage"],
+    "scopesClaim": "scope",
+    "tokenTypes": ["at+jwt", "JWT"],
+    "maxTokenAgeSeconds": 3600,
+    "clockToleranceSeconds": 5
+  },
+  "github": {
+    "owner": "MuteebSwishtag",
+    "repo": "swishtag-website-astro",
+    "baseBranch": "master",
+    "workflow": "mcp-validate.yml",
+    "previewBotLogins": []
+  },
+  "wordpress": {
+    "baseUrl": "https://cms.swishtag.com",
+    "metaKeys": []
+  },
+  "deployment": {
+    "siteUrl": "https://swishtag.com",
+    "previewBaseUrl": "",
+    "hostingerAccount": "",
+    "hostingerDomain": ""
+  },
+  "policy": {
+    "roles": {
+      "viewer": {
+        "permissions": ["site.read", "wordpress.read", "history.read"],
+        "paths": ["src/", "public/", "astro.config.mjs"]
+      },
+      "editor": {
+        "permissions": ["site.read", "content.edit", "seo.edit", "assets.edit", "navigation.edit", "footer.edit", "pages.edit", "wordpress.read", "wordpress.edit", "build.validate", "preview.create", "history.read"],
+        "paths": ["src/pages/", "src/components/", "src/data/", "src/legacy/", "public/assets/", "public/robots.txt", "public/sitemap.xml"]
+      },
+      "publisher": {
+        "permissions": ["site.read", "wordpress.read", "wordpress.publish", "build.validate", "preview.create", "deploy.publish", "deploy.rollback", "history.read"],
+        "paths": ["src/", "public/", "astro.config.mjs"]
+      },
+      "administrator": {
+        "permissions": ["website.full"],
+        "paths": ["*"]
+      }
+    },
+    "users": {}
+  }
+}

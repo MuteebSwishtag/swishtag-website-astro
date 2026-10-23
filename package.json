@@ -1,11 +1,14 @@
 {
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node ./scripts/mcp-release-marker.mjs",
     "start": "node ./dist/server/entry.mjs",
     "preview": "astro preview",
     "preview:php": "npm run build && php -S localhost:8080 -t dist",
-    "reminders:daily": "node ./scripts/send-daily-reminders.mjs"
+    "reminders:daily": "node ./scripts/send-daily-reminders.mjs",
+    "mcp:start": "npm --prefix mcp start",
+    "mcp:test": "npm --prefix mcp test",
+    "mcp:check": "npm --prefix mcp run check"
   },
   "dependencies": {
     "@astrojs/node": "^11.1.5",
