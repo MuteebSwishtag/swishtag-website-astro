@@ -11,6 +11,13 @@
       "at": "2026-10-23T19:36:39.908Z",
       "actor": "google-oauth2|113476584021514858958",
       "action": "change.created"
+    },
+    {
+      "path": "src/pages/solutions/shopify-company-store/index.astro",
+      "id": "172e0193-e55d-4292-b51b-7932c09f5ed6",
+      "at": "2026-10-23T19:38:57.319Z",
+      "actor": "google-oauth2|113476584021514858958",
+      "action": "source.updated"
     }
   ]
 }
