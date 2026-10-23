@@ -6946,7 +6946,46 @@ const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-pr
     @media (max-width: 900px) {
       #pageNavWrap.is-scrolling-down { opacity: 0; pointer-events: none; }
     }
-</style>
+
+    /* Trust section copied from Custom Software Automation */
+    .credibility{padding:24px 0 18px;background:transparent}
+    .credibility-panel{padding:0}
+    .credibility-copy{display:flex;align-items:end;justify-content:space-between;gap:32px;padding:0 4px 22px;border-bottom:0}
+    .credibility-copy h2{margin:0;max-width:650px;font-size:clamp(1.7rem,2.4vw,2.45rem);line-height:1.1;letter-spacing:-.035em;font-weight:700}
+    .credibility-copy p{margin:0;max-width:610px;color:var(--muted);font-size:.86rem;line-height:1.62}
+    .hero-trust-card-grid--custom{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .hero-trust-card{min-height:82px;display:grid;grid-template-columns:104px minmax(0,1fr);align-items:center;gap:14px;padding:13px 16px;border:1px solid rgba(32,33,36,.10);border-radius:16px;background:rgba(255,255,255,.88);box-shadow:0 10px 24px rgba(32,33,36,.035)}
+    .hero-trust-card__logo{min-width:0;display:flex;align-items:center;justify-content:flex-start;overflow:visible}
+    .hero-trust-card__copy{display:grid;gap:4px;min-width:0}
+    .hero-trust-card__copy small{color:var(--muted);font-size:.53rem;line-height:1.2;font-weight:800;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap}
+    .hero-trust-card__copy strong{font-size:.72rem;line-height:1.28}
+    .trust-brand{display:inline-flex;align-items:center;gap:7px;min-width:0;color:var(--graphite);line-height:1}
+    .trust-brand--shopify svg{width:28px;height:34px;flex:0 0 28px}
+    .trust-brand--shopify span,.trust-brand--shopify b,.trust-brand--shopify small{display:block}
+    .trust-brand--shopify b{font-size:.77rem;font-weight:800;letter-spacing:-.035em}
+    .trust-brand--shopify small{margin-top:4px;font-size:.47rem;font-weight:800;letter-spacing:.17em}
+    .trust-brand--ppai{display:grid;gap:4px;color:#3242a8}
+    .trust-brand--ppai b{font-size:1rem;font-weight:800;letter-spacing:-.045em}
+    .trust-brand--ppai sup{position:relative;top:-.28em;margin-left:2px;font-size:.4em}
+    .trust-brand--ppai small{font-size:.48rem;font-weight:800;letter-spacing:.18em}
+    .hero-trustpilot-wordmark{display:flex;align-items:center;gap:6px;color:var(--graphite);font-size:.76rem;font-weight:800}
+    .hero-trustpilot-wordmark svg{width:18px;height:18px}
+    .hero-trustpilot-stars{display:flex;gap:2px;margin-top:5px;color:#00b67a;font-size:.76rem;line-height:1}
+    .hero-trustpilot-stars .partial{opacity:.55}
+    .trust-delivery-mark{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:var(--lime);box-shadow:0 0 0 7px rgba(194,255,2,.19)}
+    .trust-delivery-mark span{color:#111;font-size:1.45rem;font-weight:900;line-height:1}
+    @media (max-width:1100px){.hero-trust-card-grid--custom{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:900px){.credibility-copy{display:block}.credibility-copy p{margin-top:12px}}
+    @media (max-width:680px){
+      .credibility{padding:16px 0 10px}.credibility-copy{padding-inline:2px;padding-bottom:16px}.credibility-copy h2{font-size:1.65rem}.credibility-copy p{font-size:.76rem}
+      .hero-trust-card-grid--custom{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .hero-trust-card{min-height:88px;grid-template-columns:68px minmax(0,1fr);gap:8px;padding:11px 12px;border-radius:14px;box-shadow:none;backdrop-filter:none}
+      .hero-trust-card__copy small{font-size:.46rem;white-space:normal}.hero-trust-card__copy strong{font-size:.64rem}
+      .trust-brand--shopify{gap:5px}.trust-brand--shopify svg{width:22px;height:28px;flex-basis:22px}.trust-brand--shopify b{font-size:.61rem}.trust-brand--shopify small{font-size:.37rem;letter-spacing:.12em}
+      .trust-brand--ppai b{font-size:.8rem}.trust-brand--ppai small{font-size:.37rem;letter-spacing:.13em}.trust-delivery-mark{width:40px;height:40px;box-shadow:0 0 0 5px rgba(194,255,2,.17)}.trust-delivery-mark span{font-size:1.15rem}
+    }
+    @media (max-width:620px){.credibility-panel{padding:22px 16px}.credibility-copy{display:block}.credibility-copy p{margin-top:14px}}
+  </style>
   <main>
   <section class="hero" id="top">
   <div class="page-shell hero-grid">
@@ -6977,22 +7016,44 @@ const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-pr
   <span><strong>Preview in 5 business days</strong><small>Then launch</small></span>
   </div>
   </div>
-  </div><div class="page-shell hero-trust-rail">
-  <a aria-label="Shopify Partner" class="official-trust-badge" href="https://www.shopify.com/" rel="noopener" target="_blank">
-  <span class="official-trust-logo official-trust-logo--shopify">
-  <img alt="Shopify" decoding="async" height="34" src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg" width="118"/>
-  <span>Partner</span>
-  </span>
-  <span class="official-trust-copy"><strong>Shopify Partner</strong></span>
-  </a>
-  <a aria-label="Trustpilot rating 4.6 out of 5" href={trustpilotUrl || undefined} target={trustpilotUrl ? '_blank' : undefined} rel={trustpilotUrl ? 'noopener' : undefined} class="official-trust-badge">
-  <span class="official-trust-logo official-trust-logo--trustpilot">
-  <span class="trustpilot-wordmark"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 2.8 19.4 12H29l-7.7 5.6 3 9.2-8.3-5.9-8.3 5.9 3-9.2L3 12h9.6Z" fill="#00B67A"></path></svg><strong>Trustpilot</strong></span>
-  <span aria-hidden="true" class="trustpilot-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span class="partial">★</span></span>
-  </span>
-  <span class="official-trust-copy"><strong>Trustpilot 4.6</strong></span>
-  </a>
   </div>
+  </section>
+  <section class="credibility" aria-label="Swishtag trust indicators">
+    <div class="page-shell credibility-panel" data-reveal>
+      <div class="credibility-copy">
+        <h2>More than developers. One accountable delivery team.</h2>
+        <p>Discovery, UX, engineering, integrations, QA, deployment, documentation and training, managed as one connected project.</p>
+      </div>
+  
+      <div class="hero-trust-card-grid--custom">
+        <div aria-label="Shopify Partner" class="hero-trust-card">
+          <div class="hero-trust-card__logo">
+            <div aria-hidden="true" class="trust-brand trust-brand--shopify">
+              <svg viewBox="0 0 34 40"><path d="M8 10h20l2.2 25H5.8L8 10Z" fill="#95BF47"></path><path d="M11 12c.3-6 2.8-9 6.1-9 3.4 0 5.7 3 6 9" fill="none" stroke="#95BF47" stroke-width="3" stroke-linecap="round"></path><path d="M20.8 16.5c-1-.6-2.3-.9-3.5-.9-1.1 0-1.8.4-1.8 1.2 0 .7.6 1 1.9 1.5 2.4.9 3.4 2.2 3 4.3-.4 2.6-2.7 4.3-5.5 4.3-1.9 0-3.7-.5-4.9-1.4l1.2-3.2c1.2.9 2.5 1.3 3.9 1.3 1.1 0 1.9-.4 2-1.1.1-.7-.4-1.1-1.8-1.5-2.2-.8-3.3-2-2.9-4 .4-2.5 2.5-4.2 5.5-4.2 1.7 0 3.1.4 4.1 1l-1.2 2.7Z" fill="#fff"></path></svg>
+              <span><b>shopify</b><small>PARTNER</small></span>
+            </div>
+          </div>
+          <div class="hero-trust-card__copy"><small>OFFICIAL PARTNER</small><strong>Shopify Partner</strong></div>
+        </div>
+  
+        <div aria-label="PPAI Member" class="hero-trust-card">
+          <div class="hero-trust-card__logo"><div aria-hidden="true" class="trust-brand trust-brand--ppai"><b>PPAI<sup>®</sup></b><small>MEMBER</small></div></div>
+          <div class="hero-trust-card__copy"><small>INDUSTRY MEMBERSHIP</small><strong>PPAI Member</strong></div>
+        </div>
+  
+        <div aria-label="Trustpilot customer reviews" class="hero-trust-card">
+          <div class="hero-trust-card__logo">
+            <div><div class="hero-trustpilot-wordmark"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 1.8l3.15 6.37 7.03 1.02-5.09 4.96 1.2 7.01L12 17.86 5.71 21.16l1.2-7.01L1.82 9.19l7.03-1.02L12 1.8z" fill="#00B67A"></path></svg><strong>Trustpilot</strong></div><div aria-hidden="true" class="hero-trustpilot-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span class="partial">★</span></div></div>
+          </div>
+          <div class="hero-trust-card__copy"><small>CUSTOMER REVIEWS</small><strong>Trusted client feedback</strong></div>
+        </div>
+  
+        <div aria-label="Project delivery" class="hero-trust-card">
+          <div class="hero-trust-card__logo"><div aria-hidden="true" class="trust-delivery-mark"><span>✓</span></div></div>
+          <div class="hero-trust-card__copy"><small>DELIVERY RECORD</small><strong>100% Project Delivery</strong></div>
+        </div>
+      </div>
+    </div>
   </section>
   <section aria-label="Company Store proof points" class="proof-strip">
   <div class="page-shell proof-panel"><div class="proof-intro"><strong>A focused Shopify launch built around the client program in front of you.</strong></div><div class="proof-item"><small>Business outcome</small><strong>Easier reorders and repeat revenue</strong></div><div class="proof-item"><small>Fulfillment</small><strong>POD, inventory, or hybrid</strong></div></div>
