@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "id": "d0cd918a-deaa-4d84-96a0-b29e6a9886f0",
+  "owner": "google-oauth2|113476584021514858958",
+  "base": "250f903134ffd5ea9abd5991de2793da18c5a29d",
+  "summary": "Shorten demo CTA on Shopify company store page",
+  "createdAt": "2026-10-23T19:36:39.908Z",
+  "events": [
+    {
+      "id": "eee45bc2-22d1-430a-b963-13429a35b76d",
+      "at": "2026-10-23T19:36:39.908Z",
+      "actor": "google-oauth2|113476584021514858958",
+      "action": "change.created"
+    }
+  ]
+}
