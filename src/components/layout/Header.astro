@@ -1,7 +1,11 @@
 ﻿---
 const solutionCtas: Record<string, { label: string; href: string }> = {
+  '/book-demo/': {
+    label: 'Book a 15-minute demo',
+    href: '/book-demo/',
+  },
   '/solutions/shopify-company-store/': {
-    label: 'Launch a Company Store',
+    label: 'Book a 15-minute demo',
     href: '/book-demo/?service=company-store-launch&intent=launch',
   },
  
@@ -59,8 +63,8 @@ const headerCta = solutionCtas[normalizedPath] ?? {
 <svg viewBox="0 0 28 28"><rect height="16" rx="3" width="20" x="4" y="6"></rect><path d="M4 11h20M9 17h4M16 17h3"></path></svg>
 </span>
 <span class="mega-link__copy">
-<strong>Company Store Launch</strong>
-<small>Launch a Shopify print on demand company store and capture repeat client orders.</small>
+<strong>Company Store</strong>
+<small>A done for you, branded Shopify company store for your clients.</small>
 </span>
 <span aria-hidden="true" class="mega-link__arrow">&nearr;</span>
 </a>

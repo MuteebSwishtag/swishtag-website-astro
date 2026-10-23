@@ -3,8 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 
 const title = "Book a Demo | Swishtag";
-const description = "Book a Swishtag demo for company stores, SAGE + Shopify, or enterprise company-store automation.";
-const canonical = "https://cms.swishtag.com/book-demo/";
+const description = "Book a Swishtag demo for company stores or enterprise company-store automation.";
+const canonical = "https://swishtag.com/book-demo/";
 const robots = "index,follow";
 const formSubmissionMode = (import.meta.env.PUBLIC_FORM_SUBMISSION_MODE ?? "direct").toLowerCase();
 const directFormEndpoint = import.meta.env.PUBLIC_DIRECT_FORM_ENDPOINT ?? "/api/forms/submit";
@@ -255,7 +255,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
         <h1>Book a Shopify demo for your workflow.</h1>
         <p>Tell us what you need, then pick a time. We'll tailor the demo for promotional products distributors.</p>
         <div class="hero-note">
-          <span>30-minute tailored demo</span>
+          <span>15-minute demo</span>
           <span>Built for promo distributors</span>
           <span>No long form. Just 3 quick steps.</span>
         </div>
@@ -313,8 +313,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
                     <p>Pick the option that best matches what you want to see in the demo.</p>
                   </div>
                   <div class="choices" role="radiogroup" aria-label="What would you like help with?">
-                    <div class="choice"><input type="radio" id="need-launch" name="solutionInterest" value="Company Store Launch" data-service="company-store-launch" data-intent="launch"><label for="need-launch"><strong>Company Store Launch</strong><span>Launch a Shopify company store for a client program.</span></label></div>
-                    <div class="choice"><input type="radio" id="need-connect" name="solutionInterest" value="SAGE Connected Company Store" data-service="sage-connected-company-store" data-intent="integration-fit"><label for="need-connect"><strong>SAGE Connected Company Store</strong><span>Connect SAGE product data with a modern Shopify storefront.</span></label></div>
+                    <div class="choice"><input type="radio" id="need-launch" name="solutionInterest" value="Company Store" data-service="company-store-launch" data-intent="launch"><label for="need-launch"><strong>Company Store</strong><span>Launch a Shopify company store for a client program.</span></label></div>
                     <div class="choice"><input type="radio" id="need-scale" name="solutionInterest" value="Enterprise Company Store Automation" data-service="enterprise-company-store-automation" data-intent="automation"><label for="need-scale"><strong>Enterprise Company Store Automation</strong><span>Centralize multi-store operations, approvals, orders, and automation.</span></label></div>
                     <div class="choice"><input type="radio" id="need-unsure" name="solutionInterest" value="Not sure yet" data-service="not-sure-yet"><label for="need-unsure"><strong>Not sure yet</strong><span>Help me figure out the right path for my operation.</span></label></div>
                   </div>
@@ -341,7 +340,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
                 <div class="panel" data-step="3">
                   <div class="panel-head">
                     <h2>Pick a time that works for you</h2>
-                    <p>Choose a date, pick a 30-minute slot, and book your demo.</p>
+                    <p>Choose a date, pick a 15-minute slot, and book your demo.</p>
                   </div>
                   <div class="picker-grid">
                     <div class="picker-box">
@@ -438,7 +437,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
     if(match) match.checked = true;
   }
 
-  const slotTimes = ['09:00', '10:30', '12:00', '13:30', '15:00'];
+  const slotTimes = ['09:00', '09:15', '09:30', '09:45', '10:00', '10:15', '10:30', '10:45', '11:00', '11:15', '11:30', '11:45', '12:00', '12:15', '12:30', '12:45', '13:00', '13:15', '13:30', '13:45', '14:00', '14:15', '14:30', '14:45', '15:00'];
   const dateOptions = [];
   const today = new Date();
   for (let i = 1; dateOptions.length < 10 && i < 20; i++) {
@@ -576,6 +575,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
       btn.type = 'button';
       btn.className = 'time-btn';
       btn.textContent = formatTimeLabel(time);
+      btn.setAttribute('aria-label', `${btn.textContent}, 15-minute demo`);
       btn.addEventListener('click', () => {
         [...timeList.children].forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
@@ -590,7 +590,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
   function updateSummary(){
     if(state.selectedDate && state.selectedTime){
       bookingSummary.classList.add('show');
-      bookingSummary.innerHTML = `<strong>Your selected slot</strong>${state.selectedDate} at ${state.selectedTime} &middot; ${state.timezone}`;
+      bookingSummary.innerHTML = `<strong>Your selected slot</strong>${state.selectedDate} at ${state.selectedTime} &middot; 15 minutes &middot; ${state.timezone}`;
     } else if(state.selectedDate){
       bookingSummary.classList.add('show');
       bookingSummary.innerHTML = `<strong>Date selected</strong>${state.selectedDate}. Choose a time slot to finish booking.`;

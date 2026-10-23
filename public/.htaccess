@@ -1,3 +1,12 @@
 <FilesMatch "^\.env">
   Require all denied
 </FilesMatch>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|png|ico|svg|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "[.-][A-Za-z0-9_-]{8,}\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

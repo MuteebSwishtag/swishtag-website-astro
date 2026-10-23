@@ -432,6 +432,8 @@ export async function createZoomMeetingForSubmission(submission, meetingAt) {
     || parseSelectedMeetingTime(fields);
 
   return createScheduledZoomMeeting({
+    // All bookings from /book-demo/ are 15 minutes, regardless of the general Zoom default.
+    durationMinutes: submission?.source === 'book-demo' || submission?.formType === 'book-demo' ? 15 : undefined,
     startTime,
     timeZone: fields.timezone || "UTC",
     customerName: submission?.displayName || fields.fullName || "",

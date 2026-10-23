@@ -147,61 +147,66 @@
   "companyStore": {
     "eyebrow": "Frequently asked questions",
     "title": "Clear answers before you commit.",
-    "description": "Still unsure whether this is the right starting point? We will review the actual client opportunity before recommending a build.",
+    "description": "Still unsure? Book a 15-minute demo and we will look at your client opportunity with you.",
     "items": [
       {
+        "question": "How much does a company store cost?",
+        "answer": "Your first Shopify company store is $1,200 one-time. That includes a custom branded store, payments and shipping setup, employee login if you need it, up to 50 products set up (title, description, photos, all colors and sizes, and your price with margin), up to 50 logo mockups (one logo, up to 2 placements, one revision round), and free migration from your old store. Each additional store cloned from your template is $300 one-time. Any customized or differently branded store is $1,200. After launch, the Care Plan is $100 a month per store, cancel anytime, billed as one charge on your Shopify bill.",
+        "open": false
+      },
+      {
         "question": "How quickly can a company store be launched?",
-        "answer": "A straightforward store can often be launched within a few weeks after products, branding, content, and fulfillment requirements are confirmed. Custom functionality may extend the timeline.",
-        "open": false
-      },
-      {
-        "question": "Do we need to carry inventory?",
-        "answer": "No. A company store can launch with print on demand and no upfront inventory. It can also use pre produced inventory for faster delivery and better unit economics, or a hybrid model that stocks core products while producing the rest after the order.",
-        "open": false
-      },
-      {
-        "question": "Is Company Store Launch only a print on demand store?",
-        "answer": "No. Print on demand is one fulfillment option, not the identity of the service. We can configure a company store around print on demand, stocked inventory, or a practical hybrid model based on the client program.",
-        "open": false
-      },
-      {
-        "question": "Can the store use the client’s branding?",
-        "answer": "Yes. The storefront can be designed around the client’s approved colors, logo, products, and visual guidelines.",
+        "answer": "About 10 business days after we receive your content (logo, product list, and pricing). You see a preview of your store design within 5 business days. Additional stores cloned from your template launch in 2 to 3 business days.",
         "open": false
       },
       {
         "question": "Who owns the Shopify store?",
-        "answer": "Store ownership and account structure are agreed before development. We recommend keeping the account under the distributor’s or client’s control, depending on the business arrangement.",
+        "answer": "You do. It's your Shopify account. If you ever stop working with us, the store keeps running and everything stays yours. We build the company store in the distributor's or the client's own Shopify account.",
         "open": false
       },
       {
-        "question": "Can we add more products later?",
-        "answer": "Yes. Your team can manage products after launch, or Swishtag can provide ongoing support.",
+        "question": "Can the store support multiple clients or locations?",
+        "answer": "Yes. Once your first company store is built, each additional store cloned from the template is $300 one-time and launches in 2 to 3 business days. This flat pricing works well for multi-location clients and franchises. A store that needs its own custom design or different branding is $1,200.",
         "open": false
       },
       {
-        "question": "Can this connect with SAGE?",
-        "answer": "SAGE integration is available through the separate SAGE Powered Company Store solution. It requires workflow discovery and a defined integration scope.",
+        "question": "Can the store use the client's branding?",
+        "answer": "Yes. It looks like your client's brand, not a template. Every first store is custom branded with the client's logo, colors, and products. We also create up to 50 logo mockups so employees see exactly what they are ordering.",
         "open": false
       },
       {
-        "question": "Can the store support multiple clients?",
-        "answer": "This package is designed around one company store. Distributors managing multiple stores may need Enterprise Company Store Automation.",
+        "question": "Can employees log in to the company store?",
+        "answer": "Yes. Employee login is set up with your store and kept running by the Care Plan, so only approved people can see and order products.",
+        "open": false
+      },
+      {
+        "question": "Can you migrate our existing store from Magento or another platform?",
+        "answer": "Yes. Migration is free with your first store. It covers up to 250 products, 1,000 customer accounts, 12 months of order history (read-only), and 100 URL redirects. One product means one style with all its colors and sizes. More than 250 products? It is $100 per 250 additional migrated products. Custom extensions, ERP integrations, multi-store or multi-language setups, and manual data cleanup are not included.",
         "open": false
       },
       {
         "question": "Does the package include Shopify fees?",
-        "answer": "No. Shopify subscriptions, paid applications, domain costs, transaction fees, product production, inventory, storage, shipping, and other third party costs are separate unless explicitly included in the proposal.",
+        "answer": "No. Your Shopify plan is paid directly to Shopify (about $29 to $39 a month). Your store features (employee login, allowances, quotes, bulk orders, shared carts, address validation, forms, and announcements) come with the Care Plan, $100 a month per store, billed as one charge on your Shopify bill. There is no per-store license and no hourly fee.",
         "open": false
       },
       {
-        "question": "Why use Shopify for a company store?",
-        "answer": "Shopify is a strong fit when the client needs a more branded buying experience, mobile-friendly ordering, flexible fulfillment, custom functionality, or room to add integrations as the program grows. For a simple temporary store, a standard promotional products store platform may be more practical.",
+        "question": "Can we add more products later?",
+        "answer": "Yes. You can add products yourself in Shopify at any time. During setup, products beyond the first 50 are $100 per 25 additional products. With the Care Plan, we handle product and price updates for you.",
         "open": false
       },
       {
-        "question": "Do we need to replace SAGE, commonsku, ESP+, or our current workflow?",
-        "answer": "No. Shopify can operate as the client-facing commerce layer while your existing back-office process remains in place. Where appropriate, Swishtag can define a separate integration or automation scope rather than forcing a full system replacement.",
+        "question": "What does the Care Plan cover?",
+        "answer": "The Care Plan is $100 a month per store, and you can cancel anytime. It is billed as one charge on your Shopify bill through one Swishtag company store app. It covers all your store features (employee login, allowances, quotes, bulk orders, shared carts, address validation, forms, and announcements) plus product and price updates, banner and seasonal changes, app and theme updates and fixes, monitoring, and support within 1 business day. New custom features, new store builds, large product loads, and custom integrations are not included.",
+        "open": false
+      },
+      {
+        "question": "How does payment work, and what if I don't like the design?",
+        "answer": "You pay 50% to start and 50% at launch, by card. You see your store design within 5 business days. If you don't love it, we refund your full deposit.",
+        "open": false
+      },
+      {
+        "question": "How do distributors make money with a company store?",
+        "answer": "You earn on every reorder your client places through the store. There is no per-store license or hourly fee, and flat $300 clone pricing makes multi-location clients and franchises easy to quote.",
         "open": false
       }
     ]
