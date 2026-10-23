@@ -129,7 +129,7 @@ export async function loadConfig({ env = process.env, configPath } = {}) {
     server: {
       publicUrl,
       host: string(env.MCP_HOST || server.host || '127.0.0.1', 'server.host'),
-      port: integer(env.MCP_PORT ?? server.port, 3100, 'server.port', 1, 65535),
+      port: integer(env.PORT || env.MCP_PORT || server.port, 3100, 'server.port', 1, 65535),
       allowedOrigins,
     },
     auth: {

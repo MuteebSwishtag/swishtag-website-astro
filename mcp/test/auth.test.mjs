@@ -232,6 +232,17 @@ test('loads provider credentials only from the environment and defaults to this 
   assert.equal(config.deployment.hostingerToken, 'hosting-secret');
 });
 
+test('hosting PORT takes precedence over the local port and rejects invalid assignments', async () => {
+  const f = await fixture();
+  const load = env => loadConfig({ configPath: f.configPath, env });
+  assert.equal((await load({ PORT: '45678', MCP_PORT: '3100' })).server.port, 45678);
+  assert.equal((await load({ PORT: '', MCP_PORT: '3200' })).server.port, 3200);
+  assert.equal((await load({})).server.port, f.raw.server.port);
+  for (const PORT of ['0', '65536', 'invalid', '3000.5']) {
+    await assert.rejects(load({ PORT, MCP_PORT: '3100' }), { code: 'configuration_error' });
+  }
+});
+
 test('rejects insecure provider URLs, conflicting audience, unsafe algorithms and invalid policies', async () => {
   const mutations = [
     raw => { raw.auth.issuer = 'http://identity.example.com/'; },

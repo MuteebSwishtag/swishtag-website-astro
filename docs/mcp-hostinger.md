@@ -6,6 +6,14 @@ The existing Hostinger Node.js Web App is already connected to GitHub. This inte
 
 ## One-time settings
 
+### Separate MCP service application
+
+For the MCP service itself, create a separate Express application using root directory `mcp`, Node.js 24, npm, no build script/output directory, and entry file **`src/hostinger-entry.mjs`**. Hostinger imports the entry, so this file starts the service unconditionally; `src/server.mjs` remains the local/test entry. The assigned `PORT` takes priority over `MCP_PORT` and the JSON port setting. Set `MCP_HOST=0.0.0.0` on Hostinger and let the platform assign `PORT`.
+
+The ignored `config.json` does not arrive through GitHub. Provision a private persistent file on the host and set `MCP_CONFIG_PATH` to its absolute path; set `MCP_AUDIT_PATH` to a private writable persistent location. If the managed application cannot provide those files, use a VPS/container host. Missing configuration fails closed with a sanitized startup message. Environment variables alone do not replace the current file-based policy configuration.
+
+### Existing Astro website application
+
 1. Install this integration's source files and `.github/workflows/mcp-validate.yml` in the repository. Enable GitHub Actions. A manually dispatched workflow must be present on the repository's default branch.
 2. In hPanel, open the existing Node.js Web App and confirm the connected repository is `MuteebSwishtag/swishtag-website-astro`.
 3. Set the live branch to the same value as `github.baseBranch` in the MCP configuration. The checked-out repository currently uses `master`; change both settings together if you adopt a separate production branch. Publishing advances this branch immediately for users with publishing permission.
