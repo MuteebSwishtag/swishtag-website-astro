@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "id": "377214fc-aaf7-4be6-9ab1-606e5819eddc",
+  "owner": "auth0|6adb9b2d318bc73c26dbcf87",
+  "base": "5ace44dcc5cb7a233805ace529759972742b8ae8",
+  "summary": "Company Store: replace hero trust badges with the 4-card trust section from Custom Software",
+  "createdAt": "2026-10-23T20:06:19.962Z",
+  "events": [
+    {
+      "id": "5f6c4bc1-7458-4b88-9794-a12dba3a8cf2",
+      "at": "2026-10-23T20:06:19.962Z",
+      "actor": "auth0|6adb9b2d318bc73c26dbcf87",
+      "action": "change.created"
+    }
+  ]
+}
