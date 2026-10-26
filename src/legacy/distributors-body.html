@@ -688,7 +688,7 @@ html .distributors-page{scroll-behavior:smooth;background:#fff}
 }
 
 /* --------------------------------------------------------------------------
-   Three solution paths — intentionally varied composition
+   Two solution paths — intentionally varied composition
    -------------------------------------------------------------------------- */
 
 .distributors-page .paths{
@@ -738,8 +738,7 @@ html .distributors-page{scroll-behavior:smooth;background:#fff}
   font-size:.7rem;
   font-weight:800;
 }
-.distributors-page .path:nth-child(2) .path-number{background:var(--mint)}
-.distributors-page .path:nth-child(3) .path-number{background:var(--lav)}
+.distributors-page .path:nth-child(2) .path-number{background:var(--lav)}
 .distributors-page .path-copy h3{
   margin:25px 0 0;
   font-size:clamp(2.3rem,3.8vw,4.35rem);
@@ -784,11 +783,6 @@ html .distributors-page{scroll-behavior:smooth;background:#fff}
   background:
     radial-gradient(circle at 75% 18%,rgba(194,255,2,.38),transparent 28%),
     linear-gradient(145deg,#f4fff4,#fff);
-}
-.distributors-page .path-visual--sage{
-  background:
-    radial-gradient(circle at 18% 20%,rgba(153,254,237,.50),transparent 31%),
-    linear-gradient(145deg,#f8ffff,#fff);
 }
 .distributors-page .path-visual--scale{
   background:
@@ -852,89 +846,6 @@ html .distributors-page{scroll-behavior:smooth;background:#fff}
 .distributors-page .product-mini i{display:block;height:55px;border-radius:9px;background:#fff}
 .distributors-page .product-mini:nth-child(2) i{background:rgba(153,254,237,.55)}
 .distributors-page .product-mini:nth-child(3) i{background:rgba(255,189,155,.5)}
-
-/* Sage visual */
-.distributors-page .sage-flow{
-  position:absolute;
-  inset:52px 42px;
-  display:grid;
-  grid-template-columns:1fr 90px 1fr;
-  align-items:center;
-  gap:10px;
-}
-.distributors-page .sage-panel{
-  position:relative;
-  z-index:2;
-  min-height:315px;
-  padding:20px;
-  border-radius:25px;
-  border:1px solid rgba(23,24,26,.075);
-  background:#fff;
-  box-shadow:var(--shadow-sm);
-}
-.distributors-page .sage-panel__top{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-bottom:15px;border-bottom:1px solid var(--line)
-}
-.distributors-page .sage-panel__label{display:flex;align-items:center;gap:9px;font-size:.67rem;font-weight:800}
-.distributors-page .sage-panel__logo{
-  width:30px;height:30px;display:grid;place-items:center;
-  border-radius:10px;background:var(--mint);
-  font-size:.55rem;font-weight:800
-}
-.distributors-page .sage-panel--shopify .sage-panel__logo{background:var(--lime)}
-.distributors-page .sage-panel__status{
-  padding:6px 8px;border-radius:999px;background:var(--soft);
-  color:var(--muted);font-size:.48rem;font-weight:800
-}
-.distributors-page .catalog-lines{display:grid;gap:9px;margin-top:17px}
-.distributors-page .catalog-line{
-  display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:9px;
-  padding:8px;border-radius:11px;background:var(--soft)
-}
-.distributors-page .catalog-line__img{width:34px;height:34px;border-radius:9px;background:#fff}
-.distributors-page .catalog-line strong{display:block;font-size:.52rem}
-.distributors-page .catalog-line small{display:block;margin-top:3px;color:var(--muted);font-size:.44rem}
-.distributors-page .catalog-line em{font-style:normal;color:#6f8c10;font-size:.44rem;font-weight:800}
-.distributors-page .flow-bridge{
-  position:relative;
-  display:grid;
-  place-items:center;
-  height:100%;
-}
-.distributors-page .flow-bridge::before{
-  content:"";
-  position:absolute;
-  left:0;right:0;top:50%;
-  border-top:1px dashed rgba(23,24,26,.24);
-}
-.distributors-page .flow-bridge__hub{
-  position:relative;
-  z-index:2;
-  width:70px;height:70px;
-  display:grid;place-items:center;
-  border-radius:22px;
-  background:var(--ink);
-  color:#fff;
-  font-size:.55rem;
-  font-weight:800;
-  text-align:center;
-  box-shadow:0 15px 30px rgba(23,24,26,.14);
-}
-.distributors-page .flow-pulse{
-  position:absolute;
-  width:10px;height:10px;
-  border-radius:50%;
-  background:var(--lime);
-  animation:data-pulse 3.8s linear infinite;
-}
-@keyframes data-pulse{
-  0%{transform:translateX(-39px);opacity:0}
-  12%{opacity:1}
-  50%{opacity:1}
-  88%{opacity:1}
-  100%{transform:translateX(39px);opacity:0}
-}
 
 /* Scale visual */
 .distributors-page .scale-dashboard{
@@ -1270,7 +1181,6 @@ html .distributors-page{scroll-behavior:smooth;background:#fff}
 }
 .distributors-page .integration-node strong{display:block;font-size:.61rem}
 .distributors-page .integration-node small{display:block;margin-top:3px;color:var(--muted);font-size:.48rem}
-.distributors-page .integration-node--sage{left:9%;top:13%}
 .distributors-page .integration-node--suppliers{right:8%;top:15%}
 .distributors-page .integration-node--procurement{left:3%;bottom:18%}
 .distributors-page .integration-node--reporting{right:4%;bottom:16%}
@@ -1802,8 +1712,6 @@ html .distributors-page{scroll-behavior:smooth;background:#fff}
   .distributors-page .path-visual{min-height:430px}
   .distributors-page .store-builder{inset:35px 20px}
   .distributors-page .builder-body{grid-template-columns:76px 1fr}
-  .distributors-page .sage-flow{inset:34px 18px;grid-template-columns:1fr 48px 1fr}
-  .distributors-page .sage-panel{padding:14px;min-height:300px}
   .distributors-page .flow-bridge__hub{width:48px;height:48px;border-radius:15px;font-size:.45rem}
   .distributors-page .scale-dashboard{inset:30px 18px}
   .distributors-page .scale-layout{grid-template-columns:82px 1fr}
@@ -1816,7 +1724,6 @@ html .distributors-page{scroll-behavior:smooth;background:#fff}
   .distributors-page .integration-ring--one{width:270px;height:270px}
   .distributors-page .integration-ring--two{width:370px;height:370px}
   .distributors-page .integration-node{min-width:108px;padding:10px}
-  .distributors-page .integration-node--sage{left:3%}
   .distributors-page .integration-node--suppliers{right:3%}
   .distributors-page .integration-node--procurement{left:1%}
   .distributors-page .integration-node--reporting{right:1%}
@@ -1855,9 +1762,6 @@ html .distributors-page{scroll-behavior:smooth;background:#fff}
   .distributors-page .path-visual{min-height:390px}
   .distributors-page .builder-side{display:none}
   .distributors-page .builder-body{grid-template-columns:1fr}
-  .distributors-page .sage-flow{grid-template-columns:1fr;gap:9px;inset:23px 15px}
-  .distributors-page .sage-panel{min-height:auto}
-  .distributors-page .sage-panel:nth-child(3){display:none}
   .distributors-page .flow-bridge{height:50px}
   .distributors-page .flow-bridge::before{left:50%;right:auto;top:0;bottom:0;border-top:0;border-left:1px dashed rgba(23,24,26,.24)}
   .distributors-page .flow-pulse{display:none}
@@ -2122,9 +2026,6 @@ html .distributors-page{scroll-behavior:smooth;background:#fff}
   font-size:.47rem;
 }
 
-.distributors-page .sage-panel{padding:18px;min-height:330px}
-.distributors-page .sage-panel__label{font-size:.77rem}
-.distributors-page .sage-panel__status{font-size:.54rem}
 .distributors-page .catalog-line{padding:9px}
 .distributors-page .catalog-line strong{font-size:.59rem}
 .distributors-page .catalog-line small,
@@ -2405,7 +2306,6 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
 .distributors-page .hero-micro-board__head span,
 .distributors-page .floating-node,
 .distributors-page .builder-pill,
-.distributors-page .sage-panel__status,
 .distributors-page .integration-node__icon,
 .distributors-page .status-pill{
   font-weight:var(--weight-bold);
@@ -2433,7 +2333,6 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
 .distributors-page .store-line__name,
 .distributors-page .hero-micro-board__head strong,
 .distributors-page .builder-top__brand,
-.distributors-page .sage-panel__label,
 .distributors-page .stack-shell__header strong,
 .distributors-page .integration-node strong,
 .distributors-page .portfolio__top strong,
@@ -2524,7 +2423,7 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
 
 /* ==========================================================================
    CARD COLOR UPDATE
-   Apply the stronger Swishtag platform-card palette to the three solution cards.
+   Apply the stronger Swishtag platform-card palette to the two solution cards.
    ========================================================================== */
 
 .distributors-page .path-stack .path{
@@ -2569,7 +2468,9 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
 }
 
 .distributors-page .path-stack .path:nth-child(2){
-  background:linear-gradient(180deg,#f7bb97 0%, #f5b28d 100%);
+  background:
+    radial-gradient(circle at 82% 18%,rgba(255,255,255,.38),transparent 26%),
+    linear-gradient(145deg,#b8fd0f 0%, #93f0a9 56%, #85e8dd 100%);
 }
 .distributors-page .path-stack .path:nth-child(2) .path-copy{
   background:transparent;
@@ -2585,53 +2486,20 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
 .distributors-page .path-stack .path:nth-child(2) .inline-link__icon{
   background:#ffffff;
 }
-.distributors-page .path-stack .path:nth-child(2) .sage-panel{
-  background:rgba(255,255,255,.55);
-  border-color:rgba(255,255,255,.45);
-  box-shadow:none;
-}
-.distributors-page .path-stack .path:nth-child(2) .catalog-line{
-  background:rgba(255,255,255,.72);
-}
-.distributors-page .path-stack .path:nth-child(2) .flow-bridge__hub{
-  background:#ffffff;
-  color:var(--ink);
-  box-shadow:none;
-}
-
-.distributors-page .path-stack .path:nth-child(3){
-  background:
-    radial-gradient(circle at 82% 18%,rgba(255,255,255,.38),transparent 26%),
-    linear-gradient(145deg,#b8fd0f 0%, #93f0a9 56%, #85e8dd 100%);
-}
-.distributors-page .path-stack .path:nth-child(3) .path-copy{
-  background:transparent;
-}
-.distributors-page .path-stack .path:nth-child(3) .path-visual{
-  background:rgba(255,255,255,.12);
-}
-.distributors-page .path-stack .path:nth-child(3) .path-number{
-  background:#ffffff;
-  color:var(--ink);
-}
-.distributors-page .path-stack .path:nth-child(3) .path-list i,
-.distributors-page .path-stack .path:nth-child(3) .inline-link__icon{
-  background:#ffffff;
-}
-.distributors-page .path-stack .path:nth-child(3) .scale-dashboard{
+.distributors-page .path-stack .path:nth-child(2) .scale-dashboard{
   background:rgba(255,255,255,.52);
   border-color:rgba(255,255,255,.48);
   box-shadow:none;
 }
-.distributors-page .path-stack .path:nth-child(3) .scale-top,
-.distributors-page .path-stack .path:nth-child(3) .scale-order,
-.distributors-page .path-stack .path:nth-child(3) .scale-chart{
+.distributors-page .path-stack .path:nth-child(2) .scale-top,
+.distributors-page .path-stack .path:nth-child(2) .scale-order,
+.distributors-page .path-stack .path:nth-child(2) .scale-chart{
   background:rgba(255,255,255,.68);
 }
-.distributors-page .path-stack .path:nth-child(3) .scale-side{
+.distributors-page .path-stack .path:nth-child(2) .scale-side{
   background:rgba(255,255,255,.34);
 }
-.distributors-page .path-stack .path:nth-child(3) .scale-metric{
+.distributors-page .path-stack .path:nth-child(2) .scale-metric{
   background:rgba(255,255,255,.72);
 }
 
@@ -2717,7 +2585,7 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
 }
 
 /* =========================================================
-   3 PRIMARY SOLUTION CARDS — SOFT HOME PAGE TONES
+   2 PRIMARY SOLUTION CARDS — SOFT HOME PAGE TONES
    ========================================================= */
 
 /* Card 1 — soft lavender */
@@ -2748,56 +2616,31 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
   background:rgba(255,255,255,.92);
 }
 
-/* Card 2 — soft peach */
+/* Card 2 — soft lime / mint */
 .distributors-page .path-stack .path:nth-child(2){
-  background:
-    radial-gradient(circle at 10% 8%,rgba(255,255,255,.44),transparent 30%),
-    linear-gradient(180deg,#ffe4d5 0%,#ffdcc9 100%);
-  border-color:rgba(181,116,78,.07);
-  box-shadow:0 20px 52px rgba(150,92,61,.05);
-}
-.distributors-page .path-stack .path:nth-child(2) .path-visual{
-  background:rgba(255,255,255,.28);
-}
-.distributors-page .path-stack .path:nth-child(2) .sage-panel{
-  background:rgba(255,255,255,.78);
-  border-color:rgba(255,255,255,.84);
-  box-shadow:0 16px 36px rgba(111,73,51,.045);
-}
-.distributors-page .path-stack .path:nth-child(2) .catalog-line{
-  background:rgba(255,255,255,.88);
-}
-.distributors-page .path-stack .path:nth-child(2) .flow-bridge__hub{
-  background:rgba(255,255,255,.94);
-  color:var(--ink);
-  box-shadow:0 12px 26px rgba(98,66,48,.04);
-}
-
-/* Card 3 — soft lime / mint */
-.distributors-page .path-stack .path:nth-child(3){
   background:
     radial-gradient(circle at 84% 14%,rgba(255,255,255,.55),transparent 28%),
     linear-gradient(145deg,#eeffd7 0%,#e5fbdc 46%,#dffbf5 100%);
   border-color:rgba(87,144,99,.07);
   box-shadow:0 20px 52px rgba(66,128,84,.045);
 }
-.distributors-page .path-stack .path:nth-child(3) .path-visual{
+.distributors-page .path-stack .path:nth-child(2) .path-visual{
   background:rgba(255,255,255,.28);
 }
-.distributors-page .path-stack .path:nth-child(3) .scale-dashboard{
+.distributors-page .path-stack .path:nth-child(2) .scale-dashboard{
   background:rgba(255,255,255,.78);
   border-color:rgba(255,255,255,.86);
   box-shadow:0 16px 38px rgba(64,110,73,.045);
 }
-.distributors-page .path-stack .path:nth-child(3) .scale-top,
-.distributors-page .path-stack .path:nth-child(3) .scale-order,
-.distributors-page .path-stack .path:nth-child(3) .scale-chart{
+.distributors-page .path-stack .path:nth-child(2) .scale-top,
+.distributors-page .path-stack .path:nth-child(2) .scale-order,
+.distributors-page .path-stack .path:nth-child(2) .scale-chart{
   background:rgba(255,255,255,.88);
 }
-.distributors-page .path-stack .path:nth-child(3) .scale-side{
+.distributors-page .path-stack .path:nth-child(2) .scale-side{
   background:rgba(255,255,255,.56);
 }
-.distributors-page .path-stack .path:nth-child(3) .scale-metric{
+.distributors-page .path-stack .path:nth-child(2) .scale-metric{
   background:rgba(255,255,255,.90);
 }
 
@@ -2908,7 +2751,6 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
 /* Soften all outlines + pills slightly */
 .distributors-page .chip,
 .distributors-page .builder-pill,
-.distributors-page .sage-panel__status,
 .distributors-page .integration-node,
 .distributors-page .portfolio-table,
 .distributors-page .store-table,
@@ -2931,9 +2773,6 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
     background:linear-gradient(180deg,#efedff,#e9e7fb);
   }
   .distributors-page .path-stack .path:nth-child(2){
-    background:linear-gradient(180deg,#ffe8db,#ffdfcf);
-  }
-  .distributors-page .path-stack .path:nth-child(3){
     background:linear-gradient(145deg,#f1ffde,#e6fbe3 52%,#e2faf6);
   }
 }
@@ -3986,7 +3825,7 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
 
       <div class="hero-chips">
         <span class="chip">Company stores</span>
-        <span class="chip">SAGE + Shopify</span>
+        <span class="chip">Supplier integrations</span>
         <span class="chip">Multi-store automation</span>
       </div>
     </div>
@@ -4164,7 +4003,7 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
         <span class="pressure-row__icon">02</span>
         <div>
           <strong>Product data already lives somewhere.</strong>
-          <p>The goal should be to reuse dependable supplier or SAGE data where possible, not manually recreate the same catalog information.</p>
+          <p>The goal should be to reuse dependable supplier data where possible, not manually recreate the same catalog information.</p>
         </div>
         <span class="pressure-row__tag">Catalogs</span>
       </article>
@@ -4194,7 +4033,7 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
   <div class="shell">
     <div class="paths-head" data-reveal>
       <div>
-        <p class="kicker">Three practical paths</p>
+        <p class="kicker">Two practical paths</p>
         <h2 class="display">Start with the client need. Add the right layer.</h2>
       </div>
       <p class="lead">Not every program needs the same architecture. Start with the problem in front of you, then add integration and automation only where it has a clear operational job.</p>
@@ -4267,59 +4106,6 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
       <article class="path" data-reveal>
         <div class="path-copy">
           <span class="path-number">02</span>
-          <h3>Connect approved SAGE data.</h3>
-          <p>Reduce repeated work by moving dependable product information into the Shopify experience instead of rebuilding the same catalog manually.</p>
-
-          <div class="path-list">
-            <span><i>✓</i>Reuse agreed product data</span>
-            <span><i>✓</i>Cleaner catalog administration</span>
-            <span><i>✓</i>Shopify remains the client-facing layer</span>
-          </div>
-
-          <a class="inline-link" href="/solutions/shopify-sage-connect-integration/">
-            <span>Explore SAGE connection</span><span class="inline-link__icon">→</span>
-          </a>
-        </div>
-
-        <div class="path-visual path-visual--sage" aria-hidden="true">
-          <div class="sage-flow">
-            <div class="sage-panel">
-              <div class="sage-panel__top">
-                <span class="sage-panel__label"><i class="sage-panel__logo">S</i>SAGE data</span>
-                <span class="sage-panel__status">Connected</span>
-              </div>
-              <div class="catalog-lines">
-                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Performance Polo</strong><small>SKU · Colors · Pricing</small></span><em>Ready</em></div>
-                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Vacuum Tumbler</strong><small>SKU · Colors · Pricing</small></span><em>Ready</em></div>
-                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Canvas Tote</strong><small>SKU · Colors · Pricing</small></span><em>Ready</em></div>
-                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Softshell Jacket</strong><small>SKU · Colors · Pricing</small></span><em>Ready</em></div>
-              </div>
-            </div>
-
-            <div class="flow-bridge">
-              <span class="flow-bridge__hub">DATA<br>FLOW</span>
-              <span class="flow-pulse"></span>
-            </div>
-
-            <div class="sage-panel sage-panel--shopify">
-              <div class="sage-panel__top">
-                <span class="sage-panel__label"><i class="sage-panel__logo">S</i>Shopify</span>
-                <span class="sage-panel__status">Published</span>
-              </div>
-              <div class="catalog-lines">
-                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Performance Polo</strong><small>Client catalog</small></span><em>Live</em></div>
-                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Vacuum Tumbler</strong><small>Client catalog</small></span><em>Live</em></div>
-                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Canvas Tote</strong><small>Client catalog</small></span><em>Live</em></div>
-                <div class="catalog-line"><i class="catalog-line__img"></i><span><strong>Softshell Jacket</strong><small>Client catalog</small></span><em>Live</em></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="path" data-reveal>
-        <div class="path-copy">
-          <span class="path-number">03</span>
           <h3>Control the store portfolio.</h3>
           <p>Centralize reporting, routing, and automation when a growing store portfolio becomes too large for manual administration.</p>
 
@@ -4420,7 +4206,7 @@ html .distributors-page,.distributors-page,.distributors-page button,.distributo
           </div>
           <div class="workflow-step__icon workflow-step__icon--lav" aria-hidden="true">CAT</div>
           <h3>Catalog + supplier data</h3>
-          <p>Approved SAGE, supplier, or internal product information where appropriate.</p>
+          <p>Approved supplier or internal product information where appropriate.</p>
         </article>
 
         <article class="workflow-step workflow-step--4">

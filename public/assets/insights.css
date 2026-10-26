@@ -574,7 +574,7 @@ button, input { font: inherit; }
 .editor-grid {
   margin-top: 34px;
   display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-columns: 1.35fr 1fr;
   gap: 20px;
 }
 .pick-card {
@@ -957,7 +957,6 @@ th { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: #
   .featured-visual { min-height: 430px; }
   .article-grid { grid-template-columns: repeat(2, 1fr); }
   .editor-grid { grid-template-columns: 1fr 1fr; }
-  .pick-card.large { grid-column: 1 / -1; }
   .article-layout { grid-template-columns: minmax(0, 790px) 230px; gap: 38px; }
   .share-rail { display: none; }
 }
