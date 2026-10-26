@@ -97,7 +97,7 @@ function getCategory(post) {
   const text = `${htmlToText(post?.title?.rendered)} ${getPostExcerpt(post)} ${category?.name || ''}`.toLowerCase();
   const inferred = [
     { slug: 'migration', name: 'Migration', terms: ['migration', 'migrate', 'moving to shopify', 'checkout', 'seo'] },
-    { slug: 'integrations', name: 'Integrations', terms: ['integration', 'erp', 'sage', 'api', 'workflow'] },
+    { slug: 'integrations', name: 'Integrations', terms: ['integration', 'erp', 'api', 'workflow'] },
     { slug: 'automation', name: 'Automation', terms: ['automation', 'fulfillment', 'ai', 'production'] },
     { slug: 'company-stores', name: 'Company Stores', terms: ['company store', 'corporate swag', 'b2b'] },
     { slug: 'promotional-products', name: 'Promotional Products', terms: ['promotional product', 'promo brand', 'promo products', 'print shop', 'custom print'] },

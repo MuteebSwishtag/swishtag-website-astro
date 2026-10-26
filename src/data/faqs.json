@@ -10,7 +10,7 @@
     "items": [
       {
         "question": "Is Swishtag a Shopify agency or a software company?",
-        "answer": "Both, with a clear distinction. Company Store, SAGE, Enterprise Automation, and PunchOut are solution paths. Promo Plus, Xecutor, and Rocket Apps are Swishtag owned software platforms.",
+        "answer": "Both, with a clear distinction. Company Store, Enterprise Automation, and PunchOut are solution paths. Promo Plus, Xecutor, and Rocket Apps are Swishtag owned software platforms.",
         "open": false
       },
       {
@@ -19,7 +19,7 @@
         "open": false
       },
       {
-        "question": "Do we need to replace commonsku, SAGE, ESP+, or our ERP?",
+        "question": "Do we need to replace commonsku, ESP+, or our ERP?",
         "answer": "No. Swishtag is designed to add a modern commerce and automation layer around the systems your team already trusts. We focus on connecting the gaps rather than forcing a rip and replace project.",
         "open": false
       },
@@ -45,68 +45,6 @@
       }
     ]
   },
-  "sage": {
-    "eyebrow": "Frequently asked questions",
-    "title": "Clear answers before the integration begins.",
-    "description": "We verify the actual SAGE access, catalog requirements, and client workflow before recommending the build.",
-    "items": [
-      {
-        "question": "Is this the same as a SAGE Store?",
-        "answer": "No. A SAGE Connected Company Store is a custom Shopify storefront using authorized SAGE data services. A standard SAGE Store is usually the better choice when its native features fully meet the client requirement. Choose this service when the client specifically needs Shopify, stronger customization, or a broader integration roadmap.",
-        "open": false
-      },
-      {
-        "question": "Does this replace SAGE Workplace?",
-        "answer": "No. The distributor can continue using SAGE for product research and existing workflows. Shopify becomes the client-facing commerce layer, while the agreed SAGE data supports the storefront.",
-        "open": false
-      },
-      {
-        "question": "What SAGE data can be used?",
-        "answer": "The exact fields depend on the distributor's SAGE licensing, SAGE Connect access, available modules, supplier data, and the approved scope. Product details, images, categories, pricing, inventory, and supplier references may be used when available.",
-        "open": false
-      },
-      {
-        "question": "Can the entire SAGE catalog be added to Shopify?",
-        "answer": "The service is designed around a controlled catalog. Broad or full-database access depends on licensing, technical limits, search requirements, and Shopify architecture. We generally recommend starting with approved products that support the client program.",
-        "open": false
-      },
-      {
-        "question": "Will orders automatically move back into SAGE?",
-        "answer": "Not unless order submission or order synchronization is included in the written scope. The starting package focuses on the Shopify storefront and catalog data flow. Order, purchase order, accounting, and status integrations can be added separately.",
-        "open": false
-      },
-      {
-        "question": "How often will product data update?",
-        "answer": "The update frequency is defined during discovery and depends on available SAGE services, supplier data, catalog size, Shopify limits, and the operational importance of each field.",
-        "open": false
-      },
-      {
-        "question": "Can the store use POD, stocked inventory, or hybrid fulfillment?",
-        "answer": "Yes. The storefront can support print on demand, stocked inventory, or a hybrid model. The SAGE data connection and the fulfillment workflow are scoped separately so each one is clear.",
-        "open": false
-      },
-      {
-        "question": "What happens when supplier data is missing or inconsistent?",
-        "answer": "The integration can only use data available through the approved source. We identify missing fields during mapping and define whether the distributor will supply replacements, use defaults, or exclude the affected products.",
-        "open": false
-      },
-      {
-        "question": "Who needs to provide SAGE access?",
-        "answer": "The distributor must provide authorized access, credentials, documentation, and any required SAGE approvals or subscriptions. Swishtag does not bypass licensing or use data outside the distributor's permitted access.",
-        "open": false
-      },
-      {
-        "question": "Does the price include Shopify or SAGE fees?",
-        "answer": "No. Shopify subscriptions, SAGE subscriptions, SAGE Connect or API charges, paid applications, domains, transaction fees, product costs, and other third-party charges are separate unless explicitly included.",
-        "open": false
-      },
-      {
-        "question": "How long does the implementation take?",
-        "answer": "The timeline is confirmed after the access and data review. A controlled catalog is usually implemented in phases: discovery, mapping, storefront development, testing, and launch. Custom order or ERP integrations extend the schedule.",
-        "open": false
-      }
-    ]
-  },
   "solutions": {
     "eyebrow": "FAQ",
     "title": "A few things people ask before choosing.",
@@ -114,17 +52,12 @@
     "items": [
       {
         "question": "Which solution should we start with?",
-        "answer": "If the immediate goal is one client-facing store, start with Company Store Launch. If your team already relies on SAGE and manual catalog rebuilding is the problem, start with the SAGE Connected Company Store. If you are managing many stores and operational handoffs are the problem, look at Enterprise Automation. If the workflow does not fit an existing package, start with Custom Software &amp; Automation.",
+        "answer": "If the immediate goal is one client-facing store, start with Company Store Launch. If you are managing many stores and operational handoffs are the problem, look at Enterprise Automation. If the workflow does not fit an existing package, start with Custom Software &amp; Automation.",
         "open": true
       },
       {
         "question": "Can we start with Company Store Launch and add automation later?",
         "answer": "Yes. That is often the cleanest path. Launch the client program first, then add catalog connections, order automation, supplier workflows, PunchOut, accounting, or multi-store controls only when the operation has a real reason for them.",
-        "open": false
-      },
-      {
-        "question": "Does the SAGE Connected Company Store replace SAGE?",
-        "answer": "No. The SAGE solution is designed to keep SAGE in the distributor's product workflow while Shopify becomes the client-facing storefront. The exact data connection depends on authorized access, available SAGE services, and the approved scope.",
         "open": false
       },
       {
@@ -134,7 +67,7 @@
       },
       {
         "question": "Can Swishtag connect PunchOut, suppliers, or accounting systems?",
-        "answer": "Those integrations belong in the Enterprise Automation scope. The exact connection depends on the systems involved, available APIs, access, and the agreed workflow. SAGE and PromoStandards can also be part of the broader architecture where appropriate.",
+        "answer": "Those integrations belong in the Enterprise Automation scope. The exact connection depends on the systems involved, available APIs, access, and the agreed workflow. PromoStandards can also be part of the broader architecture where appropriate.",
         "open": false
       },
       {
@@ -226,13 +159,8 @@
         "open": true
       },
       {
-        "question": "Can the platform manage both SAGE-powered and regular Shopify company stores?",
-        "answer": "Yes. The centralized platform can be designed around a portfolio that includes SAGE-powered Shopify company stores and simpler Shopify company stores, based on the data and controls available in each setup.",
-        "open": false
-      },
-      {
         "question": "Which promotional products data systems do you connect with?",
-        "answer": "Our promotional products data connections are built around SAGE and PromoStandards. We can also assess direct custom connections with individual suppliers when suitable APIs or technical access are available.",
+        "answer": "Our promotional products data connections are built around PromoStandards. We can also assess direct custom connections with individual suppliers when suitable APIs or technical access are available.",
         "open": false
       },
       {
@@ -365,7 +293,7 @@
         "open": false
       },
       {
-        "question": "Do we need to replace commonsku, SAGE, ESP+, or our ERP?",
+        "question": "Do we need to replace commonsku, ESP+, or our ERP?",
         "answer": "No. Swishtag is designed to add a modern commerce and automation layer around the systems your team already trusts. We focus on connecting the gaps rather than forcing a rip and replace project.",
         "open": false
       },
@@ -442,18 +370,13 @@
     },
     "items": [
       {
-        "question": "Do we need to replace SAGE, commonsku, ESP+, or our current workflow?",
+        "question": "Do we need to replace commonsku, ESP+, or our current workflow?",
         "answer": "No. The goal is not to replace a system that is already working. Swishtag can use Shopify as the customer-facing commerce layer and connect existing systems only where integration or automation creates a practical improvement.",
         "open": true
       },
       {
         "question": "Can you build a Shopify company store around our current supplier relationships?",
         "answer": "Yes. The store can be designed around the products, supplier relationships, fulfillment model, and client requirements that apply to the program.",
-        "open": false
-      },
-      {
-        "question": "Can SAGE product data be used inside Shopify?",
-        "answer": "Where approved access and the required data are available, Swishtag can connect the agreed SAGE product information into a Shopify company-store experience instead of manually rebuilding the same catalog data.",
         "open": false
       },
       {

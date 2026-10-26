@@ -438,7 +438,6 @@
     .chip-shopify { left: 0; top: 23%; background: rgba(194,255,2,.88); animation-delay: -.8s; }
     .chip-punchout { right: 0; top: 47%; animation-delay: -1.7s; }
     .chip-promo { left: 5%; bottom: 19%; background: rgba(217,214,253,.88); animation-delay: -2.1s; }
-    .chip-sage { right: 12%; bottom: 6%; background: rgba(255,189,155,.88); animation-delay: -1.1s; }
     .chip-ai { left: 38%; top: 5%; background: rgba(153,254,237,.90); animation-delay: -2.7s; }
 
     @keyframes float {
@@ -1441,8 +1440,6 @@
         padding: 10px 12px;
         font-size: .68rem;
       }
-
-      .chip-sage { display: none; }
 
       .credibility-top {
         display: block;
@@ -9949,19 +9946,19 @@ html.save-data .soar-earth-revolve__surface{
       pointer-events: none;
     }
 
-    .solutions-heading--three {
+    .solutions-heading--two {
       position: relative;
       z-index: 2;
     }
 
-    .solutions-heading--three .section-title {
+    .solutions-heading--two .section-title {
       max-width: 760px;
     }
 
-    .solution-grid--three {
+    .solution-grid--two {
       position: relative;
       z-index: 2;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 24px;
       align-items: stretch;
     }
@@ -9990,16 +9987,14 @@ html.save-data .soar-earth-revolve__surface{
     }
 
     .solution-card--launch {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 36px !important;
+      align-items: center;
+      min-height: 600px !important;
       background:
         radial-gradient(circle at 86% 10%, rgba(194,255,2,.24), transparent 26%),
         linear-gradient(145deg, #FFFFFF, #F4F5F0);
-    }
-
-    .solution-card--sage {
-      background:
-        radial-gradient(circle at 88% 8%, rgba(153,254,237,.48), transparent 28%),
-        radial-gradient(circle at 5% 96%, rgba(217,214,253,.45), transparent 26%),
-        linear-gradient(145deg, #FFFFFF, #F5F4FF);
     }
 
     .solutions-v2 .solution-card--enterprise {
@@ -10229,7 +10224,8 @@ html.save-data .soar-earth-revolve__surface{
 
     /* Company Store Launch visual */
     .solution-scene--launch {
-      margin-top: 30px;
+      margin-top: 0;
+      min-height: 370px;
       background:
         radial-gradient(circle at 83% 15%, rgba(255,255,255,.82), transparent 24%),
         linear-gradient(145deg, var(--mint), var(--lavender) 57%, var(--peach));
@@ -10248,8 +10244,7 @@ html.save-data .soar-earth-revolve__surface{
       transform: rotate(1.5deg);
     }
 
-    .launch-storefront__bar,
-    .sage-catalog__bar {
+    .launch-storefront__bar {
       height: 27px;
       display: flex;
       align-items: center;
@@ -10258,16 +10253,14 @@ html.save-data .soar-earth-revolve__surface{
       background: #ECEDEA;
     }
 
-    .launch-storefront__bar i,
-    .sage-catalog__bar i {
+    .launch-storefront__bar i {
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background: #C5C7C1;
     }
 
-    .launch-storefront__bar span,
-    .sage-catalog__bar span {
+    .launch-storefront__bar span {
       margin-left: auto;
       color: rgba(32,33,36,.42);
       font-size: .50rem;
@@ -10416,178 +10409,6 @@ html.save-data .soar-earth-revolve__surface{
     .launch-fulfillment-card b {
       color: #668300;
       font-size: .8rem;
-    }
-
-    /* SAGE visual */
-    .solution-scene--sage {
-      min-height: 330px;
-      margin-top: 30px;
-      background:
-        radial-gradient(circle at 18% 17%, rgba(255,255,255,.85), transparent 25%),
-        linear-gradient(145deg, #EDEAFF, var(--mint) 56%, #FFFFFF);
-    }
-
-    .sage-source {
-      position: absolute;
-      z-index: 3;
-      left: 6%;
-      top: 19%;
-      width: 104px;
-      height: 104px;
-      display: grid;
-      place-content: center;
-      text-align: center;
-      border-radius: 50%;
-      color: #FFFFFF;
-      background: var(--graphite);
-      box-shadow: 0 20px 40px rgba(32,33,36,.20);
-    }
-
-    .sage-source strong {
-      font-size: 1rem;
-      letter-spacing: .03em;
-    }
-
-    .sage-source small {
-      margin-top: 3px;
-      color: rgba(255,255,255,.58);
-      font-size: .46rem;
-    }
-
-    .sage-source__orbit {
-      position: absolute;
-      inset: -13px;
-      border: 1px solid rgba(32,33,36,.15);
-      border-radius: 50%;
-    }
-
-    .sage-source__orbit--two {
-      inset: -28px;
-      border-color: rgba(255,255,255,.52);
-    }
-
-    .sage-data-flow {
-      position: absolute;
-      z-index: 2;
-      left: 28%;
-      top: 43%;
-      width: 28%;
-      height: 4px;
-      border-top: 1px dashed rgba(32,33,36,.24);
-    }
-
-    .sage-data-flow span {
-      position: absolute;
-      top: -4px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 0 4px rgba(194,255,2,.17);
-    }
-
-    .sage-data-flow span:nth-child(1) { left: 4%; }
-    .sage-data-flow span:nth-child(2) { left: 46%; }
-    .sage-data-flow span:nth-child(3) { right: 4%; }
-
-    .sage-catalog {
-      position: absolute;
-      right: 4%;
-      top: 9%;
-      width: 47%;
-      overflow: hidden;
-      border-radius: 17px;
-      background: #FFFFFF;
-      box-shadow: 0 23px 48px rgba(32,33,36,.15);
-      transform: rotate(2deg);
-    }
-
-    .sage-catalog__grid {
-      min-height: 210px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 7px;
-      padding: 12px;
-      background: #F8F8F6;
-    }
-
-    .sage-catalog__grid > span {
-      display: grid;
-      place-items: center;
-      gap: 7px;
-      padding: 9px;
-      border-radius: 10px;
-      background: #FFFFFF;
-    }
-
-    .sage-item {
-      width: 34px;
-      height: 38px;
-      display: block;
-      border-radius: 9px;
-      background: var(--lavender);
-    }
-
-    .sage-item--two {
-      width: 19px;
-      border-radius: 5px;
-      background: var(--mint);
-    }
-
-    .sage-item--three {
-      width: 38px;
-      height: 31px;
-      border-radius: 7px 7px 12px 12px;
-      background: var(--peach);
-    }
-
-    .sage-item--four {
-      width: 36px;
-      height: 26px;
-      border-radius: 6px;
-      background: var(--graphite);
-    }
-
-    .sage-catalog__grid small {
-      color: var(--muted);
-      font-size: .43rem;
-      font-weight: 700;
-    }
-
-    .sage-sync-status {
-      position: absolute;
-      z-index: 4;
-      left: 23%;
-      bottom: 7%;
-      min-width: 205px;
-      display: grid;
-      grid-template-columns: 11px 1fr;
-      gap: 2px 8px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.90);
-      box-shadow: 0 15px 34px rgba(32,33,36,.12);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-    }
-
-    .sage-sync-status > span {
-      grid-row: 1 / 3;
-      width: 9px;
-      height: 9px;
-      margin-top: 2px;
-      border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 0 4px rgba(194,255,2,.19);
-    }
-
-    .sage-sync-status strong {
-      font-size: .59rem;
-    }
-
-    .sage-sync-status small {
-      color: var(--muted);
-      font-size: .44rem;
     }
 
     /* Enterprise solution */
@@ -10878,8 +10699,13 @@ html.save-data .soar-earth-revolve__surface{
     }
 
     @media (max-width: 900px) {
-      .solution-grid--three {
+      .solution-grid--two {
         grid-template-columns: 1fr;
+      }
+
+      .solution-card--launch {
+        grid-template-columns: 1fr;
+        min-height: 0 !important;
       }
 
       .solution-card--enterprise-wide {
@@ -10929,10 +10755,6 @@ html.save-data .soar-earth-revolve__surface{
         margin-top: 26px;
       }
 
-      .solution-scene--sage {
-        min-height: 310px;
-      }
-
       .launch-storefront {
         left: 5%;
         width: 86%;
@@ -10940,27 +10762,6 @@ html.save-data .soar-earth-revolve__surface{
 
       .launch-fulfillment-card {
         right: 3%;
-      }
-
-      .sage-source {
-        left: 3%;
-        top: 22%;
-        width: 88px;
-        height: 88px;
-      }
-
-      .sage-catalog {
-        right: 2%;
-        width: 54%;
-      }
-
-      .sage-data-flow {
-        left: 25%;
-        width: 24%;
-      }
-
-      .sage-sync-status {
-        left: 12%;
       }
 
       .enterprise-capabilities > div {
@@ -11046,24 +10847,6 @@ html.save-data .soar-earth-revolve__surface{
 
       .launch-fulfillment-card {
         min-width: 164px;
-      }
-
-      .solution-scene--sage {
-        min-height: 300px;
-      }
-
-      .sage-source {
-        left: -3%;
-        top: 23%;
-      }
-
-      .sage-catalog {
-        width: 58%;
-      }
-
-      .sage-sync-status {
-        left: 7%;
-        min-width: 185px;
       }
 
       .solution-scene--enterprise {
@@ -11325,48 +11108,6 @@ html.save-data .soar-earth-revolve__surface{
       }
     }
 
-
-
-    /* Refined SAGE price hierarchy */
-    .solution-price--starting {
-      display: flex;
-      align-items: flex-end;
-      gap: 15px;
-      margin-top: 25px;
-    }
-
-    .solution-price__amount {
-      display: grid;
-      gap: 4px;
-      flex: 0 0 auto;
-    }
-
-    .solution-price__amount > span {
-      padding: 0;
-      color: currentColor;
-      font-size: .52rem;
-      font-weight: 800;
-      letter-spacing: .11em;
-      line-height: 1;
-      text-transform: uppercase;
-      opacity: .48;
-    }
-
-    .solution-price--starting .solution-price__amount strong {
-      font-size: clamp(1.8rem, 2.5vw, 2.7rem);
-      line-height: .88;
-      letter-spacing: -.055em;
-    }
-
-    .solution-price__note {
-      max-width: 118px;
-      padding: 0 0 2px;
-      color: currentColor;
-      font-size: .58rem;
-      line-height: 1.35;
-      opacity: .48;
-    }
-
     /* Responsive animated data lines for Connected Commerce */
     .enterprise-connectors {
       pointer-events: none;
@@ -11400,38 +11141,9 @@ html.save-data .soar-earth-revolve__surface{
     }
 
     @media (max-width: 680px) {
-      .solution-price--starting {
-        align-items: flex-end;
-        flex-direction: row;
-        gap: 12px;
-      }
-
-      .solution-price__note {
-        max-width: 104px;
-        font-size: .54rem;
-      }
-
       .enterprise-connectors path {
         stroke-width: 1.45;
         stroke-dasharray: 2 8;
-      }
-    }
-
-    @media (max-width: 460px) {
-      .solution-price--starting {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        align-items: end;
-        gap: 10px 12px;
-      }
-
-      .solution-price__note {
-        max-width: 118px;
-        padding-bottom: 1px;
-      }
-
-      .solution-price--starting .solution-price__amount strong {
-        font-size: 2rem;
       }
     }
 
@@ -12571,8 +12283,7 @@ html.save-data .soar-earth-revolve__surface{
 
 
 /* Minor solution and platform refinements */
-.launch-fulfillment-card,
-.sage-sync-status {
+.launch-fulfillment-card {
   animation: statusCardFloat 4.6s ease-in-out infinite;
   will-change: transform;
 }
@@ -12584,15 +12295,7 @@ html.save-data .soar-earth-revolve__surface{
   transform: rotate(-2deg);
 }
 
-.sage-sync-status {
-  bottom: 10%;
-  grid-template-columns: 28px 1fr;
-  gap: 2px 9px;
-  animation-delay: -1.4s;
-}
-
-.status-done-icon,
-.sage-sync-status > .status-done-icon {
+.status-done-icon {
   grid-row: 1 / 3;
   width: 28px;
   height: 28px;
@@ -12620,19 +12323,6 @@ html.save-data .soar-earth-revolve__surface{
   50% { transform: translateY(-7px) rotate(-1deg); }
 }
 
-.sage-sync-status {
-  --status-rotation: 1deg;
-}
-
-.sage-sync-status {
-  animation-name: sageStatusCardFloat;
-}
-
-@keyframes sageStatusCardFloat {
-  0%, 100% { transform: translateY(0) rotate(1deg); }
-  50% { transform: translateY(-7px) rotate(0deg); }
-}
-
 @keyframes statusDonePulse {
   0% { box-shadow: 0 0 0 0 rgba(194,255,2,.38); transform: scale(.92); }
   20% { transform: scale(1); }
@@ -12652,14 +12342,7 @@ html.save-data .soar-earth-revolve__surface{
     min-width: 156px;
   }
 
-  .sage-sync-status {
-    left: 5%;
-    bottom: 8%;
-    min-width: 178px;
-  }
-
-  .status-done-icon,
-  .sage-sync-status > .status-done-icon {
+  .status-done-icon {
     width: 25px;
     height: 25px;
     font-size: .66rem;
@@ -12673,9 +12356,7 @@ html.save-data .soar-earth-revolve__surface{
 
 @media (prefers-reduced-motion: reduce) {
   .launch-fulfillment-card,
-  .sage-sync-status,
-  .status-done-icon,
-  .sage-sync-status > .status-done-icon {
+  .status-done-icon {
     animation: none !important;
   }
 }
@@ -13721,16 +13402,14 @@ body.mobile-menu-lock .site-header .mobile-menu,
     isolation: isolate;
   }
 
-  .launch-storefront,
-  .sage-catalog {
+  .launch-storefront {
     transform: none !important;
     box-shadow: 0 16px 34px rgba(32,33,36,.12);
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
   }
 
-  .launch-storefront__bar span,
-  .sage-catalog__bar span {
+  .launch-storefront__bar span {
     font-size: .58rem;
   }
 
@@ -13748,32 +13427,24 @@ body.mobile-menu-lock .site-header .mobile-menu,
     font-size: .58rem;
   }
 
-  .launch-product small,
-  .sage-catalog__grid small {
+  .launch-product small {
     color: #4e5562;
     font-size: .54rem;
     font-weight: 800;
   }
 
-  .launch-fulfillment-card,
-  .sage-sync-status {
+  .launch-fulfillment-card {
     background: rgba(255,255,255,.96);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
 
-  .launch-fulfillment-card small,
-  .sage-sync-status small {
+  .launch-fulfillment-card small {
     font-size: .52rem;
   }
 
-  .launch-fulfillment-card strong,
-  .sage-sync-status strong {
+  .launch-fulfillment-card strong {
     font-size: .68rem;
-  }
-
-  .sage-source small {
-    font-size: .54rem;
   }
 
   .site-footer {
@@ -13785,11 +13456,6 @@ body.mobile-menu-lock .site-header .mobile-menu,
   .launch-storefront {
     left: 4%;
     width: 88%;
-  }
-
-  .sage-catalog {
-    right: 1%;
-    width: 60%;
   }
 
   .site-footer {
@@ -13848,7 +13514,7 @@ body.mobile-menu-lock .site-header .mobile-menu,
 #home .section-title,
 #home .reference-hero__title,
 #home .pain-clean-heading .section-title,
-#home .solutions-heading--three .section-title,
+#home .solutions-heading--two .section-title,
 #home .platform-section .section-title,
 #home .platform-portfolio-heading h2,
 #home .systems-heading h2,
@@ -13942,7 +13608,7 @@ body.mobile-menu-lock .site-header .mobile-menu,
   #home .section-title,
   #home .reference-hero__title,
   #home .pain-clean-heading .section-title,
-  #home .solutions-heading--three .section-title,
+  #home .solutions-heading--two .section-title,
   #home .platform-section .section-title,
   #home .platform-portfolio-heading h2,
   #home .systems-heading h2,
@@ -13974,7 +13640,7 @@ body.mobile-menu-lock .site-header .mobile-menu,
   #home .section-title,
   #home .reference-hero__title,
   #home .pain-clean-heading .section-title,
-  #home .solutions-heading--three .section-title,
+  #home .solutions-heading--two .section-title,
   #home .platform-section .section-title,
   #home .platform-portfolio-heading h2,
   #home .systems-heading h2,
