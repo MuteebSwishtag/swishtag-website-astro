@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "id": "413dabc4-d381-4b71-925e-78d3bcf763ca",
+  "owner": "auth0|6adb9b2d318bc73c26dbcf87",
+  "base": "6a2702594a694cf255693a07143ba50e8b96efbb",
+  "summary": "Book Demo: visitor time zone picker, 9:30 AM-5:30 PM New York slots, UTC time in submissions",
+  "createdAt": "2026-10-29T17:21:25.356Z",
+  "events": [
+    {
+      "id": "2021febd-9669-4dcb-841a-fe1bce0489df",
+      "at": "2026-10-29T17:21:25.356Z",
+      "actor": "auth0|6adb9b2d318bc73c26dbcf87",
+      "action": "change.created"
+    },
+    {
+      "path": "src/lib/server/meeting-time.js",
+      "id": "39d63715-5494-4bdc-b797-da263f7d1c3d",
+      "at": "2026-10-29T17:21:55.357Z",
+      "actor": "auth0|6adb9b2d318bc73c26dbcf87",
+      "action": "source.updated"
+    },
+    {
+      "path": "src/lib/server/form-submissions.js",
+      "id": "d1cf23af-41b4-4c8e-8a92-4505b08a0a7d",
+      "at": "2026-10-29T17:22:04.351Z",
+      "actor": "auth0|6adb9b2d318bc73c26dbcf87",
+      "action": "source.updated"
+    },
+    {
+      "path": "src/lib/server/mail.js",
+      "id": "de32b628-0135-4ace-9bff-b10f1c11f5d4",
+      "at": "2026-10-29T17:22:13.230Z",
+      "actor": "auth0|6adb9b2d318bc73c26dbcf87",
+      "action": "source.updated"
+    },
+    {
+      "path": "src/pages/book-demo/index.astro",
+      "id": "d061077b-c8c4-49f2-b34e-31c1b9fca2dd",
+      "at": "2026-10-29T17:22:22.940Z",
+      "actor": "auth0|6adb9b2d318bc73c26dbcf87",
+      "action": "source.updated"
+    }
+  ]
+}

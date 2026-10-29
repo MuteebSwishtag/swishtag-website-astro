@@ -2,7 +2,7 @@ import "dotenv/config";
 import net from "node:net";
 import tls from "node:tls";
 import { randomBytes } from "node:crypto";
-import { formatMeetingDate } from "./meeting-time.js";
+import { formatMeetingDateWithZone } from "./meeting-time.js";
 
 const fieldLabels = {
   "book-demo": {
@@ -17,6 +17,9 @@ const fieldLabels = {
     selectedDate: "Selected date",
     selectedTime: "Selected time",
     timezone: "Timezone",
+    selectedSlotUTC: "Selected time (UTC ISO)",
+    businessTimeZone: "Business timezone",
+    detectedTimezone: "Detected browser timezone",
     notes: "Notes",
   },
   "discuss-idea": {
@@ -146,7 +149,7 @@ function getZoomMeeting(submission) {
 function formatSafeMeetingDate(meetingAt, timeZone) {
   const date = meetingAt instanceof Date ? meetingAt : new Date(meetingAt || "");
   if (Number.isNaN(date.getTime())) return "Selected meeting time";
-  return formatMeetingDate(date, timeZone);
+  return formatMeetingDateWithZone(date, timeZone);
 }
 
 function createSocket(config) {
@@ -258,8 +261,16 @@ function createEmailContent(submission) {
     : isContact
       ? "A lead submitted the Contact form."
       : "A lead submitted the Custom Software & Automation form.";
+  const meetingAt = submission.meetingAt || submission.meetingAtISO;
   const fields = [
     ["Form", formName],
+    ...(isBookDemo && meetingAt ? [
+      ["Meeting time (customer)", formatSafeMeetingDate(meetingAt, submission.fields?.timezone)],
+      ...(submission.fields?.businessTimeZone
+        ? [["Meeting time (business)", formatSafeMeetingDate(meetingAt, submission.fields.businessTimeZone)]]
+        : []),
+      ["Meeting time (UTC)", formatSafeMeetingDate(meetingAt, "UTC")],
+    ] : []),
     ...Object.entries(labels).map(([key, label]) => [label, submission.fields?.[key] || ""]),
     ...(isBookDemo && zoomMeeting.joinUrl ? [
       ["Zoom join link", zoomMeeting.joinUrl],
@@ -297,9 +308,18 @@ function getMeetingDetailFields(
   const fields = submission.fields || {};
   const meetingTime = formatSafeMeetingDate(meetingAt, fields.timezone);
   const zoomMeeting = getZoomMeeting(submission);
+  const businessTimeZone = fields.businessTimeZone || "";
+  // Internal copies (includeCustomer) also show the time in the business zone and UTC.
+  const extraTimes = includeCustomer ? [
+    ...(businessTimeZone && businessTimeZone !== fields.timezone
+      ? [["Meeting time (business)", formatSafeMeetingDate(meetingAt, businessTimeZone)]]
+      : []),
+    ["Meeting time (UTC)", formatSafeMeetingDate(meetingAt, "UTC")],
+  ] : [];
 
   return [
     ["Meeting time", meetingTime],
+    ...extraTimes,
     ...(includeCustomer ? [
       ["Name", submission.displayName || fields.fullName || ""],
       ["Work email", submission.email || fields.workEmail || ""],
