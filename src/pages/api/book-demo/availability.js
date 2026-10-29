@@ -27,8 +27,9 @@ export async function GET() {
     });
 
     return json({
-      ok: false,
-      message: "Booked times are unavailable right now. Please try again.",
-    }, 503);
+      ok: true,
+      busy: [],
+      degraded: true,
+    });
   }
 }

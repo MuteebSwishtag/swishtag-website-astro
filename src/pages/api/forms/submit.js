@@ -43,6 +43,17 @@ async function readPayload(request) {
   return Object.fromEntries(formData.entries());
 }
 
+function recordSubmissionUpdate(collection, submissionId, update, requestId, label) {
+  return Promise.resolve()
+    .then(() => collection.updateOne({ _id: submissionId }, update))
+    .catch(updateError => {
+      console.error(`[Swishtag form] could not update ${label}`, {
+        requestId,
+        updateError: errorDetails(updateError),
+      });
+    });
+}
+
 export function OPTIONS() {
   return new Response(null, { status: 204 });
 }
@@ -54,9 +65,14 @@ export function GET() {
   }, 405);
 }
 
-export async function POST({ request }) {
+export async function POST({ request }, overrides = {}) {
   const requestId = randomUUID();
   const startedAt = Date.now();
+  const loadCollection = overrides.getSubmissionCollection || getSubmissionCollection;
+  const zoomEnabled = overrides.isZoomSchedulerEnabled || isZoomSchedulerEnabled;
+  const createZoom = overrides.createZoomMeetingForSubmission || createZoomMeetingForSubmission;
+  const notify = overrides.sendSubmissionEmail || sendSubmissionEmail;
+  const confirmMeeting = overrides.sendMeetingScheduledEmail || sendMeetingScheduledEmail;
 
   console.info("[Swishtag form] submit received", {
     requestId,
@@ -102,7 +118,7 @@ export async function POST({ request }) {
       collection: databaseInfo.collection || databaseInfo.table,
     });
 
-    const collection = await getSubmissionCollection();
+    const collection = await loadCollection();
     if (result.document.formType === "book-demo") {
       const reserved = await reserveBookDemoSubmission(collection, result.document);
       if (reserved.error) {
@@ -121,233 +137,189 @@ export async function POST({ request }) {
         }, 409);
       }
     } else {
-      const insertResult = await collection.insertOne(result.document);
-      result.document._id = insertResult.insertedId;
+      result.document._id = (await collection.insertOne(result.document)).insertedId;
     }
+
+    const submissionId = result.document._id;
 
     console.info("[Swishtag form] submission saved", {
       requestId,
-      insertedId: result.document._id?.toString(),
+      insertedId: submissionId?.toString(),
       formType: result.document.formType,
       durationMs: Date.now() - startedAt,
     });
 
+    const followUpProblems = [];
+
     if (result.document.formType === "book-demo") {
-      if (isZoomSchedulerEnabled()) {
+      if (zoomEnabled()) {
         try {
           console.info("[Swishtag form] creating Zoom meeting", {
             requestId,
-            insertedId: insertResult.insertedId?.toString(),
+            insertedId: submissionId?.toString(),
             zoom: getZoomSchedulerDebugInfo(),
           });
 
-          await collection.updateOne(
-            { _id: insertResult.insertedId },
-            {
-              $set: {
-                zoomStatus: "creating",
-                zoomStartedAt: new Date(),
-              },
-              $unset: {
-                zoomError: "",
-              },
+          await recordSubmissionUpdate(collection, submissionId, {
+            $set: {
+              zoomStatus: "creating",
+              zoomStartedAt: new Date(),
             },
-          );
+            $unset: {
+              zoomError: "",
+            },
+          }, requestId, "Zoom start status");
 
-          const zoomResult = await createZoomMeetingForSubmission(result.document);
+          const zoomResult = await createZoom(result.document);
           result.document.zoomMeeting = zoomResult.meeting;
           result.document.zoomStatus = zoomResult.registrantError ? "created_registrant_failed" : "created";
 
-          await collection.updateOne(
-            { _id: insertResult.insertedId },
-            {
-              $set: {
-                zoomStatus: result.document.zoomStatus,
-                zoomCreatedAt: new Date(),
-                zoomMeeting: zoomResult.meeting,
-                zoomRegistrant: zoomResult.registrant,
-                zoomRegistrantError: zoomResult.registrantError,
-                zoomInvitees: zoomResult.invitees,
-                zoomError: zoomResult.registrantError?.message || "",
-              },
+          await recordSubmissionUpdate(collection, submissionId, {
+            $set: {
+              zoomStatus: result.document.zoomStatus,
+              zoomCreatedAt: new Date(),
+              zoomMeeting: zoomResult.meeting,
+              zoomRegistrant: zoomResult.registrant,
+              zoomRegistrantError: zoomResult.registrantError,
+              zoomInvitees: zoomResult.invitees,
+              zoomError: zoomResult.registrantError?.message || "",
             },
-          );
+          }, requestId, "Zoom created status");
 
           console.info("[Swishtag form] Zoom meeting created", {
             requestId,
-            insertedId: insertResult.insertedId?.toString(),
+            insertedId: submissionId?.toString(),
             meetingId: zoomResult.meeting.id,
             invitees: zoomResult.invitees,
             registrantCreated: Boolean(zoomResult.registrant),
             registrantError: zoomResult.registrantError,
           });
         } catch (zoomError) {
-          await collection.updateOne(
-            { _id: insertResult.insertedId },
-            {
-              $set: {
-                zoomStatus: "failed",
-                zoomError: zoomError?.message || "Zoom meeting creation failed.",
-              },
+          result.document.zoomStatus = "failed";
+          result.document.zoomMeeting = null;
+          followUpProblems.push("zoom");
+
+          await recordSubmissionUpdate(collection, submissionId, {
+            $set: {
+              zoomStatus: "failed",
+              zoomError: zoomError?.message || "Zoom meeting creation failed.",
             },
-          ).catch(updateError => {
-            console.error("[Swishtag form] could not update Zoom failure status", {
-              requestId,
-              updateError: errorDetails(updateError),
-            });
-          });
+          }, requestId, "Zoom failure status");
 
           console.error("[Swishtag form] Zoom meeting creation failed", {
             requestId,
-            insertedId: insertResult.insertedId?.toString(),
+            insertedId: submissionId?.toString(),
             error: errorDetails(zoomError),
             zoom: getZoomSchedulerDebugInfo(),
           });
-
-          return json({
-            ok: false,
-            message: "Your request was saved, but we could not create the Zoom meeting. Please email hello@swishtag.com directly.",
-            requestId,
-          }, 500);
         }
       } else {
         result.document.zoomStatus = "disabled";
-        await collection.updateOne(
-          { _id: insertResult.insertedId },
-          {
-            $set: {
-              zoomStatus: "disabled",
-              zoomError: "",
-            },
+        await recordSubmissionUpdate(collection, submissionId, {
+          $set: {
+            zoomStatus: "disabled",
+            zoomError: "",
           },
-        );
+        }, requestId, "Zoom disabled status");
       }
     }
 
     try {
       console.info("[Swishtag form] sending email notification", {
         requestId,
-        insertedId: insertResult.insertedId?.toString(),
+        insertedId: submissionId?.toString(),
         mail: getMailDebugInfo(),
       });
 
-      const mailResult = await sendSubmissionEmail(result.document);
+      const mailResult = await notify(result.document);
       const emailSentAt = new Date();
 
-      await collection.updateOne(
-        { _id: insertResult.insertedId },
-        {
-          $set: {
-            emailStatus: "sent",
-            emailSentAt,
-            emailError: "",
-          },
+      await recordSubmissionUpdate(collection, submissionId, {
+        $set: {
+          emailStatus: "sent",
+          emailSentAt,
+          emailError: "",
         },
-      );
+      }, requestId, "email sent status");
 
       console.info("[Swishtag form] email notification sent", {
         requestId,
-        insertedId: insertResult.insertedId?.toString(),
+        insertedId: submissionId?.toString(),
         recipients: mailResult.recipients,
         subject: mailResult.subject,
         durationMs: Date.now() - startedAt,
       });
     } catch (mailError) {
-      await collection.updateOne(
-        { _id: insertResult.insertedId },
-        {
-          $set: {
-            emailStatus: "failed",
-            emailError: mailError?.message || "Email failed.",
-          },
+      followUpProblems.push("email");
+      await recordSubmissionUpdate(collection, submissionId, {
+        $set: {
+          emailStatus: "failed",
+          emailError: mailError?.message || "Email failed.",
         },
-      ).catch(updateError => {
-        console.error("[Swishtag form] could not update email failure status", {
-          requestId,
-          updateError: errorDetails(updateError),
-        });
-      });
+      }, requestId, "email failure status");
 
       console.error("[Swishtag form] email notification failed", {
         requestId,
-        insertedId: insertResult.insertedId?.toString(),
+        insertedId: submissionId?.toString(),
         error: errorDetails(mailError),
         mail: getMailDebugInfo(),
       });
-
-      return json({
-        ok: false,
-        message: "Your request was saved, but we could not send the email notification. Please email hello@swishtag.com directly.",
-        requestId,
-      }, 500);
     }
 
     if (result.document.formType === "book-demo") {
       try {
         console.info("[Swishtag form] sending meeting confirmation", {
           requestId,
-          insertedId: insertResult.insertedId?.toString(),
+          insertedId: submissionId?.toString(),
           mail: getMailDebugInfo(),
         });
 
-        const confirmationResult = await sendMeetingScheduledEmail(result.document, result.document.meetingAt);
+        const confirmationResult = await confirmMeeting(result.document, result.document.meetingAt);
         const meetingConfirmationSentAt = new Date();
 
-        await collection.updateOne(
-          { _id: insertResult.insertedId },
-          {
-            $set: {
-              meetingConfirmationStatus: "sent",
-              meetingConfirmationSentAt,
-              meetingConfirmationError: "",
-              meetingConfirmationRecipients: confirmationResult.recipients,
-              meetingConfirmationSubject: confirmationResult.subject,
-            },
+        await recordSubmissionUpdate(collection, submissionId, {
+          $set: {
+            meetingConfirmationStatus: "sent",
+            meetingConfirmationSentAt,
+            meetingConfirmationError: "",
+            meetingConfirmationRecipients: confirmationResult.recipients,
+            meetingConfirmationSubject: confirmationResult.subject,
           },
-        );
+        }, requestId, "meeting confirmation status");
 
         console.info("[Swishtag form] meeting confirmation sent", {
           requestId,
-          insertedId: insertResult.insertedId?.toString(),
+          insertedId: submissionId?.toString(),
           recipients: confirmationResult.recipients,
           durationMs: Date.now() - startedAt,
         });
       } catch (confirmationError) {
-        await collection.updateOne(
-          { _id: insertResult.insertedId },
-          {
-            $set: {
-              meetingConfirmationStatus: "failed",
-              meetingConfirmationError: confirmationError?.message || "Meeting confirmation email failed.",
-            },
+        followUpProblems.push("confirmation");
+        await recordSubmissionUpdate(collection, submissionId, {
+          $set: {
+            meetingConfirmationStatus: "failed",
+            meetingConfirmationError: confirmationError?.message || "Meeting confirmation email failed.",
           },
-        ).catch(updateError => {
-          console.error("[Swishtag form] could not update confirmation failure status", {
-            requestId,
-            updateError: errorDetails(updateError),
-          });
-        });
+        }, requestId, "meeting confirmation failure status");
 
         console.error("[Swishtag form] meeting confirmation failed", {
           requestId,
-          insertedId: insertResult.insertedId?.toString(),
+          insertedId: submissionId?.toString(),
           error: errorDetails(confirmationError),
           mail: getMailDebugInfo(),
         });
-
-        return json({
-          ok: false,
-          message: "Your request was saved, but we could not send the meeting confirmation. Please email hello@swishtag.com directly.",
-          requestId,
-        }, 500);
       }
     }
 
-    return json({
+    const payload = {
       ok: true,
       message: "Thanks. Your request has been saved and sent to Swishtag.",
       requestId,
-    });
+    };
+    if (followUpProblems.length) {
+      payload.warning = "Your request was saved. Some follow-up messages could not be sent.";
+    }
+    return json(payload);
   } catch (error) {
     console.error("[Swishtag form] submit failed", {
       requestId,
@@ -356,9 +328,12 @@ export async function POST({ request }) {
       database: getDatabaseDebugInfo(),
     });
 
+    const missingDatabase = /Missing MONGODB_|Missing MySQL configuration/i.test(error?.message || "");
     return json({
       ok: false,
-      message: "We could not save your request right now. Please try again or email hello@swishtag.com directly.",
+      message: missingDatabase
+        ? "We could not save your request right now because the form database is not configured. Please email hello@swishtag.com directly."
+        : "We could not save your request right now. Please try again or email hello@swishtag.com directly.",
       requestId,
     }, 500);
   }
