@@ -22,9 +22,10 @@ function prepareCities(entries) {
   const cities = (entries || []).map(entry => {
     const name = String(entry?.[0] || "").trim();
     const region = String(entry?.[1] || "").trim();
+    const timezone = String(entry?.[2] || "").trim();
     const label = cityLabel(name, region);
     counts.set(label, (counts.get(label) || 0) + 1);
-    return { name, region, label };
+    return { name, region, label, timezone };
   }).filter(city => city.name);
 
   if ([...counts.values()].every(count => count === 1)) return cities;
@@ -132,11 +133,12 @@ export function searchCities({ country = "", countryCode = "", query = "", limit
       name: city.name,
       region: city.region,
       label: city.label,
+      timezone: city.timezone,
     })),
   };
 }
 
-export function resolveLocation({ country = "", city = "", countryCode = "" } = {}) {
+export function resolveLocation({ country = "", city = "", countryCode = "", timeZone = "" } = {}) {
   const match = findCountry({ country, countryCode });
   if (!match || (country && fold(country) !== fold(match.name))) {
     return {
@@ -161,11 +163,20 @@ export function resolveLocation({ country = "", city = "", countryCode = "" } = 
     };
   }
 
+  const requestedTimeZone = String(timeZone || "").trim();
+  if (requestedTimeZone && requestedTimeZone !== cityMatch.timezone) {
+    return {
+      ok: false,
+      message: "Please choose a demo time in the selected city's timezone.",
+    };
+  }
+
   return {
     ok: true,
     country: match.name,
     countryCode: match.code,
     city: cityMatch.label,
     region: cityMatch.region,
+    timezone: cityMatch.timezone,
   };
 }

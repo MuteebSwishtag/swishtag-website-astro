@@ -158,6 +158,7 @@ export function createSubmissionDocument(data, request) {
       country: fields.country,
       city: fields.city,
       countryCode: data.countryCode,
+      timeZone: fields.timezone,
     });
     if (!location.ok) {
       return {
@@ -168,9 +169,19 @@ export function createSubmissionDocument(data, request) {
       };
     }
 
+    if (!location.timezone || fields.timezone !== location.timezone) {
+      return {
+        error: {
+          status: 422,
+          message: "Please choose a demo time in the selected city's timezone.",
+        },
+      };
+    }
+
     fields.country = location.country;
     fields.countryCode = location.countryCode;
     fields.city = location.city;
+    fields.timezone = location.timezone;
 
     const resolvedSlot = resolveBookDemoSlot({
       timeZone: fields.timezone,

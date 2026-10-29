@@ -1,6 +1,7 @@
 import {
   buildOfferedSlots,
   groupSlotsByDate,
+  isValidTimeZone,
   slotIsBusy,
   timezoneLabel,
 } from "../../lib/meeting-slots.js";
@@ -32,7 +33,6 @@ export function initBookDemoForm() {
   const selectedDateLabel = selectedDatePill.querySelector("span");
   const bookingSummary = document.getElementById("bookingSummary");
   const timezoneText = document.getElementById("timezoneText");
-  const availabilityNote = document.getElementById("availabilityNote");
   const submitBtn = document.getElementById("submitBtn");
   const countryInput = document.getElementById("country");
   const countryList = document.getElementById("countryList");
@@ -40,7 +40,7 @@ export function initBookDemoForm() {
   const cityList = document.getElementById("cityList");
   const formToken = form.dataset.formToken || "";
   const formLoadedAt = Date.now().toString();
-  const resolvedTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  const browserTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
 
   const state = {
     step: 1,
@@ -49,8 +49,8 @@ export function initBookDemoForm() {
     selectedTime: "",
     selectedTime24: "",
     selectedSlotUtc: "",
-    timezone: resolvedTimeZone,
-    timezoneLabel: timezoneLabel(resolvedTimeZone),
+    timezone: browserTimeZone,
+    timezoneLabel: timezoneLabel(browserTimeZone),
     countryCode: "",
     countryName: "",
     cityLabel: "",
@@ -307,11 +307,30 @@ export function initBookDemoForm() {
     primeCityPlaceholder();
   }
 
+  function clearSelectedSlot() {
+    state.selectedDate = "";
+    state.selectedDateISO = "";
+    state.selectedTime = "";
+    state.selectedTime24 = "";
+    state.selectedSlotUtc = "";
+  }
+
+  function useTimeZone(timeZone) {
+    const next = isValidTimeZone(timeZone) ? timeZone : browserTimeZone;
+    if (next === state.timezone) return;
+    state.timezone = next;
+    state.timezoneLabel = timezoneLabel(next);
+    timezoneText.textContent = state.timezoneLabel;
+    clearSelectedSlot();
+    refreshSchedule({ preserve: false });
+  }
+
   function clearCity() {
     state.cityLabel = "";
     cityInput.value = "";
     cityActive = -1;
     closeList(cityList, cityInput);
+    useTimeZone(browserTimeZone);
   }
 
   async function primeCityPlaceholder() {
@@ -347,7 +366,7 @@ export function initBookDemoForm() {
     cityInput.placeholder = result.truncated && !cityInput.value.trim()
       ? `Type to search ${result.total.toLocaleString()} cities`
       : cityInput.placeholder;
-    const items = result.cities.map(city => ({ label: city.label }));
+    const items = result.cities.map(city => ({ label: city.label, timezone: city.timezone }));
     const emptyLabel = result.truncated && !cityInput.value.trim()
       ? "Type to search cities"
       : "No matching cities";
@@ -360,6 +379,7 @@ export function initBookDemoForm() {
     cityInput.value = city.label;
     cityInput.setAttribute("aria-invalid", "false");
     closeList(cityList, cityInput);
+    useTimeZone(city.timezone);
   }
 
   function moveActive(kind, delta) {
@@ -425,7 +445,11 @@ export function initBookDemoForm() {
   });
   let cityTimer = 0;
   cityInput.addEventListener("input", () => {
-    if (cityInput.value.trim() !== state.cityLabel) state.cityLabel = "";
+    if (cityInput.value.trim() !== state.cityLabel) {
+      const hadCity = Boolean(state.cityLabel);
+      state.cityLabel = "";
+      if (hadCity) useTimeZone(browserTimeZone);
+    }
     cityActive = 0;
     window.clearTimeout(cityTimer);
     cityTimer = window.setTimeout(() => {
@@ -466,14 +490,12 @@ export function initBookDemoForm() {
       });
       const result = await response.json();
       if (!response.ok || !result.ok || !Array.isArray(result.busy)) {
-        throw new Error(result.message || "Could not load booked times.");
+        throw new Error(result.message || `Availability check failed (${response.status}).`);
       }
       state.busy = result.busy;
-      availabilityNote.hidden = true;
-      availabilityNote.textContent = "";
-    } catch {
-      availabilityNote.hidden = false;
-      availabilityNote.textContent = "We couldn't check which times are already booked. You can still choose a time, and we'll confirm it's open when you book.";
+    } catch (error) {
+      console.error("[Swishtag book-demo] availability check failed", error);
+      state.busy = [];
     }
   }
 
@@ -482,7 +504,7 @@ export function initBookDemoForm() {
     dateList.innerHTML = "";
     if (!groups.length) {
       timeList.innerHTML = "";
-      timeIntro.textContent = "No demo times are available in your timezone right now.";
+      timeIntro.textContent = "No demo times are available right now.";
       return;
     }
 
@@ -707,9 +729,10 @@ export function initBookDemoForm() {
     state.countryCode = "";
     state.countryName = "";
     state.cityLabel = "";
-    state.selectedTime = "";
-    state.selectedTime24 = "";
-    state.selectedSlotUtc = "";
+    clearSelectedSlot();
+    state.timezone = browserTimeZone;
+    state.timezoneLabel = timezoneLabel(browserTimeZone);
+    timezoneText.textContent = state.timezoneLabel;
     cityInput.disabled = true;
     cityInput.setAttribute("aria-disabled", "true");
     cityInput.placeholder = "Choose a country first";

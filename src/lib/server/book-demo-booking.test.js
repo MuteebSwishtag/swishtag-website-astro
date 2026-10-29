@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { buildOfferedSlots, describeSlot } from "../meeting-slots.js";
+import { buildOfferedSlots, describeSlot, isValidTimeZone } from "../meeting-slots.js";
 import { createSubmissionDocument } from "./form-submissions.js";
 import { listCountries, resolveLocation, searchCities, citiesForCountry } from "./locations.js";
 import { busyRangesFromSubmissions, reserveBookDemoSubmission } from "./meeting-availability.js";
@@ -71,7 +71,20 @@ test("country and city lists are bundled and searchable", () => {
 
   const austin = searchCities({ country: "US", query: "Austin, Texas" });
   assert.equal(austin.ok, true);
-  assert.ok(austin.cities.some(city => city.label === "Austin, Texas"));
+  const austinCity = austin.cities.find(city => city.label === "Austin, Texas");
+  assert.equal(austinCity.timezone, "America/Chicago");
+
+  const newYork = searchCities({ country: "US", query: "New York City" });
+  const newYorkCity = newYork.cities.find(city => city.label === "New York City, New York");
+  assert.equal(newYorkCity.timezone, "America/New_York");
+
+  let missingTimezone = 0;
+  for (const country of countries) {
+    for (const city of citiesForCountry(country.code)) {
+      if (!city.timezone || !isValidTimeZone(city.timezone)) missingTimezone += 1;
+    }
+  }
+  assert.equal(missingTimezone, 0);
 
   const browse = searchCities({ country: "US", query: "" });
   assert.equal(browse.truncated, true);
@@ -82,9 +95,17 @@ test("country and city lists are bundled and searchable", () => {
     country: "United States",
     countryCode: "US",
     city: "Austin, Texas",
+    timeZone: "America/Chicago",
   });
   assert.equal(resolved.ok, true);
   assert.equal(resolved.city, "Austin, Texas");
+  assert.equal(resolved.timezone, "America/Chicago");
+  assert.equal(resolveLocation({
+    country: "United States",
+    countryCode: "US",
+    city: "Austin, Texas",
+    timeZone: "America/New_York",
+  }).ok, false);
   assert.equal(resolveLocation({
     country: "United States",
     countryCode: "US",
@@ -97,9 +118,9 @@ test("country and city lists are bundled and searchable", () => {
   }).ok, false);
 });
 
-test("book-demo submission stores country, city, and the UTC instant", () => {
-  const slot = buildOfferedSlots("America/New_York")[0];
-  const described = describeSlot(slot, "America/New_York");
+test("book-demo submission stores country, city, and the UTC instant in the city timezone", () => {
+  const slot = buildOfferedSlots("America/Chicago")[0];
+  const described = describeSlot(slot, "America/Chicago");
   const result = createSubmissionDocument({
     form_source: "book-demo",
     fullName: "Ada Lovelace",
@@ -118,11 +139,29 @@ test("book-demo submission stores country, city, and the UTC instant", () => {
   assert.equal(result.document.fields.city, "Austin, Texas");
   assert.equal(result.document.fields.selectedSlotUtc, slot.start.toISOString());
   assert.equal(result.document.meetingAt.toISOString(), slot.start.toISOString());
-  assert.equal(result.document.fields.timezone, "America/New_York");
+  assert.equal(result.document.fields.timezone, "America/Chicago");
+});
+
+test("book-demo submission rejects a timezone that does not match the city", () => {
+  const slot = buildOfferedSlots("America/New_York")[0];
+  const described = describeSlot(slot, "America/New_York");
+  const result = createSubmissionDocument({
+    form_source: "book-demo",
+    fullName: "Ada Lovelace",
+    workEmail: "ada@example.com",
+    companyName: "Analytical Engines",
+    country: "United States",
+    countryCode: "US",
+    city: "Austin, Texas",
+    solutionInterest: "Company Store",
+    ...described,
+  }, request());
+
+  assert.equal(result.error.status, 422);
+  assert.match(result.error.message, /timezone/i);
 });
 
 test("book-demo submission rejects a city outside the country", () => {
-  const slot = buildOfferedSlots("America/New_York")[0];
   const result = createSubmissionDocument({
     form_source: "book-demo",
     fullName: "Ada Lovelace",
@@ -134,8 +173,8 @@ test("book-demo submission rejects a city outside the country", () => {
     solutionInterest: "Company Store",
     selectedDate: "Friday",
     selectedTime: "9:00 AM",
-    timezone: "America/New_York",
-    selectedSlotUtc: slot.start.toISOString(),
+    timezone: "America/Chicago",
+    selectedSlotUtc: buildOfferedSlots("America/Chicago")[0].start.toISOString(),
   }, request());
 
   assert.equal(result.error.status, 422);

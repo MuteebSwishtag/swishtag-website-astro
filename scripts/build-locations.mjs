@@ -7,7 +7,7 @@ const GEONAMES = "https://download.geonames.org/export/dump";
 const POPULATION_FLOOR = 5000;
 const OUTPUT = path.resolve("src/data/locations.json");
 
-const SOURCE = "GeoNames geographical database (https://www.geonames.org/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Filtered to populated places with a population of at least 5000. A country capital below that threshold is still included so every country has a city. Labels combine the place name with its first-level administrative region.";
+const SOURCE = "GeoNames geographical database (https://www.geonames.org/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Filtered to populated places with a population of at least 5000. A country capital below that threshold is still included so every country has a city. Labels combine the place name with its first-level administrative region. Each city includes its GeoNames IANA timezone.";
 
 function fold(value) {
   return String(value || "")
@@ -60,6 +60,30 @@ function adminNames(text) {
   return names;
 }
 
+function validTimeZone(timeZone) {
+  if (!timeZone) return false;
+  try {
+    Intl.DateTimeFormat("en-US", { timeZone });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function countryTimeZones(text) {
+  const zones = new Map();
+  for (const line of text.split(/\r?\n/)) {
+    if (!line || line.startsWith("#") || line.startsWith("CountryCode")) continue;
+    const [code, timeZone] = line.split("\t");
+    const countryCode = code?.trim();
+    const zone = timeZone?.trim();
+    if (!countryCode || !zone || !validTimeZone(zone)) continue;
+    if (!zones.has(countryCode)) zones.set(countryCode, []);
+    zones.get(countryCode).push(zone);
+  }
+  return zones;
+}
+
 function cityRows(text, regions) {
   const best = new Map();
 
@@ -73,10 +97,11 @@ function cityRows(text, regions) {
     if (!name || !countryCode) continue;
 
     const region = regions.get(`${countryCode}.${adminCode}`) || "";
+    const timezone = columns[17]?.trim() || "";
     const key = `${countryCode}|${fold(name)}|${fold(region)}`;
     const current = best.get(key);
     if (!current || population > current.population) {
-      best.set(key, { countryCode, name, region, population });
+      best.set(key, { countryCode, name, region, population, timezone });
     }
   }
 
@@ -89,16 +114,19 @@ mkdirSync(workdir, { recursive: true });
 const citiesZip = path.join(workdir, "cities5000.zip");
 const countryPath = path.join(workdir, "countryInfo.txt");
 const adminPath = path.join(workdir, "admin1Codes.txt");
+const timeZonePath = path.join(workdir, "timeZones.txt");
 
 await Promise.all([
   download(`${GEONAMES}/cities5000.zip`, citiesZip),
   download(`${GEONAMES}/countryInfo.txt`, countryPath),
   download(`${GEONAMES}/admin1CodesASCII.txt`, adminPath),
+  download(`${GEONAMES}/timeZones.txt`, timeZonePath),
 ]);
 
 const { readFileSync } = await import("node:fs");
 const countries = countryRows(readFileSync(countryPath, "utf8"));
 const regions = adminNames(readFileSync(adminPath, "utf8"));
+const zonesByCountry = countryTimeZones(readFileSync(timeZonePath, "utf8"));
 const cities = cityRows(readZipText(citiesZip), regions);
 
 const byCountry = new Map(countries.map(country => [country.code, []]));
@@ -115,14 +143,27 @@ for (const city of cities.values()) {
 }
 
 let capitalsAdded = 0;
+let timezonesFilled = 0;
 for (const country of countries) {
   const bucket = byCountry.get(country.code);
   const capital = country.capital.trim();
-  if (!capital) continue;
-  const exists = bucket.some(city => fold(city.name) === fold(capital));
-  if (!exists) {
-    bucket.push({ name: capital, region: "", population: 0 });
+  if (capital && !bucket.some(city => fold(city.name) === fold(capital))) {
+    bucket.push({ name: capital, region: "", population: 0, timezone: "" });
     capitalsAdded += 1;
+  }
+
+  const largest = bucket.reduce((best, city) => {
+    if (!validTimeZone(city.timezone)) return best;
+    if (!best || city.population > best.population) return city;
+    return best;
+  }, null);
+  const listed = zonesByCountry.get(country.code) || [];
+  const fallback = largest?.timezone || listed[0] || "UTC";
+
+  for (const city of bucket) {
+    if (validTimeZone(city.timezone)) continue;
+    city.timezone = fallback;
+    timezonesFilled += 1;
   }
 }
 
@@ -146,7 +187,7 @@ const payload = {
           const rightLabel = right.region ? `${right.name}, ${right.region}` : right.name;
           return leftLabel.localeCompare(rightLabel, "en");
         })
-        .map(city => (city.region ? [city.name, city.region] : [city.name]));
+        .map(city => [city.name, city.region || "", city.timezone]);
 
       return {
         code: country.code,
@@ -165,6 +206,7 @@ console.log(JSON.stringify({
   countries: payload.countries.length,
   cities: cityCount,
   capitalsAdded,
+  timezonesFilled,
   skippedUnknownCountry: skipped,
   bytes: Buffer.byteLength(JSON.stringify(payload)),
   sample: payload.countries.find(country => country.code === "US")?.cities.find(city => city[0] === "Austin" && city[1] === "Texas"),

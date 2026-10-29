@@ -129,7 +129,6 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
       .time-btn.is-booked,.time-btn.is-booked:hover,.time-btn.is-booked:focus{opacity:.5;cursor:not-allowed;transform:none;background:#f3f3f1;color:#8d8f95;border-color:#e4e5e1;box-shadow:none}
       .time-btn .booked-label{display:block;margin-top:4px;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#8a6248}
       .slot-legend{margin:-4px 0 12px;color:var(--muted);font-size:.8rem;line-height:1.45}
-      .availability-note{margin:0 0 12px;padding:10px 12px;border-radius:14px;background:rgba(255,189,155,.18);border:1px solid rgba(188,123,88,.16);font-size:.8rem;line-height:1.45;color:#7b5f52}
       .timezone{margin-top:12px;padding:12px 14px;border-radius:16px;background:rgba(217,214,253,.18);border:1px solid rgba(140,135,210,.12);font-size:.8rem;line-height:1.55;color:#64666b}
       .timezone strong{color:var(--ink)}
       .summary-strip{margin-top:16px;padding:14px 16px;border-radius:18px;background:#f7f8f4;border:1px solid #e8e9e5;font-size:.84rem;color:#5f6166;display:none}
@@ -377,8 +376,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
                     <div class="picker-box">
                       <h3>Choose a time</h3>
                       <p id="timeIntro">Select a date to see available slots.</p>
-                      <p class="slot-legend">Times are in your timezone. Booked times stay visible and can't be selected.</p>
-                      <div class="availability-note" id="availabilityNote" hidden></div>
+                      <p class="slot-legend">Booked times stay visible and can't be selected.</p>
                       <div class="selected-date" id="selectedDatePill" hidden><i></i><span></span></div>
                       <div class="time-list" id="timeList"></div>
                       <div class="timezone" id="timezoneBox"><strong>Times shown in:</strong> <span id="timezoneText"></span></div>

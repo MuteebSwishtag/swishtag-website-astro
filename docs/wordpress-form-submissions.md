@@ -207,11 +207,11 @@ Country and city choices come from a bundled GeoNames extract, not a live third-
 - Coverage: populated places with population of at least 5,000, plus a country capital when that capital is smaller
 - Rebuild: `node scripts/build-locations.mjs`
 - `GET /api/locations/countries`
-- `GET /api/locations/cities?country=US&q=austin`
+- `GET /api/locations/cities?country=US&q=austin` returns each match with its IANA `timezone`
 
 No API key or new environment variable is required. The page calls those same-origin endpoints, so the form still loads when GeoNames itself is down.
 
-Demo times are generated in the visitor's IANA timezone (`Intl.DateTimeFormat().resolvedOptions().timeZone`) from 9:00 through 15:00 local time, every 15 minutes, on the next 10 business days. The browser sends the slot as a UTC instant plus that IANA zone. The Astro submit handler checks the instant against that grid and stores it on `meetingAt` / `meetingAtISO`.
+Before a city is chosen, the slot grid uses the browser timezone. After a city is chosen, times are generated in that city's IANA timezone from 9:00 through 15:00, every 15 minutes, on the next 10 business days. Changing to a city in a different zone clears the previously selected slot. The browser sends `selectedSlotUtc` plus that city's `timezone`. The Astro submit handler rejects a timezone that does not match the city, checks the instant against that city's grid, and stores it on `meetingAt` / `meetingAtISO`. If the booked-times request fails, the page still shows every slot as selectable. A slot taken in the meantime is rejected on submit with HTTP 409.
 
 Booked slots are exposed without personal data:
 
