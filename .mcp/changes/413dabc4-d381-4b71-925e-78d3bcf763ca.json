@@ -32,6 +32,13 @@
       "at": "2026-10-29T17:22:13.230Z",
       "actor": "auth0|6adb9b2d318bc73c26dbcf87",
       "action": "source.updated"
+    },
+    {
+      "path": "src/pages/book-demo/index.astro",
+      "id": "d061077b-c8c4-49f2-b34e-31c1b9fca2dd",
+      "at": "2026-10-29T17:22:22.940Z",
+      "actor": "auth0|6adb9b2d318bc73c26dbcf87",
+      "action": "source.updated"
     }
   ]
 }

@@ -11,6 +11,12 @@ const directFormEndpoint = import.meta.env.PUBLIC_DIRECT_FORM_ENDPOINT ?? "/api/
 const wordpressFormEndpoint = import.meta.env.PUBLIC_WORDPRESS_FORM_ENDPOINT ?? "https://cms.swishtag.com/wp-json/astro-form/v1/submit";
 const formEndpoint = formSubmissionMode === "wordpress" ? wordpressFormEndpoint : directFormEndpoint;
 const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_ASTRO_FORM_TOKEN ?? "") : "";
+// Demo business hours: Mon-Fri, 9:30 AM-5:30 PM America/New_York, all year.
+// Keep in sync with BOOKING_* constants in src/lib/server/meeting-time.js.
+const bookingTimeZone = "America/New_York";
+const bookingDayStart = "09:30";
+const bookingDayEnd = "17:30"; // last meeting must END by this time
+const bookingMeetingMinutes = 15;
 ---
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
   <style is:inline slot="head">
@@ -120,6 +126,12 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
       .time-btn{text-align:center;font-weight:800;font-size:.92rem;padding:16px 10px}
       .timezone{margin-top:12px;padding:12px 14px;border-radius:16px;background:rgba(217,214,253,.18);border:1px solid rgba(140,135,210,.12);font-size:.8rem;line-height:1.55;color:#64666b}
       .timezone strong{color:var(--ink)}
+      .tz-change{appearance:none;border:0;background:none;padding:0 0 0 2px;font:inherit;font-weight:800;color:var(--ink);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+      .tz-change:focus-visible,.tz-picker select:focus-visible,.tz-picker input:focus-visible{outline:2px solid #a7bc0c;outline-offset:2px}
+      .tz-business{display:block;margin-top:2px}
+      .tz-business[hidden],.tz-picker[hidden]{display:none}
+      .tz-picker{display:grid;gap:8px;margin-top:10px}
+      .tz-picker input,.tz-picker select{width:100%;border:1px solid #dbdcd8;border-radius:12px;background:#fff;padding:9px 12px;font-size:.84rem;color:var(--ink)}
       .summary-strip{margin-top:16px;padding:14px 16px;border-radius:18px;background:#f7f8f4;border:1px solid #e8e9e5;font-size:.84rem;color:#5f6166;display:none}
       .summary-strip.show{display:block}
       .summary-strip strong{display:block;color:var(--ink);margin-bottom:4px}
@@ -271,8 +283,11 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
                 <div class="step" data-step-indicator="3"><div class="step-badge">3</div><strong>Pick a time</strong></div>
               </div>
   
-              <form id="demoForm" action={formEndpoint} method="post" data-form-token={formToken} novalidate>
+              <form id="demoForm" action={formEndpoint} method="post" data-form-token={formToken} data-business-tz={bookingTimeZone} data-day-start={bookingDayStart} data-day-end={bookingDayEnd} data-meeting-minutes={bookingMeetingMinutes} novalidate>
                 <input type="hidden" name="form_source" value="book-demo">
+                <input type="hidden" name="timezone" id="timezoneInput" value="">
+                <input type="hidden" name="selectedSlotUTC" id="selectedSlotUTC" value="">
+                <input type="hidden" name="detectedTimezone" id="detectedTimezoneInput" value="">
                 <div class="panel active" data-step="1">
                   <div class="panel-head">
                     <h2>Tell us about you</h2>
@@ -353,7 +368,16 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
                       <p id="timeIntro">Select a date to see available slots.</p>
                       <div class="selected-date" id="selectedDatePill" hidden><i></i><span></span></div>
                       <div class="time-list" id="timeList"></div>
-                      <div class="timezone" id="timezoneBox"><strong>Times shown in:</strong> <span id="timezoneText"></span></div>
+                      <div class="timezone" id="timezoneBox">
+                        <strong>Times shown in:</strong> <span id="timezoneText"></span> &middot; <button type="button" class="tz-change" id="tzChangeBtn" aria-expanded="false" aria-controls="tzPicker">Change</button>
+                        <span class="tz-business" id="tzBusinessText" hidden></span>
+                        <div class="tz-picker" id="tzPicker" hidden>
+                          <label class="sr-only" for="tzSearch">Search time zones</label>
+                          <input id="tzSearch" type="search" placeholder="Search city or time zone" autocomplete="off" aria-controls="timezoneSelect">
+                          <label class="sr-only" for="timezoneSelect">Time zone for the slots</label>
+                          <select id="timezoneSelect"></select>
+                        </div>
+                      </div>
                       <div class="summary-strip" id="bookingSummary"></div>
                     </div>
                   </div>
@@ -414,12 +438,209 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
   const selectedDateLabel = selectedDatePill.querySelector('span');
   const bookingSummary = document.getElementById('bookingSummary');
   const timezoneText = document.getElementById('timezoneText');
+  const tzBusinessText = document.getElementById('tzBusinessText');
+  const tzChangeBtn = document.getElementById('tzChangeBtn');
+  const tzPicker = document.getElementById('tzPicker');
+  const tzSearch = document.getElementById('tzSearch');
+  const timezoneSelect = document.getElementById('timezoneSelect');
+  const timezoneInput = document.getElementById('timezoneInput');
+  const selectedSlotInput = document.getElementById('selectedSlotUTC');
+  const detectedTimezoneInput = document.getElementById('detectedTimezoneInput');
   const submitBtn = document.getElementById('submitBtn');
   const formToken = form.dataset.formToken || '';
   const formLoadedAt = Date.now().toString();
 
-  const state = { step: 1, selectedDate: '', selectedDateISO: '', selectedTime: '', timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local time' };
-  timezoneText.textContent = state.timezone;
+  const BUSINESS_TZ = form.dataset.businessTz || 'America/New_York';
+  const BUSINESS_START = form.dataset.dayStart || '09:30';
+  const BUSINESS_END = form.dataset.dayEnd || '17:30'; // meetings must end by this time
+  const SLOT_MINUTES = Number(form.dataset.meetingMinutes) || 15; // slot interval = meeting length
+  const BUSINESS_DAYS = 10;
+
+  function isValidZone(tz){
+    if(!tz) return false;
+    try { new Intl.DateTimeFormat('en-US', { timeZone: tz }).format(new Date()); return true; } catch { return false; }
+  }
+  const detectedTimezone = (() => {
+    try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch { return ''; }
+  })();
+
+  const state = { step: 1, selectedDate: '', selectedDateISO: '', selectedTime: '', selectedSlotUTC: '', timezone: isValidZone(detectedTimezone) ? detectedTimezone : BUSINESS_TZ };
+
+  // ---- Time zone helpers (Intl only, DST-safe) ----
+  const partsCache = new Map();
+  function zoneParts(date, tz){
+    let fmt = partsCache.get(tz);
+    if(!fmt){
+      fmt = new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      partsCache.set(tz, fmt);
+    }
+    const p = Object.fromEntries(fmt.formatToParts(date).map(x => [x.type, x.value]));
+    return { year: +p.year, month: +p.month, day: +p.day, hour: +p.hour % 24, minute: +p.minute, second: +p.second };
+  }
+  function offsetMs(date, tz){
+    const p = zoneParts(date, tz);
+    return Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second) - Math.floor(date.getTime() / 1000) * 1000;
+  }
+  function zonedToUtc(year, month, day, hour, minute, tz){
+    const guess = Date.UTC(year, month - 1, day, hour, minute);
+    const first = offsetMs(new Date(guess), tz);
+    let utc = guess - first;
+    const second = offsetMs(new Date(utc), tz);
+    if(second !== first) utc = guess - second;
+    return new Date(utc);
+  }
+  function dateKey(date, tz){
+    const p = zoneParts(date, tz);
+    return `${p.year}-${String(p.month).padStart(2,'0')}-${String(p.day).padStart(2,'0')}`;
+  }
+  function offsetLabel(tz, at = new Date()){
+    const mins = Math.round(offsetMs(at, tz) / 60000);
+    const sign = mins < 0 ? '-' : '+';
+    const abs = Math.abs(mins);
+    return `GMT${sign}${String(Math.floor(abs / 60)).padStart(2,'0')}:${String(abs % 60).padStart(2,'0')}`;
+  }
+  function zoneShortName(tz, at = new Date()){
+    try {
+      const part = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'short' }).formatToParts(at).find(x => x.type === 'timeZoneName');
+      return part ? part.value : tz;
+    } catch { return tz; }
+  }
+  function cityName(tz){ return tz.split('/').pop().replace(/_/g, ' '); }
+
+  // ---- Slots: business hours on business days in BUSINESS_TZ, as absolute instants ----
+  function buildSlots(){
+    const slots = [];
+    const now = new Date();
+    const today = zoneParts(now, BUSINESS_TZ);
+    const [sh, sm] = BUSINESS_START.split(':').map(Number);
+    const [eh, em] = BUSINESS_END.split(':').map(Number);
+    let added = 0;
+    for(let i = 1; added < BUSINESS_DAYS && i < 30; i++){
+      const day = new Date(Date.UTC(today.year, today.month - 1, today.day + i));
+      const dow = day.getUTCDay();
+      if(dow === 0 || dow === 6) continue;
+      added++;
+      for(let m = sh * 60 + sm; m + SLOT_MINUTES <= eh * 60 + em; m += SLOT_MINUTES){
+        const at = zonedToUtc(day.getUTCFullYear(), day.getUTCMonth() + 1, day.getUTCDate(), Math.floor(m / 60), m % 60, BUSINESS_TZ);
+        if(at > now) slots.push(at);
+      }
+    }
+    return slots;
+  }
+  const allSlots = buildSlots();
+
+  function slotsByDate(tz){
+    const groups = new Map();
+    allSlots.forEach(at => {
+      const key = dateKey(at, tz);
+      if(!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(at);
+    });
+    return groups;
+  }
+
+  function formatDateLong(d, tz = state.timezone, locale){
+    return new Intl.DateTimeFormat(locale,{weekday:'long',month:'long',day:'numeric',timeZone:tz}).format(d);
+  }
+  function formatDateShort(d, tz = state.timezone){
+    return { labelTop: new Intl.DateTimeFormat(undefined,{weekday:'short',timeZone:tz}).format(d), labelBottom: new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',timeZone:tz}).format(d) };
+  }
+  function formatTimeLabel(d, tz = state.timezone, locale){
+    return new Intl.DateTimeFormat(locale,{hour:'numeric',minute:'2-digit',timeZone:tz}).format(d);
+  }
+  function businessTimeLabel(d){
+    return `${formatTimeLabel(d, BUSINESS_TZ)} ${zoneShortName(BUSINESS_TZ, d)}`;
+  }
+
+  // ---- Time zone picker (subtle: "Times shown in X · Change") ----
+  const fallbackZones = ['Pacific/Honolulu','America/Anchorage','America/Los_Angeles','America/Phoenix','America/Denver','America/Chicago','America/New_York','America/Halifax','America/St_Johns','America/Toronto','America/Vancouver','America/Mexico_City','America/Bogota','America/Lima','America/Sao_Paulo','America/Argentina/Buenos_Aires','Atlantic/Reykjavik','Europe/London','Europe/Dublin','Europe/Lisbon','Europe/Paris','Europe/Berlin','Europe/Madrid','Europe/Rome','Europe/Amsterdam','Europe/Stockholm','Europe/Warsaw','Europe/Athens','Europe/Istanbul','Europe/Moscow','Africa/Cairo','Africa/Johannesburg','Africa/Lagos','Africa/Nairobi','Asia/Dubai','Asia/Karachi','Asia/Kolkata','Asia/Dhaka','Asia/Bangkok','Asia/Singapore','Asia/Hong_Kong','Asia/Shanghai','Asia/Manila','Asia/Tokyo','Asia/Seoul','Australia/Perth','Australia/Adelaide','Australia/Sydney','Pacific/Auckland','UTC'];
+  let zoneListCache = null;
+  const getZoneList = () => zoneListCache || (zoneListCache = (() => {
+    let zones = [];
+    try { zones = Intl.supportedValuesOf('timeZone'); } catch {}
+    if(!zones || !zones.length) zones = fallbackZones;
+    const set = new Set(zones.filter(isValidZone));
+    [state.timezone, BUSINESS_TZ, 'UTC'].forEach(z => { if(isValidZone(z)) set.add(z); });
+    const now = new Date();
+    return [...set].map(tz => ({ tz, region: tz.includes('/') ? tz.split('/')[0] : 'Other', offset: offsetMs(now, tz), label: `(${offsetLabel(tz, now)}) ${cityName(tz)}`, search: `${tz} ${cityName(tz)} ${offsetLabel(tz, now)}`.toLowerCase() }))
+      .sort((a, b) => a.region.localeCompare(b.region) || a.offset - b.offset || a.tz.localeCompare(b.tz));
+  })());
+
+  function renderZoneOptions(query = ''){
+    const q = query.trim().toLowerCase();
+    const zoneList = getZoneList();
+    timezoneSelect.innerHTML = '';
+    const pinned = document.createElement('optgroup');
+    pinned.label = 'Suggested';
+    const pinnedZones = [...new Set([detectedTimezone, BUSINESS_TZ].filter(isValidZone))];
+    pinnedZones.forEach(tz => {
+      const z = zoneList.find(item => item.tz === tz);
+      if(!z || (q && !z.search.includes(q))) return;
+      const opt = new Option(`${z.label}${tz === detectedTimezone ? ' · your device' : ''}${tz === BUSINESS_TZ ? ' · Swishtag' : ''}`, tz);
+      pinned.appendChild(opt);
+    });
+    if(pinned.children.length) timezoneSelect.appendChild(pinned);
+    const groups = new Map();
+    zoneList.forEach(z => {
+      if(q && !z.search.includes(q)) return;
+      if(!groups.has(z.region)) groups.set(z.region, []);
+      groups.get(z.region).push(z);
+    });
+    groups.forEach((items, region) => {
+      const group = document.createElement('optgroup');
+      group.label = region;
+      items.forEach(z => group.appendChild(new Option(z.label, z.tz)));
+      timezoneSelect.appendChild(group);
+    });
+    // Keep the current zone selectable even when filtered out.
+    if(![...timezoneSelect.options].some(o => o.value === state.timezone)){
+      const z = zoneList.find(item => item.tz === state.timezone);
+      timezoneSelect.prepend(new Option(z ? z.label : state.timezone, state.timezone));
+    }
+    timezoneSelect.value = state.timezone;
+  }
+
+  function updateTimezoneText(){
+    timezoneText.textContent = `${state.timezone.replace(/_/g, ' ')} (${zoneShortName(state.timezone)})`;
+    if(state.timezone === BUSINESS_TZ){
+      tzBusinessText.hidden = true;
+      tzBusinessText.textContent = '';
+    } else {
+      tzBusinessText.hidden = false;
+      tzBusinessText.textContent = state.selectedSlotUTC
+        ? `That's ${businessTimeLabel(new Date(state.selectedSlotUTC))} for the Swishtag team.`
+        : `Swishtag team time zone: ${cityName(BUSINESS_TZ)} (${zoneShortName(BUSINESS_TZ)}).`;
+    }
+  }
+
+  function setTimezone(tz){
+    if(!isValidZone(tz) || tz === state.timezone) return;
+    state.timezone = tz;
+    timezoneInput.value = tz;
+    updateTimezoneText();
+    renderDates();
+  }
+
+  tzChangeBtn.addEventListener('click', () => {
+    const open = tzPicker.hidden;
+    tzPicker.hidden = !open;
+    tzChangeBtn.setAttribute('aria-expanded', String(open));
+    if(open){ renderZoneOptions(tzSearch.value); timezoneSelect.focus(); }
+  });
+  tzSearch.addEventListener('input', () => renderZoneOptions(tzSearch.value));
+  tzSearch.addEventListener('keydown', e => {
+    if(e.key === 'ArrowDown'){ e.preventDefault(); timezoneSelect.focus(); }
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      const first = [...timezoneSelect.options].find(o => o.value !== state.timezone);
+      if(tzSearch.value.trim() && first){ timezoneSelect.value = first.value; setTimezone(first.value); }
+    }
+  });
+  timezoneSelect.addEventListener('change', () => setTimezone(timezoneSelect.value));
+
+  timezoneInput.value = state.timezone;
+  detectedTimezoneInput.value = isValidZone(detectedTimezone) ? detectedTimezone : '';
+  updateTimezoneText();
 
   function applyQuerySelection(){
     const params = new URLSearchParams(window.location.search);
@@ -435,29 +656,6 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
     });
 
     if(match) match.checked = true;
-  }
-
-  const slotTimes = ['09:00', '09:15', '09:30', '09:45', '10:00', '10:15', '10:30', '10:45', '11:00', '11:15', '11:30', '11:45', '12:00', '12:15', '12:30', '12:45', '13:00', '13:15', '13:30', '13:45', '14:00', '14:15', '14:30', '14:45', '15:00'];
-  const dateOptions = [];
-  const today = new Date();
-  for (let i = 1; dateOptions.length < 10 && i < 20; i++) {
-    const d = new Date(today);
-    d.setDate(today.getDate() + i);
-    const day = d.getDay();
-    if (day === 0 || day === 6) continue;
-    dateOptions.push(d);
-  }
-
-  function formatDateLong(d){
-    return new Intl.DateTimeFormat(undefined,{weekday:'long',month:'long',day:'numeric'}).format(d);
-  }
-  function formatDateShort(d){
-    return { labelTop: new Intl.DateTimeFormat(undefined,{weekday:'short'}).format(d), labelBottom: new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric'}).format(d) };
-  }
-  function formatTimeLabel(time24){
-    const [h,m] = time24.split(':').map(Number);
-    const d = new Date(); d.setHours(h,m,0,0);
-    return new Intl.DateTimeFormat(undefined,{hour:'numeric',minute:'2-digit'}).format(d);
   }
 
   function setStep(step){
@@ -528,7 +726,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
     }
     if(step === 3){
       if(!state.selectedDateISO){ showError(3,'Please choose a date for your demo.'); return false; }
-      if(!state.selectedTime){ showError(3,'Please choose a time slot before booking your demo.'); return false; }
+      if(!state.selectedTime || !state.selectedSlotUTC){ showError(3,'Please choose a time slot before booking your demo.'); return false; }
       return true;
     }
     return true;
@@ -536,61 +734,80 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
 
   function renderDates(){
     dateList.innerHTML = '';
-    dateOptions.forEach((date,index) => {
-      const parts = formatDateShort(date);
+    const groups = slotsByDate(state.timezone);
+    const keys = [...groups.keys()];
+    const selectedKey = state.selectedSlotUTC ? dateKey(new Date(state.selectedSlotUTC), state.timezone) : '';
+    const activeKey = keys.includes(selectedKey) ? selectedKey : (keys.includes(state.selectedDateISO) ? state.selectedDateISO : keys[0]);
+    keys.forEach(key => {
+      const first = groups.get(key)[0];
+      const parts = formatDateShort(first);
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'date-btn' + (index === 0 ? ' active' : '');
+      btn.className = 'date-btn';
+      btn.dataset.date = key;
+      btn.setAttribute('aria-pressed', 'false');
       btn.innerHTML = `<small>${parts.labelTop}</small><strong>${parts.labelBottom}</strong>`;
-      btn.addEventListener('click', () => selectDate(date, btn));
+      btn.addEventListener('click', () => selectDate(key, btn));
       dateList.appendChild(btn);
-      if(index===0) selectDate(date, btn, true);
+      if(key === activeKey) selectDate(key, btn, true);
     });
   }
 
-  function formatLocalDateISO(date){
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
-  function selectDate(date, btn, initial){
-    state.selectedDate = formatDateLong(date);
-    state.selectedDateISO = formatLocalDateISO(date);
-    [...dateList.children].forEach(b => b.classList.remove('active'));
+  function selectDate(key, btn, initial){
+    const slots = slotsByDate(state.timezone).get(key) || [];
+    if(!slots.length) return;
+    state.selectedDate = formatDateLong(slots[0]);
+    state.selectedDateISO = key;
+    [...dateList.children].forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     selectedDatePill.hidden = false;
     selectedDateLabel.textContent = state.selectedDate;
     timeIntro.textContent = `Available slots for ${state.selectedDate}`;
-    renderTimes();
-    if(!initial) updateSummary();
+    // Keep the chosen slot when only the time zone changed and it is still on this date.
+    const keepSlot = initial && state.selectedSlotUTC && slots.some(at => at.toISOString() === state.selectedSlotUTC);
+    if(!keepSlot) state.selectedSlotUTC = '';
+    renderTimes(slots);
+    if(!initial || keepSlot) updateSummary();
   }
 
-  function renderTimes(){
+  function renderTimes(slots){
     state.selectedTime = '';
     timeList.innerHTML = '';
-    slotTimes.forEach((time, idx) => {
+    slots.forEach(at => {
+      const iso = at.toISOString();
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'time-btn';
-      btn.textContent = formatTimeLabel(time);
+      btn.dataset.slot = iso;
+      btn.textContent = formatTimeLabel(at);
+      btn.title = state.timezone === BUSINESS_TZ ? '' : `${businessTimeLabel(at)} for the Swishtag team`;
       btn.setAttribute('aria-label', `${btn.textContent}, 15-minute demo`);
-      btn.addEventListener('click', () => {
-        [...timeList.children].forEach(b => b.classList.remove('active'));
+      btn.setAttribute('aria-pressed', 'false');
+      const choose = () => {
+        [...timeList.children].forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         state.selectedTime = btn.textContent;
+        state.selectedSlotUTC = iso;
         updateSummary();
-      });
+      };
+      btn.addEventListener('click', choose);
       timeList.appendChild(btn);
+      if(iso === state.selectedSlotUTC) choose();
     });
     updateSummary();
   }
 
   function updateSummary(){
+    selectedSlotInput.value = state.selectedSlotUTC;
+    updateTimezoneText();
+    const zoneLabel = `${zoneShortName(state.timezone)} (${state.timezone})`;
     if(state.selectedDate && state.selectedTime){
       bookingSummary.classList.add('show');
-      bookingSummary.innerHTML = `<strong>Your selected slot</strong>${state.selectedDate} at ${state.selectedTime} &middot; 15 minutes &middot; ${state.timezone}`;
+      const at = new Date(state.selectedSlotUTC);
+      const business = state.timezone === BUSINESS_TZ ? '' : ` &middot; ${businessTimeLabel(at)} for Swishtag`;
+      bookingSummary.innerHTML = `<strong>Your selected slot</strong>${state.selectedDate} at ${state.selectedTime} &middot; 15 minutes &middot; ${zoneLabel}${business}`;
     } else if(state.selectedDate){
       bookingSummary.classList.add('show');
       bookingSummary.innerHTML = `<strong>Date selected</strong>${state.selectedDate}. Choose a time slot to finish booking.`;
@@ -664,10 +881,18 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
     payload.form_source = 'book-demo';
     payload.service = selectedInterest.dataset.service || '';
     payload.intent = selectedInterest.dataset.intent || '';
-    payload.selectedDate = state.selectedDate;
-    payload.selectedDateISO = state.selectedDateISO;
-    payload.selectedTime = state.selectedTime;
+    // Date/time in the visitor's chosen zone (en-US so the server can parse it),
+    // plus the exact instant in UTC and the zone names.
+    const slotAt = new Date(state.selectedSlotUTC);
+    payload.selectedDate = formatDateLong(slotAt, state.timezone, 'en-US');
+    payload.selectedDateISO = dateKey(slotAt, state.timezone);
+    payload.selectedTime = formatTimeLabel(slotAt, state.timezone, 'en-US');
+    payload.selectedTimeDisplay = state.selectedTime;
+    payload.selectedSlotUTC = slotAt.toISOString();
     payload.timezone = state.timezone;
+    payload.detectedTimezone = detectedTimezoneInput.value;
+    payload.businessTimeZone = BUSINESS_TZ;
+    payload.businessTime = `${formatDateLong(slotAt, BUSINESS_TZ, 'en-US')} ${formatTimeLabel(slotAt, BUSINESS_TZ, 'en-US')} ${zoneShortName(BUSINESS_TZ, slotAt)}`;
     payload.page = window.location.href;
     payload.form_loaded_at = formLoadedAt;
 
@@ -676,7 +901,7 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
       await postForm(payload);
       document.getElementById('successEmail').textContent = email;
       document.getElementById('successDate').textContent = state.selectedDate;
-      document.getElementById('successTime').textContent = `${state.selectedTime} - ${state.timezone}`;
+      document.getElementById('successTime').textContent = `${state.selectedTime} ${zoneShortName(state.timezone, slotAt)} (${state.timezone})`;
       document.getElementById('successCompany').textContent = company;
       document.getElementById('successFocus').textContent = focus;
       flow.style.display = 'none';
@@ -692,6 +917,9 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
   bookAnotherBtn.addEventListener('click', () => {
     form.reset();
     state.selectedTime = '';
+    state.selectedSlotUTC = '';
+    timezoneInput.value = state.timezone;
+    detectedTimezoneInput.value = isValidZone(detectedTimezone) ? detectedTimezone : '';
     renderDates();
     flow.style.display = '';
     success.classList.remove('show');
