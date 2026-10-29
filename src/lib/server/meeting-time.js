@@ -1,3 +1,5 @@
+import { zonedDateTimeToUtc } from "../meeting-slots.js";
+
 function clean(value) {
   return String(value ?? "").trim();
 }
@@ -35,48 +37,6 @@ function parseTimeParts(value) {
   return { hour, minute };
 }
 
-function getTimeZoneOffsetMs(date, timeZone) {
-  const formatter = new Intl.DateTimeFormat("en-US", {
-    timeZone,
-    hourCycle: "h23",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-
-  const parts = Object.fromEntries(formatter.formatToParts(date).map(part => [part.type, part.value]));
-  const asUtc = Date.UTC(
-    Number(parts.year),
-    Number(parts.month) - 1,
-    Number(parts.day),
-    Number(parts.hour),
-    Number(parts.minute),
-    Number(parts.second),
-  );
-
-  return asUtc - date.getTime();
-}
-
-function zonedDateTimeToUtc({ year, month, day, hour, minute, timeZone }) {
-  try {
-    const utcGuess = new Date(Date.UTC(year, month - 1, day, hour, minute, 0, 0));
-    const offset = getTimeZoneOffsetMs(utcGuess, timeZone);
-    let utcDate = new Date(utcGuess.getTime() - offset);
-    const correctedOffset = getTimeZoneOffsetMs(utcDate, timeZone);
-
-    if (offset !== correctedOffset) {
-      utcDate = new Date(utcGuess.getTime() - correctedOffset);
-    }
-
-    return Number.isNaN(utcDate.getTime()) ? null : utcDate;
-  } catch {
-    return null;
-  }
-}
-
 function normalizeStoredDate(value) {
   const date = value instanceof Date ? value : new Date(value || "");
   return Number.isNaN(date.getTime()) ? null : date;
@@ -84,6 +44,9 @@ function normalizeStoredDate(value) {
 
 export function getBookDemoMeetingAt(submission) {
   const fields = submission?.fields || submission || {};
+  const explicit = normalizeStoredDate(fields.selectedSlotUtc);
+  if (explicit) return explicit;
+
   const storedMeetingAt = normalizeStoredDate(submission?.meetingAt || submission?.meetingAtISO);
   const dateParts = parseDateParts(fields.selectedDateISO || fields.selectedDate);
   const timeParts = parseTimeParts(fields.selectedTime);

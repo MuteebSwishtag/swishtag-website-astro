@@ -1,3 +1,6 @@
+import { BOOK_DEMO_DURATION_MINUTES } from "../meeting-slots.js";
+import { getBookDemoMeetingAt } from "./meeting-time.js";
+
 const ZOOM_API_BASE_URL = "https://api.zoom.us/v2";
 const ZOOM_TOKEN_URL = "https://zoom.us/oauth/token";
 
@@ -40,78 +43,6 @@ function getByPath(source, path) {
 
 function renderTemplate(template, context) {
   return clean(template).replace(/\$\{([a-zA-Z0-9_.-]+)\}/g, (_, key) => clean(getByPath(context, key)));
-}
-
-function getTimeZoneOffsetMs(date, timeZone) {
-  const formatter = new Intl.DateTimeFormat("en-US", {
-    timeZone,
-    hourCycle: "h23",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-
-  const parts = Object.fromEntries(formatter.formatToParts(date).map(part => [part.type, part.value]));
-  const asUtc = Date.UTC(
-    Number(parts.year),
-    Number(parts.month) - 1,
-    Number(parts.day),
-    Number(parts.hour),
-    Number(parts.minute),
-    Number(parts.second),
-  );
-
-  return asUtc - date.getTime();
-}
-
-function zonedDateTimeToUtc({ year, month, day, hour, minute, timeZone }) {
-  try {
-    const utcGuess = new Date(Date.UTC(year, month - 1, day, hour, minute, 0, 0));
-    const offset = getTimeZoneOffsetMs(utcGuess, timeZone);
-    let utcDate = new Date(utcGuess.getTime() - offset);
-    const correctedOffset = getTimeZoneOffsetMs(utcDate, timeZone);
-
-    if (offset !== correctedOffset) {
-      utcDate = new Date(utcGuess.getTime() - correctedOffset);
-    }
-
-    return Number.isNaN(utcDate.getTime()) ? null : utcDate;
-  } catch {
-    return null;
-  }
-}
-
-function parseSelectedMeetingTime(fields = {}) {
-  const dateMatch = clean(fields.selectedDateISO || fields.selectedDate).match(/^(\d{4})-(\d{2})-(\d{2})/);
-  const timeMatch = clean(fields.selectedTime).toLowerCase().match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)?$/);
-  const timeZone = clean(fields.timezone);
-
-  if (!dateMatch || !timeMatch || !timeZone) return null;
-
-  let hour = Number(timeMatch[1]);
-  const minute = Number(timeMatch[2] || "0");
-  const meridiem = timeMatch[3] || "";
-
-  if (minute < 0 || minute > 59) return null;
-  if (meridiem) {
-    if (hour < 1 || hour > 12) return null;
-    if (hour === 12) hour = 0;
-    if (meridiem === "pm") hour += 12;
-  } else if (hour < 0 || hour > 23) {
-    return null;
-  }
-
-  return zonedDateTimeToUtc({
-    year: Number(dateMatch[1]),
-    month: Number(dateMatch[2]),
-    day: Number(dateMatch[3]),
-    hour,
-    minute,
-    timeZone,
-  });
 }
 
 function normalizeDate(value) {
@@ -429,11 +360,13 @@ export async function createScheduledZoomMeeting(input) {
 export async function createZoomMeetingForSubmission(submission, meetingAt) {
   const fields = submission?.fields || {};
   const startTime = normalizeDate(meetingAt || submission?.meetingAt || submission?.meetingAtISO)
-    || parseSelectedMeetingTime(fields);
+    || getBookDemoMeetingAt(submission);
 
   return createScheduledZoomMeeting({
     // All bookings from /book-demo/ are 15 minutes, regardless of the general Zoom default.
-    durationMinutes: submission?.source === 'book-demo' || submission?.formType === 'book-demo' ? 15 : undefined,
+    durationMinutes: submission?.source === "book-demo" || submission?.formType === "book-demo"
+      ? BOOK_DEMO_DURATION_MINUTES
+      : undefined,
     startTime,
     timeZone: fields.timezone || "UTC",
     customerName: submission?.displayName || fields.fullName || "",

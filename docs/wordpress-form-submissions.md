@@ -126,7 +126,7 @@ Updated Astro files:
 
 ## 4. Stored Fields
 
-The plugin currently accepts the existing Swishtag fields only.
+The plugin accepts the Swishtag form fields below. Book-demo country, city, and UTC slot fields are required.
 
 Book Demo:
 
@@ -143,7 +143,12 @@ Book Demo:
 - `selectedDate`
 - `selectedDateISO`
 - `selectedTime`
+- `selectedTime24`
+- `selectedSlotUtc`
 - `timezone`
+- `country`
+- `countryCode`
+- `city`
 - `page`
 - `form_loaded_at`
 
@@ -191,7 +196,41 @@ The endpoint uses:
 
 Important: `PUBLIC_ASTRO_FORM_TOKEN` is sent by browser JavaScript, so it is a public site token, not a private server secret. Keep the CORS allowlist, rate limiting, honeypots, and validation enabled.
 
-## 6. Testing The Endpoint
+## 6. Book demo country, city, and booked times
+
+Plugin 1.3.0 requires `country`, `city`, `timezone`, and `selectedSlotUtc` on book-demo submissions and stores them with the rest of the payload. `selectedSlotUtc` must be a UTC timestamp such as `2026-11-02T14:00:00.000Z`. The plugin rejects a second book-demo submission whose 15-minute window overlaps an existing `selectedSlotUtc`, with HTTP 409 and `"code": "slot_taken"`.
+
+Country and city choices come from a bundled GeoNames extract, not a live third-party API:
+
+- Dataset: `src/data/locations.json`
+- Source: GeoNames (`https://www.geonames.org/`), CC BY 4.0
+- Coverage: populated places with population of at least 5,000, plus a country capital when that capital is smaller
+- Rebuild: `node scripts/build-locations.mjs`
+- `GET /api/locations/countries`
+- `GET /api/locations/cities?country=US&q=austin`
+
+No API key or new environment variable is required. The page calls those same-origin endpoints, so the form still loads when GeoNames itself is down.
+
+Demo times are generated in the visitor's IANA timezone (`Intl.DateTimeFormat().resolvedOptions().timeZone`) from 9:00 through 15:00 local time, every 15 minutes, on the next 10 business days. The browser sends the slot as a UTC instant plus that IANA zone. The Astro submit handler checks the instant against that grid and stores it on `meetingAt` / `meetingAtISO`.
+
+Booked slots are exposed without personal data:
+
+```json
+GET /api/book-demo/availability
+{
+  "ok": true,
+  "durationMinutes": 15,
+  "busy": [
+    { "start": "2026-11-02T14:00:00.000Z", "end": "2026-11-02T14:15:00.000Z" }
+  ]
+}
+```
+
+`start` and `end` are UTC. A slot that overlaps any range is shown and cannot be selected. Submitting a slot that was taken in the meantime returns HTTP 409, `"code": "slot_taken"`, and the message `That time was just booked. Please choose another slot.`
+
+Storage does not need a schema migration. `country`, `city`, `countryCode`, and `selectedSlotUtc` live in the submission `fields` object (the MongoDB document, or MySQL `document_json`). The existing `meeting_at` column already stores the UTC instant. Direct-mode availability reads that same submissions database. WordPress mode enforces the overlap against Form Submissions, but the public availability endpoint does not read WordPress.
+
+## 7. Testing The Endpoint
 
 After the plugin is active and the env values are deployed, submit both live forms:
 

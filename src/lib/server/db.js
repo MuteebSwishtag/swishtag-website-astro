@@ -450,6 +450,16 @@ class MysqlSubmissionCollection {
     }
   }
 
+  async deleteOne(filter) {
+    await ensureMysqlSchema();
+    const id = filter?._id?.toString?.() || String(filter?._id || "");
+    if (!id) return { deletedCount: 0 };
+
+    const pool = getMysqlPool();
+    const [result] = await pool.query(`DELETE FROM ${mysqlTableName()} WHERE id = ?`, [id]);
+    return { deletedCount: result.affectedRows || 0 };
+  }
+
   async countDocuments(query = {}) {
     const documents = await this.findDocuments(query);
     return documents.length;

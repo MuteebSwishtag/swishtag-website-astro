@@ -1,3 +1,4 @@
+import { reserveBookDemoSubmission } from "../../../lib/server/meeting-availability.js";
 import { createSubmissionDocument, getSubmissionCollection } from "../../../lib/server/form-submissions.js";
 import { getDatabaseDebugInfo } from "../../../lib/server/db.js";
 import { getMailDebugInfo, sendMeetingScheduledEmail, sendSubmissionEmail } from "../../../lib/server/mail.js";
@@ -102,12 +103,31 @@ export async function POST({ request }) {
     });
 
     const collection = await getSubmissionCollection();
-    const insertResult = await collection.insertOne(result.document);
-    result.document._id = insertResult.insertedId;
+    if (result.document.formType === "book-demo") {
+      const reserved = await reserveBookDemoSubmission(collection, result.document);
+      if (reserved.error) {
+        return json({ ok: false, message: reserved.error.message, requestId }, reserved.error.status);
+      }
+      if (reserved.conflict) {
+        console.info("[Swishtag form] slot already booked", {
+          requestId,
+          slot: result.document.meetingAtISO || "",
+        });
+        return json({
+          ok: false,
+          code: "slot_taken",
+          message: "That time was just booked. Please choose another slot.",
+          requestId,
+        }, 409);
+      }
+    } else {
+      const insertResult = await collection.insertOne(result.document);
+      result.document._id = insertResult.insertedId;
+    }
 
     console.info("[Swishtag form] submission saved", {
       requestId,
-      insertedId: insertResult.insertedId?.toString(),
+      insertedId: result.document._id?.toString(),
       formType: result.document.formType,
       durationMs: Date.now() - startedAt,
     });

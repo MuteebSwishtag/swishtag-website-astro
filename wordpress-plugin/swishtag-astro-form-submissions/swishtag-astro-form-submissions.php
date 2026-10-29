@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Swishtag Astro Form Submissions
  * Description: Connects the Swishtag Astro site to WordPress form submissions and published portfolio content.
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: Swishtag
  * Requires at least: 6.0
  * Requires PHP: 7.4
@@ -23,6 +23,8 @@ final class Swishtag_Astro_Form_Submissions
     private const TOKEN_OPTION = 'swishtag_astro_form_token';
     private const RATE_LIMIT_WINDOW = 10 * MINUTE_IN_SECONDS;
     private const RATE_LIMIT_MAX = 5;
+    // Keep this aligned with BOOK_DEMO_DURATION_MINUTES in src/lib/meeting-slots.js.
+    private const BOOK_DEMO_DURATION_SECONDS = 15 * 60;
 
     public static function init(): void
     {
@@ -230,9 +232,21 @@ final class Swishtag_Astro_Form_Submissions
             return self::json_response(false, $normalized->get_error_message(), (int) $normalized->get_error_data('status') ?: 422);
         }
 
+        if ($source === 'book-demo') {
+            $slot = self::field_value($normalized, 'selectedSlotUtc');
+            if (self::conflicting_book_demo_ids($slot) !== []) {
+                return self::json_response(false, 'That time was just booked. Please choose another slot.', 409, 'slot_taken');
+            }
+        }
+
         $post_id = self::save_submission($source, $normalized);
         if (is_wp_error($post_id)) {
             return self::json_response(false, 'We could not save your submission right now. Please try again.', 500);
+        }
+
+        if ($source === 'book-demo' && self::earlier_slot_conflict((int) $post_id, self::field_value($normalized, 'selectedSlotUtc'))) {
+            wp_delete_post((int) $post_id, true);
+            return self::json_response(false, 'That time was just booked. Please choose another slot.', 409, 'slot_taken');
         }
 
         $mail_sent = self::send_admin_email((int) $post_id, $source, $normalized);
@@ -603,6 +617,14 @@ final class Swishtag_Astro_Form_Submissions
                 return new WP_Error('astro_form_invalid_date', 'Please choose a valid date for your demo.', ['status' => 422]);
             }
 
+            if ($key === 'selectedSlotUtc' && $value !== '' && !preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/', $value)) {
+                return new WP_Error('astro_form_invalid_slot', 'Please choose a valid demo time.', ['status' => 422]);
+            }
+
+            if ($key === 'timezone' && $value !== '' && !preg_match('/^[A-Za-z0-9_+-]+(?:\/[A-Za-z0-9_+-]+)*$/', $value)) {
+                return new WP_Error('astro_form_invalid_timezone', 'We could not read a valid timezone. Please refresh the page and try again.', ['status' => 422]);
+            }
+
             $normalized[$key] = [
                 'label' => (string) ($config['label'] ?? $key),
                 'value' => $value,
@@ -621,11 +643,15 @@ final class Swishtag_Astro_Form_Submissions
                 'workEmail' => ['label' => 'Work email', 'type' => 'email', 'required' => true, 'max' => 254],
                 'companyName' => ['label' => 'Company', 'required' => true, 'max' => 160],
                 'website' => ['label' => 'Website', 'type' => 'url', 'max' => 300],
+                'country' => ['label' => 'Country', 'required' => true, 'max' => 120],
+                'countryCode' => ['label' => 'Country code', 'max' => 8],
+                'city' => ['label' => 'City', 'required' => true, 'max' => 180],
                 'solutionInterest' => [
                     'label' => 'Solution interest',
                     'required' => true,
                     'max' => 180,
                     'choices' => [
+                        'Company Store',
                         'Company Store Launch',
                         'SAGE Connected Company Store',
                         'Enterprise Company Store Automation',
@@ -639,7 +665,9 @@ final class Swishtag_Astro_Form_Submissions
                 'selectedDate' => ['label' => 'Selected date', 'required' => true, 'max' => 120],
                 'selectedDateISO' => ['label' => 'Selected date ISO', 'max' => 20],
                 'selectedTime' => ['label' => 'Selected time', 'required' => true, 'max' => 120],
-                'timezone' => ['label' => 'Timezone', 'max' => 120],
+                'selectedTime24' => ['label' => 'Selected time (24-hour)', 'max' => 8],
+                'selectedSlotUtc' => ['label' => 'Selected slot (UTC)', 'required' => true, 'max' => 40],
+                'timezone' => ['label' => 'Timezone', 'required' => true, 'max' => 120],
                 'page' => ['label' => 'Page', 'type' => 'url', 'max' => 500],
                 'form_loaded_at' => ['label' => 'Form loaded at', 'max' => 40],
             ];
@@ -761,12 +789,69 @@ final class Swishtag_Astro_Form_Submissions
         return (bool) $sent;
     }
 
-    private static function json_response(bool $ok, string $message, int $status): WP_REST_Response
+    private static function json_response(bool $ok, string $message, int $status, string $code = ''): WP_REST_Response
     {
-        return new WP_REST_Response([
+        $payload = [
             'ok' => $ok,
             'message' => $message,
-        ], $status);
+        ];
+        if ($code !== '') {
+            $payload['code'] = $code;
+        }
+
+        return new WP_REST_Response($payload, $status);
+    }
+
+    private static function slot_overlaps(string $left_iso, string $right_iso): bool
+    {
+        $left = strtotime($left_iso);
+        $right = strtotime($right_iso);
+        if ($left === false || $right === false) {
+            return false;
+        }
+
+        $duration = self::BOOK_DEMO_DURATION_SECONDS;
+        return $left < ($right + $duration) && $right < ($left + $duration);
+    }
+
+    private static function conflicting_book_demo_ids(string $start_iso): array
+    {
+        if ($start_iso === '') {
+            return [];
+        }
+
+        $posts = get_posts([
+            'post_type' => self::POST_TYPE,
+            'post_status' => ['private', 'publish', 'draft', 'pending'],
+            'posts_per_page' => 500,
+            'orderby' => 'ID',
+            'order' => 'DESC',
+            'fields' => 'ids',
+            'meta_key' => 'astro_form_source',
+            'meta_value' => 'book-demo',
+            'no_found_rows' => true,
+        ]);
+
+        $conflicts = [];
+        foreach ($posts as $post_id) {
+            $existing = (string) get_post_meta($post_id, 'astro_form_field_selectedslotutc', true);
+            if ($existing !== '' && self::slot_overlaps($start_iso, $existing)) {
+                $conflicts[] = (int) $post_id;
+            }
+        }
+
+        return $conflicts;
+    }
+
+    private static function earlier_slot_conflict(int $post_id, string $start_iso): bool
+    {
+        foreach (self::conflicting_book_demo_ids($start_iso) as $existing_id) {
+            if ($existing_id !== $post_id && $existing_id < $post_id) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static function source_label(string $source): string

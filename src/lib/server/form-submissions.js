@@ -1,5 +1,6 @@
+import { describeSlot, resolveBookDemoSlot } from "../meeting-slots.js";
 import { getSubmissionCollection as getDatabaseSubmissionCollection } from "./db.js";
-import { getBookDemoMeetingAt } from "./meeting-time.js";
+import { resolveLocation } from "./locations.js";
 
 const COLLECTION_NAME = process.env.FORM_SUBMISSIONS_COLLECTION || "form_submissions";
 
@@ -8,6 +9,9 @@ const bookDemoLabels = {
   workEmail: "Work email",
   companyName: "Company",
   website: "Website",
+  country: "Country",
+  countryCode: "Country code",
+  city: "City",
   solutionInterest: "Solution interest",
   service: "Service",
   intent: "Intent",
@@ -15,6 +19,8 @@ const bookDemoLabels = {
   selectedDate: "Selected date",
   selectedDateISO: "Selected date ISO",
   selectedTime: "Selected time",
+  selectedTime24: "Selected time (24-hour)",
+  selectedSlotUtc: "Selected slot (UTC)",
   timezone: "Timezone",
   notes: "Notes",
 };
@@ -99,7 +105,7 @@ export function createSubmissionDocument(data, request) {
   const isBookDemo = source === "book-demo";
   const isContact = source === "contact";
   const required = isBookDemo
-    ? ["fullName", "workEmail", "companyName", "solutionInterest", "selectedDate", "selectedTime"]
+    ? ["fullName", "workEmail", "companyName", "country", "city", "solutionInterest", "selectedDate", "selectedTime", "timezone", "selectedSlotUtc"]
     : isContact
       ? ["fullName", "firstName", "lastName", "workEmail", "companyName", "role", "topic", "message"]
       : ["name", "email", "project_type", "stage", "problem"];
@@ -146,6 +152,36 @@ export function createSubmissionDocument(data, request) {
     fields[key] = cleanString(data[key] ?? "", key === "problem" || key === "notes" || key === "message" ? 3000 : 300);
   }
 
+  let bookDemoMeetingAt = null;
+  if (isBookDemo) {
+    const location = resolveLocation({
+      country: fields.country,
+      city: fields.city,
+      countryCode: data.countryCode,
+    });
+    if (!location.ok) {
+      return {
+        error: {
+          status: 422,
+          message: location.message,
+        },
+      };
+    }
+
+    fields.country = location.country;
+    fields.countryCode = location.countryCode;
+    fields.city = location.city;
+
+    const resolvedSlot = resolveBookDemoSlot({
+      timeZone: fields.timezone,
+      selectedSlotUtc: fields.selectedSlotUtc,
+    });
+    if (resolvedSlot.error) return { error: resolvedSlot.error };
+
+    Object.assign(fields, describeSlot(resolvedSlot.slot, fields.timezone));
+    bookDemoMeetingAt = resolvedSlot.slot.start;
+  }
+
   const now = new Date();
   const headers = request.headers;
 
@@ -183,9 +219,8 @@ export function createSubmissionDocument(data, request) {
   };
 
   if (isBookDemo) {
-    const meetingAt = getBookDemoMeetingAt({ fields });
-    document.meetingAt = meetingAt;
-    document.meetingAtISO = meetingAt?.toISOString() || "";
+    document.meetingAt = bookDemoMeetingAt;
+    document.meetingAtISO = bookDemoMeetingAt?.toISOString() || "";
   }
 
   return {
