@@ -9,6 +9,7 @@ import {
   wallClockFromUtc,
   zonedDateTimeToUtc,
 } from "./meeting-slots.js";
+import { formatPakistanTime } from "./pakistan-time.js";
 import { getBookDemoMeetingAt } from "./server/meeting-time.js";
 
 const now = new Date("2026-10-29T15:00:00.000Z");
@@ -92,6 +93,18 @@ test("rejects a slot that is not on the visitor's grid", () => {
     now,
   });
   assert.equal(rejected.error.status, 422);
+});
+
+test("formats Pakistan time from the UTC instant, including a date that crosses midnight", () => {
+  assert.equal(
+    formatPakistanTime("2026-10-30T19:30:00.000Z"),
+    "Saturday, October 31, 2026 at 12:30 AM PKT",
+  );
+  assert.equal(
+    formatPakistanTime("2026-10-30T09:00:00.000Z"),
+    "Friday, October 30, 2026 at 2:00 PM PKT",
+  );
+  assert.equal(formatPakistanTime("not-a-date"), "");
 });
 
 test("timezone label includes the IANA id", () => {

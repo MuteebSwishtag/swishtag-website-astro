@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { buildOfferedSlots, describeSlot, isValidTimeZone } from "../meeting-slots.js";
+import { formatPakistanTime } from "../pakistan-time.js";
 import { createSubmissionDocument } from "./form-submissions.js";
 import { listCountries, resolveLocation, searchCities, citiesForCountry } from "./locations.js";
 import { busyRangesFromSubmissions, reserveBookDemoSubmission } from "./meeting-availability.js";
@@ -130,6 +131,7 @@ test("book-demo submission stores country, city, and the UTC instant in the city
     countryCode: "US",
     city: "Austin, Texas",
     solutionInterest: "Company Store",
+    meetingTimePkt: "Client spoof PKT",
     ...described,
   }, request());
 
@@ -140,6 +142,8 @@ test("book-demo submission stores country, city, and the UTC instant in the city
   assert.equal(result.document.fields.selectedSlotUtc, slot.start.toISOString());
   assert.equal(result.document.meetingAt.toISOString(), slot.start.toISOString());
   assert.equal(result.document.fields.timezone, "America/Chicago");
+  assert.equal(result.document.fields.meetingTimePkt, formatPakistanTime(slot.start));
+  assert.notEqual(result.document.fields.meetingTimePkt, "Client spoof PKT");
 });
 
 test("book-demo submission rejects a timezone that does not match the city", () => {
