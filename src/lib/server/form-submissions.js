@@ -1,5 +1,12 @@
 import { getSubmissionCollection as getDatabaseSubmissionCollection } from "./db.js";
-import { getBookDemoMeetingAt } from "./meeting-time.js";
+import {
+  formatMeetingDateWithZone,
+  getBookDemoMeetingAt,
+  getBusinessTimeZone,
+  isValidTimeZone,
+  isWithinBookingHours,
+  parseSelectedSlotUtc,
+} from "./meeting-time.js";
 
 const COLLECTION_NAME = process.env.FORM_SUBMISSIONS_COLLECTION || "form_submissions";
 
@@ -16,6 +23,9 @@ const bookDemoLabels = {
   selectedDateISO: "Selected date ISO",
   selectedTime: "Selected time",
   timezone: "Timezone",
+  selectedSlotUTC: "Selected time (UTC ISO)",
+  detectedTimezone: "Detected browser timezone",
+  businessTimeZone: "Business timezone",
   notes: "Notes",
 };
 
@@ -146,6 +156,34 @@ export function createSubmissionDocument(data, request) {
     fields[key] = cleanString(data[key] ?? "", key === "problem" || key === "notes" || key === "message" ? 3000 : 300);
   }
 
+  if (isBookDemo) {
+    if (!isValidTimeZone(fields.timezone)) {
+      return {
+        error: {
+          status: 422,
+          message: "Please choose a valid time zone before booking your demo.",
+        },
+      };
+    }
+
+    // Only keep a well-formed ISO UTC instant; older clients fall back to date + time + timezone.
+    const selectedSlotUtc = parseSelectedSlotUtc(fields.selectedSlotUTC);
+    fields.selectedSlotUTC = selectedSlotUtc ? selectedSlotUtc.toISOString() : "";
+    if (!isValidTimeZone(fields.detectedTimezone)) fields.detectedTimezone = "";
+    // The business zone is server configuration, never taken from the request.
+    fields.businessTimeZone = getBusinessTimeZone();
+
+    const requestedAt = getBookDemoMeetingAt({ fields });
+    if (!requestedAt || !isWithinBookingHours(requestedAt)) {
+      return {
+        error: {
+          status: 422,
+          message: "That time is outside our demo hours (Mon-Fri, 9:30 AM-5:30 PM New York time). Please refresh the page and pick another slot.",
+        },
+      };
+    }
+  }
+
   const now = new Date();
   const headers = request.headers;
 
@@ -186,6 +224,9 @@ export function createSubmissionDocument(data, request) {
     const meetingAt = getBookDemoMeetingAt({ fields });
     document.meetingAt = meetingAt;
     document.meetingAtISO = meetingAt?.toISOString() || "";
+    document.meetingTimeZone = fields.timezone;
+    document.meetingAtCustomerTime = meetingAt ? formatMeetingDateWithZone(meetingAt, fields.timezone) : "";
+    document.meetingAtBusinessTime = meetingAt ? formatMeetingDateWithZone(meetingAt, fields.businessTimeZone) : "";
   }
 
   return {
