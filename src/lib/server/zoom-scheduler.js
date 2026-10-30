@@ -1,5 +1,6 @@
+import { buildZoomAgenda, demoServiceName, demoTitle } from "../demo-title.js";
 import { BOOK_DEMO_DURATION_MINUTES } from "../meeting-slots.js";
-import { getBookDemoMeetingAt } from "./meeting-time.js";
+import { formatMeetingDate, getBookDemoMeetingAt } from "./meeting-time.js";
 
 const ZOOM_API_BASE_URL = "https://api.zoom.us/v2";
 const ZOOM_TOKEN_URL = "https://zoom.us/oauth/token";
@@ -80,11 +81,8 @@ function getZoomConfig() {
     contactName: envValue("ZOOM_CONTACT_NAME", envValue("MAIL_FROM_NAME", "Swishtag")),
     contactEmail: envValue("ZOOM_CONTACT_EMAIL", envValue("MAIL_FROM_ADDRESS", "")),
     inviteeEmails: splitEmails(envValue("ZOOM_INVITEE_EMAILS", envValue("MAIL_TO", ""))),
-    topicTemplate: envValue("ZOOM_MEETING_TOPIC_TEMPLATE", "Swishtag demo with ${companyName}"),
-    agendaTemplate: envValue(
-      "ZOOM_MEETING_AGENDA_TEMPLATE",
-      "Demo requested by ${displayName} from ${companyName}. Focus: ${fields.solutionInterest}.",
-    ),
+    topicTemplate: envValue("ZOOM_MEETING_TOPIC_TEMPLATE", "General Enquiry Demo"),
+    agendaTemplate: envValue("ZOOM_MEETING_AGENDA_TEMPLATE", ""),
   };
 }
 
@@ -220,7 +218,7 @@ function createZoomPayload(config, input) {
   };
 
   return {
-    topic: renderTemplate(input.topic || config.topicTemplate, context).slice(0, 200) || "Swishtag demo",
+    topic: renderTemplate(input.topic || config.topicTemplate, context).slice(0, 200) || "General Enquiry Demo",
     type: 2,
     start_time: formatZoomStartTime(startTime, timeZone),
     duration: Number(input.durationMinutes || config.durationMinutes),
@@ -357,18 +355,43 @@ export async function createScheduledZoomMeeting(input) {
   };
 }
 
-export async function createZoomMeetingForSubmission(submission, meetingAt) {
+function visitorMeetingTime(startTime, timeZone) {
+  if (!startTime) return "";
+  return formatMeetingDate(startTime, timeZone).replace(/[\u202F\u00A0]/g, " ");
+}
+
+export function bookDemoZoomDetails(submission, meetingAt) {
   const fields = submission?.fields || {};
   const startTime = normalizeDate(meetingAt || submission?.meetingAt || submission?.meetingAtISO)
     || getBookDemoMeetingAt(submission);
+  const timeZone = clean(fields.timezone || "UTC");
+  const serviceName = demoServiceName(fields.solutionInterest, fields.service);
+
+  return {
+    topic: (fields.demoTitle || demoTitle(fields.solutionInterest, fields.service)).slice(0, 200),
+    agenda: buildZoomAgenda({
+      serviceName,
+      notes: fields.notes,
+      meetingTime: visitorMeetingTime(startTime, timeZone),
+    }),
+    timeZone,
+    startTime,
+  };
+}
+
+export async function createZoomMeetingForSubmission(submission, meetingAt) {
+  const fields = submission?.fields || {};
+  const details = bookDemoZoomDetails(submission, meetingAt);
 
   return createScheduledZoomMeeting({
+    topic: details.topic,
+    agenda: details.agenda,
     // All bookings from /book-demo/ are 15 minutes, regardless of the general Zoom default.
     durationMinutes: submission?.source === "book-demo" || submission?.formType === "book-demo"
       ? BOOK_DEMO_DURATION_MINUTES
       : undefined,
-    startTime,
-    timeZone: fields.timezone || "UTC",
+    startTime: details.startTime,
+    timeZone: details.timeZone,
     customerName: submission?.displayName || fields.fullName || "",
     customerEmail: submission?.email || fields.workEmail || "",
     companyName: submission?.companyName || fields.companyName || "",

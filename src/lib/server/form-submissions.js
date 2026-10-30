@@ -1,3 +1,4 @@
+import { demoTitle } from "../demo-title.js";
 import { describeSlot, resolveBookDemoSlot } from "../meeting-slots.js";
 import { formatPakistanTime } from "../pakistan-time.js";
 import { getSubmissionCollection as getDatabaseSubmissionCollection } from "./db.js";
@@ -191,6 +192,7 @@ export function createSubmissionDocument(data, request) {
     if (resolvedSlot.error) return { error: resolvedSlot.error };
 
     Object.assign(fields, describeSlot(resolvedSlot.slot, fields.timezone));
+    fields.demoTitle = demoTitle(fields.solutionInterest, fields.service);
     fields.meetingTimePkt = formatPakistanTime(resolvedSlot.slot.start);
     bookDemoMeetingAt = resolvedSlot.slot.start;
   }

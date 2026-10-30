@@ -62,17 +62,22 @@ export function getBookDemoMeetingAt(submission) {
 }
 
 export function formatMeetingDate(meetingAt, timeZone) {
+  const zone = clean(timeZone) || "UTC";
   try {
-    return new Intl.DateTimeFormat("en-US", {
-      timeZone: clean(timeZone) || "UTC",
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: zone,
       weekday: "long",
       year: "numeric",
       month: "long",
       day: "numeric",
       hour: "numeric",
       minute: "2-digit",
-      timeZoneName: "short",
-    }).format(meetingAt);
+      hourCycle: "h12",
+    }).formatToParts(meetingAt);
+    const part = type => parts.find(item => item.type === type)?.value || "";
+    const dayPeriod = part("dayPeriod").replace(/[\u202F\u00A0.]/g, "").toUpperCase();
+    return `${part("weekday")}, ${part("month")} ${part("day")}, ${part("year")} at ${part("hour")}:${part("minute")} ${dayPeriod} (${zone})`
+      .replace(/[\u202F\u00A0]/g, " ");
   } catch {
     return meetingAt.toISOString();
   }

@@ -1,8 +1,9 @@
 export const BOOK_DEMO_DURATION_MINUTES = 15;
 export const BOOK_DEMO_BUSINESS_DAY_COUNT = 10;
 export const BOOK_DEMO_LOOKAHEAD_DAYS = 19;
-export const BOOK_DEMO_SLOT_START_MINUTES = 9 * 60;
-export const BOOK_DEMO_SLOT_END_MINUTES = 15 * 60;
+export const BOOK_DEMO_SLOT_TIME_ZONE = "America/New_York";
+export const BOOK_DEMO_SLOT_START_MINUTES = 10 * 60;
+export const BOOK_DEMO_SLOT_LAST_START_MINUTES = 17 * 60 + 45;
 export const BOOK_DEMO_SLOT_STEP_MINUTES = 15;
 
 const WEEKDAYS = {
@@ -140,9 +141,8 @@ function matchesWallClock(start, parts, hour, minute, timeZone) {
     && wall.minute === minute;
 }
 
-export function buildOfferedSlots(timeZone, now = new Date()) {
-  if (!isValidTimeZone(timeZone)) return [];
-
+function newYorkSlotInstants(now) {
+  const timeZone = BOOK_DEMO_SLOT_TIME_ZONE;
   const today = civilDateFromUtc(now, timeZone);
   const slots = [];
   let businessDays = 0;
@@ -153,10 +153,9 @@ export function buildOfferedSlots(timeZone, now = new Date()) {
     if (weekday === 0 || weekday === 6) continue;
     businessDays += 1;
 
-    const dateISO = formatDateISO(date);
     for (
       let minutes = BOOK_DEMO_SLOT_START_MINUTES;
-      minutes <= BOOK_DEMO_SLOT_END_MINUTES;
+      minutes <= BOOK_DEMO_SLOT_LAST_START_MINUTES;
       minutes += BOOK_DEMO_SLOT_STEP_MINUTES
     ) {
       const hour = Math.floor(minutes / 60);
@@ -165,8 +164,6 @@ export function buildOfferedSlots(timeZone, now = new Date()) {
       if (!start || !matchesWallClock(start, date, hour, minute, timeZone)) continue;
 
       slots.push({
-        dateISO,
-        time24: `${pad(hour)}:${pad(minute)}`,
         start,
         end: new Date(start.getTime() + BOOK_DEMO_DURATION_MINUTES * 60 * 1000),
       });
@@ -174,6 +171,19 @@ export function buildOfferedSlots(timeZone, now = new Date()) {
   }
 
   return slots;
+}
+
+export function buildOfferedSlots(timeZone, now = new Date()) {
+  if (!isValidTimeZone(timeZone)) return [];
+
+  return newYorkSlotInstants(now).map(slot => {
+    const wall = wallClockFromUtc(slot.start, timeZone);
+    return {
+      ...slot,
+      dateISO: formatDateISO(wall),
+      time24: `${pad(wall.hour)}:${pad(wall.minute)}`,
+    };
+  });
 }
 
 export function groupSlotsByDate(slots) {

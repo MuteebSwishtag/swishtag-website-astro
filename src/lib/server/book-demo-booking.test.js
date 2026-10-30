@@ -131,7 +131,9 @@ test("book-demo submission stores country, city, and the UTC instant in the city
     countryCode: "US",
     city: "Austin, Texas",
     solutionInterest: "Company Store",
+    service: "company-store-launch",
     meetingTimePkt: "Client spoof PKT",
+    demoTitle: "Swishtag demo",
     ...described,
   }, request());
 
@@ -144,6 +146,7 @@ test("book-demo submission stores country, city, and the UTC instant in the city
   assert.equal(result.document.fields.timezone, "America/Chicago");
   assert.equal(result.document.fields.meetingTimePkt, formatPakistanTime(slot.start));
   assert.notEqual(result.document.fields.meetingTimePkt, "Client spoof PKT");
+  assert.equal(result.document.fields.demoTitle, "Shopify Company Store Demo");
 });
 
 test("book-demo submission rejects a timezone that does not match the city", () => {

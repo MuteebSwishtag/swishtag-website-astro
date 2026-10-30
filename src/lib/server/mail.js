@@ -2,6 +2,7 @@ import "dotenv/config";
 import net from "node:net";
 import tls from "node:tls";
 import { randomBytes } from "node:crypto";
+import { demoTitle } from "../demo-title.js";
 import { formatMeetingDate } from "./meeting-time.js";
 
 const fieldLabels = {
@@ -324,9 +325,15 @@ function getMeetingDetailFields(
   ];
 }
 
-function createMeetingScheduledContent(submission, meetingAt, audience = "customer") {
+function meetingTitle(submission) {
+  const fields = submission?.fields || {};
+  return fields.demoTitle || demoTitle(fields.solutionInterest, fields.service);
+}
+
+export function createMeetingScheduledContent(submission, meetingAt, audience = "customer") {
   const fields = submission.fields || {};
   const meetingTime = formatSafeMeetingDate(meetingAt, fields.timezone);
+  const title = meetingTitle(submission);
   const leadName = submission.displayName || fields.fullName || "there";
   const companyName = submission.companyName || fields.companyName || "your team";
   const isInternal = audience === "internal";
@@ -337,28 +344,29 @@ function createMeetingScheduledContent(submission, meetingAt, audience = "custom
   });
 
   const subject = isInternal
-    ? `Demo scheduled: ${submission.displayName || companyName} - ${meetingTime}`
-    : "Your Swishtag demo is scheduled";
+    ? `${title}: ${submission.displayName || companyName} - ${meetingTime}`
+    : `Your ${title} is scheduled`;
   const summary = isInternal
-    ? `${leadName} from ${companyName} booked a demo for ${meetingTime}.`
-    : `Thanks ${leadName}. Your Swishtag demo is scheduled for ${meetingTime}.`;
+    ? `${leadName} from ${companyName} booked ${title} for ${meetingTime}.`
+    : `Thanks ${leadName}. Your ${title} is scheduled for ${meetingTime}.`;
 
   return {
     subject,
-    heading: isInternal ? "Book Demo Meeting Scheduled" : "Your Demo Is Scheduled",
+    heading: title,
     summary,
     textBody: renderTextEmail(detailFields),
     htmlBody: renderHtmlEmail(
-      isInternal ? "Book Demo Meeting Scheduled" : "Your Demo Is Scheduled",
+      title,
       summary,
       detailFields,
     ),
   };
 }
 
-function createMeetingReminderContent(submission, meetingAt, audience = "internal") {
+export function createMeetingReminderContent(submission, meetingAt, audience = "internal") {
   const fields = submission.fields || {};
   const meetingTime = formatSafeMeetingDate(meetingAt, fields.timezone);
+  const title = meetingTitle(submission);
   const leadName = submission.displayName || submission.companyName || "a lead";
   const isInternal = audience === "internal";
   const reminderFields = getMeetingDetailFields(submission, meetingAt, {
@@ -368,13 +376,13 @@ function createMeetingReminderContent(submission, meetingAt, audience = "interna
   });
 
   const subject = isInternal
-    ? `Reminder: demo with ${leadName} in the next 24 hours`
-    : "Reminder: your Swishtag demo is coming up";
+    ? `Reminder: ${title} with ${leadName} in the next 24 hours`
+    : `Reminder: your ${title} is coming up`;
   const summary = isInternal
-    ? `${leadName} has a Book Demo meeting scheduled for ${meetingTime}.`
-    : `Your Swishtag demo is scheduled for ${meetingTime}.`;
+    ? `${leadName} has ${title} scheduled for ${meetingTime}.`
+    : `Your ${title} is scheduled for ${meetingTime}.`;
 
-  const heading = isInternal ? "Book Demo Meeting Reminder" : "Your Demo Reminder";
+  const heading = title;
 
   return {
     subject,
@@ -490,7 +498,7 @@ export async function sendMeetingScheduledEmail(submission, meetingAt) {
 
   return {
     recipients,
-    subject: "Your Swishtag demo is scheduled",
+    subject: meetingTitle(submission),
   };
 }
 

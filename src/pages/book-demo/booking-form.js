@@ -1,3 +1,4 @@
+import { demoTitle } from "../../lib/demo-title.js";
 import {
   buildOfferedSlots,
   groupSlotsByDate,
@@ -304,7 +305,6 @@ export function initBookDemoForm() {
     cityInput.disabled = false;
     cityInput.setAttribute("aria-disabled", "false");
     cityInput.placeholder = "Type to search cities";
-    primeCityPlaceholder();
   }
 
   function clearSelectedSlot() {
@@ -333,14 +333,6 @@ export function initBookDemoForm() {
     useTimeZone(browserTimeZone);
   }
 
-  async function primeCityPlaceholder() {
-    const result = await fetchCities("");
-    if (!result) return;
-    cityInput.placeholder = result.truncated
-      ? `Type to search ${result.total.toLocaleString()} cities`
-      : "Select your city";
-  }
-
   async function fetchCities(query) {
     const requestId = ++cityRequest;
     const params = new URLSearchParams({ country: state.countryCode, q: query });
@@ -363,9 +355,6 @@ export function initBookDemoForm() {
     if (!state.countryCode || cityInput.disabled) return;
     const result = await fetchCities(cityInput.value.trim());
     if (!result) return;
-    cityInput.placeholder = result.truncated && !cityInput.value.trim()
-      ? `Type to search ${result.total.toLocaleString()} cities`
-      : cityInput.placeholder;
     const items = result.cities.map(city => ({ label: city.label, timezone: city.timezone }));
     const emptyLabel = result.truncated && !cityInput.value.trim()
       ? "Type to search cities"
@@ -707,7 +696,7 @@ export function initBookDemoForm() {
       document.getElementById("successDate").textContent = state.selectedDate;
       document.getElementById("successTime").textContent = `${state.selectedTime} - ${state.timezoneLabel}`;
       document.getElementById("successCompany").textContent = company;
-      document.getElementById("successFocus").textContent = focus;
+      document.getElementById("successFocus").textContent = demoTitle(focus, selectedInterest.dataset.service);
       flow.style.display = "none";
       success.classList.add("show");
       success.scrollIntoView({ behavior: "smooth", block: "start" });
