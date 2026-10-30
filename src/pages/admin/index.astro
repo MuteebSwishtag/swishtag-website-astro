@@ -847,9 +847,18 @@ const title = "Admin | Swishtag";
           return formatPakistanTime(submission.fields?.selectedSlotUtc || submission.meetingAt || "");
         }
 
+        function submissionFullName(submission) {
+          const fields = submission.fields || {};
+          const stored = String(fields.fullName || fields.name || "").trim();
+          if (stored) return stored;
+          const combined = [fields.firstName, fields.lastName].filter(Boolean).join(" ").trim();
+          return combined || submission.displayName || "";
+        }
+
         function getColumnValue(submission, column) {
           if (column.type === "date") return formatDate(submission.createdAt);
           if (column.type === "pakistan") return pakistanMeetingTime(submission);
+          if (column.key === "fullName") return submissionFullName(submission);
           if (column.type === "field") return submission.fields?.[column.key] || "";
           return submission[column.key] || "";
         }

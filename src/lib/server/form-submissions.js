@@ -7,6 +7,8 @@ import { resolveLocation } from "./locations.js";
 const COLLECTION_NAME = process.env.FORM_SUBMISSIONS_COLLECTION || "form_submissions";
 
 const bookDemoLabels = {
+  firstName: "First name",
+  lastName: "Last name",
   fullName: "Full name",
   workEmail: "Work email",
   companyName: "Company",
@@ -107,17 +109,22 @@ export function createSubmissionDocument(data, request) {
   const isBookDemo = source === "book-demo";
   const isContact = source === "contact";
   const required = isBookDemo
-    ? ["fullName", "workEmail", "companyName", "country", "city", "solutionInterest", "selectedDate", "selectedTime", "timezone", "selectedSlotUtc"]
+    ? ["firstName", "lastName", "workEmail", "companyName", "country", "city", "solutionInterest", "selectedDate", "selectedTime", "timezone", "selectedSlotUtc"]
     : isContact
       ? ["fullName", "firstName", "lastName", "workEmail", "companyName", "role", "topic", "message"]
       : ["name", "email", "project_type", "stage", "problem"];
   const missing = missingRequiredFields(data, required);
 
   if (missing.length) {
+    const message = isBookDemo && missing.includes("firstName")
+      ? "Please enter your first name."
+      : isBookDemo && missing.includes("lastName")
+        ? "Please enter your last name."
+        : "Please complete all required fields before submitting.";
     return {
       error: {
         status: 422,
-        message: "Please complete all required fields before submitting.",
+        message,
       },
     };
   }
@@ -192,6 +199,9 @@ export function createSubmissionDocument(data, request) {
     if (resolvedSlot.error) return { error: resolvedSlot.error };
 
     Object.assign(fields, describeSlot(resolvedSlot.slot, fields.timezone));
+    const combinedName = `${fields.firstName} ${fields.lastName}`.trim();
+    fields.fullName = combinedName;
+    fields.name = combinedName;
     fields.demoTitle = demoTitle(fields.solutionInterest, fields.service);
     fields.meetingTimePkt = formatPakistanTime(resolvedSlot.slot.start);
     bookDemoMeetingAt = resolvedSlot.slot.start;
@@ -205,7 +215,14 @@ export function createSubmissionDocument(data, request) {
     formType: isBookDemo ? formTypes.bookDemo : isContact ? formTypes.contact : formTypes.discussIdea,
     title: isBookDemo ? "Book Demo" : isContact ? "Contact" : "Discuss Idea",
     email,
-    displayName: cleanString(isBookDemo || isContact ? data.fullName : data.name, 160),
+    displayName: cleanString(
+      isBookDemo
+        ? `${cleanString(data.firstName, 80)} ${cleanString(data.lastName, 80)}`
+        : isContact
+          ? (data.fullName || data.name || `${data.firstName || ""} ${data.lastName || ""}`)
+          : (data.name || data.fullName),
+      160,
+    ),
     companyName: cleanString(data.companyName ?? "", 160),
     fields,
     page: cleanString(data.page ?? headers.get("referer") ?? "", 500),

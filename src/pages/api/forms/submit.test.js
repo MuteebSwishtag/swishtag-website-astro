@@ -69,7 +69,8 @@ function bookDemoPayload() {
   const slot = buildOfferedSlots("America/Chicago")[0];
   return {
     form_source: "book-demo",
-    fullName: "Ada Lovelace",
+    firstName: "Ada",
+    lastName: "Lovelace",
     workEmail: "ada@example.com",
     companyName: "Analytical Engines",
     country: "United States",

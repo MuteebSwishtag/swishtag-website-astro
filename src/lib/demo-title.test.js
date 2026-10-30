@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { buildZoomAgenda, demoTitle } from "./demo-title.js";
-import { bookDemoZoomDetails } from "./server/zoom-scheduler.js";
+import { bookDemoZoomDetails, zoomRegistrantNames } from "./server/zoom-scheduler.js";
 import { createMeetingReminderContent, createMeetingScheduledContent } from "./server/mail.js";
 
 test("names the demo from the selected service", () => {
@@ -28,6 +28,8 @@ test("builds a Zoom agenda in the visitor timezone and keeps it within 2000 char
   assert.match(details.agenda, /Notes: Need a walkthrough of the current order flow\./);
   assert.match(details.agenda, /Meeting time: Friday, October 30, 2026 at 7:00 PM \(Asia\/Karachi\)/);
   assert.equal(details.agenda.includes("PKT"), false);
+  assert.equal(details.agenda.includes("company-store-launch"), false);
+  assert.equal(details.agenda.includes("Intent:"), false);
   assert.equal(details.agenda.includes("Swishtag demo"), false);
   assert.equal(details.agenda.length <= 2000, true);
 
@@ -48,8 +50,12 @@ test("meeting emails use the service title and omit Pakistan time", () => {
     companyName: "Analytical Engines",
     email: "ada@example.com",
     fields: {
+      firstName: "Ada",
+      lastName: "Lovelace",
+      fullName: "Ada Lovelace",
       solutionInterest: "Company Store",
       service: "company-store-launch",
+      intent: "launch",
       timezone: "America/Phoenix",
       notes: "Bring the product list.",
       meetingTimePkt: "Friday, October 30, 2026 at 7:00 PM PKT",
@@ -67,5 +73,34 @@ test("meeting emails use the service title and omit Pakistan time", () => {
     assert.match(content.textBody, /7:00 AM \(America\/Phoenix\)/);
   }
   assert.equal(customer.subject, "Your Shopify Company Store Demo is scheduled");
+  assert.equal(customer.textBody.includes("company-store-launch"), false);
+  assert.equal(customer.textBody.includes("Intent:"), false);
+  assert.equal(reminder.textBody.includes("company-store-launch"), false);
+  assert.match(internal.textBody, /Service: company-store-launch/);
+  assert.match(internal.textBody, /Intent: launch/);
   assert.match(reminder.subject, /Shopify Company Store Demo/);
+});
+
+test("Zoom registrant names come from the submitted first and last name", () => {
+  assert.deepEqual(zoomRegistrantNames({
+    fields: { firstName: "Ada", lastName: "Lovelace" },
+    customerName: "Someone Else",
+  }), { firstName: "Ada", lastName: "Lovelace" });
+  assert.equal(zoomRegistrantNames({ customerName: "Ada Lovelace", displayName: "Ada Lovelace" }), null);
+
+  const details = bookDemoZoomDetails({
+    fields: {
+      firstName: "Ada",
+      lastName: "Lovelace",
+      solutionInterest: "Company Store",
+      service: "company-store-launch",
+      intent: "launch",
+      notes: "Please review the catalog.",
+      timezone: "America/Phoenix",
+    },
+  }, new Date("2026-10-30T14:00:00.000Z"));
+  assert.equal(details.topic, "Shopify Company Store Demo");
+  assert.match(details.agenda, /Service: Shopify Company Store/);
+  assert.equal(details.agenda.includes("company-store-launch"), false);
+  assert.equal(details.agenda.includes("Intent:"), false);
 });

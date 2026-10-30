@@ -291,8 +291,12 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
                   </div>
                   <div class="grid-2">
                     <div class="field">
-                      <label for="fullName">Full name</label>
-                      <input id="fullName"  placeholder="Enter your full name"  name="fullName" type="text" autocomplete="name" required>
+                      <label for="firstName">First name</label>
+                      <input id="firstName" name="firstName" type="text" autocomplete="given-name" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="field">
+                      <label for="lastName">Last name</label>
+                      <input id="lastName" name="lastName" type="text" autocomplete="family-name" placeholder="Enter your last name" required>
                     </div>
                     <div class="field">
                       <label for="workEmail">Work email</label>

@@ -7,6 +7,8 @@ import { formatMeetingDate } from "./meeting-time.js";
 
 const fieldLabels = {
   "book-demo": {
+    firstName: "First name",
+    lastName: "Last name",
     fullName: "Full name",
     workEmail: "Work email",
     companyName: "Company",
@@ -298,7 +300,7 @@ function createEmailContent(submission) {
 function getMeetingDetailFields(
   submission,
   meetingAt,
-  { includeCustomer = true, includeHostStartUrl = false, includePage = true } = {},
+  { includeCustomer = true, includeHostStartUrl = false, includePage = true, includeInternal = true } = {},
 ) {
   const fields = submission.fields || {};
   const meetingTime = formatSafeMeetingDate(meetingAt, fields.timezone);
@@ -307,7 +309,7 @@ function getMeetingDetailFields(
   return [
     ["Meeting time", meetingTime],
     ...(includeCustomer ? [
-      ["Name", submission.displayName || fields.fullName || ""],
+      ["Name", submission.displayName || fields.fullName || fields.name || ""],
       ["Work email", submission.email || fields.workEmail || ""],
       ["Company", submission.companyName || fields.companyName || ""],
     ] : []),
@@ -317,9 +319,11 @@ function getMeetingDetailFields(
     ...(includeHostStartUrl && zoomMeeting.startUrl ? [["Host start link", zoomMeeting.startUrl]] : []),
     ...(zoomMeeting.id ? [["Meeting ID", zoomMeeting.id]] : []),
     ...(zoomMeeting.password ? [["Passcode", zoomMeeting.password]] : []),
-    ["Solution interest", fields.solutionInterest || ""],
-    ["Service", fields.service || ""],
-    ["Intent", fields.intent || ""],
+    ...(includeInternal ? [
+      ["Solution interest", fields.solutionInterest || ""],
+      ["Service", fields.service || ""],
+      ["Intent", fields.intent || ""],
+    ] : []),
     ["Notes", fields.notes || ""],
     ...(includePage ? [["Page", submission.page || ""]] : []),
   ];
@@ -334,13 +338,14 @@ export function createMeetingScheduledContent(submission, meetingAt, audience = 
   const fields = submission.fields || {};
   const meetingTime = formatSafeMeetingDate(meetingAt, fields.timezone);
   const title = meetingTitle(submission);
-  const leadName = submission.displayName || fields.fullName || "there";
+  const leadName = submission.displayName || fields.fullName || fields.name || fields.firstName || "there";
   const companyName = submission.companyName || fields.companyName || "your team";
   const isInternal = audience === "internal";
   const detailFields = getMeetingDetailFields(submission, meetingAt, {
     includeCustomer: isInternal,
     includeHostStartUrl: isInternal,
     includePage: isInternal,
+    includeInternal: isInternal,
   });
 
   const subject = isInternal
@@ -373,6 +378,7 @@ export function createMeetingReminderContent(submission, meetingAt, audience = "
     includeCustomer: isInternal,
     includeHostStartUrl: isInternal,
     includePage: isInternal,
+    includeInternal: isInternal,
   });
 
   const subject = isInternal

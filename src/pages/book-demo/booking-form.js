@@ -153,7 +153,8 @@ export function initBookDemoForm() {
   function validateStep(step) {
     if (step === 1) {
       const required = [
-        ["fullName", "Please enter your full name before continuing."],
+        ["firstName", "Please enter your first name before continuing."],
+        ["lastName", "Please enter your last name before continuing."],
         ["workEmail", "Please enter your work email before continuing."],
         ["companyName", "Please enter your company before continuing."],
       ];

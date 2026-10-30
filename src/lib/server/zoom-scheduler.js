@@ -242,14 +242,12 @@ function createZoomPayload(config, input) {
   };
 }
 
-function splitName(value) {
-  const parts = clean(value).split(/\s+/).filter(Boolean);
-  if (!parts.length) return { firstName: "Guest", lastName: "Customer" };
-  if (parts.length === 1) return { firstName: parts[0], lastName: "Customer" };
-  return {
-    firstName: parts.slice(0, -1).join(" "),
-    lastName: parts.at(-1),
-  };
+export function zoomRegistrantNames(input = {}) {
+  const fields = input.fields || {};
+  const firstName = clean(input.firstName || fields.firstName);
+  const lastName = clean(input.lastName || fields.lastName);
+  if (!firstName || !lastName) return null;
+  return { firstName, lastName };
 }
 
 function toPortableRegistrant(registrant) {
@@ -276,7 +274,11 @@ async function addMeetingRegistrant(accessToken, meetingId, input) {
   const email = clean(input.customerEmail);
   if (!email) return null;
 
-  const { firstName, lastName } = splitName(input.customerName || input.displayName);
+  const names = zoomRegistrantNames(input);
+  if (!names) {
+    throw new Error("A first name and last name are required for the Zoom registrant.");
+  }
+  const { firstName, lastName } = names;
   const response = await fetch(`${ZOOM_API_BASE_URL}/meetings/${encodeURIComponent(meetingId)}/registrants`, {
     method: "POST",
     headers: {
@@ -392,7 +394,9 @@ export async function createZoomMeetingForSubmission(submission, meetingAt) {
       : undefined,
     startTime: details.startTime,
     timeZone: details.timeZone,
-    customerName: submission?.displayName || fields.fullName || "",
+    firstName: fields.firstName || "",
+    lastName: fields.lastName || "",
+    customerName: submission?.displayName || fields.fullName || fields.name || "",
     customerEmail: submission?.email || fields.workEmail || "",
     companyName: submission?.companyName || fields.companyName || "",
     displayName: submission?.displayName || fields.fullName || "",

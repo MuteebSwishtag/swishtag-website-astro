@@ -124,7 +124,9 @@ test("book-demo submission stores country, city, and the UTC instant in the city
   const described = describeSlot(slot, "America/Chicago");
   const result = createSubmissionDocument({
     form_source: "book-demo",
-    fullName: "Ada Lovelace",
+    firstName: "Ada",
+    lastName: "Lovelace",
+    fullName: "Spoof Name",
     workEmail: "ada@example.com",
     companyName: "Analytical Engines",
     country: "United States",
@@ -147,6 +149,56 @@ test("book-demo submission stores country, city, and the UTC instant in the city
   assert.equal(result.document.fields.meetingTimePkt, formatPakistanTime(slot.start));
   assert.notEqual(result.document.fields.meetingTimePkt, "Client spoof PKT");
   assert.equal(result.document.fields.demoTitle, "Shopify Company Store Demo");
+  assert.equal(result.document.fields.firstName, "Ada");
+  assert.equal(result.document.fields.lastName, "Lovelace");
+  assert.equal(result.document.fields.fullName, "Ada Lovelace");
+  assert.equal(result.document.fields.name, "Ada Lovelace");
+  assert.equal(result.document.displayName, "Ada Lovelace");
+});
+
+test("book-demo requires a first and last name, while other forms can still send name", () => {
+  const missing = createSubmissionDocument({
+    form_source: "book-demo",
+    fullName: "Ada Lovelace",
+    workEmail: "ada@example.com",
+    companyName: "Analytical Engines",
+    country: "United States",
+    city: "Austin, Texas",
+    solutionInterest: "Company Store",
+    selectedDate: "Friday",
+    selectedTime: "10:00 AM",
+    timezone: "America/Chicago",
+    selectedSlotUtc: "2026-10-30T14:00:00.000Z",
+  }, request());
+  assert.equal(missing.error.status, 422);
+  assert.match(missing.error.message, /first name/i);
+
+  const discuss = createSubmissionDocument({
+    form_source: "custom-software",
+    name: "Grace Hopper",
+    email: "grace@example.com",
+    project_type: "Business automation",
+    stage: "Idea only",
+    problem: "The spreadsheet is the system.",
+  }, request());
+  assert.equal(discuss.error, undefined);
+  assert.equal(discuss.document.displayName, "Grace Hopper");
+  assert.equal(discuss.document.fields.name, "Grace Hopper");
+
+  const contact = createSubmissionDocument({
+    form_source: "contact",
+    name: "Grace Hopper",
+    fullName: "Grace Hopper",
+    firstName: "Grace",
+    lastName: "Hopper",
+    workEmail: "grace@example.com",
+    companyName: "Analytical Engines",
+    role: "Promotional Products Distributor",
+    topic: "General Inquiry",
+    message: "Hello from the contact form.",
+  }, request());
+  assert.equal(contact.error, undefined);
+  assert.equal(contact.document.displayName, "Grace Hopper");
 });
 
 test("book-demo submission rejects a timezone that does not match the city", () => {
@@ -154,7 +206,8 @@ test("book-demo submission rejects a timezone that does not match the city", () 
   const described = describeSlot(slot, "America/New_York");
   const result = createSubmissionDocument({
     form_source: "book-demo",
-    fullName: "Ada Lovelace",
+    firstName: "Ada",
+    lastName: "Lovelace",
     workEmail: "ada@example.com",
     companyName: "Analytical Engines",
     country: "United States",
@@ -171,7 +224,8 @@ test("book-demo submission rejects a timezone that does not match the city", () 
 test("book-demo submission rejects a city outside the country", () => {
   const result = createSubmissionDocument({
     form_source: "book-demo",
-    fullName: "Ada Lovelace",
+    firstName: "Ada",
+    lastName: "Lovelace",
     workEmail: "ada@example.com",
     companyName: "Analytical Engines",
     country: "United States",
