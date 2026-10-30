@@ -55,3 +55,78 @@
     width: 100%;
   }
 }
+
+/* home.css .browser also sets top: 11% and right: -3%. The storefront window
+   sets bottom as well, so the browser stretched from near the top and covered
+   the product mockup. Pin each hero window to the standalone placement. */
+.company-store .hero-stage > .browser.hero-product {
+  position: absolute;
+  z-index: 1;
+  width: 95%;
+  height: auto;
+  max-width: none;
+  top: 0;
+  right: -15px;
+  bottom: auto;
+  left: auto;
+  transform: rotate(3deg);
+}
+.company-store .hero-stage > .browser.hero-home {
+  position: absolute;
+  z-index: 2;
+  width: 64%;
+  height: auto;
+  max-width: none;
+  top: auto;
+  right: auto;
+  bottom: 22px;
+  left: -22px;
+  transform: rotate(-5deg);
+}
+.company-store .hero-stage > .stage-caption {
+  z-index: 3;
+}
+@media (max-width: 1100px) and (min-width: 851px) {
+  .company-store .hero-stage > .browser.hero-product {
+    top: 20px;
+    right: -5px;
+    width: 100%;
+  }
+  .company-store .hero-stage > .browser.hero-home {
+    top: auto;
+    right: auto;
+    bottom: 30px;
+    left: -8px;
+    width: 72%;
+  }
+}
+@media (max-width: 850px) {
+  .company-store .hero-stage > .browser.hero-product {
+    top: 0;
+    right: 0;
+    left: auto;
+    bottom: auto;
+    width: 86%;
+  }
+  .company-store .hero-stage > .browser.hero-home {
+    top: auto;
+    right: auto;
+    bottom: 10px;
+    left: 0;
+    width: 66%;
+  }
+}
+@media (max-width: 600px) {
+  .company-store .hero-stage > .browser.hero-product {
+    top: 8px;
+    right: 0;
+    width: 92%;
+  }
+  .company-store .hero-stage > .browser.hero-home {
+    top: auto;
+    right: auto;
+    bottom: 3px;
+    left: 0;
+    width: 69%;
+  }
+}
