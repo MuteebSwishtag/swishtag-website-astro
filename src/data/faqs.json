@@ -78,69 +78,41 @@
     ]
   },
   "companyStore": {
-    "eyebrow": "Frequently asked questions",
-    "title": "Clear answers before you commit.",
-    "description": "Still unsure? Book a 15-minute demo and we will look at your client opportunity with you.",
+    "eyebrow": "Before we build",
+    "title": "A few good questions.",
+    "description": "Bring your client program to the demo. We\u2019ll help you define the right starting point.",
+    "link": {
+      "href": "/book-demo/?service=company-store-launch&intent=questions",
+      "label": "Book a demo"
+    },
     "items": [
       {
-        "question": "How much does a company store cost?",
-        "answer": "Your first Shopify company store is $1,200 one-time. That includes a custom branded store, payments and shipping setup, employee login if you need it, up to 50 products set up (title, description, photos, all colors and sizes, and your price with margin), up to 50 logo mockups (one logo, up to 2 placements, one revision round), and free migration from your old store. Each additional store cloned from your template is $300 one-time. Any customized or differently branded store is $1,200. After launch, the Care Plan is $100 a month per store, cancel anytime, billed as one charge on your Shopify bill.",
-        "open": false
+        "question": "What do you build for us?",
+        "answer": "A client-branded Shopify company store: storefront design, agreed product and mockup setup, payments, shipping and launch checks. You manage the client relationship, merchandise pricing and fulfillment."
       },
       {
-        "question": "How quickly can a company store be launched?",
-        "answer": "About 10 business days after we receive your content (logo, product list, and pricing). You see a preview of your store design within 5 business days. Additional stores cloned from your template launch in 2 to 3 business days.",
-        "open": false
+        "question": "What is included with an additional store?",
+        "answer": "The $300 setup clones your approved template for another location or program. Each store has its own $100/month Care Plan with the agreed Rocket Apps package. New branding, custom layouts and fresh catalog work are scoped separately; a differently branded store is a $1,200 build."
       },
       {
-        "question": "Who owns the Shopify store?",
-        "answer": "You do. It's your Shopify account. If you ever stop working with us, the store keeps running and everything stays yours. We build the company store in the distributor's or the client's own Shopify account.",
-        "open": false
+        "question": "Can the store support personalization and employee programs?",
+        "answer": "We configure product options, approved branding and the agreed ordering tools around your program. Employee access, allowances, bulk orders, approvals and other app-dependent features are confirmed in the proposal. Custom workflows are scoped separately."
       },
       {
-        "question": "Can the store support multiple clients or locations?",
-        "answer": "Yes. Once your first company store is built, each additional store cloned from the template is $300 one-time and launches in 2 to 3 business days. This flat pricing works well for multi-location clients and franchises. A store that needs its own custom design or different branding is $1,200.",
-        "open": false
+        "question": "Can we use our own suppliers and fulfillment?",
+        "answer": "Yes. We plan the store around print on demand, stocked inventory, preorders or a hybrid approach. Merchandise sourcing and fulfillment remain yours. Supplier connections and automated order routing require a separate scope."
       },
       {
-        "question": "Can the store use the client's branding?",
-        "answer": "Yes. It looks like your client's brand, not a template. Every first store is custom branded with the client's logo, colors, and products. We also create up to 50 logo mockups so employees see exactly what they are ordering.",
-        "open": false
+        "question": "What happens if we cancel Care?",
+        "answer": "You keep your Shopify account, store and data. Care services and subscription-based Rocket Apps access end. Features that depend on those apps may stop working. Shopify and other app subscriptions remain separate."
       },
       {
-        "question": "Can employees log in to the company store?",
-        "answer": "Yes. Employee login is set up with your store and kept running by the Care Plan, so only approved people can see and order products.",
-        "open": false
+        "question": "Can you migrate our existing store?",
+        "answer": "Yes. Standard migration can cover up to 250 products, 1,000 customer accounts, 12 months of read-only order history and 100 redirects, subject to a source-data review. Imported records are separate from the 50 newly prepared products and mockups."
       },
       {
-        "question": "Can you migrate our existing store from Magento or another platform?",
-        "answer": "Yes. Migration is free with your first store. It covers up to 250 products, 1,000 customer accounts, 12 months of order history (read-only), and 100 URL redirects. One product means one style with all its colors and sizes. More than 250 products? It is $100 per 250 additional migrated products. Custom extensions, ERP integrations, multi-store or multi-language setups, and manual data cleanup are not included.",
-        "open": false
-      },
-      {
-        "question": "Does the package include Shopify fees?",
-        "answer": "No. Your Shopify plan is paid directly to Shopify (about $29 to $39 a month). Your store features (employee login, allowances, quotes, bulk orders, shared carts, address validation, forms, and announcements) come with the Care Plan, $100 a month per store, billed as one charge on your Shopify bill. There is no per-store license and no hourly fee.",
-        "open": false
-      },
-      {
-        "question": "Can we add more products later?",
-        "answer": "Yes. You can add products yourself in Shopify at any time. During setup, products beyond the first 50 are $100 per 25 additional products. With the Care Plan, we handle product and price updates for you.",
-        "open": false
-      },
-      {
-        "question": "What does the Care Plan cover?",
-        "answer": "The Care Plan is $100 a month per store, and you can cancel anytime. It is billed as one charge on your Shopify bill through one Swishtag company store app. It covers all your store features (employee login, allowances, quotes, bulk orders, shared carts, address validation, forms, and announcements) plus product and price updates, banner and seasonal changes, app and theme updates and fixes, monitoring, and support within 1 business day. New custom features, new store builds, large product loads, and custom integrations are not included.",
-        "open": false
-      },
-      {
-        "question": "How does payment work, and what if I don't like the design?",
-        "answer": "You pay 50% to start and 50% at launch, by card. You see your store design within 5 business days. If you don't love it, we refund your full deposit.",
-        "open": false
-      },
-      {
-        "question": "How do distributors make money with a company store?",
-        "answer": "You earn on every reorder your client places through the store. There is no per-store license or hourly fee, and flat $300 clone pricing makes multi-location clients and franchises easy to quote.",
-        "open": false
+        "question": "What do you need to get started?",
+        "answer": "Your approved logo, product list, pricing, images, shipping requirements and Shopify access. We confirm the scope and fulfillment approach before work starts. Timelines begin after the deposit and complete content are received."
       }
     ]
   },
@@ -243,22 +215,22 @@
     "items": [
       {
         "question": "What is a PunchOut catalog?",
-        "answer": "A PunchOut catalog connects a procurement application with a supplier’s online catalog. The buyer enters the catalog from procurement, selects products, and sends the cart back to the purchasing system to continue the organization’s internal process.",
+        "answer": "A PunchOut catalog connects a procurement application with a supplier\u2019s online catalog. The buyer enters the catalog from procurement, selects products, and sends the cart back to the purchasing system to continue the organization\u2019s internal process.",
         "open": true
       },
       {
         "question": "Which procurement systems can Swishtag work with?",
-        "answer": "Swishtag can work with PunchOut requirements involving procurement environments such as Coupa, SAP Ariba, JAGGAER, Oracle Procurement and Workday. The exact connection is reviewed against the buyer’s technical specification.",
+        "answer": "Swishtag can work with PunchOut requirements involving procurement environments such as Coupa, SAP Ariba, JAGGAER, Oracle Procurement and Workday. The exact connection is reviewed against the buyer\u2019s technical specification.",
         "open": false
       },
       {
         "question": "Which PunchOut protocols do you support?",
-        "answer": "Swishtag can implement cXML and OCI based PunchOut requirements. The protocol and transaction set used for a project depend on the buyer’s procurement environment and specification.",
+        "answer": "Swishtag can implement cXML and OCI based PunchOut requirements. The protocol and transaction set used for a project depend on the buyer\u2019s procurement environment and specification.",
         "open": false
       },
       {
         "question": "Can approved purchase orders create ecommerce orders automatically?",
-        "answer": "Where the buyer sends an electronic purchase order as part of the agreed workflow, Swishtag can map supported PO data into the supplier’s ecommerce or order-processing system.",
+        "answer": "Where the buyer sends an electronic purchase order as part of the agreed workflow, Swishtag can map supported PO data into the supplier\u2019s ecommerce or order-processing system.",
         "open": false
       },
       {
@@ -268,7 +240,7 @@
       },
       {
         "question": "Can you support multiple enterprise buyers and stores?",
-        "answer": "Yes. Multiple buyer connections or storefronts can be supported, but each buyer’s authentication, fields, testing process and transaction requirements should be reviewed individually.",
+        "answer": "Yes. Multiple buyer connections or storefronts can be supported, but each buyer\u2019s authentication, fields, testing process and transaction requirements should be reviewed individually.",
         "open": false
       }
     ]

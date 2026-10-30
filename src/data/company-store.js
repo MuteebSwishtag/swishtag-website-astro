@@ -9,8 +9,8 @@ export const companyStoreMedia = {
 export const companyStoreService = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Company Store",
-  "serviceType": "Shopify company store setup for promotional products distributors and their corporate clients",
+  "name": "Company Store Design, Launch & Management",
+  "serviceType": "Branded Shopify company store design, launch, and ongoing care for promotional products distributors",
   "provider": {
     "@type": "Organization",
     "name": "Swishtag",
@@ -22,7 +22,7 @@ export const companyStoreService = {
     "@type": "BusinessAudience",
     "audienceType": "Promotional products distributors and corporate clients"
   },
-  "description": "A done for you, branded Shopify company store built in the distributor's or client's own Shopify account, with payments, shipping, employee login, up to 50 products, up to 50 logo mockups, and free migration from another platform.",
+  "description": "Company stores, done for you. Swishtag designs, launches and supports branded Shopify company stores for promotional products distributors.",
   "offers": [
     {
       "@type": "Offer",
