@@ -80,12 +80,16 @@
   "companyStore": {
     "eyebrow": "Before we build",
     "title": "A few good questions.",
-    "description": "Bring your client program to the demo. We\u2019ll help you define the right starting point.",
+    "description": "Bring your client program to the demo. We’ll help you define the right starting point.",
     "link": {
       "href": "/book-demo/?service=company-store-launch&intent=questions",
       "label": "Book a demo"
     },
     "items": [
+      {
+        "question": "What is paid separately?",
+        "answer": "Your Shopify subscription, merchandise, production, fulfillment and shipping are separate. Any paid Shopify add-on app is an extra charge according to that app’s selected pricing plan on Shopify. Your $100/month Care Plan covers the agreed Rocket Apps package and routine store support."
+      },
       {
         "question": "What do you build for us?",
         "answer": "A client-branded Shopify company store: storefront design, agreed product and mockup setup, payments, shipping and launch checks. You manage the client relationship, merchandise pricing and fulfillment."
@@ -215,22 +219,22 @@
     "items": [
       {
         "question": "What is a PunchOut catalog?",
-        "answer": "A PunchOut catalog connects a procurement application with a supplier\u2019s online catalog. The buyer enters the catalog from procurement, selects products, and sends the cart back to the purchasing system to continue the organization\u2019s internal process.",
+        "answer": "A PunchOut catalog connects a procurement application with a supplier’s online catalog. The buyer enters the catalog from procurement, selects products, and sends the cart back to the purchasing system to continue the organization’s internal process.",
         "open": true
       },
       {
         "question": "Which procurement systems can Swishtag work with?",
-        "answer": "Swishtag can work with PunchOut requirements involving procurement environments such as Coupa, SAP Ariba, JAGGAER, Oracle Procurement and Workday. The exact connection is reviewed against the buyer\u2019s technical specification.",
+        "answer": "Swishtag can work with PunchOut requirements involving procurement environments such as Coupa, SAP Ariba, JAGGAER, Oracle Procurement and Workday. The exact connection is reviewed against the buyer’s technical specification.",
         "open": false
       },
       {
         "question": "Which PunchOut protocols do you support?",
-        "answer": "Swishtag can implement cXML and OCI based PunchOut requirements. The protocol and transaction set used for a project depend on the buyer\u2019s procurement environment and specification.",
+        "answer": "Swishtag can implement cXML and OCI based PunchOut requirements. The protocol and transaction set used for a project depend on the buyer’s procurement environment and specification.",
         "open": false
       },
       {
         "question": "Can approved purchase orders create ecommerce orders automatically?",
-        "answer": "Where the buyer sends an electronic purchase order as part of the agreed workflow, Swishtag can map supported PO data into the supplier\u2019s ecommerce or order-processing system.",
+        "answer": "Where the buyer sends an electronic purchase order as part of the agreed workflow, Swishtag can map supported PO data into the supplier’s ecommerce or order-processing system.",
         "open": false
       },
       {
@@ -240,7 +244,7 @@
       },
       {
         "question": "Can you support multiple enterprise buyers and stores?",
-        "answer": "Yes. Multiple buyer connections or storefronts can be supported, but each buyer\u2019s authentication, fields, testing process and transaction requirements should be reviewed individually.",
+        "answer": "Yes. Multiple buyer connections or storefronts can be supported, but each buyer’s authentication, fields, testing process and transaction requirements should be reviewed individually.",
         "open": false
       }
     ]
