@@ -14,7 +14,7 @@ html:has(.company-store) body { background: #fff; }
   margin-inline: auto;
 }
 .enterprise-trust-bar-section {
-  margin: 0;
+  margin: 32px 0 0;
   padding: 0 0 24px;
   background: #fff;
 }
@@ -90,7 +90,7 @@ html:has(.company-store) body { background: #fff; }
   .hero-trust-card-grid--enterprise .hero-trust-card { grid-template-columns: 94px minmax(0, 1fr); }
 }
 @media (max-width: 680px) {
-  .enterprise-trust-bar-section { padding: 0 0 16px; }
+  .enterprise-trust-bar-section { margin-top: 16px; padding: 0 0 16px; }
   .hero-trust-card-grid--enterprise { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .hero-trust-card-grid--enterprise .hero-trust-card {
     min-height: 88px;
