@@ -249,12 +249,20 @@ html:has(.company-store) body { background: #fff; }
   }
 }
 
+.company-store .hero-actions {
+  row-gap: 14px;
+  column-gap: 14px;
+}
+.company-store .cta-row,
 .company-store .demo-launch {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 12px;
+  gap: 14px;
   max-width: 100%;
+}
+.company-store .screen-copy .cta-row + small {
+  margin-top: 16px;
 }
 .company-store .store-password {
   display: inline-flex;
@@ -289,11 +297,12 @@ html:has(.company-store) body { background: #fff; }
   background: var(--lime);
 }
 @media (max-width: 850px) {
-  .company-store .screen-copy .demo-launch {
+  .company-store .screen-copy .cta-row {
     grid-column: 1;
     margin-top: 23px;
     justify-self: start;
   }
+  .company-store .screen-copy .cta-row .button,
   .company-store .screen-copy .demo-launch .button {
     margin-top: 0;
   }
