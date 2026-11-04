@@ -15,13 +15,29 @@ document.getElementById('story-prev').addEventListener('click',()=>moveReview(-1
 carousel.querySelectorAll('video').forEach(v=>{v.addEventListener('play',()=>{section.classList.add('media-active');setReviewPause(true)});v.addEventListener('ended',()=>section.classList.remove('media-active'));v.addEventListener('pause',()=>section.classList.remove('media-active'))});
 const motionRegions=[...document.querySelectorAll('.motion-region')];if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>e.target.classList.toggle('is-offscreen',!e.isIntersecting)),{rootMargin:'180px'});motionRegions.forEach(el=>observer.observe(el))}document.addEventListener('visibilitychange',()=>motionRegions.forEach(el=>el.classList.toggle('document-hidden',document.hidden)));
 })();
-(()=>{'use strict';
-const dialog=document.getElementById('demo-dialog');if(dialog){const image=document.getElementById('demo-full-image'),modalTabs=[...dialog.querySelectorAll('[data-modal-screen]')];let previousFocus=null;
-const screenSources={home:document.querySelector('.hero-home>img'),product:document.querySelector('.hero-product>img')};
-function displayImage(src,alt,key){image.src=src;image.alt=alt;document.getElementById('demo-dialog-title').textContent=key==='home'?'Branded storefront':key==='product'?'Product ordering':key==='personalization'?'Personalization':'Store design preview';modalTabs.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.modalScreen===key)));dialog.querySelector('.demo-image-scroll').scrollTop=0}
-function show(key){const tab=document.querySelector('[data-screen="'+key+'"]');tab.click();const img=document.querySelector('.screen-stage .browser>img');displayImage(img.src,img.alt,key)}
-function open(){if(!dialog.open){previousFocus=document.activeElement;dialog.showModal();document.body.style.overflow='hidden'}}
-document.querySelectorAll('[data-open-demo]').forEach(b=>b.addEventListener('click',()=>{let key=b.dataset.openDemo;if(key==='current')key=document.querySelector('.screen-tab[aria-selected="true"]').dataset.screen;show(key);open()}));
-document.querySelectorAll('.image-preview').forEach(b=>b.addEventListener('click',()=>{const img=b.parentElement.querySelector('img');const key=b.parentElement.classList.contains('hero-home')?'home':b.parentElement.classList.contains('hero-product')?'product':b.closest('.screen-stage')?document.querySelector('.screen-tab[aria-selected="true"]').dataset.screen:null;displayImage(img.src,img.alt,key);open()}));
-modalTabs.forEach(b=>b.addEventListener('click',()=>show(b.dataset.modalScreen)));dialog.querySelector('.demo-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});dialog.addEventListener('close',()=>{document.body.style.overflow='';if(previousFocus)previousFocus.focus({preventScroll:true})});
-}})();
+
+document.querySelectorAll('[data-copy-password]').forEach(button => {
+  button.addEventListener('click', async () => {
+    const value = button.getAttribute('data-copy-password') || '';
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      const field = document.createElement('textarea');
+      field.value = value;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.left = '-9999px';
+      document.body.appendChild(field);
+      field.select();
+      document.execCommand('copy');
+      field.remove();
+    }
+    const original = button.textContent;
+    button.textContent = 'Copied';
+    button.setAttribute('data-copied', 'true');
+    window.setTimeout(() => {
+      button.textContent = original;
+      button.removeAttribute('data-copied');
+    }, 1600);
+  });
+});
