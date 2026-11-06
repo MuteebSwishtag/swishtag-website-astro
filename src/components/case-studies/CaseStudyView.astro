@@ -101,17 +101,17 @@ const displaySections = detail
   : sections.map((section) => ({ ...section, kicker: kickerFor(section.kicker) }));
 ---
 
-<article class="cs-study">
+<article class="cs-study" data-project={project.name}>
   <header class="cs-study-hero">
     <div class="cs-shell">
       <div class="cs-back-row">
-        <a class="cs-text-btn" href="/case-studies/">← Back to projects</a>
+        <a class="cs-text-btn cs-back" href="/case-studies/">← Back to projects</a>
         <span class="cs-kicker">{indexLabel} · Selected work</span>
       </div>
       <div class="cs-study-layout">
         <div>
           {eyebrow && <span class="cs-kicker">{eyebrow}</span>}
-          <p class="cs-kicker">{projectKicker}</p>
+          <p class="cs-kicker cs-section-label">{projectKicker}</p>
           {logo && <img class="cs-study-logo" src={logo} alt="" />}
           <h1>{project.name}<span>.</span></h1>
           {subtitle && <h2>{subtitle}</h2>}
@@ -130,7 +130,7 @@ const displaySections = detail
         )}
       </div>
       {facts.length > 0 && (
-        <div class="cs-facts">
+        <div class:list={['cs-facts', detail ? 'cs-facts--rules' : 'cs-facts--editorial']}>
           {facts.map(([label, value]) => (
             <div><span>{label}</span><strong>{value}</strong></div>
           ))}
@@ -229,13 +229,13 @@ const displaySections = detail
             <span class="cs-kicker">Continue exploring</span>
             <h2>More work worth discovering.</h2>
           </div>
-          <a class="cs-text-btn" href="/case-studies/">All projects</a>
+          <a class="cs-text-btn cs-all-projects" href="/case-studies/">All projects</a>
         </div>
         <div class="cs-related cs-explore-grid">
           {explore.map((item) => (
             <a class="cs-explore-card" href={item.href}>
-              <img src={item.image} alt={`${item.name} project preview`} />
-              <span class="cs-tag">{item.category}</span>
+              <span class="cs-explore-image"><img src={item.image} alt={`${item.name} project preview`} /></span>
+              <span class="cs-explore-type">{item.category}</span>
               <strong>{item.name}</strong>
             </a>
           ))}
