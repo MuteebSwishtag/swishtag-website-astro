@@ -2,15 +2,18 @@
 import '../../styles/case-studies.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CaseStudyView from '../../components/case-studies/CaseStudyView.astro';
-import { getProject } from '../../data/case-studies.js';
+import { getProject, relatedProjects } from '../../data/case-studies.js';
 
-const project = getProject(Astro.params.slug);
-if (!project?.detail) {
+const match = getProject(Astro.params.slug);
+if (!match) {
   return Astro.redirect('/case-studies/');
 }
 
+const { project, index, total } = match;
+const related = relatedProjects(project.slug);
+const description = project.detail?.intro || project.panel?.intro || `${project.name} is selected Swishtag work in ${project.category}.`;
+const image = project.detail?.heroImage || project.image;
 const title = `${project.name} | Swishtag Case Study`;
-const description = project.detail.intro;
 const canonical = `https://swishtag.com/case-studies/${project.slug}/`;
 const robots = 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
 ---
@@ -20,8 +23,8 @@ const robots = 'index,follow,max-image-preview:large,max-snippet:-1,max-video-pr
   <meta slot="head" property="og:description" content={description} />
   <meta slot="head" property="og:url" content={canonical} />
   <meta slot="head" property="og:type" content="article" />
-  <meta slot="head" property="og:image" content={`https://swishtag.com${project.detail.heroImage}`} />
+  <meta slot="head" property="og:image" content={`https://swishtag.com${image}`} />
   <div class="case-studies">
-    <CaseStudyView project={project} />
+    <CaseStudyView project={project} index={index} total={total} related={related} />
   </div>
 </BaseLayout>

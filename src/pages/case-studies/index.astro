@@ -9,19 +9,6 @@ const title = 'Case Studies | Swishtag';
 const description = 'Explore Swishtag’s selected work across Shopify stores, Shopify apps, web applications and websites.';
 const canonical = 'https://swishtag.com/case-studies/';
 const robots = 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
-const panelData = projects.map((project) => ({
-  slug: project.slug,
-  name: project.name,
-  category: project.category,
-  sourceCategory: project.sourceCategory,
-  image: project.image,
-  gallery: project.gallery,
-  industry: project.industry,
-  platform: project.platform,
-  service: project.service,
-  href: project.detail ? `/case-studies/${project.slug}/` : undefined,
-  panel: project.panel,
-}));
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
@@ -91,85 +78,9 @@ const panelData = projects.map((project) => ({
         <p class="cs-empty" data-project-empty>No matching projects. Clear filters or try a different search.</p>
       </div>
     </section>
-
-    <dialog class="cs-panel" id="projectPanel" aria-label="Project case study">
-      <div class="cs-panel-bar">
-        <button class="cs-text-btn" type="button" data-panel-close>← Back to projects</button>
-        <span class="cs-kicker" id="panelKicker"></span>
-      </div>
-      <div class="cs-panel-body">
-        <div class="cs-panel-grid">
-          <div>
-            <span class="cs-kicker" id="panelIndex"></span>
-            <img id="panelLogo" alt="" hidden />
-            <h2 id="panelTitle"></h2>
-            <p class="cs-lead" id="panelLead"></p>
-            <p class="cs-copy" id="panelIntro"></p>
-            <div class="cs-chips" id="panelChips"></div>
-          </div>
-          <div class="cs-panel-visual"><img id="panelImage" alt="" /></div>
-        </div>
-        <div class="cs-facts">
-          <div><span>Project</span><strong id="panelProject"></strong></div>
-          <div id="panelIndustryWrap"><span>Industry</span><strong id="panelIndustry"></strong></div>
-          <div id="panelPlatformWrap"><span>Platform</span><strong id="panelPlatform"></strong></div>
-          <div><span>Category</span><strong id="panelCategory"></strong></div>
-        </div>
-        <div class="cs-split" id="panelOpportunity" hidden>
-          <div>
-            <span class="cs-kicker">02 / The opportunity</span>
-            <h2 id="panelOpportunityTitle"></h2>
-          </div>
-          <p class="cs-copy" id="panelOpportunityBody"></p>
-        </div>
-        <div id="panelFeatureBlock">
-          <span class="cs-kicker">03 / Core capabilities</span>
-          <h2>Built for the moments that matter.</h2>
-          <div class="cs-features" id="panelFeatures" hidden></div>
-        </div>
-        <div id="panelShotsBlock">
-          <span class="cs-kicker">04 / The actual experience</span>
-          <h2>Explore the interface.</h2>
-          <div class="cs-shots" id="panelShots" hidden></div>
-        </div>
-        <div class="cs-split" id="panelExperience" hidden>
-          <div>
-            <span class="cs-kicker">The product experience</span>
-            <h2 id="panelExperienceTitle"></h2>
-          </div>
-          <div>
-            <p class="cs-copy" id="panelExperienceBody"></p>
-            <p><a class="cs-card-link" id="panelExternal" href="" target="_blank" rel="noopener noreferrer" hidden>Visit project reference</a></p>
-            <p class="cs-notice" id="panelStatus" hidden></p>
-          </div>
-        </div>
-        <div class="cs-takeaway" id="panelTakeawayWrap" hidden>
-          <span class="cs-kicker">05 / The takeaway</span>
-          <h2 id="panelTakeaway"></h2>
-          <p class="cs-copy" id="panelSubtitle"></p>
-        </div>
-        <div class="cs-closing">
-          <div>
-            <span class="cs-kicker">Have a similar idea?</span>
-            <h2>Build something unmistakably yours.</h2>
-            <p>Explore product design and development with Swishtag.</p>
-          </div>
-          <a class="cs-lime" href="https://swishtag.com/" target="_blank" rel="noopener noreferrer">Visit Swishtag</a>
-        </div>
-        <div class="cs-explore-head">
-          <div>
-            <span class="cs-kicker">Continue exploring</span>
-            <h2>More work worth discovering.</h2>
-          </div>
-        </div>
-        <div class="cs-related" id="panelRelated"></div>
-      </div>
-    </dialog>
-    <script type="application/json" id="case-study-records" set:html={JSON.stringify(panelData)} />
   </div>
   <script>
     import { setupListing } from './listing-client.js';
-    const records = JSON.parse(document.getElementById('case-study-records')?.textContent || '[]');
-    setupListing(records);
+    setupListing();
   </script>
 </BaseLayout>

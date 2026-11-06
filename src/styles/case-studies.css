@@ -369,38 +369,6 @@
   display: block;
 }
 
-.cs-panel {
-  width: min(1120px, calc(100vw - 32px));
-  max-height: min(920px, calc(100dvh - 32px));
-  padding: 0;
-  border: 0;
-  border-radius: 28px;
-  color: var(--cs-ink);
-  background: #fff;
-}
-
-.cs-panel::backdrop {
-  background: rgba(21, 32, 29, 0.72);
-}
-
-.cs-panel-bar,
-.cs-panel-body {
-  padding: 22px 28px;
-}
-
-.cs-panel-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  border-bottom: 1px solid var(--cs-line);
-}
-
-.cs-panel-body {
-  overflow: auto;
-  max-height: calc(100dvh - 140px);
-}
-
 .cs-text-btn,
 .cs-lime {
   display: inline-flex;
@@ -426,27 +394,6 @@
   color: #202124;
 }
 
-.cs-panel-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 28px;
-  align-items: center;
-}
-
-.cs-panel h2 {
-  margin: 10px 0;
-  font-size: clamp(36px, 4vw, 64px);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 0.98;
-}
-
-.cs-lead {
-  font-size: 20px;
-  font-weight: 750;
-  letter-spacing: -0.03em;
-}
-
 .cs-copy {
   margin-top: 12px;
   color: var(--cs-muted);
@@ -454,13 +401,6 @@
   line-height: 1.7;
 }
 
-.cs-panel-visual {
-  overflow: hidden;
-  border-radius: 22px;
-  background: var(--cs-paper);
-}
-
-.cs-panel-visual img,
 .cs-shot img {
   display: block;
   width: 100%;
@@ -469,7 +409,7 @@
 
 .cs-facts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
   margin-top: 28px;
 }
@@ -655,26 +595,14 @@
   line-height: 1.6;
 }
 
-#panelLogo {
+.cs-study-logo {
   display: block;
   width: min(240px, 70%);
   height: auto;
   margin: 8px 0 12px;
 }
 
-#panelLogo[hidden] {
-  display: none;
-}
-
-.cs-takeaway,
-#panelFeatureBlock,
-#panelShotsBlock {
-  margin-top: 42px;
-}
-
-.cs-takeaway h2,
-#panelFeatureBlock > h2,
-#panelShotsBlock > h2 {
+.cs-block > .cs-shell > h2 {
   max-width: 640px;
   margin-top: 8px;
 }
@@ -733,7 +661,6 @@
   }
 
   .cs-study-layout,
-  .cs-panel-grid,
   .cs-split,
   .cs-work {
     grid-template-columns: 1fr;
@@ -815,11 +742,6 @@
 
   .cs-study h1 {
     font-size: 58px;
-  }
-
-  .cs-panel {
-    width: calc(100vw - 16px);
-    border-radius: 20px;
   }
 }
 

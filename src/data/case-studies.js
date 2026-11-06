@@ -363,13 +363,13 @@ export const projects = [
         },
         {
           "name": "Backdock",
-          "href": "/case-studies/#backdock",
+          "href": "/case-studies/backdock/",
           "image": "/assets/case-studies/formeteca-extra-4.png",
           "category": "Shopify Apps"
         },
         {
           "name": "Flawless",
-          "href": "/case-studies/#flawless",
+          "href": "/case-studies/flawless/",
           "image": "/assets/case-studies/formeteca-extra-5.webp",
           "category": "Shopify Apps"
         }
@@ -455,13 +455,13 @@ export const projects = [
         },
         {
           "name": "Backdock",
-          "href": "/case-studies/#backdock",
+          "href": "/case-studies/backdock/",
           "image": "/assets/case-studies/cosmify-related-2.png",
           "category": "Shopify Apps"
         },
         {
           "name": "Flawless",
-          "href": "/case-studies/#flawless",
+          "href": "/case-studies/flawless/",
           "image": "/assets/case-studies/cosmify-related-3.webp",
           "category": "Shopify Apps"
         }
@@ -3482,9 +3482,24 @@ export const projects = [
 ];
 
 export function getProject(slug) {
-  return projects.find((project) => project.slug === slug);
+  const index = projects.findIndex((project) => project.slug === slug);
+  if (index < 0) return undefined;
+  return { project: projects[index], index, total: projects.length };
 }
 
-export function projectsWithDetail() {
-  return projects.filter((project) => project.detail);
+export function relatedProjects(slug, limit = 3) {
+  const current = projects.find((project) => project.slug === slug);
+  if (!current) return [];
+  return projects
+    .filter((project) => project.slug !== slug)
+    .map((project) => ({
+      project,
+      index: projects.indexOf(project),
+      score:
+        (project.category === current.category ? 2 : 0) +
+        (current.industry && project.industry === current.industry ? 1 : 0),
+    }))
+    .sort((left, right) => right.score - left.score || left.index - right.index)
+    .slice(0, limit)
+    .map((item) => item.project);
 }

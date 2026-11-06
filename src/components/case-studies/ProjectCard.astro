@@ -7,17 +7,17 @@ interface Props {
 }
 
 const { project, order } = Astro.props;
-const href = project.detail ? `/case-studies/${project.slug}/` : undefined;
+const href = `/case-studies/${project.slug}/`;
 const search = [project.name, project.category, project.sourceCategory, project.industry, project.platform, project.service]
   .filter(Boolean)
   .join(' ')
   .toLowerCase();
 const summary = [project.sourceCategory, project.industry].filter(Boolean).join(' · ');
-const Tag = href ? 'a' : 'button';
 ---
 
-<Tag
+<a
   class="cs-card"
+  href={href}
   data-project-card
   data-slug={project.slug}
   data-name={project.name}
@@ -25,9 +25,6 @@ const Tag = href ? 'a' : 'button';
   data-industry={project.industry ?? ''}
   data-order={order}
   data-search={search}
-  data-href={href}
-  href={href}
-  type={href ? undefined : 'button'}
 >
   <div class="cs-card-media">
     <img src={project.image} alt={`${project.name} project preview`} loading="lazy" decoding="async" />
@@ -38,4 +35,4 @@ const Tag = href ? 'a' : 'button';
     <p>{summary}</p>
     <span class="cs-card-link">View case study</span>
   </div>
-</Tag>
+</a>

@@ -1,75 +1,197 @@
 ---
-import type { CaseProject } from '../../data/case-studies.types';
+import type { CaseProject, ExploreCard } from '../../data/case-studies.types';
 
 interface Props {
   project: CaseProject;
+  index: number;
+  total: number;
+  related: CaseProject[];
 }
 
-const { project } = Astro.props;
+const { project, index, total, related } = Astro.props;
+const hiddenValues = new Set(['Not specified', 'To be confirmed', 'Uncategorized']);
+const text = (value?: string) => {
+  const cleaned = value?.trim() ?? '';
+  return cleaned && !hiddenValues.has(cleaned) ? cleaned : '';
+};
+const pad = (value: number) => String(value).padStart(2, '0');
+const indexLabel = `${pad(index + 1)} / ${total}`;
+const pageHref = (href: string) => {
+  const hash = href.match(/#([a-z0-9-]+)\/?$/);
+  return hash ? `/case-studies/${hash[1]}/` : href;
+};
+
 const detail = project.detail;
+const story = project.panel;
+const category = text(story?.category) || text(project.category);
+const industry = text(story?.industry) || text(project.industry);
+const platform = text(story?.platform) || text(project.platform);
+const service = text(project.service);
+
+const eyebrow = detail?.eyebrow || (category ? `Swishtag / ${category}` : 'Swishtag');
+const subtitle = text(detail?.subtitle || story?.title);
+const intro = text(detail?.intro || story?.intro);
+const chips = detail?.chips?.length
+  ? detail.chips
+  : [...new Set([category, industry, platform].filter(Boolean))];
+const heroImage = detail?.heroImage || project.image;
+const heroAlt = detail?.heroAlt || `${project.name} project preview`;
+const logo = text(story?.logo);
+const facts = detail?.facts?.length
+  ? detail.facts
+  : [
+      ['Project', project.name],
+      industry ? ['Industry', industry] : undefined,
+      platform ? ['Platform', platform] : undefined,
+      category ? ['Category', category] : undefined,
+      service && service !== industry && service !== category ? ['Service', service] : undefined,
+    ].filter((fact): fact is [string, string] => Boolean(fact));
+const opportunityTitle = text(detail?.opportunityTitle || story?.opportunityTitle);
+const opportunity = text(detail?.opportunity || story?.opportunity);
+const capabilities = detail?.capabilities?.length
+  ? detail.capabilities
+  : (story?.features ?? [])
+      .filter(([title, body]) => text(title) || text(body))
+      .map(([title, body], featureIndex): [string, string, string] => [
+        `${pad(featureIndex + 1)} / Core capability`,
+        title,
+        body,
+      ]);
+const notice = text(detail?.notice || story?.status);
+const gallery = detail ? [] : project.gallery.filter(Boolean);
+const visitUrl = detail ? '' : text(story?.url);
+const sections = detail
+  ? detail.sections
+  : [
+      text(story?.experienceTitle) || text(story?.experience)
+        ? {
+            kicker: 'The product experience',
+            title: text(story?.experienceTitle),
+            body: text(story?.experience),
+          }
+        : undefined,
+      text(story?.takeaway) || text(story?.subtitle)
+        ? {
+            kicker: 'The takeaway',
+            title: text(story?.takeaway),
+            body: text(story?.subtitle),
+          }
+        : undefined,
+    ].filter((section): section is { kicker: string; title: string; body: string } => Boolean(section));
+const explore: ExploreCard[] = detail
+  ? detail.explore.map((item) => ({ ...item, href: pageHref(item.href) }))
+  : related.map((item) => ({
+      name: item.name,
+      href: `/case-studies/${item.slug}/`,
+      image: item.image,
+      category: item.category,
+    }));
+
+const numbered: string[] = [];
+const kickerFor = (label: string) => {
+  numbered.push(`${pad(numbered.length + 1)} / ${label}`);
+  return numbered[numbered.length - 1];
+};
+const projectKicker = kickerFor('The project');
+const opportunityKicker = opportunityTitle || opportunity ? kickerFor('The opportunity') : '';
+const capabilityKicker = capabilities.length ? kickerFor('Core capabilities') : '';
+const galleryKicker = gallery.length ? kickerFor('The actual experience') : '';
+const displaySections = detail
+  ? sections
+  : sections.map((section) => ({ ...section, kicker: kickerFor(section.kicker) }));
 ---
 
-{detail && (
 <article class="cs-study">
   <header class="cs-study-hero">
     <div class="cs-shell">
       <div class="cs-back-row">
         <a class="cs-text-btn" href="/case-studies/">← Back to projects</a>
-        <span class="cs-kicker">{detail.indexLabel} · Selected work</span>
+        <span class="cs-kicker">{indexLabel} · Selected work</span>
       </div>
       <div class="cs-study-layout">
         <div>
-          <span class="cs-kicker">{detail.eyebrow}</span>
-          <p class="cs-kicker">01 / The project</p>
+          {eyebrow && <span class="cs-kicker">{eyebrow}</span>}
+          <p class="cs-kicker">{projectKicker}</p>
+          {logo && <img class="cs-study-logo" src={logo} alt="" />}
           <h1>{project.name}<span>.</span></h1>
-          <h2>{detail.subtitle}</h2>
-          <p class="cs-copy">{detail.intro}</p>
-          <div class="cs-chips">
-            {detail.chips.map((chip) => <span>{chip}</span>)}
+          {subtitle && <h2>{subtitle}</h2>}
+          {intro && <p class="cs-copy">{intro}</p>}
+          {chips.length > 0 && (
+            <div class="cs-chips">
+              {chips.map((chip) => <span>{chip}</span>)}
+            </div>
+          )}
+          {visitUrl && <p><a class="cs-card-link" href={visitUrl} target="_blank" rel="noopener noreferrer">Visit project reference</a></p>}
+        </div>
+        {heroImage && (
+          <div class="cs-study-art">
+            <img src={heroImage} alt={heroAlt} />
           </div>
-        </div>
-        <div class="cs-study-art">
-          <img src={detail.heroImage} alt={detail.heroAlt} />
-        </div>
+        )}
       </div>
-      <div class="cs-facts">
-        {detail.facts.map(([label, value]) => (
-          <div><span>{label}</span><strong>{value}</strong></div>
-        ))}
-      </div>
+      {facts.length > 0 && (
+        <div class="cs-facts">
+          {facts.map(([label, value]) => (
+            <div><span>{label}</span><strong>{value}</strong></div>
+          ))}
+        </div>
+      )}
     </div>
   </header>
 
-  <section class="cs-block">
-    <div class="cs-shell cs-split">
-      <div>
-        <span class="cs-kicker">02 / The opportunity</span>
-        <h2>{detail.opportunityTitle}</h2>
-      </div>
-      <p class="cs-copy">{detail.opportunity}</p>
-    </div>
-    <div class="cs-shell">
-      <span class="cs-kicker">03 / Core capabilities</span>
-      <div class="cs-features">
-        {detail.capabilities.map(([label, title, body]) => (
-          <article class="cs-feature">
-            <small>{label}</small>
-            <h3>{title}</h3>
-            <p>{body}</p>
-          </article>
-        ))}
-      </div>
-      <p class="cs-notice">{detail.notice}</p>
-    </div>
-  </section>
-
-  {detail.sections.map((section) => (
+  {(opportunityTitle || opportunity) && (
     <section class="cs-block">
       <div class="cs-shell cs-split">
         <div>
-          <span class="cs-kicker">{section.kicker}</span>
-          <h2>{section.title}</h2>
-          <p class="cs-copy">{section.body}</p>
+          <span class="cs-kicker">{opportunityKicker}</span>
+          {opportunityTitle && <h2>{opportunityTitle}</h2>}
+        </div>
+        {opportunity && <p class="cs-copy">{opportunity}</p>}
+      </div>
+    </section>
+  )}
+
+  {capabilities.length > 0 && (
+    <section class="cs-block">
+      <div class="cs-shell">
+        <span class="cs-kicker">{capabilityKicker}</span>
+        <div class="cs-features">
+          {capabilities.map(([label, title, body]) => (
+            <article class="cs-feature">
+              {label && <small>{label}</small>}
+              {title && <h3>{title}</h3>}
+              {body && <p>{body}</p>}
+            </article>
+          ))}
+        </div>
+        {detail && notice && <p class="cs-notice">{notice}</p>}
+      </div>
+    </section>
+  )}
+
+  {gallery.length > 0 && (
+    <section class="cs-block">
+      <div class="cs-shell">
+        <span class="cs-kicker">{galleryKicker}</span>
+        <h2>Explore the interface.</h2>
+        <div class="cs-shots">
+          {gallery.map((src, shot) => (
+            <figure class="cs-shot">
+              <img src={src} alt={`${project.name} project screenshot ${shot + 2}`} />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {displaySections.map((section) => (
+    <section class="cs-block">
+      <div class="cs-shell cs-split">
+        <div>
+          {section.kicker && <span class="cs-kicker">{section.kicker}</span>}
+          {section.title && <h2>{section.title}</h2>}
+          {section.body && <p class="cs-copy">{section.body}</p>}
         </div>
         {section.image && (
           <div class="cs-study-art">
@@ -79,6 +201,14 @@ const detail = project.detail;
       </div>
     </section>
   ))}
+
+  {!detail && notice && (
+    <section class="cs-block">
+      <div class="cs-shell">
+        <p class="cs-notice">{notice}</p>
+      </div>
+    </section>
+  )}
 
   <section class="cs-block">
     <div class="cs-shell cs-closing">
@@ -91,25 +221,26 @@ const detail = project.detail;
     </div>
   </section>
 
-  <section class="cs-block" aria-label="More work">
-    <div class="cs-shell">
-      <div class="cs-explore-head">
-        <div>
-          <span class="cs-kicker">Continue exploring</span>
-          <h2>More work worth discovering.</h2>
+  {explore.length > 0 && (
+    <section class="cs-block" aria-label="More work">
+      <div class="cs-shell">
+        <div class="cs-explore-head">
+          <div>
+            <span class="cs-kicker">Continue exploring</span>
+            <h2>More work worth discovering.</h2>
+          </div>
+          <a class="cs-text-btn" href="/case-studies/">All projects</a>
         </div>
-        <a class="cs-text-btn" href="/case-studies/">All projects</a>
+        <div class="cs-related cs-explore-grid">
+          {explore.map((item) => (
+            <a class="cs-explore-card" href={item.href}>
+              <img src={item.image} alt={`${item.name} project preview`} />
+              <span class="cs-tag">{item.category}</span>
+              <strong>{item.name}</strong>
+            </a>
+          ))}
+        </div>
       </div>
-      <div class="cs-related cs-explore-grid">
-        {detail.explore.map((item) => (
-          <a class="cs-explore-card" href={item.href}>
-            <img src={item.image} alt={`${item.name} project preview`} />
-            <span class="cs-tag">{item.category}</span>
-            <strong>{item.name}</strong>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+    </section>
+  )}
 </article>
-)}
