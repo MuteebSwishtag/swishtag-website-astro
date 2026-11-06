@@ -1,0 +1,26 @@
+---
+import type { CaseBrand } from '../../data/case-studies.types';
+
+interface Props {
+  brands: CaseBrand[];
+}
+
+const { brands } = Astro.props;
+const loop = [...brands, ...brands];
+---
+
+<section class="cs-brands cs-shell" aria-label="Brands we have worked with">
+  <div class="cs-brands-top">
+    <span class="cs-kicker">Brands we've worked with</span>
+    <span>Brands we have collaborated with</span>
+  </div>
+  <div class="cs-brand-row">
+    <div class="cs-brand-track">
+      {loop.map((brand) => (
+        <div class="cs-brand-pill" title={brand.name}>
+          <img src={brand.image} alt={`${brand.name} logo`} width="150" height="68" loading="lazy" decoding="async" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

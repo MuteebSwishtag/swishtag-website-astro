@@ -1,0 +1,115 @@
+---
+import type { CaseProject } from '../../data/case-studies.types';
+
+interface Props {
+  project: CaseProject;
+}
+
+const { project } = Astro.props;
+const detail = project.detail;
+---
+
+{detail && (
+<article class="cs-study">
+  <header class="cs-study-hero">
+    <div class="cs-shell">
+      <div class="cs-back-row">
+        <a class="cs-text-btn" href="/case-studies/">← Back to projects</a>
+        <span class="cs-kicker">{detail.indexLabel} · Selected work</span>
+      </div>
+      <div class="cs-study-layout">
+        <div>
+          <span class="cs-kicker">{detail.eyebrow}</span>
+          <p class="cs-kicker">01 / The project</p>
+          <h1>{project.name}<span>.</span></h1>
+          <h2>{detail.subtitle}</h2>
+          <p class="cs-copy">{detail.intro}</p>
+          <div class="cs-chips">
+            {detail.chips.map((chip) => <span>{chip}</span>)}
+          </div>
+        </div>
+        <div class="cs-study-art">
+          <img src={detail.heroImage} alt={detail.heroAlt} />
+        </div>
+      </div>
+      <div class="cs-facts">
+        {detail.facts.map(([label, value]) => (
+          <div><span>{label}</span><strong>{value}</strong></div>
+        ))}
+      </div>
+    </div>
+  </header>
+
+  <section class="cs-block">
+    <div class="cs-shell cs-split">
+      <div>
+        <span class="cs-kicker">02 / The opportunity</span>
+        <h2>{detail.opportunityTitle}</h2>
+      </div>
+      <p class="cs-copy">{detail.opportunity}</p>
+    </div>
+    <div class="cs-shell">
+      <span class="cs-kicker">03 / Core capabilities</span>
+      <div class="cs-features">
+        {detail.capabilities.map(([label, title, body]) => (
+          <article class="cs-feature">
+            <small>{label}</small>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </article>
+        ))}
+      </div>
+      <p class="cs-notice">{detail.notice}</p>
+    </div>
+  </section>
+
+  {detail.sections.map((section) => (
+    <section class="cs-block">
+      <div class="cs-shell cs-split">
+        <div>
+          <span class="cs-kicker">{section.kicker}</span>
+          <h2>{section.title}</h2>
+          <p class="cs-copy">{section.body}</p>
+        </div>
+        {section.image && (
+          <div class="cs-study-art">
+            <img src={section.image} alt={section.alt ?? ''} />
+          </div>
+        )}
+      </div>
+    </section>
+  ))}
+
+  <section class="cs-block">
+    <div class="cs-shell cs-closing">
+      <div>
+        <span class="cs-kicker">Have a similar idea?</span>
+        <h2>Build something unmistakably yours.</h2>
+        <p>Explore product design and development with Swishtag.</p>
+      </div>
+      <a class="cs-lime" href="https://swishtag.com/" target="_blank" rel="noopener noreferrer">Visit Swishtag</a>
+    </div>
+  </section>
+
+  <section class="cs-block" aria-label="More work">
+    <div class="cs-shell">
+      <div class="cs-explore-head">
+        <div>
+          <span class="cs-kicker">Continue exploring</span>
+          <h2>More work worth discovering.</h2>
+        </div>
+        <a class="cs-text-btn" href="/case-studies/">All projects</a>
+      </div>
+      <div class="cs-related cs-explore-grid">
+        {detail.explore.map((item) => (
+          <a class="cs-explore-card" href={item.href}>
+            <img src={item.image} alt={`${item.name} project preview`} />
+            <span class="cs-tag">{item.category}</span>
+            <strong>{item.name}</strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</article>
+)}

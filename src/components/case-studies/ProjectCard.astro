@@ -1,0 +1,41 @@
+---
+import type { CaseProject } from '../../data/case-studies.types';
+
+interface Props {
+  project: CaseProject;
+  order: number;
+}
+
+const { project, order } = Astro.props;
+const href = project.detail ? `/case-studies/${project.slug}/` : undefined;
+const search = [project.name, project.category, project.sourceCategory, project.industry, project.platform, project.service]
+  .filter(Boolean)
+  .join(' ')
+  .toLowerCase();
+const summary = [project.sourceCategory, project.industry].filter(Boolean).join(' · ');
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class="cs-card"
+  data-project-card
+  data-slug={project.slug}
+  data-name={project.name}
+  data-category={project.category}
+  data-industry={project.industry ?? ''}
+  data-order={order}
+  data-search={search}
+  data-href={href}
+  href={href}
+  type={href ? undefined : 'button'}
+>
+  <div class="cs-card-media">
+    <img src={project.image} alt={`${project.name} project preview`} loading="lazy" decoding="async" />
+  </div>
+  <div class="cs-card-body">
+    <span class="cs-tag">{project.category}</span>
+    <h3>{project.name}</h3>
+    <p>{summary}</p>
+    <span class="cs-card-link">View case study</span>
+  </div>
+</Tag>

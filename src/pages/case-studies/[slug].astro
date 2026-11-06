@@ -1,0 +1,27 @@
+---
+import '../../styles/case-studies.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyView from '../../components/case-studies/CaseStudyView.astro';
+import { getProject } from '../../data/case-studies.js';
+
+const project = getProject(Astro.params.slug);
+if (!project?.detail) {
+  return Astro.redirect('/case-studies/');
+}
+
+const title = `${project.name} | Swishtag Case Study`;
+const description = project.detail.intro;
+const canonical = `https://swishtag.com/case-studies/${project.slug}/`;
+const robots = 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+  <meta slot="head" property="og:title" content={title} />
+  <meta slot="head" property="og:description" content={description} />
+  <meta slot="head" property="og:url" content={canonical} />
+  <meta slot="head" property="og:type" content="article" />
+  <meta slot="head" property="og:image" content={`https://swishtag.com${project.detail.heroImage}`} />
+  <div class="case-studies">
+    <CaseStudyView project={project} />
+  </div>
+</BaseLayout>
