@@ -526,6 +526,10 @@ body:has(.case-studies) {
   background: transparent;
 }
 
+.cs-facts[data-count="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cs-facts[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cs-facts[data-count="1"] { grid-template-columns: minmax(0, 1fr); }
+
 .cs-facts div,
 .cs-facts span,
 .cs-facts strong {
@@ -1111,8 +1115,16 @@ body:has(.case-studies) {
 }
 
 @media (max-width: 760px) {
-  .cs-facts--dynamic {
+  .cs-facts--dynamic,
+  .cs-facts--dynamic[data-count],
+  .cs-facts--meta,
+  .cs-facts--meta[data-count] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cs-facts--meta[data-count="1"],
+  .cs-facts--dynamic[data-count="1"] {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
