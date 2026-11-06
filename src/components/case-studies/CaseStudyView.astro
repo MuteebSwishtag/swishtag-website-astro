@@ -60,6 +60,12 @@ const capabilities = detail?.capabilities?.length
 const notice = text(detail?.notice || story?.status);
 const gallery = detail ? [] : project.gallery.filter(Boolean);
 const visitUrl = detail ? '' : text(story?.url);
+const cosmifyIcons = ['◈', '♧', '↗', '⬡'];
+const heroArtClass = detail
+  ? project.slug === 'formeteca-monster-email-template'
+    ? 'cs-study-art cs-study-art--formeteca'
+    : 'cs-study-art cs-study-art--cosmify'
+  : `cs-study-art cs-study-art--dynamic${project.name === 'Artbeat Studios' ? ' cs-study-art--contain' : ''}`;
 const sections = detail
   ? detail.sections
   : [
@@ -68,6 +74,7 @@ const sections = detail
             kicker: 'The product experience',
             title: text(story?.experienceTitle),
             body: text(story?.experience),
+            visit: true,
           }
         : undefined,
       text(story?.takeaway) || text(story?.subtitle)
@@ -77,7 +84,7 @@ const sections = detail
             body: text(story?.subtitle),
           }
         : undefined,
-    ].filter((section): section is { kicker: string; title: string; body: string } => Boolean(section));
+    ].filter((section): section is { kicker: string; title: string; body: string; visit?: boolean } => Boolean(section));
 const explore: ExploreCard[] = detail
   ? detail.explore.map((item) => ({ ...item, href: pageHref(item.href) }))
   : related.map((item) => ({
@@ -117,20 +124,27 @@ const displaySections = detail
           {subtitle && <h2>{subtitle}</h2>}
           {intro && <p class="cs-copy">{intro}</p>}
           {chips.length > 0 && (
-            <div class="cs-chips">
-              {chips.map((chip) => <span>{chip}</span>)}
+            <div class:list={['cs-chips', detail ? (project.slug === 'cosmify' ? 'cs-chips--cosmify' : 'cs-chips--detail') : 'cs-chips--dynamic']}>
+              {chips.map((chip, chipIndex) => (
+                <span>
+                  {project.slug === 'cosmify' && cosmifyIcons[chipIndex] && <i>{cosmifyIcons[chipIndex]}</i>}
+                  {chip}
+                </span>
+              ))}
             </div>
           )}
-          {visitUrl && <p><a class="cs-card-link" href={visitUrl} target="_blank" rel="noopener noreferrer">Visit project reference</a></p>}
+          {visitUrl && !sections.some((section) => section.visit) && (
+            <p><a class="cs-source" href={visitUrl} target="_blank" rel="noopener noreferrer">Visit project reference ↗</a></p>
+          )}
         </div>
         {heroImage && (
-          <div class="cs-study-art">
+          <div class={heroArtClass}>
             <img src={heroImage} alt={heroAlt} />
           </div>
         )}
       </div>
       {facts.length > 0 && (
-        <div class:list={['cs-facts', detail ? 'cs-facts--rules' : 'cs-facts--editorial']}>
+        <div class:list={['cs-facts', detail ? 'cs-facts--meta' : 'cs-facts--dynamic']}>
           {facts.map(([label, value]) => (
             <div><span>{label}</span><strong>{value}</strong></div>
           ))}
@@ -192,6 +206,9 @@ const displaySections = detail
           {section.kicker && <span class="cs-kicker">{section.kicker}</span>}
           {section.title && <h2>{section.title}</h2>}
           {section.body && <p class="cs-copy">{section.body}</p>}
+          {section.visit && visitUrl && (
+            <p><a class="cs-source" href={visitUrl} target="_blank" rel="noopener noreferrer">Visit project reference ↗</a></p>
+          )}
         </div>
         {section.image && (
           <div class="cs-study-art">
