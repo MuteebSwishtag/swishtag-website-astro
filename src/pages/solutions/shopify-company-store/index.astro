@@ -5,6 +5,8 @@ import faqs from '../../../data/faqs.json';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { companyStoreService, companyStoreBreadcrumbs } from '../../../data/company-store.js';
 
+export const prerender = true;
+
 const title = "Company Store Design, Launch & Management | Swishtag";
 const description = "Company stores, done for you. Swishtag designs, launches and supports branded Shopify company stores for promotional products distributors. Book a demo.";
 const canonical = "https://swishtag.com/solutions/shopify-company-store/";

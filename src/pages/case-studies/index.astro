@@ -5,6 +5,8 @@ import BrandStrip from '../../components/case-studies/BrandStrip.astro';
 import ProjectCard from '../../components/case-studies/ProjectCard.astro';
 import { brands, categories, industries, projects } from '../../data/case-studies.js';
 
+export const prerender = true;
+
 const title = 'Case Studies | Swishtag';
 const description = 'Explore Swishtag’s selected work across Shopify stores, Shopify apps, web applications and websites.';
 const canonical = 'https://swishtag.com/case-studies/';
