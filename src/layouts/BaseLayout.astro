@@ -5,6 +5,7 @@ import HeaderBehavior from "../components/layout/HeaderBehavior.astro";
 import GoogleTagManager from "../components/analytics/GoogleTagManager.astro";
 import "../styles/home.css";
 import "../styles/header.css";
+import redirectsJs from "../../public/assets/url-redirects.js?raw";
 
 const {
   title = "Swishtag",
@@ -27,6 +28,7 @@ const {
     <meta name="color-scheme" content="light" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="preconnect" href="https://cdn.shopify.com" />
+    <link rel="preload" as="image" href="/assets/swishtag-logo.svg" type="image/svg+xml" />
     <link
       rel="preload"
       href="/assets/fonts/plus-jakarta-sans/plus-jakarta-sans-v12-latin.woff2"
@@ -63,7 +65,7 @@ const {
         <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180" />
-    <script is:inline src="/assets/url-redirects.js?v=20260904-project-routes"></script>
+    <script is:inline set:html={redirectsJs}></script>
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     {canonical && <link rel="canonical" href={canonical} />}
