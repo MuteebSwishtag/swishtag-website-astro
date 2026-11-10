@@ -1,11 +1,7 @@
 ---
-import xecutorRawHtml from "../legacy/xecutor-body.html?raw";
-import xecutorCssUrl from "../styles/pages/xecutor.css?rawcss";
+import xecutorHtml from "../legacy/xecutor-body.html?raw";
 import SharedFaq from './layout/SharedFaq.astro';
 import faqs from '../data/faqs.json';
-
-const xecutorHtml = xecutorRawHtml
-  .replace("<!-- PAGE_CSS:xecutor -->", `<link rel="stylesheet" href="${xecutorCssUrl}">`);
 
 const [beforeFaq, afterFaq] = xecutorHtml.split('<!-- SHARED_FAQ -->');
 ---

@@ -1,19 +1,5 @@
 ---
-import promoPlusRawHtml from "../legacy/promo-plus-body.html?raw";
-import promoPlus1CssUrl from "../styles/pages/promo-plus-1.css?rawcss";
-import promoPlus2CssUrl from "../styles/pages/promo-plus-2.css?rawcss";
-import promoPlus3CssUrl from "../styles/pages/promo-plus-3.css?rawcss";
-import promoPlus4CssUrl from "../styles/pages/promo-plus-4.css?rawcss";
-import promoPlus5CssUrl from "../styles/pages/promo-plus-5.css?rawcss";
-import promoPlus6CssUrl from "../styles/pages/promo-plus-6.css?rawcss";
-
-const promoPlusHtml = promoPlusRawHtml
-  .replace("<!-- PAGE_CSS:promo-plus-1 -->", `<link rel="stylesheet" href="${promoPlus1CssUrl}">`)
-  .replace("<!-- PAGE_CSS:promo-plus-2 -->", `<link rel="stylesheet" href="${promoPlus2CssUrl}">`)
-  .replace("<!-- PAGE_CSS:promo-plus-3 -->", `<link rel="stylesheet" href="${promoPlus3CssUrl}">`)
-  .replace("<!-- PAGE_CSS:promo-plus-4 -->", `<link rel="stylesheet" href="${promoPlus4CssUrl}">`)
-  .replace("<!-- PAGE_CSS:promo-plus-5 -->", `<link rel="stylesheet" href="${promoPlus5CssUrl}">`)
-  .replace("<!-- PAGE_CSS:promo-plus-6 -->", `<link rel="stylesheet" href="${promoPlus6CssUrl}">`);
+import promoPlusHtml from "../legacy/promo-plus-body.html?raw";
 ---
 
 <main class="promo-plus-page">

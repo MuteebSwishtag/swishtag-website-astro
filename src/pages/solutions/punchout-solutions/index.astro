@@ -1,5 +1,4 @@
 ---
-import punchoutCssUrl from "../../../styles/pages/punchout.css?rawcss";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PunchoutPage from "../../../components/PunchoutPage.astro";
 import headHtml from "../../../legacy/punchout-head.html?raw";
@@ -24,8 +23,7 @@ const punchoutHeadHtml = headHtml
   .replace(/<link\s+rel="preconnect"[^>]*>\s*/gi, "")
   .replace(/<link\s+href="https:\/\/fonts\.googleapis\.com[^>]*>\s*/i, "")
   .replace(/\/\* Header \*\/[\s\S]*?\/\* Hero \*\//, "/* Hero */")
-  .replace(/^.*(?:site-header|modern-nav|desktop-nav|mega-|mobile-menu|menu-toggle|footer-grid|footer-brand|footer-col|footer-bottom|site-footer).*$/gmi, "")
-  .replace("<!-- PAGE_CSS:punchout -->", `<link rel="stylesheet" href="${punchoutCssUrl}">`);
+  .replace(/^.*(?:site-header|modern-nav|desktop-nav|mega-|mobile-menu|menu-toggle|footer-grid|footer-brand|footer-col|footer-bottom|site-footer).*$/gmi, "");
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
