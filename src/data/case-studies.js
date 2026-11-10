@@ -5,7 +5,7 @@ export const industries = ["Art & Photography", "Custom Shopify Apps & Enterpris
 export const brands = [
   {
     "name": "Club color",
-    "image": "/assets/case-studies/brands/club-color.svg"
+    "image": "/assets/case-studies/brands/club-color.webp"
   },
   {
     "name": "Backdock",
@@ -13,15 +13,15 @@ export const brands = [
   },
   {
     "name": "SoleRank",
-    "image": "/assets/case-studies/brands/solerank.svg"
+    "image": "/assets/case-studies/brands/solerank.webp"
   },
   {
     "name": "Off Road",
-    "image": "/assets/case-studies/brands/off-road.svg"
+    "image": "/assets/case-studies/brands/off-road.webp"
   },
   {
     "name": "Nospy",
-    "image": "/assets/case-studies/brands/nospy.svg"
+    "image": "/assets/case-studies/brands/nospy.webp"
   },
   {
     "name": "Part Vend",
@@ -29,19 +29,19 @@ export const brands = [
   },
   {
     "name": "AeroFlowo",
-    "image": "/assets/case-studies/brands/aeroflowo.svg"
+    "image": "/assets/case-studies/brands/aeroflowo.webp"
   },
   {
     "name": "Trolley",
-    "image": "/assets/case-studies/brands/trolley.svg"
+    "image": "/assets/case-studies/brands/trolley.webp"
   },
   {
     "name": "Metal Updater",
-    "image": "/assets/case-studies/brands/metal-updater.svg"
+    "image": "/assets/case-studies/brands/metal-updater.webp"
   },
   {
     "name": "CartCandy",
-    "image": "/assets/case-studies/brands/cartcandy.svg"
+    "image": "/assets/case-studies/brands/cartcandy.webp"
   },
   {
     "name": "Goosly",
@@ -49,7 +49,7 @@ export const brands = [
   },
   {
     "name": "JTE fastPass",
-    "image": "/assets/case-studies/brands/jte-fastpass.svg"
+    "image": "/assets/case-studies/brands/jte-fastpass.webp"
   },
   {
     "name": "Loosid",
@@ -57,11 +57,11 @@ export const brands = [
   },
   {
     "name": "McCabe",
-    "image": "/assets/case-studies/brands/mccabe.svg"
+    "image": "/assets/case-studies/brands/mccabe.webp"
   },
   {
     "name": "Artbeat Studio",
-    "image": "/assets/case-studies/brands/artbeat-studio.svg"
+    "image": "/assets/case-studies/brands/artbeat-studio.webp"
   },
   {
     "name": "Voxolite",
@@ -69,15 +69,15 @@ export const brands = [
   },
   {
     "name": "Pulse Chat",
-    "image": "/assets/case-studies/brands/pulse-chat.svg"
+    "image": "/assets/case-studies/brands/pulse-chat.webp"
   },
   {
     "name": "pin Track",
-    "image": "/assets/case-studies/brands/pin-track.svg"
+    "image": "/assets/case-studies/brands/pin-track.webp"
   },
   {
     "name": "Swiftscan",
-    "image": "/assets/case-studies/brands/swiftscan.svg"
+    "image": "/assets/case-studies/brands/swiftscan.webp"
   },
   {
     "name": "Buttercup",
@@ -89,7 +89,7 @@ export const brands = [
   },
   {
     "name": "Progressify",
-    "image": "/assets/case-studies/brands/progressify.svg"
+    "image": "/assets/case-studies/brands/progressify.webp"
   },
   {
     "name": "Greenic",
@@ -101,7 +101,7 @@ export const brands = [
   },
   {
     "name": "Chatbase",
-    "image": "/assets/case-studies/brands/chatbase.svg"
+    "image": "/assets/case-studies/brands/chatbase.webp"
   },
   {
     "name": "Debido",
@@ -109,7 +109,7 @@ export const brands = [
   },
   {
     "name": "Tag Analytics",
-    "image": "/assets/case-studies/brands/tag-analytics.svg"
+    "image": "/assets/case-studies/brands/tag-analytics.webp"
   },
   {
     "name": "Arbify",
@@ -117,7 +117,7 @@ export const brands = [
   },
   {
     "name": "Trackship",
-    "image": "/assets/case-studies/brands/trackship.svg"
+    "image": "/assets/case-studies/brands/trackship.webp"
   },
   {
     "name": "Promo Plus",
@@ -129,7 +129,7 @@ export const brands = [
   },
   {
     "name": "Cosmify",
-    "image": "/assets/case-studies/brands/cosmify.svg"
+    "image": "/assets/case-studies/brands/cosmify.webp"
   },
   {
     "name": "Option 4d",
@@ -161,11 +161,11 @@ export const brands = [
   },
   {
     "name": "Amrican Print on demand",
-    "image": "/assets/case-studies/brands/amrican-print-on-demand.svg"
+    "image": "/assets/case-studies/brands/amrican-print-on-demand.webp"
   },
   {
     "name": "Mundist home",
-    "image": "/assets/case-studies/brands/mundist-home.svg"
+    "image": "/assets/case-studies/brands/mundist-home.webp"
   },
   {
     "name": "Dynamics",
@@ -173,7 +173,7 @@ export const brands = [
   },
   {
     "name": "Ckube",
-    "image": "/assets/case-studies/brands/ckube.svg"
+    "image": "/assets/case-studies/brands/ckube.webp"
   },
   {
     "name": "SCS",
@@ -189,19 +189,19 @@ export const brands = [
   },
   {
     "name": "Referral Sales Booster",
-    "image": "/assets/case-studies/brands/referral-sales-booster.svg"
+    "image": "/assets/case-studies/brands/referral-sales-booster.webp"
   },
   {
     "name": "Volume Discount",
-    "image": "/assets/case-studies/brands/volume-discount.svg"
+    "image": "/assets/case-studies/brands/volume-discount.webp"
   },
   {
     "name": "Mystery Discount",
-    "image": "/assets/case-studies/brands/mystery-discount.svg"
+    "image": "/assets/case-studies/brands/mystery-discount.webp"
   },
   {
     "name": "Uglyfood",
-    "image": "/assets/case-studies/brands/uglyfood.svg"
+    "image": "/assets/case-studies/brands/uglyfood.webp"
   },
   {
     "name": "Kidikit",
@@ -209,11 +209,11 @@ export const brands = [
   },
   {
     "name": "Good Authentic",
-    "image": "/assets/case-studies/brands/good-authentic.svg"
+    "image": "/assets/case-studies/brands/good-authentic.webp"
   },
   {
     "name": "Furesque",
-    "image": "/assets/case-studies/brands/furesque.svg"
+    "image": "/assets/case-studies/brands/furesque.webp"
   },
   {
     "name": "Stories of the Soil",
@@ -225,15 +225,15 @@ export const brands = [
   },
   {
     "name": "Deal of the Day",
-    "image": "/assets/case-studies/brands/deal-of-the-day.svg"
+    "image": "/assets/case-studies/brands/deal-of-the-day.webp"
   },
   {
     "name": "Fruda",
-    "image": "/assets/case-studies/brands/fruda.svg"
+    "image": "/assets/case-studies/brands/fruda.webp"
   },
   {
     "name": "25",
-    "image": "/assets/case-studies/brands/25.svg"
+    "image": "/assets/case-studies/brands/25.webp"
   },
   {
     "name": "Fidel",
@@ -245,15 +245,15 @@ export const brands = [
   },
   {
     "name": "PickPack",
-    "image": "/assets/case-studies/brands/pickpack.svg"
+    "image": "/assets/case-studies/brands/pickpack.webp"
   },
   {
     "name": "Navidium",
-    "image": "/assets/case-studies/brands/navidium.svg"
+    "image": "/assets/case-studies/brands/navidium.webp"
   },
   {
     "name": "Bundilo Bundle Builder",
-    "image": "/assets/case-studies/brands/bundilo-bundle-builder.svg"
+    "image": "/assets/case-studies/brands/bundilo-bundle-builder.webp"
   },
   {
     "name": "parterShop",
@@ -288,7 +288,7 @@ export const projects = [
         "Email Templates",
         "Brand Design"
       ],
-      "heroImage": "/assets/case-studies/formeteca-hero.png",
+      "heroImage": "/assets/case-studies/formeteca-hero.webp",
       "heroAlt": "Formeteca email template gallery showcasing branded designs",
       "facts": [
         [
@@ -450,7 +450,7 @@ export const projects = [
         {
           "name": "Formeteca - Monster Email Template",
           "href": "/case-studies/formeteca-monster-email-template/",
-          "image": "/assets/case-studies/cosmify-related-1.png",
+          "image": "/assets/case-studies/cosmify-related-1.webp",
           "category": "Shopify Apps"
         },
         {

@@ -1701,7 +1701,9 @@ PRODUCTION BUTTON
     <!-- BEFORE IMAGE -->
     <img
     class="product-image before-image"
-    src="/assets/promo-plus/before.png"
+    src="/assets/promo-plus/before.webp"
+    width="688"
+    height="640"
     alt="Before Mockup">
 
 
@@ -1709,7 +1711,9 @@ PRODUCTION BUTTON
     <!-- AFTER IMAGE -->
     <img
     class="product-image after-image"
-    src="/assets/promo-plus/after.png"
+    src="/assets/promo-plus/after.webp"
+    width="686"
+    height="640"
     alt="After Mockup">
 
 
@@ -1898,7 +1902,7 @@ Production File Ready
         <div class="approval-preview-art">
           <img
             class="approval-preview-image"
-            src="/assets/promo-plus/mockup-creation.png"
+            src="/assets/promo-plus/mockup-creation.webp"
             alt=""
             loading="lazy"
             decoding="async"
@@ -3640,9 +3644,9 @@ const approvalStatus=document.querySelector('.approval-preview-status');
 const approvalImage=document.querySelector('[data-approval-preview-image]');
 const statuses={mockup:'Mockup ready',send:'Awaiting approval',proof:'Approved'};
 const approvalImages={
-  mockup:{src:'/assets/promo-plus/mockup-creation.png',alt:'Promo Plus mockup creation workspace'},
-  send:{src:'/assets/promo-plus/send-for-approval.png',alt:'Promo Plus approval review workspace'},
-  proof:{src:'/assets/promo-plus/production-file.png',alt:'Promo Plus production file workspace'}
+  mockup:{src:'/assets/promo-plus/mockup-creation.webp',alt:'Promo Plus mockup creation workspace'},
+  send:{src:'/assets/promo-plus/send-for-approval.webp',alt:'Promo Plus approval review workspace'},
+  proof:{src:'/assets/promo-plus/production-file.webp',alt:'Promo Plus production file workspace'}
 };
 function updateApprovalImage(detail){
   if(!approvalImage) return;
