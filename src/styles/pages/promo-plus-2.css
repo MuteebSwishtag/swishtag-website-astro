@@ -1,0 +1,714 @@
+
+
+
+/* =========================================
+   RIGHT HERO WRAPPER
+========================================= */
+
+.promo-plus-page .promo-hero-right{
+    width:620px;
+    height:620px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    font-family:"Plus Jakarta Sans",sans-serif;
+    perspective:1000px;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.promo-plus-page .pp-card{
+    width:560px;
+    height:560px;
+
+    background:#ffffff;
+
+    border-radius:44px;
+
+    border:1px solid rgba(0,0,0,.08);
+
+    box-shadow:
+        0 40px 90px rgba(0,0,0,.08);
+
+    position:relative;
+
+    overflow:visible;
+
+    animation:
+        cardFloat 6s ease-in-out infinite;
+
+    transition:
+        box-shadow .5s ease;
+}
+
+
+.promo-plus-page .pp-card:hover{
+    box-shadow:
+        0 55px 120px rgba(0,0,0,.13);
+}
+
+
+@keyframes cardFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+}
+
+
+/* =========================================
+   PRODUCT MOCKUP AREA
+========================================= */
+
+.promo-plus-page .pp-product{
+    position:absolute;
+
+    top:50px;
+    left:70px;
+
+    width:310px;
+    height:280px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:3;
+
+    overflow:hidden;
+
+    border-radius:28px;
+}
+
+
+/* PRODUCT IMAGE */
+
+.promo-plus-page .product-image{
+    width:270px;
+    height:270px;
+
+    object-fit:contain;
+
+    animation:
+        productFloat 5s ease-in-out infinite;
+
+    transition:
+        transform .55s cubic-bezier(.22,1,.36,1);
+}
+
+
+@keyframes productFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-14px);
+    }
+
+}
+
+
+/* PRODUCT HOVER */
+
+.promo-plus-page .pp-product:hover .product-image{
+    transform:
+        translateY(-7px)
+        scale(1.05);
+}
+
+
+/* =========================================
+   PRODUCT SCANNING EFFECT
+========================================= */
+
+.promo-plus-page .pp-product::after{
+    content:"";
+
+    position:absolute;
+
+    left:30px;
+    right:30px;
+
+    top:-15px;
+
+    height:3px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:7;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(194,255,2,.25) 15%,
+            #c2ff02 50%,
+            rgba(194,255,2,.25) 85%,
+            transparent 100%
+        );
+
+    box-shadow:
+        0 0 14px rgba(194,255,2,.45);
+}
+
+
+.promo-plus-page .pp-product:hover::after{
+    opacity:1;
+
+    animation:
+        scanProduct 1.35s ease-in-out;
+}
+
+
+@keyframes scanProduct{
+
+    0%{
+        top:10px;
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    85%{
+        opacity:1;
+    }
+
+    100%{
+        top:265px;
+        opacity:0;
+    }
+
+}
+
+
+/* =========================================
+   PROMO PLUS LOGO
+========================================= */
+
+.promo-plus-page .promo-logo{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:78px;
+    height:auto;
+
+    object-fit:contain;
+
+    opacity:0;
+
+    z-index:6;
+
+    pointer-events:none;
+
+    transform:
+        translate(-50%,-35%)
+        scale(.72);
+
+    filter:
+        blur(2px);
+
+    transition:
+        opacity .55s ease,
+        transform .65s cubic-bezier(.22,1,.36,1),
+        filter .55s ease;
+}
+
+
+/* LOGO PRINT / BRANDING EFFECT */
+
+.promo-plus-page .pp-product:hover .promo-logo{
+    opacity:1;
+
+    filter:
+        blur(0);
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+}
+
+
+/* =========================================
+   LOOKS GREAT NOTE
+========================================= */
+
+.promo-plus-page .pp-note{
+    position:absolute;
+
+    right:38px;
+    top:72px;
+
+    z-index:9;
+
+    font-size:17px;
+    line-height:1;
+
+    font-weight:500;
+
+    font-style:italic;
+
+    color:#777;
+
+    white-space:nowrap;
+
+    transform:
+        rotate(-7deg);
+
+    padding:
+        8px 13px;
+
+    background:
+        rgba(255,255,255,.94);
+
+    border-radius:20px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.055);
+
+    transition:
+        transform .35s ease,
+        color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.promo-plus-page .pp-card:hover .pp-note{
+    color:#333;
+
+    transform:
+        rotate(-5deg)
+        translateY(-3px);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.075);
+}
+
+
+/* SMALL ARROW */
+
+.promo-plus-page .pp-note::after{
+    content:"↙";
+
+    position:absolute;
+
+    left:-17px;
+    bottom:-17px;
+
+    font-size:22px;
+
+    color:#9a9a9a;
+
+    transform:
+        rotate(10deg);
+}
+
+
+/* =========================================
+   CLIENT FEEDBACK
+========================================= */
+
+.promo-plus-page .pp-feedback{
+    position:absolute;
+
+    right:20px;
+    top:205px;
+
+    width:170px;
+
+    box-sizing:border-box;
+
+    background:#ffffff;
+
+    padding:
+        12px 14px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    box-shadow:
+        0 18px 38px rgba(0,0,0,.09);
+
+    z-index:10;
+
+    animation:
+        feedbackMove 5s ease-in-out infinite;
+
+    transition:
+        box-shadow .35s ease;
+}
+
+
+@keyframes feedbackMove{
+
+    0%,100%{
+        transform:
+            translateX(0)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translateX(8px)
+            translateY(-4px);
+    }
+
+}
+
+
+.promo-plus-page .pp-feedback:hover{
+    box-shadow:
+        0 22px 46px rgba(0,0,0,.13);
+}
+
+
+/* FEEDBACK AVATAR */
+
+.promo-plus-page .pp-avatar{
+    width:30px;
+    height:30px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ececec,
+            #d9d9d9
+        );
+
+    position:relative;
+}
+
+
+.promo-plus-page .pp-avatar::after{
+    content:"";
+
+    width:8px;
+    height:8px;
+
+    position:absolute;
+
+    right:-1px;
+    bottom:0;
+
+    border-radius:50%;
+
+    background:#c2ff02;
+
+    border:2px solid #fff;
+}
+
+
+/* FEEDBACK TYPOGRAPHY */
+
+.promo-plus-page .pp-feedback strong{
+    display:block;
+
+    margin-bottom:2px;
+
+    font-size:12px;
+    line-height:15px;
+
+    font-weight:700;
+
+    color:#171717;
+}
+
+
+.promo-plus-page .pp-feedback span{
+    display:block;
+
+    font-size:10.5px;
+    line-height:14px;
+
+    color:#656565;
+
+    white-space:nowrap;
+}
+
+
+/* =========================================
+   WORKFLOW CHIPS
+========================================= */
+
+.promo-plus-page .pp-status{
+    position:absolute;
+
+    left:55px;
+    bottom:135px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    z-index:5;
+}
+
+
+.promo-plus-page .pp-chip{
+    height:43px;
+
+    box-sizing:border-box;
+
+    padding:
+        0 19px;
+
+    border-radius:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:13px;
+    line-height:1;
+
+    font-weight:700;
+
+    color:#171717;
+
+    white-space:nowrap;
+
+    animation:
+        chipFloat 4s ease-in-out infinite;
+
+    transition:
+        box-shadow .35s ease,
+        filter .35s ease;
+}
+
+
+/* REVIEW */
+
+.promo-plus-page .pp-chip:nth-child(1){
+    background:#ece8ff;
+}
+
+
+/* REVISION */
+
+.promo-plus-page .pp-chip:nth-child(2){
+    background:#ffd9c7;
+
+    animation-delay:.4s;
+}
+
+
+/* APPROVED */
+
+.promo-plus-page .pp-chip:nth-child(3){
+    background:#bdf5ef;
+
+    animation-delay:.8s;
+}
+
+
+/* PRODUCTION READY */
+
+.promo-plus-page .pp-chip:nth-child(4){
+    background:#c2ff02;
+
+    animation-delay:1.2s;
+}
+
+
+@keyframes chipFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+
+}
+
+
+/* =========================================
+   HOVER WORKFLOW RESPONSE
+========================================= */
+
+/*
+   When the product is hovered,
+   Approved becomes more visually active.
+*/
+
+.promo-plus-page .pp-card:has(.pp-product:hover)
+.pp-chip:nth-child(3){
+    box-shadow:
+        0 8px 24px rgba(153,254,237,.65);
+
+    filter:
+        saturate(1.1);
+}
+
+
+/*
+   Production Ready responds slightly after.
+*/
+
+.promo-plus-page .pp-card:has(.pp-product:hover)
+.pp-chip:nth-child(4){
+    box-shadow:
+        0 8px 26px rgba(194,255,2,.35);
+}
+
+
+/* =========================================
+   PRODUCTION FILE READY
+========================================= */
+
+.promo-plus-page .pp-ready{
+    position:absolute;
+
+    left:-34px;
+    bottom:54px;
+
+    height:48px;
+
+    box-sizing:border-box;
+
+    padding:
+        0 23px 0 10px;
+
+    border-radius:35px;
+
+    background:#202124;
+
+    color:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    font-size:14px;
+    line-height:1;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+    z-index:12;
+
+    box-shadow:
+        0 8px 28px rgba(0,0,0,.16),
+        0 0 24px rgba(194,255,2,.18);
+
+    animation:
+        readyGlow 3s ease-in-out infinite;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* CHECK */
+
+.promo-plus-page .pp-check{
+    width:28px;
+    height:28px;
+
+    margin-right:10px;
+
+    border-radius:50%;
+
+    background:#c2ff02;
+
+    color:#111;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:800;
+
+    flex-shrink:0;
+}
+
+
+@keyframes readyGlow{
+
+    0%,100%{
+        box-shadow:
+            0 8px 28px rgba(0,0,0,.16),
+            0 0 8px rgba(194,255,2,.10);
+    }
+
+    50%{
+        box-shadow:
+            0 8px 28px rgba(0,0,0,.16),
+            0 0 28px rgba(194,255,2,.42);
+    }
+
+}
+
+
+/* PRODUCT HOVER -> READY STATE */
+
+.promo-plus-page .pp-card:has(.pp-product:hover)
+.pp-ready{
+    transform:
+        translateX(-5px)
+        scale(1.025);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.18),
+        0 0 32px rgba(194,255,2,.48);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:700px){
+
+    .promo-plus-page .promo-hero-right{
+        width:100%;
+        height:auto;
+
+        min-height:520px;
+
+        transform:
+            scale(.82);
+
+        transform-origin:
+            center center;
+    }
+
+}
+
+

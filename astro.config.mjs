@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 import managedRedirects from './src/data/redirects.json' with { type: 'json' };
 import urlGuard from './integrations/url-guard.mjs';
+import rawCssUrl from './integrations/raw-css-url.mjs';
 
 export default defineConfig({
   output: 'server',
@@ -66,5 +67,5 @@ export default defineConfig({
     },
   },
   redirects: managedRedirects,
-  integrations: [urlGuard()],
+  integrations: [rawCssUrl(), urlGuard()],
 });

@@ -1,7 +1,11 @@
 ---
-import distributorsHtml from "../legacy/distributors-body.html?raw";
+import distributorsRawHtml from "../legacy/distributors-body.html?raw";
+import distributorsCssUrl from "../styles/pages/distributors.css?rawcss";
 import SharedFaq from './layout/SharedFaq.astro';
 import faqs from '../data/faqs.json';
+
+const distributorsHtml = distributorsRawHtml
+  .replace("<!-- PAGE_CSS:distributors -->", `<link rel="stylesheet" href="${distributorsCssUrl}">`);
 
 const [beforeFaq, afterFaq] = distributorsHtml.split('<!-- SHARED_FAQ -->');
 ---

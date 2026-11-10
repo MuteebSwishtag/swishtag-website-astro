@@ -1,5 +1,9 @@
 ---
-import decoratorsHtml from "../legacy/decorators-body.html?raw";
+import decoratorsRawHtml from "../legacy/decorators-body.html?raw";
+import decoratorsCssUrl from "../styles/pages/decorators.css?rawcss";
+
+const decoratorsHtml = decoratorsRawHtml
+  .replace("<!-- PAGE_CSS:decorators -->", `<link rel="stylesheet" href="${decoratorsCssUrl}">`);
 ---
 
 <main class="decorators-page">

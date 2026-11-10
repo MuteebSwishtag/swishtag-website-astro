@@ -1,5 +1,9 @@
 ---
-import suppliersHtml from "../legacy/suppliers-body.html?raw";
+import suppliersRawHtml from "../legacy/suppliers-body.html?raw";
+import suppliersCssUrl from "../styles/pages/suppliers.css?rawcss";
+
+const suppliersHtml = suppliersRawHtml
+  .replace("<!-- PAGE_CSS:suppliers -->", `<link rel="stylesheet" href="${suppliersCssUrl}">`);
 ---
 
 <main class="suppliers-page">
