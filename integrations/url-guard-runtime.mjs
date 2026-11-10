@@ -1,0 +1,103 @@
+// Runtime guard for prerendered pages, copied to dist/server/url-guard.mjs at build time
+// and imported first by dist/server/entry.mjs (see ./url-guard.mjs).
+//
+// Prerendered pages are served by @astrojs/node's static file handler, which runs before
+// Astro's router. Without this guard, odd URL forms for those pages would return 200
+// instead of what the site returned when they were server-rendered:
+//   /path/index.html  -> 301 /path/       (root: /index.html -> /)
+//   /path//, /path/// -> 301 /path/       (extra trailing slashes; other slashes untouched, as before)
+//   /404.html         -> 404 with the 404 page
+// Query strings are kept. Only GET/HEAD requests whose canonical target is a prerendered
+// page are touched; everything else passes straight through to the adapter unchanged.
+import fs from "node:fs";
+import http from "node:http";
+import https from "node:https";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const CLIENT_DIR = fileURLToPath(new URL("../client/", import.meta.url));
+const pageCache = new Map();
+
+function isPrerenderedPage(pathname) {
+  if (pageCache.has(pathname)) return pageCache.get(pathname);
+  const file = path.resolve(CLIENT_DIR, "." + pathname, "index.html");
+  const inside = file.startsWith(path.resolve(CLIENT_DIR) + path.sep);
+  let exists = false;
+  if (inside) {
+    try {
+      exists = fs.statSync(file).isFile();
+    } catch {}
+  }
+  pageCache.set(pathname, exists);
+  return exists;
+}
+
+function send404(req, res) {
+  let body;
+  try {
+    body = fs.readFileSync(path.join(CLIENT_DIR, "404.html"));
+  } catch {
+    return false;
+  }
+  res.statusCode = 404;
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Content-Length", body.length);
+  res.end(req.method === "HEAD" ? undefined : body);
+  return true;
+}
+
+export function urlGuard(req, res) {
+  if (req.method !== "GET" && req.method !== "HEAD") return false;
+  const raw = (req.url || "/").split("#")[0];
+  const q = raw.indexOf("?");
+  const rawPath = q === -1 ? raw : raw.slice(0, q);
+  const query = q === -1 ? "" : raw.slice(q);
+
+  let decoded;
+  try {
+    decoded = decodeURI(rawPath);
+  } catch {
+    return false;
+  }
+  if (decoded.includes("\\") || /(^|\/)\.\.?(\/|$)/.test(decoded)) return false;
+
+  if (decoded === "/404.html") return send404(req, res);
+
+  let target = decoded;
+  if (target.endsWith("/index.html")) target = target.slice(0, -"index.html".length);
+  target = target.replace(/\/{2,}$/, "/");
+  if (target === decoded) return false;
+
+  const pageDir = target.endsWith("/") ? target : target + "/";
+  if (!isPrerenderedPage(pageDir)) return false;
+
+  res.statusCode = 301;
+  res.setHeader("Location", encodeURI(target) + query);
+  res.end();
+  return true;
+}
+
+function wrap(listener) {
+  if (typeof listener !== "function") return listener;
+  return function guardedListener(req, res, ...rest) {
+    if (urlGuard(req, res)) return;
+    return listener.call(this, req, res, ...rest);
+  };
+}
+
+// The standalone adapter builds its own request handler inside startServer(). Wrap the
+// listener of the first HTTP(S) server it creates, then restore the original functions.
+for (const mod of [http, https]) {
+  const original = mod.createServer;
+  mod.createServer = function createServerWithUrlGuard(...args) {
+    http.createServer = originals.http;
+    https.createServer = originals.https;
+    const i = args.findIndex((a) => typeof a === "function");
+    if (i !== -1) args[i] = wrap(args[i]);
+    return original.apply(this, args);
+  };
+  mod.__urlGuardOriginal = original;
+}
+const originals = { http: http.__urlGuardOriginal, https: https.__urlGuardOriginal };
+delete http.__urlGuardOriginal;
+delete https.__urlGuardOriginal;
