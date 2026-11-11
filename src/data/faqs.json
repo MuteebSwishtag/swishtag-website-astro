@@ -375,5 +375,41 @@
         "open": false
       }
     ]
+  },
+  "company": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Questions about Swishtag",
+    "description": "A short look at who we are and how a project starts.",
+    "link": {
+      "href": "/contact/",
+      "label": "Start a conversation"
+    },
+    "items": [
+      {
+        "question": "What does Swishtag do?",
+        "answer": "Swishtag is a promotional products technology company. We build ecommerce, integrations, automation and software for distributors, suppliers and decorators.",
+        "open": true
+      },
+      {
+        "question": "Is Swishtag a Shopify Partner?",
+        "answer": "Yes. Swishtag is a Shopify Partner with experience delivering custom Shopify stores and 100+ custom Shopify applications.",
+        "open": false
+      },
+      {
+        "question": "Who does Swishtag work with?",
+        "answer": "Promotional products distributors, suppliers and decorators, from company store launches to production workflow software.",
+        "open": false
+      },
+      {
+        "question": "What is promotional commerce?",
+        "answer": "Promotional commerce is the buying and selling of branded products, including customization, artwork, suppliers, production and fulfillment.",
+        "open": false
+      },
+      {
+        "question": "How do I start a project with Swishtag?",
+        "answer": "Tell us the workflow that is slowing you down. We help decide what should be improved, connected, automated or built.",
+        "open": false
+      }
+    ]
   }
 }

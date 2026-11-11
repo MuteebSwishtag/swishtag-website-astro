@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CompanyReferencePage from '../../components/reference-pages/CompanyReferencePage.astro';
+import faqs from '../../data/faqs.json';
 
 export const prerender = true;
 
@@ -10,6 +11,6 @@ const canonical = 'https://swishtag.com/company/';
 const robots = 'index,follow';
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots} pageType="AboutPage" ogImageAlt="Swishtag rocket illustration for the About Swishtag page">
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} pageType="AboutPage" ogImageAlt="Swishtag rocket illustration for the About Swishtag page" faq={faqs.company}>
   <CompanyReferencePage />
 </BaseLayout>

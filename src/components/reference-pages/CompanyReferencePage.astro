@@ -1,12 +1,14 @@
 ---
+import SharedFaq from '../layout/SharedFaq.astro';
+import faqs from '../../data/faqs.json';
 ---
 <main class="company-page">
 <section class="hero">
 <div class="page hero-grid">
 <div data-reveal="">
-<p class="eyebrow">Company</p>
+<p class="eyebrow">About Swishtag</p>
 <h1>Swishtag: the technology team behind <span class="underline">promotional commerce.</span></h1>
-<p class="copy">Swishtag builds connected commerce, automation, integrations, and software for promotional products businesses ready to move beyond disconnected systems and manual work.</p>
+<p class="copy">Swishtag is a promotional products technology company and Shopify Partner. We build connected ecommerce, integrations, automation and software for promo distributors, suppliers and decorators ready to move beyond disconnected systems and manual work.</p>
 <p class="copy" style="margin-top:12px">We help the storefront and the systems behind it work as one operation.</p>
 <div class="btns"><a class="btn btn-primary" href="#ecosystem">Explore What We Build ↗</a><a class="btn btn-outline" href="#contact">Start a Conversation</a></div>
 <div class="hero-trust"><i></i><span>Commerce. Integration. Automation. Software.</span></div>
@@ -27,17 +29,17 @@
 <div class="page who-layout">
 <div class="who-copy" data-reveal="">
 <p class="eyebrow">Who we are</p>
-<h2 class="title">We build technology around how businesses actually operate.</h2>
+<h2 class="title">We build promotional products technology around how your business actually operates.</h2>
 <div class="copy">
-<p>Most technology companies begin with a platform. We begin with the business, how work enters, where information moves, and where friction builds.</p>
-<p>Then we decide what should change: ecommerce, integration, automation, or purpose built software.</p>
+<p>Most technology companies begin with a platform. We begin with your promotional products business: how work enters, where information moves and where friction builds.</p>
+<p>Then we decide what should change: Shopify ecommerce, ERP integration, workflow automation or purpose-built software.</p>
 </div>
 </div>
 <div data-reveal="">
 <div class="operation-map">
 <article class="op-card"><span class="op-num">01</span><h3>How orders enter.</h3><p>Start with the path work takes into the business.</p></article>
 <article class="op-card"><span class="op-num">02</span><h3>Where information moves.</h3><p>Follow how information travels across the operation.</p></article>
-<article class="op-card"><span class="op-num">03</span><h3>Which systems need to communicate.</h3><p>See where platforms depend on one another.</p></article>
+<article class="op-card"><span class="op-num">03</span><h3>Which systems need to communicate.</h3><p>See where your ecommerce, ERP and supplier systems depend on one another.</p></article>
 <article class="op-card"><span class="op-num">04</span><h3>Where people repeat work.</h3><p>Identify the manual work happening again and again.</p></article>
 <article class="op-card"><span class="op-num">05</span><h3>Where approvals slow things down.</h3><p>Understand where decisions create unnecessary delay.</p></article>
 <article class="op-card"><span class="op-num">06</span><h3>Where growth creates operational friction.</h3><p>See what stops scaling cleanly as the business grows.</p></article>
@@ -53,22 +55,22 @@
 <div class="page">
 <div class="story-head" data-reveal=""><p class="eyebrow">Our story</p><h2 class="title">From building storefronts to building what connects them.</h2></div>
 <div class="story-rail" data-reveal="">
-<article class="story-phase"><span class="story-no">01 / Ecommerce</span><div><h3>Start with the storefront.</h3><p>Shopify gave us a front row view into how modern businesses sell online.</p></div></article>
+<article class="story-phase"><span class="story-no">01 / Ecommerce</span><div><h3>Start with the storefront.</h3><p>Shopify gave us a front row view into how promotional products businesses sell online.</p></div></article>
 <article class="story-phase"><span class="story-no">02 / Operations</span><div><h3>See what sits behind it.</h3><p>We saw the product data, approvals, accounting, production, procurement, and fulfillment behind every order.</p></div></article>
 <article class="story-phase"><span class="story-no">03 / Workflows</span><div><h3>Follow the work.</h3><p>We shifted from websites to the workflows and information moving behind them.</p></div></article>
-<article class="story-phase"><span class="story-no">04 / Products</span><div><h3>Build what should exist.</h3><p>Some recurring problems deserved reusable products, not another isolated project.</p></div></article>
+<article class="story-phase"><span class="story-no">04 / Products</span><div><h3>Build what should exist.</h3><p>Some recurring problems deserved reusable products, like Xecutor and Rocket Apps, not another isolated project.</p></div></article>
 </div>
-<div class="story-close" data-reveal=""><small>That evolution shaped the Swishtag of today</small><strong>A technology company focused on making promotional commerce more connected.</strong></div>
+<div class="story-close" data-reveal=""><small>That evolution shaped the Swishtag of today</small><strong>A promotional products technology company focused on making promotional commerce more connected.</strong></div>
 </div>
 </section>
 <section class="section ecosystem" id="ecosystem">
 <div class="page">
-<div data-reveal=""><p class="eyebrow">The Swishtag ecosystem</p><h2 class="title">Commerce is only one part of the system.</h2><p class="copy">The work we do sits across the layers businesses depend on every day.</p></div>
+<div data-reveal=""><p class="eyebrow">The Swishtag ecosystem</p><h2 class="title">Ecommerce is only one part of your promotional products technology stack.</h2><p class="copy">Our work sits across the layers promotional products businesses depend on every day: commerce, systems, automation, software and intelligence.</p></div>
 <div class="eco-grid">
-<article class="eco-card" data-reveal=""><span class="eco-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v13H4z"></path><path d="M7 6l2-3h6l2 3M8 11h8"></path></svg></span><h3>Commerce</h3><p>Storefronts and buying experiences built around how customers purchase.</p><span class="eco-arrow">↗</span></article>
-<article class="eco-card" data-reveal=""><span class="eco-icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="6" r="2"></circle><circle cx="19" cy="18" r="2"></circle><path d="m7 11 10-4M7 13l10 4"></path></svg></span><h3>Systems</h3><p>Connections across ecommerce, ERP, accounting, suppliers, product data, and procurement.</p><span class="eco-arrow">↗</span></article>
-<article class="eco-card" data-reveal=""><span class="eco-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h13"></path><path d="m16 10 4 2-4 2"></path></svg></span><h3>Automation</h3><p>Workflows that reduce repetitive work and move information between systems.</p><span class="eco-arrow">↗</span></article>
-<article class="eco-card" data-reveal=""><span class="eco-icon"><svg viewBox="0 0 24 24"><rect height="16" rx="2" width="16" x="4" y="4"></rect><path d="M8 9h8M8 13h5M8 17h7"></path></svg></span><h3>Software</h3><p>Purpose built tools for gaps standard software doesn't solve well.</p><span class="eco-arrow">↗</span></article>
+<article class="eco-card" data-reveal=""><span class="eco-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v13H4z"></path><path d="M7 6l2-3h6l2 3M8 11h8"></path></svg></span><h3>Commerce</h3><p>Shopify storefronts and company stores built around how customers purchase.</p><span class="eco-arrow">↗</span></article>
+<article class="eco-card" data-reveal=""><span class="eco-icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="6" r="2"></circle><circle cx="19" cy="18" r="2"></circle><path d="m7 11 10-4M7 13l10 4"></path></svg></span><h3>Systems</h3><p>Ecommerce integration across ERP, accounting, suppliers, product data and procurement, including PunchOut.</p><span class="eco-arrow">↗</span></article>
+<article class="eco-card" data-reveal=""><span class="eco-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h13"></path><path d="m16 10 4 2-4 2"></path></svg></span><h3>Automation</h3><p>Workflow automation that reduces repetitive work and moves information between systems.</p><span class="eco-arrow">↗</span></article>
+<article class="eco-card" data-reveal=""><span class="eco-icon"><svg viewBox="0 0 24 24"><rect height="16" rx="2" width="16" x="4" y="4"></rect><path d="M8 9h8M8 13h5M8 17h7"></path></svg></span><h3>Software</h3><p>Purpose-built software, including Xecutor and Rocket Shopify apps, for gaps standard software doesn't solve well.</p><span class="eco-arrow">↗</span></article>
 <article class="eco-card" data-reveal=""><span class="eco-icon"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle><path d="m8.5 8.5 2 2M15.5 8.5l-2 2M8.5 15.5l2-2M15.5 15.5l-2-2"></path></svg></span><h3>Intelligence</h3><p>Practical AI where it improves speed, clarity, or control.</p><span class="eco-arrow">↗</span></article>
 </div>
 <p class="eco-close" data-reveal="">The objective isn't to introduce more technology. <span class="underline">It's to make the technology you depend on work better together.</span></p>
@@ -80,10 +82,10 @@
 <div class="industry-intro">
 <div data-reveal="">
 <p class="eyebrow">Industry focus</p>
-<h2 class="title">Built with an understanding of how promo actually works.</h2>
+<h2 class="title">Built with an understanding of how the promotional products industry actually works.</h2>
 </div>
 <div class="copy" data-reveal="">
- Promotional commerce connects customization, artwork, suppliers, production, procurement, accounting, and fulfillment. That complexity changes what technology needs to do.
+ Promotional products commerce connects customization, artwork, suppliers, production, procurement, accounting and fulfillment. That complexity changes what technology needs to do.
  </div>
 </div>
 <div class="industry-cards">
@@ -91,7 +93,7 @@
 <small>Distributors</small>
 <div>
 <h3 style="color: black;" >Scale customer programs without scaling admin work.</h3>
-<p>Support more stores, accounts, and programs while keeping operations manageable.</p>
+<p>Support more company stores, accounts and programs while keeping operations manageable.</p>
 </div>
 </article>
 <article class="industry-card"  data-reveal="">
@@ -105,7 +107,7 @@
 <small>Decorators</small>
 <div>
 <h3  style="color: black;" >Create visibility across production.</h3>
-<p>Connect artwork, production status, inventory, quality control, and fulfillment.</p>
+<p>Connect artwork, production status, inventory, quality control and fulfillment with production software like Xecutor.</p>
 </div>
 </article>
 </div>
@@ -115,7 +117,7 @@
 </section>
 <section class="section metrics"  style="display: flex;" id="operations">
 <div class="page">
-<div data-reveal=""><p class="eyebrow">Built through real operations</p><h2 class="title">Experience that goes beyond launching websites.</h2></div>
+<div data-reveal=""><p class="eyebrow">Built through real operations</p><h2 class="title">Shopify and ecommerce experience that goes beyond launching websites.</h2></div>
 <div class="metric-grid">
 <article class="metric" data-reveal=""><b>350+</b><strong>eCommerce projects delivered</strong><p>Ecommerce implementation, customization, and connected commerce.</p></article>
 <article class="metric" data-reveal=""><b>100+</b><strong>Custom Shopify applications</strong><p>Custom technology for requirements standard platforms could not handle.</p></article>
@@ -123,7 +125,7 @@
 <article class="metric" data-reveal=""><b>$40M+</b><strong>Orders supported by delivered technology</strong><p>Technology supporting real orders and daily operations.</p></article>
 </div>
 <div class="trust-panel" data-reveal="">
-<div class="trust-copy"><h3>Technology built alongside ambitious businesses.</h3><p>Shopify Partner · PPAI Member · Platform and integration experience across promotional commerce</p></div>
+<div class="trust-copy"><h3>Shopify Partner and PPAI Member.</h3><p>A promotional products technology company with platform and integration experience across promotional commerce.</p></div>
 <div class="trust-card"><small>Commerce ecosystem</small><strong>Shopify Partner</strong></div>
 <div class="trust-card"><small>Industry context</small><strong>PPAI Member</strong></div>
 <div class="trust-card"><small>Operational depth</small><strong>Platform &amp; integration experience</strong></div>
@@ -136,11 +138,11 @@
 <p class="eyebrow">Our people</p>
 <h2 class="title">Technology is the output. Understanding the problem comes first.</h2>
 <div class="copy">
-<p>Swishtag brings together product, design, engineering, quality assurance, automation, and ecommerce experience.</p>
+<p>Swishtag brings together product, design, engineering, quality assurance, automation and Shopify ecommerce experience.</p>
 <p>Our teams stay connected across the full lifecycle, so every discipline understands the same problem and why the solution matters.</p>
 <p><strong style="color:var(--graphite)">Shared context means fewer handoffs, less miscommunication, and one team working toward the same outcome.</strong></p>
 </div>
-<div class="btns"><a class="btn btn-primary" href="#contact">Meet Swishtag ↗</a></div>
+<div class="btns"><a class="btn btn-primary" href="#contact">Meet the team ↗</a></div>
 </div>
 <div aria-label="Swishtag continuous team process" class="people-process" data-reveal="" id="peopleProcess">
 <div class="people-process-label"><i></i><span id="peopleProcessStatus">Product Thinking</span></div>
@@ -219,13 +221,14 @@
 </div>
 </div>
 </section>
+<SharedFaq {...faqs.company} />
 <section class="final-cta" id="contact">
 <div class="page">
 <div class="cta-card">
 <div class="cta-copy" data-reveal="">
 <p class="eyebrow">Work with Swishtag</p><span class="cta-marker"></span>
 <h2>Start with the problem. We'll work backward from there.</h2>
-<p>Show us the workflow that is difficult, repetitive, disconnected, or slowing growth. We'll help determine what should be improved, connected, automated, or built.</p>
+<p>Show us the workflow that is difficult, repetitive, disconnected or slowing growth. We'll help your promotional products business decide what should be improved, connected, automated or built.</p>
 <div class="btns"><a class="btn btn-primary" href="https://swishtag.com/contact/">Talk to Swishtag ↗</a><a class="btn btn-outline" href="/solutions/">Explore Solutions →</a></div>
 </div>
 <div aria-label="Swishtag problem to solution visual" class="cta-visual" data-reveal="">
