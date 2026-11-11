@@ -1,7 +1,7 @@
 {
   "home": {
     "eyebrow": "Frequently asked questions",
-    "title": "A clearer way forward.",
+    "title": "Frequently asked questions about Swishtag",
     "description": "The simple answers to the questions promotional products companies usually ask before working with Swishtag.",
     "link": {
       "href": "/contact/",
@@ -9,38 +9,28 @@
     },
     "items": [
       {
-        "question": "Is Swishtag a Shopify agency or a software company?",
-        "answer": "Both, with a clear distinction. Company Store, Enterprise Automation, and PunchOut are solution paths. Promo Plus, Xecutor, and Rocket Apps are Swishtag owned software platforms.",
+        "question": "What is a promotional products technology company?",
+        "answer": "A promotional products technology partner is a software and ecommerce company that understands promo workflows such as PromoStandards data, company stores, artwork approvals and purchase orders, and builds or connects the systems around them. Swishtag does this for distributors, suppliers and decorators.",
+        "open": false
+      },
+      {
+        "question": "Is Swishtag a Shopify development agency or a software company?",
+        "answer": "Both, with a clear distinction. Company Store, Enterprise Automation and PunchOut are solution paths where Swishtag acts as your promotional products technology partner. Promo Plus, Xecutor and Rocket Apps are Swishtag-owned software platforms.",
         "open": false
       },
       {
         "question": "What is the difference between Solutions and Enterprise Commerce?",
-        "answer": "Solutions focuses on launching or improving customer facing stores. Enterprise Commerce connects the more complex work behind those stores, including suppliers, procurement, ERP, accounting, multi store management, and automation.",
+        "answer": "Solutions focus on launching or improving customer-facing stores. Enterprise Commerce connects the more complex work behind those stores, including suppliers, procurement, ERP, accounting, multi-store management and automation.",
         "open": false
       },
       {
-        "question": "Do we need to replace commonsku, ESP+, or our ERP?",
+        "question": "Do we need to replace commonsku, ESP+ or our ERP?",
         "answer": "No. Swishtag is designed to add a modern commerce and automation layer around the systems your team already trusts. We focus on connecting the gaps rather than forcing a rip and replace project.",
         "open": false
       },
       {
-        "question": "What is PunchOut Solutions?",
+        "question": "What is PunchOut for promotional products distributors?",
         "answer": "PunchOut Solutions helps promotional products distributors launch and manage PunchOut catalog connections using Shopify. It can support multiple buyer connections on one Shopify store or connections across multiple Shopify stores from one management platform.",
-        "open": false
-      },
-      {
-        "question": "Can you migrate existing company stores to Shopify?",
-        "answer": "Yes. Swishtag can migrate products, customers, content, workflows, and store rules from legacy, custom, WooCommerce, Magento, BigCommerce, and other commerce environments.",
-        "open": false
-      },
-      {
-        "question": "Who are Swishtag solutions built for?",
-        "answer": "Swishtag is focused on promotional product distributors, suppliers, and decorators. The strongest fit is an organization trying to launch more programs, connect existing systems, or scale without adding the same amount of manual work.",
-        "open": false
-      },
-      {
-        "question": "How does a project begin?",
-        "answer": "We begin by understanding your current customer journey, systems, workflows, and operational bottlenecks. From there, we recommend the smallest practical path that can create meaningful progress.",
         "open": false
       },
       {
@@ -50,6 +40,16 @@
           "phrase": "Shopify company store",
           "href": "/solutions/shopify-company-store/"
         },
+        "open": false
+      },
+      {
+        "question": "Can you migrate existing company stores to Shopify?",
+        "answer": "Yes. Swishtag can migrate products, customers, content, workflows, and store rules from legacy, custom, WooCommerce, Magento, BigCommerce, and other commerce environments.",
+        "open": false
+      },
+      {
+        "question": "Who is Swishtag built for?",
+        "answer": "Swishtag is a promo tech company focused on promotional products distributors, suppliers and decorators. The strongest fit is an organization trying to launch more programs, connect existing systems or scale without adding the same amount of manual work.",
         "open": false
       }
     ]
