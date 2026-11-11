@@ -5,6 +5,7 @@ interface FaqItem {
   question: string;
   answer: string;
   open?: boolean;
+  answerLink?: { phrase: string; href: string };
 }
 
 interface Props {
@@ -40,7 +41,17 @@ const {
       {items.map((item) => (
         <details class="site-faq__item" open={item.open || undefined}>
           <summary>{item.question}</summary>
-          <p>{item.answer}</p>
+          <p>
+            {item.answerLink && item.answer.includes(item.answerLink.phrase) ? (
+              <>
+                {item.answer.slice(0, item.answer.indexOf(item.answerLink.phrase))}
+                <a href={item.answerLink.href}>{item.answerLink.phrase}</a>
+                {item.answer.slice(item.answer.indexOf(item.answerLink.phrase) + item.answerLink.phrase.length)}
+              </>
+            ) : (
+              item.answer
+            )}
+          </p>
         </details>
       ))}
     </div>

@@ -42,6 +42,15 @@
         "question": "How does a project begin?",
         "answer": "We begin by understanding your current customer journey, systems, workflows, and operational bottlenecks. From there, we recommend the smallest practical path that can create meaningful progress.",
         "open": false
+      },
+      {
+        "question": "How much does a Shopify company store cost?",
+        "answer": "The first Shopify company store is $1,200 one-time, additional template stores are $300 each, and Care + Rocket Apps is $100 a month per store. Enterprise automation, PunchOut and custom software are quoted on scope.",
+        "answerLink": {
+          "phrase": "Shopify company store",
+          "href": "/solutions/shopify-company-store/"
+        },
+        "open": false
       }
     ]
   },
