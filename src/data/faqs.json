@@ -441,6 +441,52 @@
       }
     ]
   },
+  "decorators": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Promotional product decorator FAQs",
+    "description": "How artwork approval, production and fulfillment fit together for a decorator.",
+    "link": {
+      "href": "/contact/",
+      "label": "Talk to our team"
+    },
+    "items": [
+      {
+        "question": "What is software for promotional product decorators?",
+        "answer": "Swishtag’s promotional product decorator software connects order intake, artwork approval, production workflow, quality control and fulfillment, so every job carries its approved artwork, details and status from order to shipment.",
+        "open": true
+      },
+      {
+        "question": "Do we need to replace our current systems?",
+        "answer": "No. Swishtag works alongside your business management software, order management software and other systems you already use, instead of forcing everything into one oversized platform.",
+        "open": false
+      },
+      {
+        "question": "How does artwork approval work?",
+        "answer": "Promo Plus, our artwork approval software, keeps artwork versions, customer feedback and approvals attached to the job, so production works from the approved, production-ready file.",
+        "open": false
+      },
+      {
+        "question": "How do operators know what to produce?",
+        "answer": "In Xecutor, operators select their workstation, scan the job’s QR code and see the details they need. When the task is done, the workflow moves forward.",
+        "open": false
+      },
+      {
+        "question": "Is this software for screen printers, embroiderers and DTG shops?",
+        "answer": "Yes. Embroidery, screen print, DTG and DTF, and heat press and transfers each follow their own route through the stations.",
+        "open": false
+      },
+      {
+        "question": "Can orders from Shopify or WooCommerce flow into production?",
+        "answer": "Yes. Order information can move from your store into production jobs through integrations. The exact scope depends on your setup.",
+        "open": false
+      },
+      {
+        "question": "What is the difference between Promo Plus and Xecutor?",
+        "answer": "Promo Plus manages artwork proofs and customer approval. Xecutor runs the production floor, from workstation tasks to quality control and fulfillment. Together they connect artwork approval to production.",
+        "open": false
+      }
+    ]
+  },
   "company": {
     "eyebrow": "Frequently asked questions",
     "title": "Questions about Swishtag",

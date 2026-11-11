@@ -1,7 +1,13 @@
 ---
 import decoratorsHtml from "../legacy/decorators-body.html?raw";
+import SharedFaq from "./layout/SharedFaq.astro";
+import faqs from "../data/faqs.json";
+
+const [beforeFaq, afterFaq] = decoratorsHtml.split("<!-- DECORATOR_FAQ -->");
 ---
 
 <main class="decorators-page">
-  <Fragment set:html={decoratorsHtml} />
+  <Fragment set:html={beforeFaq} />
+  <SharedFaq {...faqs.decorators} />
+  <Fragment set:html={afterFaq} />
 </main>
