@@ -19,6 +19,10 @@
 // Retired legacy blog page /insights/blog/ (Muteeb, 2026-11-11): old share links
 // /insights/blog/?slug=<post> get a single 301 to /<post>/ (other query params kept) when the
 // slug is a plain WordPress-style slug; every other form of /insights/blog/ returns the 404 page.
+//
+// GONE_PATHS: removed pages that must return the site 404 page in every form (/x, /x/,
+// /x/index.html, /x//, any query string) instead of being redirected.
+//   Old SAGE page URLs (Muteeb, 2026-11-11: SAGE stays removed; old URLs 404).
 import fs from "node:fs";
 import http from "node:http";
 import https from "node:https";
@@ -32,6 +36,11 @@ const SERVER_REDIRECTS = Object.freeze({
   "/solutions/book-demo/": "/book-demo/",
   "/solutions/solutions/": "/solutions/",
 });
+
+const GONE_PATHS = new Set([
+  "/solutions/shopify-sage-connect-integration/",
+  "/shopify-sage-connect-integration/",
+]);
 
 const LEGACY_BLOG_PATH = "/insights/blog/";
 const SAFE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -97,6 +106,7 @@ export function urlGuard(req, res) {
   if (retired.endsWith("/index.html")) retired = retired.slice(0, -"index.html".length);
   retired = retired.replace(/\/{2,}$/, "/");
   if (!retired.endsWith("/")) retired += "/";
+  if (GONE_PATHS.has(retired)) return send404(req, res);
   if (retired === LEGACY_BLOG_PATH) return legacyBlogRedirect(req, res, query);
   if (Object.prototype.hasOwnProperty.call(SERVER_REDIRECTS, retired)) {
     res.statusCode = 301;

@@ -5,8 +5,6 @@
     "/solutions/solutions/": "/solutions/",
     "/services/": "/solutions/custom-software-automation/",
     "/shopify-company-store/": "/solutions/shopify-company-store/",
-    "/shopify-sage-connect-integration/": "/solutions/",
-    "/solutions/shopify-sage-connect-integration/": "/solutions/",
     "/enterprise-shopify-automation/": "/solutions/enterprise-shopify-automation/",
     "/shopify-migration-service/": "/solutions/custom-software-automation/",
     "/shopify-development-agency-swishtag/": "/solutions/custom-software-automation/",
