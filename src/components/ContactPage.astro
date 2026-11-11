@@ -12,7 +12,9 @@ const paths = [
     icon: "↗",
     title: "Launch a company store",
     text: "Need a branded Shopify store for a client, team, organization, or employee program?",
-    action: "Talk about company stores",
+    action: "Talk about Shopify company stores",
+    moreHref: "/solutions/shopify-company-store/",
+    moreLabel: "See company store setup and pricing",
   },
   {
     icon: "⌁",
@@ -173,10 +175,18 @@ const stats = [
       </div>
       <div class="contact-paths">
         {paths.map((path) => (
-          <article class="contact-path-card" data-contact-reveal>
+          <article class:list={["contact-path-card", path.moreHref && "contact-path-card--linked"]} data-contact-reveal>
             <div class="contact-path-card__icon" aria-hidden="true">{path.icon}</div>
             <h3>{path.title}</h3>
-            <p>{path.text}</p>
+            <p>
+              {path.text}
+              {path.moreHref && (
+                <>
+                  {" "}
+                  <a href={path.moreHref}>{path.moreLabel}</a>
+                </>
+              )}
+            </p>
             <a href="#contact-form">{path.action}</a>
           </article>
         ))}

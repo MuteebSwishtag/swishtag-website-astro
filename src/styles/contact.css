@@ -420,12 +420,22 @@
   line-height: 1.6;
 }
 
-.contact-path-card a {
+.contact-path-card--linked {
+  padding-bottom: 72px;
+}
+
+.contact-path-card > a {
   position: absolute;
   bottom: 26px;
   left: 28px;
   font-size: 0.72rem;
   font-weight: 800;
+}
+
+.contact-path-card p a {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
 }
 
 .contact-next {
