@@ -1,3 +1,5 @@
+import { ORG_ID } from './site.js';
+
 // Leave pending content empty until Hammaad supplies the approved assets.
 export const companyStoreMedia = {
   demoStoreUrl: '',
@@ -11,11 +13,7 @@ export const companyStoreService = {
   "@type": "Service",
   "name": "Company Store Design, Launch & Management",
   "serviceType": "Branded Shopify company store design, launch, and ongoing care for promotional products distributors",
-  "provider": {
-    "@type": "Organization",
-    "name": "Swishtag",
-    "url": "https://swishtag.com/"
-  },
+  "provider": { "@id": ORG_ID },
   "areaServed": "United States",
   "url": "https://swishtag.com/solutions/shopify-company-store/",
   "audience": {

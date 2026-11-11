@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HomeStructuredData from '../components/home/HomeStructuredData.astro';
+import faqs from '../data/faqs.json';
 import Hero from '../components/home/Hero.astro';
 import Credibility from '../components/home/Credibility.astro';
 import GrowthPain from '../components/home/GrowthPain.astro';
@@ -19,8 +19,7 @@ const title = "Swishtag Commerce without chaos.";
 const description = "Swishtag modernizes promotional commerce with Shopify, enterprise automation, PunchOut, artwork workflows, and production software.";
 const canonical = "https://swishtag.com/";
 ---
-<BaseLayout title={title} description={description} canonical={canonical}>
-  <HomeStructuredData slot="head" />
+<BaseLayout title={title} description={description} canonical={canonical} faq={faqs.home}>
   <link slot="head" rel="preload" as="image" type="image/webp" href="/assets/inline/home-hero-rocket-6095549f75.webp" fetchpriority="high" />
   <main id="home">
     <Hero />

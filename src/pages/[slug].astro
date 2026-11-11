@@ -1,35 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { ORG_ID } from '../data/site.js';
 
 export const prerender = false;
 
 const slug = Astro.params.slug;
 const WORDPRESS_POSTS_API = 'https://cms.swishtag.com/wp-json/wp/v2/posts';
 
-async function postExistsForSlug(slug) {
-  if (!slug) return false;
+async function findPostForSlug(slug) {
+  if (!slug) return null;
 
   const url = new URL(WORDPRESS_POSTS_API);
   url.searchParams.set('slug', slug);
-  url.searchParams.set('_fields', 'id,slug');
+  url.searchParams.set('_fields', 'id,slug,title,date_gmt,modified_gmt,_links,_embedded');
+  url.searchParams.set('_embed', 'author,wp:featuredmedia');
   url.searchParams.set('per_page', '1');
 
   const response = await fetch(url);
   if (!response.ok) throw new Error(`WordPress returned ${response.status}`);
 
   const posts = await response.json();
-  return Array.isArray(posts) && posts.length > 0;
+  return Array.isArray(posts) && posts.length > 0 ? posts[0] : null;
 }
 
-async function postExistsForPublicSlug(slug) {
-  if (!slug) return false;
-  if (await postExistsForSlug(slug)) return true;
-  if (slug.endsWith('-2026')) return postExistsForSlug(slug.replace(/-2026$/, ''));
-  return false;
+async function findPostForPublicSlug(slug) {
+  if (!slug) return null;
+  const post = await findPostForSlug(slug);
+  if (post) return post;
+  if (slug.endsWith('-2026')) return findPostForSlug(slug.replace(/-2026$/, ''));
+  return null;
 }
 
+let post = null;
 try {
-  if (!(await postExistsForPublicSlug(slug))) {
+  post = await findPostForPublicSlug(slug);
+  if (!post) {
     return new Response(null, {
       status: 404,
       statusText: 'Not found',
@@ -43,14 +48,58 @@ const title = 'Insight | Swishtag';
 const description = 'A practical Swishtag insight for Shopify, promotional products, integrations, automation and commerce teams.';
 const canonical = `https://swishtag.com/${slug}/`;
 const robots = 'index,follow';
+
+// BlogPosting only from real WordPress data (headline, dates, author); none is made up.
+function decodeEntities(value) {
+  return String(value || '')
+    .replace(/<[^>]*>/g, '')
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16)))
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .trim();
+}
+
+function gmtDate(value) {
+  return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(value || '') ? `${value}Z` : null;
+}
+
+const postHeadline = decodeEntities(post?.title?.rendered);
+const postPublished = gmtDate(post?.date_gmt);
+const postModified = gmtDate(post?.modified_gmt);
+const postAuthorName = decodeEntities(post?._embedded?.author?.[0]?.name);
+const postImage = post?._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
+const postAuthor = !postAuthorName
+  ? null
+  : /^swishtag\b/i.test(postAuthorName)
+    ? { '@id': ORG_ID }
+    : { '@type': 'Person', name: postAuthorName };
+const blogPosting = postHeadline && postPublished
+  ? {
+      '@type': 'BlogPosting',
+      '@id': `${canonical}#article`,
+      headline: postHeadline,
+      datePublished: postPublished,
+      ...(postModified ? { dateModified: postModified } : {}),
+      ...(postAuthor ? { author: postAuthor } : {}),
+      ...(postImage ? { image: postImage } : {}),
+      publisher: { '@id': ORG_ID },
+      mainEntityOfPage: { '@id': `${canonical}#webpage` },
+      isPartOf: { '@id': `${canonical}#webpage` },
+      url: canonical,
+    }
+  : null;
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} pageName={postHeadline || title} schema={[blogPosting]}>
   <link slot="head" rel="stylesheet" href="/assets/insights.css" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Insight | Swishtag" />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <script slot="head" is:inline type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Insight | Swishtag","author":{"@type":"Organization","name":"Swishtag"},"publisher":{"@type":"Organization","name":"Swishtag"}}</script>
 
   <div class="progress" aria-hidden="true"></div>
   <main>
@@ -77,5 +126,5 @@ const robots = 'index,follow';
     <section class="container cta-section"><div class="cta-panel"><div class="eyebrow">NEED HELP?</div><h2>Building something complicated?</h2><p>Tell us what you're trying to connect, automate or move. We'll help you figure out the cleanest way to build it.</p><div class="cta-actions"><a class="btn btn-primary" href="/book-demo/">Book a demo</a></div></div></section>
   </main>
 
-  <script slot="scripts" is:inline src="/assets/insights.js?v=20260902-cms-media"></script>
+  <script slot="scripts" is:inline src="/assets/insights.js?v=20261111-schema"></script>
 </BaseLayout>

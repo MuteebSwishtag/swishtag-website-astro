@@ -2,6 +2,7 @@
 import SharedFaq from '../../../components/layout/SharedFaq.astro';
 import faqs from '../../../data/faqs.json';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { ORG_ID } from '../../../data/site.js';
 
 export const prerender = true;
 
@@ -9,77 +10,34 @@ const title = "Custom Software & Business Automation Solutions | Swishtag";
 const description = "Have an ecommerce, integration, automation, SaaS or AI idea? Swishtag turns business problems into working systems with discovery, development, QA, deployment, documentation and training.";
 const canonical = "https://swishtag.com/solutions/custom-software-automation/";
 const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
+const service = {
+  "@type": "Service",
+  "@id": "https://swishtag.com/solutions/custom-software-automation/#service",
+  "name": "Custom Software & Business Automation",
+  "serviceType": [
+    "Ecommerce Technology",
+    "Business Automation",
+    "System Integrations",
+    "SaaS Development",
+    "AI Automation",
+    "Custom Business Software"
+  ],
+  "provider": { "@id": ORG_ID },
+  "url": "https://swishtag.com/solutions/custom-software-automation/"
+};
 const formSubmissionMode = (import.meta.env.PUBLIC_FORM_SUBMISSION_MODE ?? "direct").toLowerCase();
 const directFormEndpoint = import.meta.env.PUBLIC_DIRECT_FORM_ENDPOINT ?? "/api/forms/submit";
 const wordpressFormEndpoint = import.meta.env.PUBLIC_WORDPRESS_FORM_ENDPOINT ?? "https://cms.swishtag.com/wp-json/astro-form/v1/submit";
 const formEndpoint = formSubmissionMode === "wordpress" ? wordpressFormEndpoint : directFormEndpoint;
 const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_ASTRO_FORM_TOKEN ?? "") : "";
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[service]} faq={faqs.customSoftware}>
   <meta slot="head" property="og:type" content="website">
   <meta slot="head" property="og:site_name" content="Swishtag">
   <meta slot="head" property="og:title" content="Have an idea? Let’s build it. | Swishtag">
   <meta slot="head" property="og:description" content="Custom ecommerce technology, business automation, integrations, SaaS and practical AI, delivered from idea to working system.">
   <meta slot="head" property="og:url" content="https://swishtag.com/solutions/custom-software-automation/">
   <meta slot="head" name="twitter:card" content="summary_large_image">
-  <script slot="head" type="application/ld+json" is:inline>
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"Organization",
-        "@id":"https://swishtag.com/#organization",
-        "name":"Swishtag",
-        "url":"https://swishtag.com/"
-      },
-      {
-        "@type":"WebSite",
-        "@id":"https://swishtag.com/#website",
-        "url":"https://swishtag.com/",
-        "name":"Swishtag",
-        "publisher":{"@id":"https://swishtag.com/#organization"}
-      },
-      {
-        "@type":"WebPage",
-        "@id":"https://swishtag.com/solutions/custom-software-automation/#webpage",
-        "url":"https://swishtag.com/solutions/custom-software-automation/",
-        "name":"Custom Software & Business Automation Solutions | Swishtag",
-        "description":"Custom ecommerce technology, business automation, integrations, SaaS and AI-enabled systems from discovery to deployment.",
-        "isPartOf":{"@id":"https://swishtag.com/#website"},
-        "about":{"@id":"https://swishtag.com/#organization"}
-      },
-      {
-        "@type":"Service",
-        "@id":"https://swishtag.com/solutions/custom-software-automation/#service",
-        "name":"Custom Software & Business Automation",
-        "serviceType":["Ecommerce Technology","Business Automation","System Integrations","SaaS Development","AI Automation","Custom Business Software"],
-        "provider":{"@id":"https://swishtag.com/#organization"},
-        "url":"https://swishtag.com/solutions/custom-software-automation/"
-      },
-      {
-        "@type":"FAQPage",
-        "@id":"https://swishtag.com/solutions/custom-software-automation/#faq",
-        "mainEntity":[
-          {
-            "@type":"Question",
-            "name":"Do I need a technical specification before speaking with Swishtag?",
-            "acceptedAnswer":{"@type":"Answer","text":"No. Start with the business problem, workflow or idea. Swishtag can help translate it into requirements, phases, architecture and a development plan."}
-          },
-          {
-            "@type":"Question",
-            "name":"Can Swishtag work with an existing system or MVP?",
-            "acceptedAnswer":{"@type":"Answer","text":"Yes. A custom project can start from an idea, existing workflow, MVP or live platform that needs integrations, automation or rebuilding."}
-          },
-          {
-            "@type":"Question",
-            "name":"How are custom projects priced?",
-            "acceptedAnswer":{"@type":"Answer","text":"Pricing depends on the approved scope, integrations, risks and phases. After discovery and requirements planning, Swishtag provides a development plan with timeline and cost."}
-          }
-        ]
-      }
-    ]
-  }
-  </script>
   <style slot="head" is:inline>
   :root{
     --lime:#C2FF02;

@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import XecutorPage from '../../../components/XecutorPage.astro';
+import faqs from '../../../data/faqs.json';
+import { ORG_ID } from '../../../data/site.js';
 
 export const prerender = true;
 
@@ -8,7 +10,17 @@ const title = "Xecutor | Decorator Production Workflow Software | Swishtag";
 const description = "Coordinate promotional product decorator production, workstations, inventory, shipping and order status.";
 const canonical = "https://swishtag.com/platforms/xecutor/";
 const robots = "index,follow";
+const software = {
+  "@type": "SoftwareApplication",
+  "@id": `${canonical}#software`,
+  name: "Xecutor",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: canonical,
+  description,
+  provider: { "@id": ORG_ID },
+};
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[software]} pageProps={{ mainEntity: { "@id": software["@id"] } }} faq={faqs.xecutor}>
   <XecutorPage />
 </BaseLayout>

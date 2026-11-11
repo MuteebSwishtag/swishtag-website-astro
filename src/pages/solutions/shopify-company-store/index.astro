@@ -12,17 +12,8 @@ const description = "Company stores, done for you. Swishtag designs, launches an
 const canonical = "https://swishtag.com/solutions/shopify-company-store/";
 const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const ogImage = "https://swishtag.com/assets/company-store/branded-storefront.webp";
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.companyStore.items.map(item => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
-  })),
-};
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[companyStoreService, companyStoreBreadcrumbs]} faq={faqs.companyStore}>
   <meta slot="head" content={title} property="og:title"/>
   <meta slot="head" content={description} property="og:description"/>
   <meta slot="head" content="website" property="og:type"/>
@@ -35,9 +26,6 @@ const faqSchema = {
   <meta slot="head" content="Shopify company store designed and launched by Swishtag" property="og:image:alt"/>
   <meta slot="head" content={ogImage} name="twitter:image"/>
   <meta slot="head" content="Shopify company store designed and launched by Swishtag" name="twitter:image:alt"/>
-  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(companyStoreService).replace(/</g, '\u003c')} />
-  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(companyStoreBreadcrumbs).replace(/</g, '\u003c')} />
-  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema).replace(/</g, '\u003c')} />
   <div class="company-store">
     <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs><symbol id="i-arrow-left" viewbox="0 0 24 24">
   <path d="m12 19-7-7 7-7"></path>

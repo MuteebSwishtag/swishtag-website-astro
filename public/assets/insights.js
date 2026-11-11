@@ -653,19 +653,7 @@ async function loadSinglePost() {
     const tag = $(`meta[property="${property}"]`);
     if (tag) tag.setAttribute('content', content);
   });
-  const schema = $('script[type="application/ld+json"]');
-  if (schema) {
-    schema.textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: htmlToText(post.title.rendered),
-      datePublished: post.date,
-      dateModified: post.modified,
-      author: { '@type': 'Organization', name: 'Swishtag' },
-      publisher: { '@type': 'Organization', name: 'Swishtag' },
-      mainEntityOfPage: cleanPostUrl
-    });
-  }
+  // JSON-LD (Organization, WebSite, WebPage, BlogPosting) is rendered on the server.
 
   const breadcrumbTitle = $('.article-hero .breadcrumbs span:last-child');
   if (breadcrumbTitle) breadcrumbTitle.textContent = htmlToText(post.title.rendered);

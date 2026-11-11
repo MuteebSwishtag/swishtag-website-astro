@@ -9,26 +9,37 @@ const title = "Solutions for Promotional Products Distributors | Swishtag";
 const description = "Compare solution paths for promotional products distributors: Company Store Launch, PunchOut Solutions, Enterprise Company Store Automation, and Custom Software & Automation.";
 const canonical = "https://swishtag.com/solutions/";
 const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
----
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
-  <script slot="head" type="application/ld+json" is:inline>
-  {
-      "@context":"https://schema.org",
-      "@type":"CollectionPage",
-      "name":"Solutions for Promotional Products Distributors",
-      "url":"https://swishtag.com/solutions/",
-      "description":"Solution paths for promotional products distributors: launch a company store, connect PunchOut procurement, automate multi-store operations, or build custom software and integrations.",
-      "mainEntity":{
-        "@type":"ItemList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Company Store Launch","url":"https://swishtag.com/solutions/shopify-company-store/"},
-          {"@type":"ListItem","position":2,"name":"PunchOut Solutions","url":"https://swishtag.com/solutions/punchout-solutions/"},
-          {"@type":"ListItem","position":3,"name":"Enterprise Company Store Automation","url":"https://swishtag.com/solutions/enterprise-shopify-automation/"},
-          {"@type":"ListItem","position":4,"name":"Custom Software & Automation","url":"https://swishtag.com/solutions/custom-software-automation/"}
-        ]
-      }
+const solutionList = {
+  "@type": "ItemList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Company Store Launch",
+      "url": "https://swishtag.com/solutions/shopify-company-store/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PunchOut Solutions",
+      "url": "https://swishtag.com/solutions/punchout-solutions/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Enterprise Company Store Automation",
+      "url": "https://swishtag.com/solutions/enterprise-shopify-automation/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Custom Software & Automation",
+      "url": "https://swishtag.com/solutions/custom-software-automation/"
     }
-  </script>
+  ],
+};
+---
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} pageType="CollectionPage" pageProps={{ mainEntity: solutionList }} faq={faqs.solutions}>
   <style slot="head" is:inline>
   :root{--lime:#c2ff02;
         --peach:#ffbd9b;

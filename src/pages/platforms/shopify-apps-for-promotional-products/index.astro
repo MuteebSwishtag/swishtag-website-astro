@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import RocketAppsPage from '../../../components/RocketAppsPage.astro';
+import faqs from '../../../data/faqs.json';
+import { ORG_ID } from '../../../data/site.js';
 
 export const prerender = true;
 
@@ -8,7 +10,37 @@ const title = "Shopify Apps for Promotional Products | Swishtag Rocket Apps";
 const description = "Explore focused Shopify apps for promotional products stores, company stores and custom ecommerce workflows.";
 const canonical = "https://swishtag.com/platforms/shopify-apps-for-promotional-products/";
 const robots = "index,follow";
+// The 8 app cards shown on the page (src/legacy/rocket-apps-body.html), same order and links.
+const apps = [
+  ["Rocket Keep Share Cart", "Transform how customers interact with their shopping carts.", "https://apps.shopify.com/rocketkeepsharecart"],
+  ["Rocket Gift Card & Discount", "Create thousands of digital gift cards and bulk discounts in one click.", "https://apps.shopify.com/rocketgiftcard"],
+  ["Rocket Image Scheduler", "Automate your store visuals with timed image scheduling.", "https://apps.shopify.com/rocket-image-scheduler"],
+  ["Rocket Address Validator", "Validate addresses and prevent delivery errors before they happen.", "https://apps.shopify.com/address-validator-5"],
+  ["Quote My Order", "Simplify custom and bulk quote requests for your store.", "https://apps.shopify.com/qarequestquoete"],
+  ["Rocket Announcement Bar", "Create and display announcement bars whenever your store has something to say.", "https://apps.shopify.com/qa-anouncementbar"],
+  ["Rocket Label Lock", "Control access to products, pages, and store content.", "https://apps.shopify.com/app-lock-smith"],
+  ["Rocket Form Builder", "Create custom forms to collect the customer data your store needs.", "https://apps.shopify.com/rocket-form-builder-1"]
+];
+const appList = {
+  "@type": "ItemList",
+  "@id": `${canonical}#apps`,
+  name: "Rocket Apps",
+  numberOfItems: apps.length,
+  itemListElement: apps.map(([name, appDescription, url], index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "SoftwareApplication",
+      name,
+      description: appDescription,
+      url,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Shopify",
+      provider: { "@id": ORG_ID },
+    },
+  })),
+};
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} pageType="CollectionPage" schema={[appList]} pageProps={{ mainEntity: { "@id": appList["@id"] } }} faq={faqs.rocketApps}>
   <RocketAppsPage />
 </BaseLayout>

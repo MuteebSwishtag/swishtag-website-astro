@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ORG_ID, siteUrl, jsonLd } from '../../data/site.js';
 
 export const prerender = false;
 
@@ -19,13 +20,14 @@ const description = 'Explore a project designed and built by Swishtag.';
   <meta slot="head" property="og:image" content="" />
   <meta slot="head" name="twitter:card" content="summary_large_image" />
   <meta slot="head" name="twitter:image" content="" />
-  <script slot="head" is:inline type="application/ld+json" data-project-schema>{JSON.stringify({
+  <script slot="head" is:inline type="application/ld+json" data-project-schema set:html={jsonLd({
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
     name: 'Project | Swishtag',
-    url: canonical,
-    creator: { '@type': 'Organization', name: 'Swishtag', url: 'https://swishtag.com/' },
-  })}</script>
+    url: siteUrl(canonical),
+    creator: { '@id': ORG_ID },
+    isPartOf: { '@id': `${siteUrl(canonical)}#webpage` },
+  })} />
 
   <main
     class="project-page is-loading"
@@ -75,5 +77,5 @@ const description = 'Explore a project designed and built by Swishtag.';
     </section>
   </main>
 
-  <script slot="scripts" is:inline src="/assets/projects.js?v=20260903-project-layout"></script>
+  <script slot="scripts" is:inline src="/assets/projects.js?v=20261111-schema"></script>
 </BaseLayout>

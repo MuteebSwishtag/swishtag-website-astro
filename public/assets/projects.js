@@ -210,11 +210,7 @@
         datePublished: project.date || undefined,
         dateModified: project.modified || undefined,
         url: canonicalUrl,
-        creator: {
-          '@type': 'Organization',
-          name: 'Swishtag',
-          url: 'https://swishtag.com/',
-        },
+        creator: { '@id': 'https://swishtag.com/#organization' },
       });
     }
   }

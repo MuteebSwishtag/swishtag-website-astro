@@ -2,6 +2,8 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PunchoutPage from "../../../components/PunchoutPage.astro";
 import headHtml from "../../../legacy/punchout-head.html?raw";
+import faqs from "../../../data/faqs.json";
+import { ORG_ID } from "../../../data/site.js";
 
 export const prerender = true;
 
@@ -9,6 +11,21 @@ const title = "PunchOut Solutions for B2B Commerce & Procurement | Swishtag";
 const description = "Swishtag builds PunchOut catalog integrations that connect B2B ecommerce stores with enterprise procurement systems, helping buyers shop approved catalogs and return requisitions to their purchasing workflow.";
 const canonical = "https://swishtag.com/solutions/punchout-solutions/";
 const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
+const service = {
+  "@type": "Service",
+  "@id": "https://swishtag.com/solutions/punchout-solutions/#service",
+  "name": "PunchOut Solutions",
+  "serviceType": [
+    "PunchOut Catalog Integration",
+    "cXML Integration",
+    "OCI Integration",
+    "Purchase Order Automation",
+    "Invoice Integration",
+    "Procurement Ecommerce Integration"
+  ],
+  "provider": { "@id": ORG_ID },
+  "url": "https://swishtag.com/solutions/punchout-solutions/"
+};
 
 const punchoutHeadHtml = headHtml
   .replace(/<meta\s+charset="utf-8">\s*/i, "")
@@ -26,7 +43,7 @@ const punchoutHeadHtml = headHtml
   .replace(/^.*(?:site-header|modern-nav|desktop-nav|mega-|mobile-menu|menu-toggle|footer-grid|footer-brand|footer-col|footer-bottom|site-footer).*$/gmi, "");
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[service]} faq={faqs.punchout}>
   <Fragment slot="head" set:html={punchoutHeadHtml} />
   <style is:global>
     .punchout-page .connection-section {

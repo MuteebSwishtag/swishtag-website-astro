@@ -2,6 +2,7 @@
 import SharedFaq from '../../../components/layout/SharedFaq.astro';
 import faqs from '../../../data/faqs.json';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { ORG_ID } from '../../../data/site.js';
 
 export const prerender = true;
 
@@ -9,8 +10,47 @@ const title = "Enterprise Company Store Management & Automation | Swishtag";
 const description = "Manage every Shopify company store from one dashboard. Add order routing, PromoStandards, PunchOut, supplier, ERP, and AI automation as needed.";
 const canonical = "https://swishtag.com/solutions/enterprise-shopify-automation/";
 const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
+const enterpriseSchema = [
+  {
+    "@type": "Service",
+    "@id": "https://swishtag.com/solutions/enterprise-shopify-automation/#service",
+    "name": "Enterprise Company Store Management & Automation",
+    "serviceType": "Multi-store Shopify company store management and automation",
+    "provider": { "@id": ORG_ID },
+    "url": "https://swishtag.com/solutions/enterprise-shopify-automation/",
+    "description": "A base platform for large promotional products distributors to manage multiple Shopify company stores from one dashboard, with paid add-ons for OMS automation, PromoStandards, supplier APIs, QuickBooks, Sage Intacct, NetSuite, PunchOut, AI, and custom workflows.",
+    "areaServed": "US",
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "Large promotional products distributors managing multiple company stores"
+    }
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://swishtag.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Solutions",
+        "item": "https://swishtag.com/solutions/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Enterprise Company Store Automation",
+        "item": "https://swishtag.com/solutions/enterprise-shopify-automation/"
+      }
+    ]
+  }
+];
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={enterpriseSchema} faq={faqs.enterprise}>
   <meta slot="head" content="website" property="og:type"/>
   <meta slot="head" content="Enterprise Company Store Management &amp; Automation | Swishtag" property="og:title"/>
   <meta slot="head" content="One dashboard for every Shopify company store, with optional order routing, PromoStandards, PunchOut, supplier, ERP, AI, and custom automation." property="og:description"/>
@@ -24,54 +64,6 @@ const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-pr
   <meta slot="head" content="One dashboard for every Shopify company store, with optional order routing, PromoStandards, PunchOut, supplier, ERP, AI, and custom automation." name="twitter:description"/>
   <meta slot="head" content="https://swishtag.com/assets/swishtag-enterprise-automation-og.png" name="twitter:image"/>
   <meta slot="head" content="summary_large_image" name="twitter:card"/>
-  <script slot="head" type="application/ld+json" is:inline>
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Service",
-        "@id": "https://swishtag.com/solutions/enterprise-shopify-automation/#service",
-        "name": "Enterprise Company Store Management & Automation",
-        "serviceType": "Multi-store Shopify company store management and automation",
-        "provider": {
-          "@type": "Organization",
-          "name": "Swishtag",
-          "url": "https://swishtag.com/"
-        },
-        "url": "https://swishtag.com/solutions/enterprise-shopify-automation/",
-        "description": "A base platform for large promotional products distributors to manage multiple Shopify company stores from one dashboard, with paid add-ons for OMS automation, PromoStandards, supplier APIs, QuickBooks, Sage Intacct, NetSuite, PunchOut, AI, and custom workflows.",
-        "areaServed": "US",
-        "audience": {
-          "@type": "BusinessAudience",
-          "audienceType": "Large promotional products distributors managing multiple company stores"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://swishtag.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Solutions",
-            "item": "https://swishtag.com/solutions/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Enterprise Company Store Automation",
-            "item": "https://swishtag.com/solutions/enterprise-shopify-automation/"
-          }
-        ]
-      }
-    ]
-  }
-  </script>
   <style slot="head" is:inline>
   /* Consolidated production stylesheet. Rule order is preserved intentionally. */
   

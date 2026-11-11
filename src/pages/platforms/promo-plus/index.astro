@@ -2,6 +2,8 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PromoPlusPage from '../../../components/PromoPlusPage.astro';
 import Faq from '../../../components/home/Faq.astro';
+import faqs from '../../../data/faqs.json';
+import { ORG_ID } from '../../../data/site.js';
 
 export const prerender = true;
 
@@ -9,8 +11,18 @@ const title = "Promo Plus | Artwork Approval Software for Promotional Products";
 const description = "Manage promotional product artwork approvals, revisions and production-ready files in one workflow.";
 const canonical = "https://swishtag.com/platforms/promo-plus/";
 const robots = "index,follow";
+const software = {
+  "@type": "SoftwareApplication",
+  "@id": `${canonical}#software`,
+  name: "Promo Plus",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: "https://promoplus.io/",
+  description,
+  provider: { "@id": ORG_ID },
+};
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[software]} pageProps={{ mainEntity: { "@id": software["@id"] } }} faq={faqs.home}>
   <PromoPlusPage />
   <Faq />
 </BaseLayout>

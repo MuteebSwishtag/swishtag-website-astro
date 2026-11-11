@@ -6,13 +6,37 @@ import GoogleTagManager from "../components/analytics/GoogleTagManager.astro";
 import "../styles/home.css";
 import "../styles/header.css";
 import redirectsJs from "../../public/assets/url-redirects.js?raw";
+import { orgNode, websiteNode, webPageNode, faqNode, graphNode, siteUrl, jsonLd } from "../data/site.js";
 
 const {
   title = "Swishtag",
   description = "",
   canonical,
   robots = "index,follow",
+  pageType = "WebPage",
+  pageName,
+  pageProps = {},
+  schema = [],
+  faq,
+  contactPoint = false,
+  noSchema = false,
 } = Astro.props;
+
+// One JSON-LD @graph per page: shared Organization + WebSite, this page's node,
+// then any page-specific nodes (Service, BreadcrumbList, FAQPage, ...).
+const pageUrl = siteUrl(canonical || Astro.url.pathname);
+const structuredData = noSchema
+  ? null
+  : jsonLd({
+      "@context": "https://schema.org",
+      "@graph": [
+        orgNode({ contactPoint }),
+        websiteNode(),
+        { ...webPageNode({ url: pageUrl, title: pageName || title, description, type: pageType }), ...pageProps },
+        ...(Array.isArray(schema) ? schema : [schema]).filter(Boolean).map(graphNode),
+        faq ? faqNode(faq, pageUrl) : null,
+      ].filter(Boolean),
+    });
 ---
 
 <!doctype html>
@@ -70,6 +94,7 @@ const {
     {description && <meta name="description" content={description} />}
     {canonical && <link rel="canonical" href={canonical} />}
     <meta name="robots" content={robots} />
+    {structuredData && <script type="application/ld+json" is:inline set:html={structuredData} />}
     <script defer src="/assets/site-shell.js"></script>
     <slot name="head" />
     <style is:global>
