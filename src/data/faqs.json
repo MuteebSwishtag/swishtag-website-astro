@@ -351,31 +351,46 @@
   },
   "distributors": {
     "eyebrow": "Frequently Asked Questions",
-    "title": "Before you change the stack.",
-    "description": "Most distributor projects do not need a full platform replacement. Start with the client requirement, the existing workflow, and the repeated work worth removing.",
+    "title": "Promotional products distributor FAQs: before you change the stack",
+    "description": "Most promotional products distributors do not need a full platform replacement. Start with the client requirement, the existing workflow and the repeated work worth removing.",
     "link": {
       "href": "/book-demo/",
-      "label": "Ask us something specific"
+      "label": "Talk to our team"
     },
     "items": [
       {
-        "question": "Do we need to replace commonsku, ESP+, or our current workflow?",
-        "answer": "No. The goal is not to replace a system that is already working. Swishtag can use Shopify as the customer-facing commerce layer and connect existing systems only where integration or automation creates a practical improvement.",
+        "question": "Do we need to replace commonsku, ESP+ or our current workflow?",
+        "answer": "No. The goal is not to replace a system that is already working. Our promotional products distributor solutions use Shopify as the customer-facing commerce layer and connect your existing systems only where integration or automation creates a practical improvement.",
         "open": true
       },
       {
         "question": "Can you build a Shopify company store around our current supplier relationships?",
-        "answer": "Yes. The store can be designed around the products, supplier relationships, fulfillment model, and client requirements that apply to the program.",
+        "answer": "Yes. We build Shopify company stores around your existing suppliers, catalogs and fulfillment models, whether the program uses POD, stocked inventory or both.",
         "open": false
       },
       {
-        "question": "What happens when we manage many company stores?",
-        "answer": "That is where centralized visibility, reporting, routing, and workflow automation become more valuable. The operating model can grow from individual stores into a controlled multi-store environment.",
+        "question": "Can supplier product data be used inside Shopify?",
+        "answer": "In many cases, yes. Approved supplier product data such as SKUs, colors and pricing can be reused in Shopify, so your team doesn’t rebuild the same catalog manually. The exact scope depends on your setup.",
         "open": false
       },
       {
-        "question": "Can you support PunchOut or other custom enterprise requirements?",
-        "answer": "Yes. Enterprise procurement and custom workflow requirements can be added when the client opportunity requires them, without forcing every company-store project into the same architecture.",
+        "question": "How do we manage many stores from one place?",
+        "answer": "Centralized reporting, order routing and automation give your team multi-store visibility, so administration doesn’t grow with every new store.",
+        "open": false
+      },
+      {
+        "question": "Can you support PunchOut catalogs and custom enterprise procurement requirements?",
+        "answer": "Yes, when a specific client program requires it. We add PunchOut connectivity for the client’s procurement system.",
+        "open": false
+      },
+      {
+        "question": "What does Swishtag build for promotional products distributors?",
+        "answer": "Online company stores, supplier product data, PunchOut procurement, multi-store automation and custom software, all built around your suppliers, systems and client programs.",
+        "open": false
+      },
+      {
+        "question": "Which systems does Swishtag integrate with?",
+        "answer": "Shopify connects with accounting, ERP, shipping, tax and procurement systems. The exact scope depends on your setup.",
         "open": false
       }
     ]
