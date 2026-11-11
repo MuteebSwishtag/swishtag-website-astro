@@ -567,6 +567,32 @@
       }
     ]
   },
+  "contact": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Questions before you write",
+    "description": "A few practical answers before you send a note.",
+    "link": {
+      "href": "#contact-form",
+      "label": "Start the conversation"
+    },
+    "items": [
+      {
+        "question": "Do I need a technical brief to contact Swishtag?",
+        "answer": "No. Tell us the problem or workflow slowing you down, and we will take it from there.",
+        "open": true
+      },
+      {
+        "question": "What can I contact Swishtag about?",
+        "answer": "Shopify company stores, ERP integration, PunchOut, workflow automation, custom software or our platforms: Promo Plus, Xecutor and Rocket Apps.",
+        "open": false
+      },
+      {
+        "question": "Does Swishtag work with promotional products distributors, suppliers and decorators?",
+        "answer": "Yes. Swishtag builds technology for the promotional products industry and is a Shopify Partner and PPAI member.",
+        "open": false
+      }
+    ]
+  },
   "company": {
     "eyebrow": "Frequently asked questions",
     "title": "Questions about Swishtag",

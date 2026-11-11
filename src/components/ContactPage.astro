@@ -1,5 +1,7 @@
 ---
 import "../styles/contact.css";
+import SharedFaq from "./layout/SharedFaq.astro";
+import faqs from "../data/faqs.json";
 
 const formSubmissionMode = (import.meta.env.PUBLIC_FORM_SUBMISSION_MODE ?? "direct").toLowerCase();
 const directFormEndpoint = import.meta.env.PUBLIC_DIRECT_FORM_ENDPOINT ?? "/api/forms/submit";
@@ -297,12 +299,14 @@ const stats = [
     </div>
   </section>
 
+  <SharedFaq {...faqs.contact} />
+
   <section class="contact-close">
     <div class="contact-wrap">
       <div class="contact-close__shell" data-contact-reveal>
         <p class="contact-eyebrow">Swishtag</p>
         <h2>Commerce without chaos.</h2>
-        <p>Software, connected systems, and automation built around the way promotional products businesses actually work.</p>
+        <p>Shopify commerce, software, connected systems and automation built around the way promotional products businesses actually work.</p>
         <div class="contact-actions">
           <a class="contact-btn contact-btn--primary" href="#contact-form">Start the conversation</a>
           <a class="contact-btn contact-btn--secondary" href="/solutions/">Explore Swishtag solutions</a>

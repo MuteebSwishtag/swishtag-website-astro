@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactPage from '../../components/ContactPage.astro';
+import faqs from '../../data/faqs.json';
 
 export const prerender = true;
 
@@ -9,6 +10,6 @@ const description = "Contact Swishtag about Shopify company stores, PunchOut, ER
 const canonical = "https://swishtag.com/contact/";
 const robots = "index,follow";
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots} pageType="ContactPage" contactPoint ogImageAlt="Swishtag rocket illustration for the contact Swishtag page">
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} pageType="ContactPage" contactPoint ogImageAlt="Swishtag rocket illustration for the contact Swishtag page" faq={faqs.contact}>
   <ContactPage />
 </BaseLayout>
