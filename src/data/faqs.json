@@ -260,46 +260,50 @@
   },
   "rocketApps": {
     "eyebrow": "Frequently asked questions",
-    "title": "A clearer way forward.",
-    "description": "The simple answers to the questions promotional products companies usually ask before working with Swishtag.",
+    "title": "Shopify apps for promotional products: your questions answered",
+    "description": "Answers to common questions about Rocket Apps and Shopify apps for promotional products stores.",
     "link": {
       "href": "/contact/",
-      "label": "Ask us something specific"
+      "label": "Talk to our team"
     },
     "items": [
       {
-        "question": "Is Swishtag a Shopify agency or a software company?",
-        "answer": "Both, with a clear distinction. Solutions and Enterprise Commerce are implementation services. PunchOut Solutions, Promo Plus, Xecutor, and Rocket Apps are Swishtag owned software platforms.",
+        "question": "Do Rocket Apps work with promotional products stores?",
+        "answer": "Yes. Rocket Apps are built by Swishtag, which works with promotional products distributors, suppliers and decorators. They add focused features such as quote requests, forms and gift cards to a Shopify store.",
+        "open": true
+      },
+      {
+        "question": "How do I install a Rocket App?",
+        "answer": "Each app installs from the Shopify App Store. Pick the app, click install and follow the setup steps in your Shopify admin.",
         "open": false
       },
       {
-        "question": "What is the difference between Solutions and Enterprise Commerce?",
-        "answer": "Solutions focuses on launching or improving customer facing stores. Enterprise Commerce connects the more complex work behind those stores, including suppliers, procurement, ERP, accounting, multi store management, and automation.",
+        "question": "Can I use Rocket Apps on a company store?",
+        "answer": "Yes, they work on Shopify stores, including company stores. See our Shopify company store setup.",
+        "answerLink": {
+          "phrase": "Shopify company store setup",
+          "href": "/solutions/shopify-company-store/"
+        },
         "open": false
       },
       {
-        "question": "Do we need to replace commonsku, ESP+, or our ERP?",
-        "answer": "No. Swishtag is designed to add a modern commerce and automation layer around the systems your team already trusts. We focus on connecting the gaps rather than forcing a rip and replace project.",
+        "question": "Which Rocket App should I start with?",
+        "answer": "Start with the job that costs you the most time. Quote My Order is for quote requests, Form Builder for custom data, and Address Validator for delivery errors.",
         "open": false
       },
       {
-        "question": "What is PunchOut Solutions?",
-        "answer": "PunchOut Solutions helps promotional products distributors launch and manage PunchOut catalog connections using Shopify. It can support multiple buyer connections on one Shopify store or connections across multiple Shopify stores from one management platform.",
+        "question": "Do I need to replace my platform or ERP?",
+        "answer": "No. Rocket Apps add to your existing Shopify store. For integrations with systems like commonsku or ESP+, see our Solutions page.",
         "open": false
       },
       {
-        "question": "Can you migrate existing company stores to Shopify?",
-        "answer": "Yes. Swishtag can migrate products, customers, content, workflows, and store rules from legacy, custom, WooCommerce, Magento, BigCommerce, and other commerce environments.",
+        "question": "What is the difference between Rocket Apps and Swishtag Solutions?",
+        "answer": "Rocket Apps are focused Shopify apps you install yourself. Solutions are larger projects, such as company store launches and PunchOut, delivered by the Swishtag team.",
         "open": false
       },
       {
-        "question": "Who are Swishtag solutions built for?",
-        "answer": "Swishtag is focused on promotional product distributors, suppliers, and decorators. The strongest fit is an organization trying to launch more programs, connect existing systems, or scale without adding the same amount of manual work.",
-        "open": false
-      },
-      {
-        "question": "How does a project begin?",
-        "answer": "We begin by understanding your current customer journey, systems, workflows, and operational bottlenecks. From there, we recommend the smallest practical path that can create meaningful progress.",
+        "question": "Are Rocket Apps free?",
+        "answer": "Several apps are free or have a free plan. Paid apps start at $3.50/month. See each listing for current pricing.",
         "open": false
       }
     ]
