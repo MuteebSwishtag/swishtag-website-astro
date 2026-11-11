@@ -6,8 +6,8 @@ import { ORG_ID } from '../../../data/site.js';
 
 export const prerender = true;
 
-const title = "Custom Software & Business Automation Solutions | Swishtag";
-const description = "Have an ecommerce, integration, automation, SaaS or AI idea? Swishtag turns business problems into working systems with discovery, development, QA, deployment, documentation and training.";
+const title = "Custom Software Development for Ecommerce & B2B | Swishtag";
+const description = "Custom software development services for ecommerce and B2B: integrations, automation and SaaS, from discovery to handover. Book a discovery call.";
 const canonical = "https://swishtag.com/solutions/custom-software-automation/";
 const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const service = {
@@ -34,8 +34,8 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[service]} faq={faqs.customSoftware}>
   <meta slot="head" property="og:type" content="website">
   <meta slot="head" property="og:site_name" content="Swishtag">
-  <meta slot="head" property="og:title" content="Have an idea? Let’s build it. | Swishtag">
-  <meta slot="head" property="og:description" content="Custom ecommerce technology, business automation, integrations, SaaS and practical AI, delivered from idea to working system.">
+  <meta slot="head" property="og:title" content={title}>
+  <meta slot="head" property="og:description" content={description}>
   <meta slot="head" property="og:url" content="https://swishtag.com/solutions/custom-software-automation/">
   <meta slot="head" name="twitter:card" content="summary_large_image">
   <style slot="head" is:inline>

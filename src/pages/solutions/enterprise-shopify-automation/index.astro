@@ -6,8 +6,8 @@ import { ORG_ID } from '../../../data/site.js';
 
 export const prerender = true;
 
-const title = "Enterprise Company Store Management & Automation | Swishtag";
-const description = "Manage every Shopify company store from one dashboard. Add order routing, PromoStandards, PunchOut, supplier, ERP, and AI automation as needed.";
+const title = "Shopify Multi-Store Management & Automation | Swishtag";
+const description = "Shopify multi-store management for promotional products distributors: one dashboard for every company store, with optional automation. Book a demo.";
 const canonical = "https://swishtag.com/solutions/enterprise-shopify-automation/";
 const robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
 const enterpriseSchema = [
@@ -52,16 +52,16 @@ const enterpriseSchema = [
 ---
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={enterpriseSchema} faq={faqs.enterprise}>
   <meta slot="head" content="website" property="og:type"/>
-  <meta slot="head" content="Enterprise Company Store Management &amp; Automation | Swishtag" property="og:title"/>
-  <meta slot="head" content="One dashboard for every Shopify company store, with optional order routing, PromoStandards, PunchOut, supplier, ERP, AI, and custom automation." property="og:description"/>
+  <meta slot="head" content={title} property="og:title"/>
+  <meta slot="head" content={description} property="og:description"/>
   <meta slot="head" content="https://swishtag.com/solutions/enterprise-shopify-automation/" property="og:url"/>
   <meta slot="head" content="Swishtag" property="og:site_name"/>
   <meta slot="head" content="https://swishtag.com/assets/swishtag-enterprise-automation-og.png" property="og:image"/>
   <meta slot="head" content="1200" property="og:image:width"/>
   <meta slot="head" content="630" property="og:image:height"/>
   <meta slot="head" content="Swishtag enterprise company store automation dashboard and connected workflow modules" property="og:image:alt"/>
-  <meta slot="head" content="Enterprise Company Store Management &amp; Automation | Swishtag" name="twitter:title"/>
-  <meta slot="head" content="One dashboard for every Shopify company store, with optional order routing, PromoStandards, PunchOut, supplier, ERP, AI, and custom automation." name="twitter:description"/>
+  <meta slot="head" content={title} name="twitter:title"/>
+  <meta slot="head" content={description} name="twitter:description"/>
   <meta slot="head" content="https://swishtag.com/assets/swishtag-enterprise-automation-og.png" name="twitter:image"/>
   <meta slot="head" content="summary_large_image" name="twitter:card"/>
   <style slot="head" is:inline>
