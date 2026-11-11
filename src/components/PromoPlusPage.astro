@@ -1,7 +1,23 @@
 ---
 import promoPlusHtml from "../legacy/promo-plus-body.html?raw";
+
+const start = promoPlusHtml.indexOf('<div class="pp-cta-wrapper">');
+const buttonAt = promoPlusHtml.indexOf('pp-cta-button', start);
+const closeAt = promoPlusHtml.indexOf('</div>', buttonAt);
+if (start < 0 || buttonAt < 0 || closeAt < 0) {
+  throw new Error("Promo Plus bottom call to action block was not found.");
+}
+const end = closeAt + "</div>".length;
+const beforeCta = promoPlusHtml.slice(0, start);
+const cta = promoPlusHtml.slice(start, end);
+const afterCta = promoPlusHtml.slice(end);
 ---
 
 <main class="promo-plus-page">
-  <Fragment set:html={promoPlusHtml} />
+  <Fragment set:html={beforeCta} />
+  <div class="promo-plus-faq">
+    <slot />
+  </div>
+  <Fragment set:html={cta} />
+  <Fragment set:html={afterCta} />
 </main>
