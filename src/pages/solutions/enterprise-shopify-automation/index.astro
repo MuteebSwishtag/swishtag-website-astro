@@ -50,20 +50,7 @@ const enterpriseSchema = [
   }
 ];
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={enterpriseSchema} faq={faqs.enterprise}>
-  <meta slot="head" content="website" property="og:type"/>
-  <meta slot="head" content={title} property="og:title"/>
-  <meta slot="head" content={description} property="og:description"/>
-  <meta slot="head" content="https://swishtag.com/solutions/enterprise-shopify-automation/" property="og:url"/>
-  <meta slot="head" content="Swishtag" property="og:site_name"/>
-  <meta slot="head" content="https://swishtag.com/assets/swishtag-enterprise-automation-og.png" property="og:image"/>
-  <meta slot="head" content="1200" property="og:image:width"/>
-  <meta slot="head" content="630" property="og:image:height"/>
-  <meta slot="head" content="Swishtag enterprise company store automation dashboard and connected workflow modules" property="og:image:alt"/>
-  <meta slot="head" content={title} name="twitter:title"/>
-  <meta slot="head" content={description} name="twitter:description"/>
-  <meta slot="head" content="https://swishtag.com/assets/swishtag-enterprise-automation-og.png" name="twitter:image"/>
-  <meta slot="head" content="summary_large_image" name="twitter:card"/>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={enterpriseSchema} faq={faqs.enterprise} ogImage="/assets/og/shopify-multi-store-management.jpg" ogImageAlt="Company store dashboard for Shopify multi-store management">
   <style slot="head" is:inline>
   /* Consolidated production stylesheet. Rule order is preserved intentionally. */
   

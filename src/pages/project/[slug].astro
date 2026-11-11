@@ -11,15 +11,8 @@ const title = 'Project | Swishtag';
 const description = 'Explore a project designed and built by Swishtag.';
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical} robots="index,follow">
+<BaseLayout title={title} description={description} canonical={canonical} robots="index,follow" ogType="article" ogImageAlt="Swishtag rocket illustration for a Swishtag project">
   <link slot="head" rel="stylesheet" href="/assets/projects.css?v=20260903-project-layout" />
-  <meta slot="head" property="og:type" content="article" />
-  <meta slot="head" property="og:title" content="Project | Swishtag" />
-  <meta slot="head" property="og:description" content={description} />
-  <meta slot="head" property="og:url" content={canonical} />
-  <meta slot="head" property="og:image" content="" />
-  <meta slot="head" name="twitter:card" content="summary_large_image" />
-  <meta slot="head" name="twitter:image" content="" />
   <script slot="head" is:inline type="application/ld+json" data-project-schema set:html={jsonLd({
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',

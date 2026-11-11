@@ -12,7 +12,7 @@ const wordpressFormEndpoint = import.meta.env.PUBLIC_WORDPRESS_FORM_ENDPOINT ?? 
 const formEndpoint = formSubmissionMode === "wordpress" ? wordpressFormEndpoint : directFormEndpoint;
 const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_ASTRO_FORM_TOKEN ?? "") : "";
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} ogImage="/assets/og/book-a-demo.jpg" ogImageAlt="Swishtag astronaut for booking a demo">
   <style is:inline slot="head">
   :root{
         --ink:#202124;

@@ -20,11 +20,23 @@ const {
   faq,
   contactPoint = false,
   noSchema = false,
+  ogImage = "",
+  ogImageAlt = "",
+  ogType = "website",
 } = Astro.props;
 
 // One JSON-LD @graph per page: shared Organization + WebSite, this page's node,
 // then any page-specific nodes (Service, BreadcrumbList, FAQPage, ...).
 const pageUrl = siteUrl(canonical || Astro.url.pathname);
+const DEFAULT_OG_PATH = "/assets/og/promotional-products-technology-company.jpg";
+const companyStorePage = String(canonical || pageUrl).includes("/solutions/shopify-company-store/");
+const ogSource = ogImage || DEFAULT_OG_PATH;
+const ogImageUrl = /^https?:\/\//i.test(ogSource)
+  ? ogSource
+  : `https://swishtag.com${ogSource.startsWith("/") ? ogSource : `/${ogSource}`}`;
+const ogAlt = ogImageAlt || "Swishtag rocket illustration";
+const emitOg = !companyStorePage;
+const ogSized = ogImageUrl.startsWith("https://swishtag.com/assets/og/");
 const structuredData = noSchema
   ? null
   : jsonLd({
@@ -96,6 +108,24 @@ const structuredData = noSchema
     <meta name="robots" content={robots} />
     {structuredData && <script type="application/ld+json" is:inline set:html={structuredData} />}
     <script defer src="/assets/site-shell.js"></script>
+    {emitOg && (
+      <>
+        <meta property="og:title" content={title} />
+        {description && <meta property="og:description" content={description} />}
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:site_name" content="Swishtag" />
+        <meta property="og:image" content={ogImageUrl} />
+        {ogSized && <meta property="og:image:width" content="1200" />}
+        {ogSized && <meta property="og:image:height" content="630" />}
+        <meta property="og:image:alt" content={ogAlt} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        {description && <meta name="twitter:description" content={description} />}
+        <meta name="twitter:image" content={ogImageUrl} />
+        <meta name="twitter:image:alt" content={ogAlt} />
+      </>
+    )}
     <slot name="head" />
     <style is:global>
       @media (min-width: 901px) {

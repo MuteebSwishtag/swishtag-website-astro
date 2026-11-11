@@ -43,7 +43,7 @@ const punchoutHeadHtml = headHtml
   .replace(/^.*(?:site-header|modern-nav|desktop-nav|mega-|mobile-menu|menu-toggle|footer-grid|footer-brand|footer-col|footer-bottom|site-footer).*$/gmi, "");
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[service]} faq={faqs.punchout}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[service]} faq={faqs.punchout} ogImageAlt="Swishtag rocket illustration for punchout solutions">
   <Fragment slot="head" set:html={punchoutHeadHtml} />
   <style is:global>
     .punchout-page .connection-section {
