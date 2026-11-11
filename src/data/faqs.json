@@ -192,37 +192,57 @@
   },
   "customSoftware": {
     "eyebrow": "Frequently asked questions",
-    "title": "Before you bring us the idea.",
+    "title": "Ask anything about our custom software development services",
     "description": "Start with the business problem. We will help turn it into requirements, phases and a practical development path.",
     "items": [
       {
+        "question": "What is included in a custom software project?",
+        "answer": "Our custom software development services cover discovery, requirements and a Solution Blueprint, UX and engineering, integrations and automation, QA and UAT, deployment, documentation, training and handover. You stay involved in business decisions, and Swishtag manages the technical work.",
+        "open": true
+      },
+      {
         "question": "Do I need a technical specification first?",
-        "answer": "No. Start with the business problem, workflow or idea. We can help translate it into requirements, phases, architecture and a development plan before the build is approved.",
+        "answer": "No. You need a clear problem. We turn the business goal into a structured requirement document, phases, assumptions, dependencies and acceptance criteria before development starts.",
         "open": false
       },
       {
         "question": "Can you work with an existing platform or MVP?",
-        "answer": "Yes. A project can begin from an idea, a manual process, an MVP or a live platform that needs integrations, automation, rebuilding or additional modules.",
+        "answer": "Yes. We can build around your existing platform or extend an existing MVP, starting with a review of what is built and where it falls short. For new products, our MVP development approach builds the smallest complete version first.",
         "open": false
       },
       {
         "question": "Will you give a fixed timeline and price immediately?",
-        "answer": "Not responsibly for an unclear project. Once requirements, dependencies, risks and phases are understood, we can propose the appropriate commercial model and provide a development plan with timeline and cost.",
+        "answer": "Not before we understand the problem. After discovery and the Solution Blueprint, you receive phases, a timeline and an investment estimate. Larger or unclear projects may begin with a dedicated blueprint before pricing is finalized.",
         "open": false
       },
       {
         "question": "Do you use AI in every project?",
-        "answer": "No. AI should solve a real problem. If a simpler API, rules engine or workflow automation is more reliable and economical, that is often the better answer.",
+        "answer": "No. We use AI only where it earns its place, such as document processing, data extraction, classification or decision support. Many projects need none. Our AI workflow automation services are scoped around a measurable benefit.",
         "open": false
       },
       {
         "question": "How do project updates work?",
-        "answer": "Before kickoff we agree a reporting rhythm. Depending on project size, this can include weekly progress reporting and milestone reviews covering completed work, current work, next steps, decisions and risks.",
+        "answer": "Weekly progress updates plus milestone reviews cover completed work, current work, next decisions, blockers and timeline health. We agree on the reporting rhythm before development starts.",
         "open": false
       },
       {
         "question": "What happens after launch?",
-        "answer": "The agreed delivery can include production deployment, stabilization, documentation, training and handover. Ongoing support or continuous development can then be arranged separately.",
+        "answer": "We deploy to production, stabilize the system and hand over documentation, access, training and an ownership package. The exact package depends on the project.",
+        "open": false
+      },
+      {
+        "question": "Can you integrate with our ERP, accounting or ecommerce platform?",
+        "answer": "Yes. Our API integration services connect ecommerce with ERP, CRM, accounting, supplier and payment systems through APIs, webhooks or middleware. Each project starts by confirming the API access and permissions available for every system involved.",
+        "open": false
+      },
+      {
+        "question": "Can you automate a process without building new software?",
+        "answer": "Yes, where the tools you already use support it. Our business automation services connect them with workflows, and we recommend new software only when existing tools cannot do the job.",
+        "open": false
+      },
+      {
+        "question": "Do you build Shopify apps?",
+        "answer": "Yes. Swishtag has built 100+ custom Shopify applications. Custom Shopify app development covers everything from small tools to multi-store systems. For ready-made apps, see Rocket Apps.",
         "open": false
       }
     ]
