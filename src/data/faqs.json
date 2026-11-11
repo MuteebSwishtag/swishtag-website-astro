@@ -557,8 +557,8 @@
         "open": false
       },
       {
-        "question": "Where can I see Promo Plus?",
-        "answer": "Promo Plus runs on its own site, PromoPlus.io.",
+        "question": "Where can I try it and see pricing?",
+        "answer": "Promo Plus runs on its own site, PromoPlus.io, where you can start a free trial and see current pricing.",
         "answerLink": {
           "phrase": "PromoPlus.io",
           "href": "https://promoplus.io/"
