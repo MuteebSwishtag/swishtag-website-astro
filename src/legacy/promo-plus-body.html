@@ -3624,6 +3624,25 @@ html .promo-plus-page{background:#fff;scroll-behavior:smooth}
   .promo-plus-page .visual{height:430px;padding:18px}
   .promo-plus-page .promo-faq > .title{font-size:clamp(2.75rem,12vw,4.5rem)}
 }
+/* Hero mockup shrinks to fit below 1280px (Muteeb, 2026-11-11: "shrink to fit on all
+   cases"). The whole 620px preview, side notes included, is zoomed to the space it has:
+   the right column on tablets, the page width on phones. 1280px and wider is unchanged.
+   tan(atan2(a, b)) is a/b as a plain number. Browsers without support keep the old look. */
+@supports (zoom: tan(atan2(1px, 2px))) and (width: 1cqw){
+  @media(max-width:1279px){
+    .promo-plus-page .hero .grid{container-type:inline-size}
+    .promo-plus-page .promo-hero-right{
+      --pp-fit-width:max(430px, (100cqw - 48px) * .49);
+      zoom:min(1, tan(atan2(var(--pp-fit-width), 620px)));
+    }
+  }
+  @media(max-width:900px){
+    .promo-plus-page .promo-hero-right{--pp-fit-width:100cqw}
+  }
+  @media(max-width:700px){
+    .promo-plus-page .promo-hero-right{width:620px;height:620px;min-height:0;transform:none;justify-self:center}
+  }
+}
 
 </style>
 <script>

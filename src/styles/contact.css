@@ -892,6 +892,14 @@
   }
 }
 
+/* Very small phones (under 360px): shrink the "A conversation before a recommendation"
+   heading so its longest word fits the screen (Muteeb, 2026-11-11). 360px and up unchanged. */
+@media (max-width: 359px) {
+  .contact-next h2 {
+    font-size: calc((100vw - 28px) / 8.4);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .contact-page *,
   .contact-page *::before,
