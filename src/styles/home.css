@@ -9000,7 +9000,7 @@ html.save-data .soar-earth-revolve__surface{
       text-transform: uppercase;
     }
 
-    .mega-menu__intro h2 {
+    .mega-menu__intro div:where(.mega-menu__heading) {
       margin: 18px 0 0;
       font-size: clamp(1.75rem, 2.3vw, 2.55rem);
       line-height: 1.02;
@@ -12406,8 +12406,19 @@ h3,
 p,
 a,
 span,
-strong {
+strong,
+div:where(.mega-menu__heading) {
   overflow-wrap: break-word;
+}
+
+/* Mega-menu titles are not headings (they come before the page H1). Same look as the
+   browser default h2 they replaced; zero specificity, so every other rule still wins. */
+:where(.mega-menu__intro > div.mega-menu__heading) {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-block: 0.83em;
+  margin-inline: 0;
+  unicode-bidi: isolate;
 }
 
 .reference-hero,
@@ -12755,7 +12766,7 @@ html.save-data .promo-float-card {
     pointer-events: none;
   }
 
-  .mega-menu__intro h2 {
+  .mega-menu__intro div:where(.mega-menu__heading) {
     margin-top: 14px;
     font-size: clamp(1.58rem, 2vw, 2.15rem);
     line-height: 1.03;
