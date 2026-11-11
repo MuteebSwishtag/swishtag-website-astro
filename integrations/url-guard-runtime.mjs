@@ -9,6 +9,11 @@
 //   /404.html         -> 404 with the 404 page
 // Query strings are kept. Only GET/HEAD requests whose canonical target is a prerendered
 // page are touched; everything else passes straight through to the adapter unchanged.
+//
+// SERVER_REDIRECTS: retired URLs that must answer with a single server-side 301 in every
+// form (/x, /x/, /x/index.html, /x//), query string kept. Astro's `redirects` config
+// drops the query string and does not cover /x/index.html, so these live here instead.
+//   /contact-us/ -> /book-demo/   (Muteeb, 2026-11-11: no duplicate contact page)
 import fs from "node:fs";
 import http from "node:http";
 import https from "node:https";
@@ -17,6 +22,9 @@ import { fileURLToPath } from "node:url";
 
 const CLIENT_DIR = fileURLToPath(new URL("../client/", import.meta.url));
 const pageCache = new Map();
+const SERVER_REDIRECTS = Object.freeze({
+  "/contact-us/": "/book-demo/",
+});
 
 function isPrerenderedPage(pathname) {
   if (pageCache.has(pathname)) return pageCache.get(pathname);
@@ -62,6 +70,17 @@ export function urlGuard(req, res) {
   if (decoded.includes("\\") || /(^|\/)\.\.?(\/|$)/.test(decoded)) return false;
 
   if (decoded === "/404.html") return send404(req, res);
+
+  let retired = decoded;
+  if (retired.endsWith("/index.html")) retired = retired.slice(0, -"index.html".length);
+  retired = retired.replace(/\/{2,}$/, "/");
+  if (!retired.endsWith("/")) retired += "/";
+  if (Object.prototype.hasOwnProperty.call(SERVER_REDIRECTS, retired)) {
+    res.statusCode = 301;
+    res.setHeader("Location", SERVER_REDIRECTS[retired] + query);
+    res.end();
+    return true;
+  }
 
   let target = decoded;
   if (target.endsWith("/index.html")) target = target.slice(0, -"index.html".length);
