@@ -3606,6 +3606,9 @@ html .promo-plus-page{background:#fff;scroll-behavior:smooth}
 
 @media(max-width:900px){
   .promo-plus-page .hero .grid,.promo-plus-page .cards{grid-template-columns:1fr}
+  /* Mobile fix: the 560px mockup card sets the single column's min width, which pushed
+     the hero copy past the screen edge on phones. Keep the copy within the page width. */
+  .promo-plus-page .hero .grid > div:first-child{max-width:var(--page)}
   .promo-plus-page .visual{height:500px}
   .promo-plus-page .nav{grid-template-columns:auto auto;justify-content:space-between}
   .promo-plus-page .approval-problems > .container > .title{margin-bottom:42px;font-size:clamp(3rem,9vw,5rem)}
