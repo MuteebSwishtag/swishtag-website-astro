@@ -1,6 +1,8 @@
 (function () {
   const REDIRECTS = Object.freeze({
     "/contact-us/": "/book-demo/",
+    "/solutions/book-demo/": "/book-demo/",
+    "/solutions/solutions/": "/solutions/",
     "/services/": "/solutions/custom-software-automation/",
     "/shopify-company-store/": "/solutions/shopify-company-store/",
     "/shopify-sage-connect-integration/": "/solutions/",

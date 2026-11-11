@@ -14,6 +14,7 @@
 // form (/x, /x/, /x/index.html, /x//), query string kept. Astro's `redirects` config
 // drops the query string and does not cover /x/index.html, so these live here instead.
 //   /contact-us/ -> /book-demo/   (Muteeb, 2026-11-11: no duplicate contact page)
+//   /solutions/book-demo/ -> /book-demo/, /solutions/solutions/ -> /solutions/   (audit 404s, Part 02)
 import fs from "node:fs";
 import http from "node:http";
 import https from "node:https";
@@ -24,6 +25,8 @@ const CLIENT_DIR = fileURLToPath(new URL("../client/", import.meta.url));
 const pageCache = new Map();
 const SERVER_REDIRECTS = Object.freeze({
   "/contact-us/": "/book-demo/",
+  "/solutions/book-demo/": "/book-demo/",
+  "/solutions/solutions/": "/solutions/",
 });
 
 function isPrerenderedPage(pathname) {
