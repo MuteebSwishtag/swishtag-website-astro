@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PromoPlusPage from '../../../components/PromoPlusPage.astro';
-import Faq from '../../../components/home/Faq.astro';
+import SharedFaq from '../../../components/layout/SharedFaq.astro';
 import faqs from '../../../data/faqs.json';
 import { ORG_ID } from '../../../data/site.js';
 
@@ -22,8 +22,8 @@ const software = {
   provider: { "@id": ORG_ID },
 };
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[software]} pageProps={{ mainEntity: { "@id": software["@id"] } }} faq={faqs.home} ogImage="/assets/og/artwork-proofing-software-promo-plus.jpg" ogImageAlt="Product mockup workspace in Promo Plus artwork proofing software">
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[software]} pageProps={{ mainEntity: { "@id": software["@id"] } }} faq={faqs.promoPlus} ogImage="/assets/og/artwork-proofing-software-promo-plus.jpg" ogImageAlt="Product mockup workspace in Promo Plus artwork proofing software">
   <PromoPlusPage>
-    <Faq />
+    <SharedFaq {...faqs.promoPlus} />
   </PromoPlusPage>
 </BaseLayout>

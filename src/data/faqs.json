@@ -487,6 +487,56 @@
       }
     ]
   },
+  "promoPlus": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Promo Plus FAQs: artwork proofing and approval",
+    "description": "Answers to common questions about artwork proofing, approval and production files in Promo Plus.",
+    "link": {
+      "href": "https://promoplus.io/",
+      "label": "Talk to Promo Plus sales"
+    },
+    "items": [
+      {
+        "question": "What does Promo Plus do?",
+        "answer": "Promo Plus is artwork approval software for promotional products. It lets teams build product mockups, send them to clients for approval, track revisions and generate a production-ready proof.",
+        "open": true
+      },
+      {
+        "question": "What is the difference between artwork proofing and artwork approval?",
+        "answer": "Proofing is creating the mockup and the final proof. Approval is the client’s sign-off on it. Promo Plus covers both in one workflow, so the approved version is the one production receives.",
+        "open": false
+      },
+      {
+        "question": "Is Promo Plus artwork approval workflow software or artwork management software?",
+        "answer": "It is built for approval. Promo Plus keeps the artwork, versions, comments and approvals for each project together, but it is not a general file library.",
+        "open": false
+      },
+      {
+        "question": "How do clients review and approve artwork?",
+        "answer": "Share a review link with the customer. They open the current mockup, add comments, ask for changes or approve it, and every response is recorded against the project.",
+        "open": false
+      },
+      {
+        "question": "What does the production team receive?",
+        "answer": "A production-ready PDF with a product proof (item, decoration, imprint size and colors) and an artwork inspection sheet, based on the approved version.",
+        "open": false
+      },
+      {
+        "question": "Who is Promo Plus for?",
+        "answer": "Promotional products distributors, decorators and suppliers, including the sales, design and production teams that handle customer artwork.",
+        "open": false
+      },
+      {
+        "question": "Where can I see Promo Plus?",
+        "answer": "Promo Plus runs on its own site, PromoPlus.io.",
+        "answerLink": {
+          "phrase": "PromoPlus.io",
+          "href": "https://promoplus.io/"
+        },
+        "open": false
+      }
+    ]
+  },
   "company": {
     "eyebrow": "Frequently asked questions",
     "title": "Questions about Swishtag",
