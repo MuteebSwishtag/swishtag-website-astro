@@ -693,14 +693,15 @@ export function initBookDemoForm() {
     try {
       setSubmitting(true);
       await postForm(payload);
-      document.getElementById("successEmail").textContent = email;
-      document.getElementById("successDate").textContent = state.selectedDate;
-      document.getElementById("successTime").textContent = `${state.selectedTime} - ${state.timezoneLabel}`;
-      document.getElementById("successCompany").textContent = company;
-      document.getElementById("successFocus").textContent = demoTitle(focus, selectedInterest.dataset.service);
-      flow.style.display = "none";
-      success.classList.add("show");
-      success.scrollIntoView({ behavior: "smooth", block: "start" });
+      const thanks = new URLSearchParams({
+        form: "book-demo",
+        date: state.selectedDate || "",
+        time: state.selectedTime ? `${state.selectedTime} - ${state.timezoneLabel}` : "",
+        company,
+        focus: demoTitle(focus, selectedInterest.dataset.service)
+      });
+      window.location.assign(`/contact/thank-you/?${thanks.toString()}`);
+      return;
     } catch (error) {
       if (error.code === "slot_taken") {
         state.selectedTime = "";

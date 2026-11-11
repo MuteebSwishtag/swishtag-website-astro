@@ -577,9 +577,14 @@
     },
     "items": [
       {
+        "question": "How quickly will Swishtag respond to my inquiry?",
+        "answer": "We reply within 1 business day.",
+        "open": true
+      },
+      {
         "question": "Do I need a technical brief to contact Swishtag?",
         "answer": "No. Tell us the problem or workflow slowing you down, and we will take it from there.",
-        "open": true
+        "open": false
       },
       {
         "question": "What can I contact Swishtag about?",

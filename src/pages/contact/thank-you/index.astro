@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export const prerender = true;
+
+const title = "Thank You | Swishtag";
+const description = "Swishtag has your message. We reply within 1 business day.";
+const canonical = "https://swishtag.com/contact/thank-you/";
+const robots = "noindex,follow";
+---
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} noSchema>
+  <link slot="head" rel="stylesheet" href="/assets/generic-page.css" />
+  <main>
+    <section class="gp-hero">
+      <div class="gp-wrap">
+        <div class="gp-kicker">Message received</div>
+        <h1 id="thanks-title">Thanks. We have your message.</h1>
+        <p id="thanks-copy">We reply within 1 business day.</p>
+        <div class="gp-actions">
+          <a class="gp-btn primary" href="/">Back home</a>
+          <a class="gp-btn secondary" href="/solutions/">Explore solutions</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script is:inline slot="scripts">
+    const params = new URLSearchParams(location.search);
+    const form = params.get("form");
+    const title = document.getElementById("thanks-title");
+    const copy = document.getElementById("thanks-copy");
+    if (form === "book-demo" && title && copy) {
+      title.textContent = "Your demo request is in.";
+      const bits = [params.get("date"), params.get("time"), params.get("company"), params.get("focus")].filter(Boolean);
+      copy.textContent = bits.length
+        ? "We reply within 1 business day. " + bits.join(" · ")
+        : "We reply within 1 business day.";
+    }
+  </script>
+</BaseLayout>

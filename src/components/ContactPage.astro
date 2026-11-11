@@ -161,7 +161,7 @@ const stats = [
 
         <button class="contact-btn contact-btn--dark" type="submit" data-contact-submit>Send my inquiry</button>
         <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
-        <p class="contact-form__note"><i></i>No technical brief required. We will start with the business problem and take it from there.</p>
+        <p class="contact-form__note"><i></i>No technical brief required. We will start with the business problem and take it from there. We reply within 1 business day.</p>
       </form>
     </div>
   </section>
@@ -398,10 +398,8 @@ const stats = [
       fields.submit.textContent = 'Sending...';
       setStatus('', '');
       await postForm(payload);
-      form.reset();
-      fields.loadedAt.value = Date.now().toString();
-      setStatus('Thanks. Your inquiry has been sent to Swishtag.', 'success');
-      fields.submit.textContent = 'Send my inquiry';
+      window.location.assign('/contact/thank-you/?form=contact');
+      return;
     } catch (error) {
       setStatus(error.message || 'We could not send your request right now. Please email hello@swishtag.com directly.', 'error');
       fields.submit.textContent = 'Send my inquiry';

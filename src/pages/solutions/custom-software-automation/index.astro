@@ -1973,8 +1973,8 @@ const formToken = formSubmissionMode === "wordpress" ? (import.meta.env.PUBLIC_A
           throw new Error(result.message || "We could not send your idea right now.");
         }
 
-        ideaForm.reset();
-        showIdeaFeedback("Thanks. Your idea has been sent to Swishtag. We will review it and follow up by email.", "success");
+        window.location.assign("/contact/thank-you/?form=custom");
+        return;
       } catch (error) {
         showIdeaFeedback(error.message || "We could not send your idea right now. Please try again.", "error");
       } finally {
