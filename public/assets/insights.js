@@ -611,7 +611,6 @@ async function loadSinglePost() {
   if (!body || !hero) return;
 
   const params = new URLSearchParams(location.search);
-  const isLegacyBlogPage = location.pathname.includes('/insights/blog/');
   const isLegacyChecklistPage = location.pathname.includes('/insights/shopify-migration-checklist-2026/');
   const slug = params.get('slug') || location.pathname.split('/').filter(Boolean).at(-1);
   const currentPath = location.pathname.endsWith('/') ? location.pathname : `${location.pathname}/`;
@@ -619,7 +618,7 @@ async function loadSinglePost() {
     renderSinglePostError('No blog post was selected.');
     return;
   }
-  if (!isLegacyBlogPage && !isLegacyChecklistPage && currentPath !== buildPostUrl({ slug })) return;
+  if (!isLegacyChecklistPage && currentPath !== buildPostUrl({ slug })) return;
 
   let response = await fetch(`${WORDPRESS_POSTS_API}?_embed&slug=${encodeURIComponent(slug)}`);
   if (!response.ok) throw new Error(`WordPress returned ${response.status}`);

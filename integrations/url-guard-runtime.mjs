@@ -15,6 +15,10 @@
 // drops the query string and does not cover /x/index.html, so these live here instead.
 //   /contact-us/ -> /book-demo/   (Muteeb, 2026-11-11: no duplicate contact page)
 //   /solutions/book-demo/ -> /book-demo/, /solutions/solutions/ -> /solutions/   (audit 404s, Part 02)
+//
+// Retired legacy blog page /insights/blog/ (Muteeb, 2026-11-11): old share links
+// /insights/blog/?slug=<post> get a single 301 to /<post>/ (other query params kept) when the
+// slug is a plain WordPress-style slug; every other form of /insights/blog/ returns the 404 page.
 import fs from "node:fs";
 import http from "node:http";
 import https from "node:https";
@@ -28,6 +32,21 @@ const SERVER_REDIRECTS = Object.freeze({
   "/solutions/book-demo/": "/book-demo/",
   "/solutions/solutions/": "/solutions/",
 });
+
+const LEGACY_BLOG_PATH = "/insights/blog/";
+const SAFE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function legacyBlogRedirect(req, res, query) {
+  const params = new URLSearchParams(query);
+  const slug = (params.get("slug") || "").trim().toLowerCase();
+  if (!slug || slug.length > 200 || !SAFE_SLUG.test(slug)) return send404(req, res);
+  params.delete("slug");
+  const rest = params.toString();
+  res.statusCode = 301;
+  res.setHeader("Location", `/${slug}/` + (rest ? `?${rest}` : ""));
+  res.end();
+  return true;
+}
 
 function isPrerenderedPage(pathname) {
   if (pageCache.has(pathname)) return pageCache.get(pathname);
@@ -78,6 +97,7 @@ export function urlGuard(req, res) {
   if (retired.endsWith("/index.html")) retired = retired.slice(0, -"index.html".length);
   retired = retired.replace(/\/{2,}$/, "/");
   if (!retired.endsWith("/")) retired += "/";
+  if (retired === LEGACY_BLOG_PATH) return legacyBlogRedirect(req, res, query);
   if (Object.prototype.hasOwnProperty.call(SERVER_REDIRECTS, retired)) {
     res.statusCode = 301;
     res.setHeader("Location", SERVER_REDIRECTS[retired] + query);
