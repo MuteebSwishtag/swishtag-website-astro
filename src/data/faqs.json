@@ -219,41 +219,41 @@
   },
   "punchout": {
     "eyebrow": "Frequently asked questions",
-    "title": "Questions about PunchOut catalogs.",
+    "title": "PunchOut Solutions FAQs: Common Questions From Suppliers",
     "description": "A practical overview for suppliers evaluating a procurement-to-ecommerce connection.",
     "link": {
       "href": "/contact/",
-      "label": "Ask us something specific"
+      "label": "Ask Us a Question"
     },
     "items": [
       {
         "question": "What is a PunchOut catalog?",
-        "answer": "A PunchOut catalog connects a procurement application with a supplier’s online catalog. The buyer enters the catalog from procurement, selects products, and sends the cart back to the purchasing system to continue the organization’s internal process.",
+        "answer": "A PunchOut catalog is the buyer-facing part of a wider PunchOut solution. It connects a procurement application with a supplier’s online catalog. The buyer enters the catalog from procurement, selects products, and sends the cart back to the purchasing system to continue the organization’s internal process.",
         "open": true
       },
       {
         "question": "Which procurement systems can Swishtag work with?",
-        "answer": "Swishtag can work with PunchOut requirements involving procurement environments such as Coupa, SAP Ariba, JAGGAER, Oracle Procurement and Workday. The exact connection is reviewed against the buyer’s technical specification.",
+        "answer": "Swishtag works with major e-procurement platforms including Coupa, SAP Ariba, JAGGAER, Oracle Procurement and Workday. Support depends on the buyer’s specification.",
         "open": false
       },
       {
         "question": "Which PunchOut protocols do you support?",
-        "answer": "Swishtag can implement cXML and OCI based PunchOut requirements. The protocol and transaction set used for a project depend on the buyer’s procurement environment and specification.",
+        "answer": "We support cXML and OCI, the two standard protocols used for B2B PunchOut catalog integration.",
         "open": false
       },
       {
         "question": "Can approved purchase orders create ecommerce orders automatically?",
-        "answer": "Where the buyer sends an electronic purchase order as part of the agreed workflow, Swishtag can map supported PO data into the supplier’s ecommerce or order-processing system.",
+        "answer": "Where the buyer workflow includes electronic purchase orders, Swishtag can map the supported PO data into your ecommerce or order-processing workflow, for example creating a Shopify order from an approved PO.",
         "open": false
       },
       {
         "question": "Do we have to replace Shopify or our current commerce system?",
-        "answer": "Not necessarily. A PunchOut implementation can be built around an existing ecommerce store. We review the current storefront, catalog and customer setup before defining the integration approach.",
+        "answer": "No. We keep your existing B2B ecommerce catalog and add the procurement connection around it.",
         "open": false
       },
       {
         "question": "Can you support multiple enterprise buyers and stores?",
-        "answer": "Yes. Multiple buyer connections or storefronts can be supported, but each buyer’s authentication, fields, testing process and transaction requirements should be reviewed individually.",
+        "answer": "Yes. Each buyer is configured and tested against its own requirements, including multi-store and buyer-specific catalog setups.",
         "open": false
       }
     ]
