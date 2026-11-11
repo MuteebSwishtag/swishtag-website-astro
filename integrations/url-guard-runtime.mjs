@@ -23,6 +23,7 @@
 // GONE_PATHS: removed pages that must return the site 404 page in every form (/x, /x/,
 // /x/index.html, /x//, any query string) instead of being redirected.
 //   Old SAGE page URLs (Muteeb, 2026-11-11: SAGE stays removed; old URLs 404).
+//   /thank-you/ (replaced by /contact/thank-you/; the old demo page is gone).
 import fs from "node:fs";
 import http from "node:http";
 import https from "node:https";
@@ -40,6 +41,7 @@ const SERVER_REDIRECTS = Object.freeze({
 const GONE_PATHS = new Set([
   "/solutions/shopify-sage-connect-integration/",
   "/shopify-sage-connect-integration/",
+  "/thank-you/",
 ]);
 
 const LEGACY_BLOG_PATH = "/insights/blog/";

@@ -18,7 +18,6 @@ const targets = [
   ["src/legacy/promo-plus-body.html", ["promo-plus-workflow-1", "promo-plus-workflow-2", "promo-plus-workflow-3", "promo-plus-workflow-4", "promo-plus-workflow-5"]],
   ["src/pages/solutions/index.astro", ["solutions-hub-astronaut", "solutions-company-store-preview", "solutions-enterprise-preview"]],
   ["src/pages/book-demo/index.astro", ["book-demo-astronaut"]],
-  ["src/pages/thank-you/index.astro", ["thank-you-astronaut"]],
 ];
 
 const EXT = { webp: "webp", png: "png", jpeg: "jpg", jpg: "jpg", gif: "gif" };
