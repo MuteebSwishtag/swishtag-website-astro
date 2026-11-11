@@ -131,40 +131,50 @@
   },
   "enterprise": {
     "eyebrow": "Frequently asked questions",
-    "title": "What distributors usually want to know first.",
+    "title": "Shopify multi-store management FAQs: what distributors usually want to know first",
     "description": "Start with the platform. Add the complexity only when it solves a real operational problem.",
     "link": {
       "href": "/book-demo/?service=enterprise-company-store-automation&intent=automation",
-      "label": "Book a Demo"
+      "label": "Talk to our team"
     },
     "items": [
       {
-        "question": "What is the base company store platform?",
-        "answer": "The base platform gives your team one place to see and manage multiple Shopify company stores, including centralized order visibility, store-level reporting, portfolio reporting, and operational status. You can use it without buying workflow automation.",
+        "question": "What is Swishtag’s Shopify company store management platform?",
+        "answer": "Swishtag’s base platform is Shopify multi-store management built for promotional products distributors. It gives your team one place to see and manage multiple Shopify company stores, including centralized order visibility, store-level reporting, portfolio reporting and operational status. You can use it without buying workflow automation.",
         "open": true
       },
       {
+        "question": "What is the difference between the base platform and the add-ons?",
+        "answer": "The base platform covers centralized orders, reporting, store visibility and exceptions. The add-ons, including order routing, supplier connections, PromoStandards, PunchOut, accounting, AI and custom automation, are optional and scoped to your needs.",
+        "open": false
+      },
+      {
+        "question": "Can the platform manage different Shopify company store setups together?",
+        "answer": "Yes. The platform gives you one operational view across Shopify company stores, while each store keeps the setup it needs.",
+        "open": false
+      },
+      {
         "question": "Which promotional products data systems do you connect with?",
-        "answer": "Our promotional products data connections are built around PromoStandards. We can also assess direct custom connections with individual suppliers when suitable APIs or technical access are available.",
+        "answer": "PromoStandards-supported suppliers, with mapped product data and pricing or inventory where supported. The exact scope depends on API access and your setup.",
         "open": false
       },
       {
         "question": "Can you connect directly with our approved suppliers?",
-        "answer": "Yes. If a supplier provides suitable API access, we can build a custom connection for product data, order submission, purchase orders, status updates, or another agreed workflow.",
+        "answer": "Where an approved supplier provides suitable APIs or technical access, yes. We can automate product data, order submission and status updates, and we confirm what is practical before scoping.",
         "open": false
       },
       {
-        "question": "How does order workflow automation work?",
-        "answer": "A Shopify order can enter the middleware, be checked against your rules, split by approved supplier, converted into supplier POs or API orders, routed to the correct decorator or fulfillment path, and monitored from the central dashboard.",
+        "question": "How does Shopify order routing and workflow automation work?",
+        "answer": "Orders from your stores arrive in one place. Your routing rules split them by supplier, create purchase orders, route work to the right decorator and flag exceptions. It works as a Shopify multi-store order management system layer on top of the base platform.",
         "open": false
       },
       {
         "question": "Can PunchOut be added later?",
-        "answer": "Yes. PunchOut is an optional paid capability. Add it when a corporate client requires a procurement-connected company store. We validate the buyer system, cXML flow, authentication, cart return, purchase-order requirements, and testing process before confirming scope.",
+        "answer": "Yes. PunchOut is an optional add-on, so you can start with the base platform and add it when a client program requires it.",
         "open": false
       },
       {
-        "question": "Can you build automation around our own workflow?",
+        "question": "Can you build enterprise company store automation around our own workflow?",
         "answer": "Yes. If your distributor operation has a workflow that does not fit an off-the-shelf app, we can map the process and build a custom automation layer where the required systems provide suitable technical access.",
         "open": false
       },
