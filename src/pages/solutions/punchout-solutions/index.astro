@@ -46,6 +46,12 @@ const punchoutHeadHtml = headHtml
 <BaseLayout title={title} description={description} canonical={canonical} robots={robots} schema={[service]} faq={faqs.punchout} ogImageAlt="Swishtag rocket illustration for punchout solutions">
   <Fragment slot="head" set:html={punchoutHeadHtml} />
   <style is:global>
+    .punchout-page .section-copy a {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 0.16em;
+    }
+
     .punchout-page .connection-section {
       overflow: visible;
     }
