@@ -135,7 +135,7 @@
     "description": "Start with the platform. Add the complexity only when it solves a real operational problem.",
     "link": {
       "href": "/book-demo/?service=enterprise-company-store-automation&intent=automation",
-      "label": "Automate My Company"
+      "label": "Book a Demo"
     },
     "items": [
       {
