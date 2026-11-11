@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SuppliersPage from '../../../components/SuppliersPage.astro';
+import faqs from '../../../data/faqs.json';
 
 export const prerender = true;
 
@@ -9,6 +10,6 @@ const description = "Promotional products supplier solutions: product data, Shop
 const canonical = "https://swishtag.com/industries/promotional-products-suppliers/";
 const robots = "index,follow";
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots} ogImageAlt="Swishtag rocket illustration for promotional products supplier solutions">
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} ogImageAlt="Swishtag rocket illustration for promotional products supplier solutions" faq={faqs.suppliers}>
   <SuppliersPage />
 </BaseLayout>

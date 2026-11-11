@@ -395,6 +395,52 @@
       }
     ]
   },
+  "suppliers": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Promotional products supplier FAQs",
+    "description": "How supplier product data, ecommerce and order integration fit together.",
+    "link": {
+      "href": "/contact/",
+      "label": "Talk to our team"
+    },
+    "items": [
+      {
+        "question": "What are promotional products supplier solutions?",
+        "answer": "Promotional products supplier solutions are the product data, ecommerce and integration tools that help a supplier share accurate product information, pricing and availability with distributors and dealers, and handle orders without manual re-entry. Swishtag’s promotional products supplier solutions are built around your existing systems.",
+        "open": true
+      },
+      {
+        "question": "Do we need to replace our ERP or product data system?",
+        "answer": "No. We keep what already works and integrate only where it removes repeated work.",
+        "open": false
+      },
+      {
+        "question": "Can Swishtag help us share product data with distributors?",
+        "answer": "Yes. We help structure SKUs, variants, imagery, pricing and availability once, so they can be reused across distributor stores, dealer portals and other channels. The exact scope depends on your setup.",
+        "open": false
+      },
+      {
+        "question": "Can you automate order intake and acknowledgements?",
+        "answer": "Where it makes sense, yes. We connect incoming orders to your order system and return acknowledgements and status updates, with exceptions surfaced rather than hidden.",
+        "open": false
+      },
+      {
+        "question": "Can you build a Shopify distributor store or dealer portal for us?",
+        "answer": "Yes. We build Shopify-based distributor stores and dealer portals around your pricing and commercial rules.",
+        "open": false
+      },
+      {
+        "question": "Which systems can Swishtag integrate with?",
+        "answer": "Shopify, ERP, accounting, product data and order systems, depending on your setup. Tell us how data moves today, and we’ll recommend what to connect.",
+        "open": false
+      },
+      {
+        "question": "Where should we start?",
+        "answer": "Start with data ownership: which system owns product data, pricing, availability and order status. We map that with you before any integration begins.",
+        "open": false
+      }
+    ]
+  },
   "company": {
     "eyebrow": "Frequently asked questions",
     "title": "Questions about Swishtag",

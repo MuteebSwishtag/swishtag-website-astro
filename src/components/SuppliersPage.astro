@@ -1,7 +1,13 @@
 ---
 import suppliersHtml from "../legacy/suppliers-body.html?raw";
+import SharedFaq from "./layout/SharedFaq.astro";
+import faqs from "../data/faqs.json";
+
+const [beforeFaq, afterFaq] = suppliersHtml.split("<!-- SUPPLIER_FAQ -->");
 ---
 
 <main class="suppliers-page">
-  <Fragment set:html={suppliersHtml} />
+  <Fragment set:html={beforeFaq} />
+  <SharedFaq {...faqs.suppliers} />
+  <Fragment set:html={afterFaq} />
 </main>
