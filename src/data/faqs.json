@@ -310,7 +310,7 @@
   },
   "xecutor": {
     "eyebrow": "Frequently asked questions",
-    "title": "A clearer way forward.",
+    "title": "Manufacturing execution system (MES) software: your questions answered",
     "description": "Simple answers to the questions decorator and production teams usually ask before bringing Xecutor onto the floor.",
     "link": {
       "href": "/contact/",
@@ -318,7 +318,7 @@
     },
     "items": [
       {
-        "question": "What is Xecutor?",
+        "question": "What is Xecutor manufacturing execution system software?",
         "answer": "Xecutor is Swishtag's manufacturing execution platform for decorator and print-on-demand production. It connects orders, artwork, workflows, workstations, quality and fulfillment in one operational system.",
         "open": false
       },
@@ -338,7 +338,7 @@
         "open": false
       },
       {
-        "question": "Which systems can Xecutor connect with?",
+        "question": "Which systems does Xecutor’s MES integration support?",
         "answer": "The current setup flow includes Dropbox, Stripe, Mailgun and ShipStation on the administration side, plus Shopify and WooCommerce for connected client stores.",
         "open": false
       },
