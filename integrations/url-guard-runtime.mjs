@@ -18,7 +18,8 @@
 //
 // Retired legacy blog page /insights/blog/ (Muteeb, 2026-11-11): old share links
 // /insights/blog/?slug=<post> get a single 301 to /<post>/ (other query params kept) when the
-// slug is a plain WordPress-style slug; every other form of /insights/blog/ returns the 404 page.
+// slug is a real WordPress post. A slug-shaped name that is not a post returns the 404 page.
+// If the CMS cannot be checked in time, the legacy URL returns 503 instead of a fake redirect.
 //
 // GONE_PATHS: removed pages that must return the site 404 page in every form (/x, /x/,
 // /x/index.html, /x//, any query string) instead of being redirected.
@@ -29,6 +30,7 @@ import http from "node:http";
 import https from "node:https";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { blogSlugStatus } from "./blog-post-cache.mjs";
 
 const CLIENT_DIR = fileURLToPath(new URL("../client/", import.meta.url));
 const pageCache = new Map();
@@ -47,10 +49,23 @@ const GONE_PATHS = new Set([
 const LEGACY_BLOG_PATH = "/insights/blog/";
 const SAFE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-function legacyBlogRedirect(req, res, query) {
+function sendUnavailable(req, res) {
+  const body = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Insight unavailable | Swishtag</title></head><body><main><h1>This insight is temporarily unavailable.</h1><p>Please try again shortly.</p><p><a href="/insights/">Back to insights</a></p></main></body></html>`;
+  res.statusCode = 503;
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("Content-Length", Buffer.byteLength(body));
+  res.end(req.method === "HEAD" ? undefined : body);
+  return true;
+}
+
+async function legacyBlogRedirect(req, res, query) {
   const params = new URLSearchParams(query);
   const slug = (params.get("slug") || "").trim().toLowerCase();
   if (!slug || slug.length > 200 || !SAFE_SLUG.test(slug)) return send404(req, res);
+  const status = await blogSlugStatus(slug);
+  if (status === 503) return sendUnavailable(req, res);
+  if (status !== 200) return send404(req, res);
   params.delete("slug");
   const rest = params.toString();
   res.statusCode = 301;
@@ -134,7 +149,21 @@ export function urlGuard(req, res) {
 function wrap(listener) {
   if (typeof listener !== "function") return listener;
   return function guardedListener(req, res, ...rest) {
-    if (urlGuard(req, res)) return;
+    let guarded;
+    try {
+      guarded = urlGuard(req, res);
+    } catch {
+      return listener.call(this, req, res, ...rest);
+    }
+    if (guarded && typeof guarded.then === "function") {
+      guarded.then((handled) => {
+        if (!handled && !res.writableEnded) listener.call(this, req, res, ...rest);
+      }).catch(() => {
+        if (!res.writableEnded) listener.call(this, req, res, ...rest);
+      });
+      return;
+    }
+    if (guarded) return;
     return listener.call(this, req, res, ...rest);
   };
 }

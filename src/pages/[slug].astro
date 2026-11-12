@@ -1,90 +1,46 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ORG_ID } from '../data/site.js';
+import { loadBlogPost } from '../../integrations/blog-post-cache.mjs';
 
 export const prerender = false;
 
 const slug = Astro.params.slug;
-const WORDPRESS_POSTS_API = 'https://cms.swishtag.com/wp-json/wp/v2/posts';
-
-async function findPostForSlug(slug) {
-  if (!slug) return null;
-
-  const url = new URL(WORDPRESS_POSTS_API);
-  url.searchParams.set('slug', slug);
-  url.searchParams.set('_fields', 'id,slug,title,date_gmt,modified_gmt,_links,_embedded');
-  url.searchParams.set('_embed', 'author,wp:featuredmedia');
-  url.searchParams.set('per_page', '1');
-
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`WordPress returned ${response.status}`);
-
-  const posts = await response.json();
-  return Array.isArray(posts) && posts.length > 0 ? posts[0] : null;
+const result = await loadBlogPost(slug);
+if (result.status === 404) {
+  return new Response(null, { status: 404, statusText: 'Not Found' });
 }
 
-async function findPostForPublicSlug(slug) {
-  if (!slug) return null;
-  const post = await findPostForSlug(slug);
-  if (post) return post;
-  if (slug.endsWith('-2026')) return findPostForSlug(slug.replace(/-2026$/, ''));
-  return null;
+const unavailable = result.status !== 200;
+if (unavailable) {
+  Astro.response.status = 503;
+  Astro.response.statusText = 'Service Unavailable';
+  Astro.response.headers.set('Cache-Control', 'no-store');
+} else {
+  Astro.response.headers.set('Cache-Control', 'public, max-age=60');
 }
 
-let post = null;
-try {
-  post = await findPostForPublicSlug(slug);
-  if (!post) {
-    return new Response(null, {
-      status: 404,
-      statusText: 'Not found',
-    });
-  }
-} catch (error) {
-  console.warn(`Unable to verify WordPress post slug "${slug}":`, error);
-}
+const post = result.post;
+const title = post?.title || 'Insight unavailable | Swishtag';
+const description = post?.description || 'This insight is temporarily unavailable. Please try again shortly.';
+const canonical = post?.canonical || `https://swishtag.com/${slug}/`;
+const robots = unavailable ? 'noindex,follow' : 'index,follow';
+const postHeadline = post?.headline || '';
+const postImage = post?.image || '';
 
-const title = 'Insight | Swishtag';
-const description = 'A practical Swishtag insight for Shopify, promotional products, integrations, automation and commerce teams.';
-const canonical = `https://swishtag.com/${slug}/`;
-const robots = 'index,follow';
-
-// BlogPosting only from real WordPress data (headline, dates, author); none is made up.
-function decodeEntities(value) {
-  return String(value || '')
-    .replace(/<[^>]*>/g, '')
-    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16)))
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
-    .trim();
-}
-
-function gmtDate(value) {
-  return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(value || '') ? `${value}Z` : null;
-}
-
-const postHeadline = decodeEntities(post?.title?.rendered);
-const postPublished = gmtDate(post?.date_gmt);
-const postModified = gmtDate(post?.modified_gmt);
-const postAuthorName = decodeEntities(post?._embedded?.author?.[0]?.name);
-const postImage = post?._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
-const postAuthor = !postAuthorName
+const postAuthor = !post?.authorName
   ? null
-  : /^swishtag\b/i.test(postAuthorName)
+  : /^swishtag\b/i.test(post.authorName)
     ? { '@id': ORG_ID }
-    : { '@type': 'Person', name: postAuthorName };
-const blogPosting = postHeadline && postPublished
+    : { '@type': 'Person', name: post.authorName };
+const blogPosting = postHeadline && post?.dateGmt
   ? {
       '@type': 'BlogPosting',
       '@id': `${canonical}#article`,
       headline: postHeadline,
-      datePublished: postPublished,
-      ...(postModified ? { dateModified: postModified } : {}),
+      description: post.description,
+      datePublished: post.dateGmt,
+      ...(post.modifiedGmt ? { dateModified: post.modifiedGmt } : {}),
       ...(postAuthor ? { author: postAuthor } : {}),
       ...(postImage ? { image: postImage } : {}),
       publisher: { '@id': ORG_ID },
@@ -94,33 +50,69 @@ const blogPosting = postHeadline && postPublished
     }
   : null;
 ---
-<BaseLayout title={title} description={description} canonical={canonical} robots={robots} pageName={postHeadline || title} schema={[blogPosting]} ogType="article" ogImage={postImage || ""} ogImageAlt={postHeadline ? `${postHeadline} insight` : "Featured image for a Swishtag insight"}>
+<BaseLayout title={title} description={description} canonical={canonical} robots={robots} pageName={postHeadline || title} schema={[blogPosting]} ogType="article" ogImage={postImage} ogImageAlt={postHeadline ? `${postHeadline} insight` : 'Featured image for a Swishtag insight'}>
   <link slot="head" rel="stylesheet" href="/assets/insights.css" />
 
   <div class="progress" aria-hidden="true"></div>
   <main>
-    <section class="container article-hero">
-      <div class="breadcrumbs"><a href="/insights/">Insights</a><span>/</span><a href="/insights/">Blog</a><span>/</span><span>Loading insight</span></div>
-      <div class="article-hero-main"><div class="eyebrow">INSIGHTS</div><h1>Loading insight...</h1><p class="article-dek">Fetching the latest article from Swishtag.</p><div class="hero-meta"><span>Swishtag Team</span><span>Loading</span></div></div>
-    </section>
+    {unavailable ? (
+      <section class="container article-hero">
+        <div class="breadcrumbs"><a href="/insights/">Insights</a><span>/</span><span>Unavailable</span></div>
+        <div class="article-hero-main">
+          <div class="eyebrow">INSIGHTS</div>
+          <h1>This insight is temporarily unavailable.</h1>
+          <p class="article-dek">The article could not be loaded just now. Please try again shortly.</p>
+        </div>
+      </section>
+    ) : (
+      <>
+        <section class="container article-hero">
+          <div class="breadcrumbs"><a href="/insights/">Insights</a><span>/</span><a href="/insights/">{post.category}</a><span>/</span><span>{post.headline}</span></div>
+          <div class="article-hero-main">
+            <div class="eyebrow">{post.category}</div>
+            <h1>{post.headline}</h1>
+            <p class="article-dek">{post.dek}</p>
+            <div class="hero-meta">
+              <span>Swishtag Team</span>
+              {post.dateLabel && <span>{post.dateLabel}</span>}
+              <span>{post.readTime}</span>
+            </div>
+          </div>
+        </section>
 
-    <div class="featured-article-image is-loading" role="img" aria-label="Loading featured article image" aria-busy="true">
-      <div class="insights-image-placeholder insights-image-placeholder--loading" aria-hidden="true"></div>
-    </div>
+        <div class="featured-article-image" role="img" aria-label={post.headline}>
+          {post.image ? (
+            <img class="featured-article-image__media is-loaded" src={post.image} alt={post.headline} decoding="async" fetchpriority="high" />
+          ) : (
+            <div class="insights-image-placeholder" aria-hidden="true"></div>
+          )}
+        </div>
 
-    <section class="container article-layout">
-      <aside class="share-rail" aria-label="Share this article">
-        <button class="share-btn" aria-label="Share on LinkedIn"><a href="https://www.linkedin.com/company/helloswishtag/posts/" target="_blank">in</a></button>
-      </aside>
-      <article class="article-body">
-        <details class="toc-mobile" hidden><summary>In this insight</summary><div></div></details>
-        <div class="insights-state insights-state--loading">Loading insight...</div>
-      </article>
-      <aside class="toc" aria-label="Table of contents" hidden><h4>In this insight</h4></aside>
-    </section>
+        <section class="container article-layout">
+          <aside class="share-rail" aria-label="Share this article">
+            <button class="share-btn" aria-label="Share on LinkedIn"><a href="https://www.linkedin.com/company/helloswishtag/posts/" target="_blank">in</a></button>
+          </aside>
+          <article class="article-body">
+            {post.headings.length > 0 && (
+              <details class="toc-mobile">
+                <summary>In this insight</summary>
+                <div>
+                  {post.headings.map((heading) => <a href={`#${heading.id}`}>{heading.text}</a>)}
+                </div>
+              </details>
+            )}
+            <div set:html={post.html} />
+          </article>
+          <aside class="toc" aria-label="Table of contents" hidden={post.headings.length === 0}>
+            <h4>In this insight</h4>
+            {post.headings.map((heading) => <a href={`#${heading.id}`}>{heading.text}</a>)}
+          </aside>
+        </section>
+      </>
+    )}
 
     <section class="container cta-section"><div class="cta-panel"><div class="eyebrow">NEED HELP?</div><h2>Building something complicated?</h2><p>Tell us what you're trying to connect, automate or move. We'll help you figure out the cleanest way to build it.</p><div class="cta-actions"><a class="btn btn-primary" href="/book-demo/">Book a demo</a></div></div></section>
   </main>
 
-  <script slot="scripts" is:inline src="/assets/insights.js?v=20261111-schema"></script>
+  {!unavailable && <script slot="scripts" is:inline src="/assets/insights.js?v=20261112-ssr"></script>}
 </BaseLayout>

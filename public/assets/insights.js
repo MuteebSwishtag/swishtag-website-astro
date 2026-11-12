@@ -55,6 +55,15 @@ function hasShortcodeNoise(value = '') {
   return /\b(?:vc_row|vc_column|vc_column_text|full_screen_row_position|column_margin|column_padding|column_direction|row_border_radius|background_color_opacity|background_hover_color_opacity|column_shadow|column_backdrop_filter|overlay_strength|shape_divider_position|bg_image_animation)\b/i.test(value);
 }
 
+function trimMetaDescription(value = '', maxLength = 155) {
+  const text = htmlToText(value);
+  if (text.length <= maxLength) return text;
+  const slice = text.slice(0, maxLength + 1);
+  const sentenceEnd = Math.max(slice.lastIndexOf('. '), slice.lastIndexOf('! '), slice.lastIndexOf('? '));
+  if (sentenceEnd >= 80) return slice.slice(0, sentenceEnd + 1).trim();
+  return slice.slice(0, maxLength).replace(/\s+\S*$/, '').replace(/[,:;]+$/, '').trim();
+}
+
 function truncateText(value = '', maxLength = 185) {
   const text = htmlToText(value);
   if (text.length <= maxLength) return text;
@@ -640,13 +649,14 @@ async function loadSinglePost() {
   }
   document.title = `${htmlToText(post.title.rendered)} | Swishtag`;
   const postExcerpt = getPostExcerpt(post, 220);
+  const metaDescription = trimMetaDescription(postExcerpt, 155);
   const description = $('meta[name="description"]');
-  if (description) description.setAttribute('content', postExcerpt);
+  if (description) description.setAttribute('content', metaDescription);
   const canonical = $('link[rel="canonical"]');
   if (canonical) canonical.setAttribute('href', cleanPostUrl);
   const metaUpdates = {
     'og:title': htmlToText(post.title.rendered),
-    'og:description': postExcerpt,
+    'og:description': metaDescription,
     'og:url': cleanPostUrl
   };
   Object.entries(metaUpdates).forEach(([property, content]) => {

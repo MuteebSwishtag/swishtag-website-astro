@@ -18,6 +18,7 @@ export default function urlGuard() {
         const entry = new URL("entry.mjs", serverDir);
         if (!fs.existsSync(entry)) throw new Error(`[url-guard] ${fileURLToPath(entry)} not found; the URL guard could not be installed.`);
         fs.copyFileSync(new URL("./url-guard-runtime.mjs", import.meta.url), new URL("url-guard.mjs", serverDir));
+        fs.copyFileSync(new URL("./blog-post-cache.mjs", import.meta.url), new URL("blog-post-cache.mjs", serverDir));
         const source = fs.readFileSync(entry, "utf8");
         if (!source.startsWith(MARKER)) fs.writeFileSync(entry, `${MARKER}\n${source}`);
         logger.info("URL guard installed in server/entry.mjs");
