@@ -11,7 +11,28 @@ if (!match) {
 
 const { project, index, total } = match;
 const related = relatedProjects(project.slug);
-const description = project.detail?.intro || project.panel?.intro || `${project.name} is selected Swishtag work in ${project.category}.`;
+// Head-only trims for intros that ran past a normal meta description.
+// Visible case-study copy stays on detail.intro.
+const metaDescriptions = {
+  'formeteca-monster-email-template': 'Formeteca helps Shopify merchants create professional, on-brand email templates for customer order and shipping messages, without design experience.',
+  cosmify: 'Cosmify lets vendors customize makeup products and packaging in Shopify through Zakeke, so each store can sell items that reflect its own brand.',
+  portelle: 'Portelle proposes a digital commerce experience with clear workflows, accessible information, and practical navigation. The direction stays provisional.',
+  flawless: 'Flawless Jewellery gives customers a storefront built around craftsmanship and customization, with space to explore the details behind each piece.',
+  'pick-pack': 'PickPack brings a reusable packaging option into the Shopify shopping experience, so customers can choose a more environmentally conscious service.',
+  'after-party': 'Afterparty Checkout Upsells helps merchants add relevant offers at checkout and after purchase, including free-shipping incentives and thank-you blocks.',
+  'goodauthentics-app': 'GoodAuthentic UGC helps Shopify merchants request customer video testimonials through automated invitations, campaigns, and participation rewards.',
+  mes: 'MES presents American Print on Demand’s apparel development, fabric sourcing, manufacturing, and global fulfillment. The project scope is unconfirmed.',
+  'bundle-builder': 'Bundle Builder lets merchants create guided, step-by-step product bundles so customers can select products and build combinations as they shop.',
+  'pulse-chat': 'PulseChat is an AI Shopify chatbot for customer questions, product recommendations, order tracking, and multilingual support in a configurable chat.',
+  'metal-price-updator': 'Metal Price Updator helps merchants whose prices follow metal costs keep rates, product calculations, and pricing adjustments in one workflow.',
+  procuresync: 'ProcureSync connects Shopify catalogs with enterprise procurement systems, so suppliers can support structured purchasing through PunchOut catalogs.',
+  'global-express-delivery': 'Global Express Delivery is a Shopify shipping integration with a merchant dashboard for plans, settings, and shipment-related management screens.',
+  'castify-pod': 'Castify POD gives Shopify merchants one connected place for linked products, pricing, order details, fulfillment status, and operational reporting.',
+  loafology: 'Loafology presents a premium artisan bakery and café, with designs for its all-day dining, carefully crafted menu, interiors, and online products.',
+  'vanessa-salgado-boutique': 'Vanessa Salgado Boutique sells curated clothing, footwear, handbags, and accessories in Portugal through seasonal collections and new arrivals.',
+  'artbeat-studios': 'Artbeat Studios helps customers discover materials, customize artwork, and order premium metal, acrylic, canvas, and paper prints with custom framing.',
+};
+const description = metaDescriptions[project.slug] || project.detail?.intro || project.panel?.intro || `${project.name} is selected Swishtag work in ${project.category}.`;
 const image = project.detail?.heroImage || project.image;
 const title = `${project.name} | Swishtag Case Study`;
 const canonical = `https://swishtag.com/case-studies/${project.slug}/`;
