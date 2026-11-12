@@ -11,7 +11,8 @@ export const companyStoreMedia = {
 export const companyStoreService = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Company Store Design, Launch & Management",
+  "name": "Online Company Store Setup on Shopify",
+  "alternateName": ["Shopify company store", "Branded company store"],
   "serviceType": "Branded Shopify company store design, launch, and ongoing care for promotional products distributors",
   "provider": { "@id": ORG_ID },
   "areaServed": "United States",
