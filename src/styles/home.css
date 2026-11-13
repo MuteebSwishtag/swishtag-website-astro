@@ -4997,7 +4997,8 @@
       width: 74px;
       height: 280px;
       transform: translateX(-50%);
-      mix-blend-mode: screen;
+      transform-origin: top center;
+      animation: referenceThrustPulse 3.2s ease-in-out infinite alternate;
     }
 
     .reference-hero__thrust span {
@@ -5022,8 +5023,8 @@
     }
 
     @keyframes referenceThrustPulse {
-      from { transform: translateX(-50%) scaleY(.91); opacity: .82; }
-      to { transform: translateX(-50%) scaleY(1.08); opacity: 1; }
+      from { opacity: .72; }
+      to { opacity: 1; }
     }
 
     .reference-hero__thrust-haze {
@@ -5060,7 +5061,7 @@
       object-fit: cover;
       object-position: center bottom;
       display: block;
-      transform: translateX(-2%) scale(1.03);
+      animation: referenceCloudDrift 14s ease-in-out infinite;
     }
 
     @keyframes referenceCloudDrift {
@@ -5081,19 +5082,17 @@
         radial-gradient(circle, rgba(32,33,36,.08) 0 1px, transparent 1.6px);
       background-size: 70px 70px, 96px 96px;
       background-position: 0 0, 22px 28px;
-      animation-duration: 24s;
     }
 
     .reference-hero__stars--two {
       opacity: .20;
       background-image: radial-gradient(circle, rgba(255,255,255,.98) 0 1px, transparent 1.5px);
       background-size: 42px 42px;
-      animation-duration: 16s;
     }
 
     @keyframes referenceStarsDrift {
-      from { background-position: 0 0, 22px 28px; }
-      to { background-position: 0 120px, 22px 178px; }
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(0, 40px, 0); }
     }
 
     .reference-hero__planet {
