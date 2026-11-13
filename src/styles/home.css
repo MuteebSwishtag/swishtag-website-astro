@@ -1846,7 +1846,6 @@
         radial-gradient(circle, rgba(32,33,36,.08) 0 1px, transparent 1.5px);
       background-size: 94px 94px, 151px 151px;
       background-position: 8px 18px, 48px 70px;
-      animation: dragAtmosphere 22s linear infinite;
     }
 
     .drag-atmosphere::after {
@@ -1858,8 +1857,7 @@
       height: 430px;
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,.90), rgba(153,254,237,.25) 48%, transparent 72%);
-      filter: blur(12px);
+      background: radial-gradient(circle, rgba(255,255,255,.55), rgba(153,254,237,.12) 42%, transparent 70%);
     }
 
     @keyframes dragAtmosphere {
@@ -1887,7 +1885,6 @@
       stroke-width: 8;
       stroke-linecap: round;
       stroke-dasharray: 1 18;
-      animation: chainTension 4.5s ease-in-out infinite alternate;
     }
 
     .chain--middle .chain-links {
@@ -1910,8 +1907,8 @@
       left: 50%;
       top: 7%;
       transform: translateX(-50%);
-      filter: drop-shadow(0 25px 30px rgba(32,33,36,.18));
-      animation: dragRocketFloat 4.8s ease-in-out infinite;
+      filter: drop-shadow(0 8px 8px rgba(32,33,36,.10));
+      animation: dragRocketFloat 7.5s ease-in-out infinite;
     }
 
     @keyframes dragRocketFloat {
@@ -1939,7 +1936,6 @@
       transform: translateX(-50%);
       transform-origin: top center;
       background: linear-gradient(180deg, #FFFFFF 0%, var(--lime) 28%, var(--peach) 64%, transparent 100%);
-      animation: dragFire .30s ease-in-out infinite alternate;
     }
 
     .drag-flame span:nth-child(2) {
@@ -1974,7 +1970,6 @@
       box-shadow: 0 18px 48px rgba(32,33,36,.13);
       -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px);
-      animation: dragWeightSway 5.6s ease-in-out infinite;
     }
 
     .drag-weight--left {
@@ -2154,6 +2149,7 @@
       .chain-links,
       .drag-rocket,
       .drag-flame span,
+      .drag-smoke span,
       .drag-weight {
         animation: none !important;
       }
@@ -2933,12 +2929,10 @@
 
     .pain-drag-visual {
       min-height: 820px;
-      will-change: transform;
     }
 
     .drag-rocket {
-      transition: transform .18s linear;
-      transform: translateX(-50%) translateY(calc(var(--drag-progress, 0) * -16px));
+      transition: none;
     }
 
     .drag-flame {
@@ -2948,7 +2942,7 @@
     }
 
     .drag-flame span {
-      filter: blur(.15px);
+      animation: none;
     }
 
     .drag-smoke {
@@ -2969,8 +2963,7 @@
       height: 26px;
       border-radius: 50%;
       background: rgba(120,126,132,.16);
-      animation: dragSmoke 3.2s ease-out infinite;
-      filter: blur(1px);
+      opacity: .28;
     }
 
     .drag-smoke span:nth-child(1) { margin-left: -24px; animation-delay: 0s; }
@@ -4989,7 +4982,6 @@
       display: block;
       transform: scale(1.015);
       animation: referenceRocketLift 7s ease-in-out infinite;
-      will-change: transform;
     }
 
     @keyframes referenceRocketLift {
@@ -5005,7 +4997,6 @@
       width: 74px;
       height: 280px;
       transform: translateX(-50%);
-      filter: blur(.2px);
       mix-blend-mode: screen;
     }
 
@@ -5016,22 +5007,18 @@
       border-radius: 48% 48% 68% 68%;
       transform: translateX(-50%);
       transform-origin: top center;
-      animation: referenceThrustPulse .28s ease-in-out infinite alternate;
     }
 
     .reference-hero__thrust span:first-child {
       width: 52px;
       height: 270px;
       background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,248,215,.93) 22%, rgba(255,189,155,.68) 60%, transparent 100%);
-      filter: blur(3px);
     }
 
     .reference-hero__thrust span:last-child {
       width: 22px;
       height: 238px;
       background: linear-gradient(180deg, #FFFFFF, rgba(194,255,2,.54) 28%, rgba(255,189,155,.46) 68%, transparent);
-      filter: blur(1px);
-      animation-delay: -.12s;
     }
 
     @keyframes referenceThrustPulse {
@@ -5047,9 +5034,8 @@
       width: 230px;
       height: 390px;
       transform: translateX(-50%);
-      background: radial-gradient(ellipse at top, rgba(255,255,255,.68), rgba(255,223,196,.28) 42%, transparent 72%);
-      filter: blur(18px);
-      animation: referenceHazePulse 2.8s ease-in-out infinite;
+      background: radial-gradient(ellipse at top, rgba(255,255,255,.42), rgba(255,223,196,.16) 42%, transparent 72%);
+      opacity: .7;
     }
 
     @keyframes referenceHazePulse {
@@ -5075,8 +5061,6 @@
       object-position: center bottom;
       display: block;
       transform: translateX(-2%) scale(1.03);
-      animation: referenceCloudDrift 8s ease-in-out infinite;
-      will-change: transform;
     }
 
     @keyframes referenceCloudDrift {
@@ -5088,8 +5072,6 @@
       position: absolute;
       inset: -10%;
       background-repeat: repeat;
-      animation: referenceStarsDrift linear infinite;
-      will-change: background-position;
     }
 
     .reference-hero__stars--one {
@@ -6771,7 +6753,6 @@
     .story-clients-track {
       display: flex;
       width: max-content;
-      will-change: transform;
       animation: storyClientsMarquee 170s linear infinite;
       animation-play-state: paused;
     }
@@ -6810,7 +6791,6 @@
       object-fit: contain;
       object-position: center;
       opacity: 0;
-      filter: grayscale(.85) saturate(.35) contrast(1.18);
       transition:
         opacity .28s ease,
         filter .28s ease,
@@ -6819,7 +6799,7 @@
 
     .story-client-logo.is-loaded img,
     .customer-story__clients.is-ready .story-client-logo img {
-      opacity: .94;
+      opacity: .72;
     }
 
     .story-client-logo:hover {
@@ -6831,7 +6811,6 @@
 
     .story-client-logo:hover img {
       opacity: 1;
-      filter: none;
       transform: scale(1.035);
     }
 
