@@ -316,3 +316,16 @@ html:has(.company-store) body { background: #fff; }
     font-size: 11px;
   }
 }
+
+/* About 10px from the hero's lowest content to the trust cards.
+   Desktop that content is the notes row. Below 850px the caption hangs 17px
+   past the stage, and below 600px it hangs 25px, so the padding keeps that
+   overhang inside the hero. */
+.company-store .hero { padding-bottom: 10px; }
+.company-store-chrome .enterprise-trust-bar-section { margin-top: 0; }
+@media (max-width: 850px) {
+  .company-store .hero { padding-bottom: 27px; }
+}
+@media (max-width: 600px) {
+  .company-store .hero { padding-bottom: 35px; }
+}
